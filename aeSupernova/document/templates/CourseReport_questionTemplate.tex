@@ -1,0 +1,58 @@
+{% comment %}
+% template que serve como modelo para gerar relatórios de disciplina do tipo padrão
+% recebe um dicionário contendo as seguintes chaves:
+% - questionWording : enunciado da questão avaliada
+% - totalAnswers : total de respostas obtidas para a questão avaliada
+% - nullAnswers : total de respostas nulas obtidas para a questão avaliada
+% - percentageOfNullAnswers : porcentagem de respostas nulas para a questão avaliada
+% - alternativeMeaning : dicionário de significados da questão
+% - percentageAnswers : dicionário de percentuais das respostas para a questão
+% - classNumber : número da turma avaliada
+% - courseCode : código da disciplina avaliada
+% - offerChart : caminho para o gráfico do oferecimento avaliado
+% - courseChart : caminho para o gráfico da disciplina avaliada
+{% endcomment %}
+\begin{figure}[!htb]
+
+    % desativa a numeração das legendas das imagens
+    \captionsetup[subfigure]{labelformat=empty}
+    
+    \begin{flushleft}
+        % enunciado
+        {\bf {{ questionWording }} }
+        
+        \begin{small}
+            % respostas obtidas
+            Total de respostas obtidas: {{ totalAnswers }}
+            \hspace{5.0 cm}
+            % respostas nulas
+            Respostas em branco / nulas: {{ nullAnswers }} ({{ percentageOfNullAnswers|floatformat:2 }}\%)
+            \\
+
+            % distribuição das respostas
+            Distribuição das respostas:
+        \end{small}
+        
+        {\small
+        {{ alternativeMeaning.A }}: ({{ percentageAnswers.A|floatformat:2 }}\%) | 
+        {{ alternativeMeaning.B }}: ({{ percentageAnswers.B|floatformat:2 }}\%) | 
+        {{ alternativeMeaning.C }}: ({{ percentageAnswers.C|floatformat:2 }}\%) | 
+        {{ alternativeMeaning.D }}: ({{ percentageAnswers.D|floatformat:2 }}\%) | 
+        {{ alternativeMeaning.E }}: ({{ percentageAnswers.E|floatformat:2 }}\%) | 
+        }
+    \end{flushleft}
+
+    % gráfico
+    \begin{center}
+        \vspace*{- 0.5 cm}
+        \subfloat[\large Turma {{ classNumber }}] {
+            \includegraphics[scale = 0.13]{{ offerChart }}
+        }
+        \hspace*{3.0 cm}
+        \subfloat[\large {{ courseCode }}] {
+            \includegraphics[scale = 0.13]{{ courseChart }} 
+        }
+        \vspace*{- 0.5 cm}
+    \end{center}
+
+\end{figure}

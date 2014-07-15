@@ -1,0 +1,45 @@
+{% comment %}
+% template que serve como modelo para gerar relatórios de disciplina do tipo padrão
+% recebe um dicionário contendo as seguintes chaves:
+% - facultyAbbreviation : string que contém a abreviação do nome de uma faculdade (ex: EPUSP)
+% - timePeriod : string que descreve um período de tempo (ex: 1º Semestre de 2013)
+% - courseCode : string com o código da disciplina avaliada (ex: MAP2121)
+% - courseName : string com o nome da disciplina avaliada (ex: Cálculo Numérico)
+{% endcomment %}
+
+\documentclass[a4wide,8pt]{extarticle}                                              % classe article que permite fonte de tamanho menor que 10
+\usepackage[utf8]{inputenc}                                                         % permite a utilização de símbolos com encode utf8
+\usepackage[brazil]{babel}                                                          % ortografia brasileira
+% \usepackage[T1]{fontenc}                                                          % fonte com acentos e símbolos (Removido pois o pdflatex não conseguiu encontrar essa fonte)
+\usepackage{textpos}                                                                % pacote para posicionar elementos no documento
+\usepackage{graphicx}                                                               % pacote para inserir imagens
+\usepackage{subfig}                                                                 % pacote para o uso de sub-figuras
+\usepackage[hmargin = {1.0cm, 1.0cm}, vmargin = {0.5cm, 0.5cm}]{geometry}           % configuração das margens do documento
+\usepackage{datetime}                                                               % permite manipular os formatos de exibição de datas
+\usepackage{caption}                                                                % permite manipular o formato das legendas das imagens
+
+% configura uma nova maneira de exibir a data
+\renewcommand{\dateseparator}{/}
+\newcommand{\todayiso}{\twodigit \day \dateseparator \twodigit \month \dateseparator \the\year}
+
+% macro para o cabeçalho das páginas do relatório
+% recebe como argumento o cabeçalho do oferecimento de uma turma
+\newcommand{\cabecalhoDePagina}[1]{
+    \footnotesize Data de emissão: \todayiso
+    \hrule
+    \vspace*{- 0.1 cm}
+    \begin{center}
+        \huge Consulta Discente sobre o Ensino (CDE) / {{ facultyAbbreviation }} / {{ timePeriod }}
+    \end{center}
+    \vspace*{- 0.1 cm}
+    \hrule
+    \vspace{1.0 cm}
+    \large Disciplina: {{ courseCode }} $-$ {{ courseName }}
+    \vspace*{1.0 cm}
+    \\
+    \textbf{#1}
+    \\
+}
+
+\begin{document}
+

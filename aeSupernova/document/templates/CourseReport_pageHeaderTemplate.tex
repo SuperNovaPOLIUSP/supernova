@@ -1,0 +1,14 @@
+{% comment %}
+% template que serve como modelo para gerar relatórios de disciplina do tipo padrão
+% recebe um dicionário contendo as seguintes chaves:
+% - showProfessorName : booleano informando se o nome do professor deve ser identificado
+% - classNumber : número da turma avaliada
+% - professorName : nome do professor da turma avaliada
+{% endcomment %}
+{% if showProfessorName %}
+% cabeçalho do relatório
+\cabecalhoDePagina{Turma {{ classNumber }} $-$ {{ professorName }}}
+{% else %}
+% cabeçalho do relatório
+\cabecalhoDePagina{Turma {{ classNumber }} $-$ Professor não identificado}
+{% endif %}

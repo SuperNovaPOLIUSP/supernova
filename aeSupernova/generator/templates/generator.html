@@ -1,0 +1,113 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Gerador de Relatórios</title>
+</head>
+<body>
+<div id = 'show' name = 'show' style='position:absolute; left:300px; top:150px; z-index:1000; background-color:#FBEFEF; border:1px solid #666; -moz-box-shadow:0 0 90px 5px #000; -webkit-box-shadow: 0 0 90px #000;'>
+</div>
+<div id = 'options' style='position:absolute; top:75; left:300'>
+    <span>Gerar por: </span>
+    <select id = 'offerOrClassNumber'>
+        <option value = 1>offer</option>
+        <option value = 2>Class number</option>
+    </select>
+    <select id = 'useProfessorsName'>
+        <option value = 1>with professor's name</option>
+        <option value = 2>without professor's name</option>
+    </select>
+    <span id = 'spanAssessment'>Assessment:</span>
+    <select id = 'assessments'>
+    </select>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+{% autoescape off %}
+    {{ header }}
+{% endautoescape %}
+<script type="text/javascript">
+    $('#assessments').hide()
+    $('#spanAssessment').hide()
+    $('#show').hide()
+    function loadCourses(idTimePeriod, idCycle, term){
+        get = new XMLHttpRequest()
+        get.open( "GET", 'loadCourses/?' + $.param({idCycle : idCycle, term : term, idTimePeriod : idTimePeriod}), false)
+        get.send(null)
+        var data = JSON.parse(get.responseText)
+        var coursesData = data['courses']
+        var div = $('#show')
+        var coursesDiv = new $(document.createElement('div'))
+        coursesDiv.attr('id','courses')
+        coursesDiv.attr('style', 'height: 300px; overflow-y: scroll;')
+        div.empty()
+        for (var i in coursesData){
+            var checkbox = new $(document.createElement('input'))
+            checkbox.attr('type','checkbox')
+            checkbox.val(coursesData[i]['idCourse'])
+            var span = new $(document.createElement('span'))
+            span.text(coursesData[i]['name'])
+    
+
+            coursesDiv.append(checkbox)
+            coursesDiv.append(span)
+            coursesDiv.append('<br>')
+        }
+        div.append(coursesDiv)
+        var button = new $(document.createElement('button'))
+        button.text('Flip all')
+        button.mousedown(function(){
+            var div = $('#courses')
+            if (div.children('input').eq(0).attr('checked')){
+                div.children('input').each(function(){
+                    $(this).attr('checked', false);
+                })
+            } else {
+                div.children('input').each(function(){
+                    $(this).attr("checked", true);
+                })
+            }
+        })
+        div.append(button)
+        var button = new $(document.createElement('button'))
+        button.text('Gerar')
+        button.mousedown(function(){
+            var div = $('#courses')
+            idCourses = new Array()
+            for (var i in div.children('input')){
+                if (div.children('input').eq(i).attr('checked') == 'checked'){
+                    idCourses.push(div.children('input').eq(i).val())
+                }
+            }
+            get = new XMLHttpRequest()
+            get.open( "GET", 'generateCourses/?' + $.param({idCourses:JSON.stringify(idCourses), useProfessorsName: $('#useProfessorsName').val(), byOffer:$('#offerOrClassNumber').val(), idTimePeriod:idTimePeriod, assessmentNumber: $('#assessments').val(), idFaculty:$('#headerFaculty').val()}), false)
+            get.send(null)
+            var responseText = get.responseText
+            if (responseText.length<100)
+                {
+                alert(responseText)
+                }
+            else
+                {
+                alert('erro')
+                window.open(responseText)
+                }
+        })
+        div.append(button)
+        assessments = data['assessments']
+        $('#assessments').empty()
+        for (var i in assessments){
+            var option = new $(document.createElement('option'))
+            option.val(assessments[i])
+            option.text(assessments[i])
+            $('#assessments').append(option)
+        }
+        $('#assessments').show()
+        $('#spanAssessment').show()
+        $('#show').show()
+    }
+    function flipCourses(){
+    }
+</script>
+</body>
+</html>
+

@@ -1,0 +1,84 @@
+<html><body>
+<form id='teste' name="teste" method="POST" enctype="multipart/form-data" >
+    {% autoescape off %}
+        {{ divs }}
+    {% endautoescape %}
+    {% csrf_token %}
+    <div>
+        <select style="position:absolute; top:50px; left:10px;"; id='bSheet' name='bSheet' >
+        <option value= 0 > A </option>
+        <option value = 1> B </option>
+        </select>
+    </div>
+    <div>
+        <select style="position:absolute; top:15px; left:5px;"; id='assessmentNumber' name='assessmentNumber' >
+        <option value= 1 > 1ª </option>
+        <option value = 2 > 2º </option>
+        </select>
+    </div>
+    <div id = 'file'>
+        <div>
+            <label style="position:absolute; top:50px; left:50px;" >File:</label>
+            <input style="position:absolute; top:50px; left:90px;" name="arq" type="file" />
+        </div>
+        <div>
+            <input style="position:absolute; top:100px; left:10px;" type="submit" value="Ler arquivo do ano e habilitacao selecionados" />
+        </div>
+    </div>
+    {% if erros %}
+        <span style="position:absolute; top:125px; left:150px;"> Erros: </span>
+        <div id="erros" style="position:absolute; top:150px; left:50px; height:300px; width:500px; border:0.5px solid #000000;overflow:scroll;">
+            {% for erro in erros %}
+                    {{ erro }} </br>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if resultados %}
+        <span style="position:absolute; top:125px; left:700px;"> Notas adicionadas: </span>
+        <div id="resultados" style="position:absolute; top:150px; left:625px; height:300px; width:1000px; border:0.5px solid #000000;overflow:scroll;">
+            {% for resultado in resultados %}
+                    {{ resultado }} </br>
+            {% endfor %}
+        </div>
+        <button style="position:absolute; top:100px; left:500px;" type="button" onmousedown="deletar()">Deletar esse arquivos de Notas</button>
+        <button style="position:absolute; top:50px; left:400px;" type="button" onmousedown="repetir( {{perUniHab}} )">Mais um do mesmo curriculo</button>
+    {% endif %}
+        <div id="delete" style="position:absolute; top:10px; left:980px; border:0.5px solid #000000;">
+    </div>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $("#delete").hide();
+    $("#arquivo").hide()
+    function controle(){
+        var periodos = document.getElementById('periodo').value
+        $.get("/notasRapidas/controle/", {periodos:periodos},function(retorno){
+            alert('volto')
+        });
+    }
+    function repetir(per,uni,hab,ordem){
+        $("#periodo option[value='"+per+"']").attr('selected','selected');
+        funcUni();
+        $("#unidade option[value='"+uni+"']").attr('selected','selected');
+        funcHab();
+        $("#habilitacao option[value='"+hab+"']").attr('selected','selected');
+        funcOrdem();
+    }
+    function deletar(){
+        var idArquivoDeNotas = ""
+        {% if idArquivoDeNotas %}
+            var idArquivoDeNotas = {{idArquivoDeNotas}}
+        {% endif %}
+        $.get("/notasRapidas/delete/", {idArquivoDeNotas : idArquivoDeNotas},function(retorno){
+            $("#delete").show()
+            if (retorno=="1"){
+                $("#delete").html("arquivo de notas deletado com sucesso")
+            }
+            else{
+                $("#delete").html("erro!")
+            }
+        });
+    }
+</script>
+</body></html>

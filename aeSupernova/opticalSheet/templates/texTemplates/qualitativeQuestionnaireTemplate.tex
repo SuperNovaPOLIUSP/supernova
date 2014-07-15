@@ -1,0 +1,86 @@
+{% autoescape off %}
+\documentclass{article}
+    \usepackage[utf8]{inputenc} 
+    \usepackage[brazil]{babel}  
+    \usepackage[T1]{fontenc}   
+    \usepackage{textpos}
+    \usepackage{graphicx}
+    \setlength{\TPHorizModule}{1cm}
+    \setlength{\TPVertModule}{\TPHorizModule}
+    \setlength{\parindent}{0pt}
+    \usepackage[hmargin=0.5cm,vmargin=1cm,margin=0.2cm, a4paper]{geometry}
+    \usepackage{multicol}
+    \begin{document}
+        \thispagestyle{empty}
+        \begin{center}
+            {{title.lines.0}} \\
+            {{title.lines.1}} \\
+            {{title.lines.2}}
+        \end{center}
+        \begin{flushleft}
+            Nome (opcional, seu nome não será divulgado): \leaders \vrule height 2.0pt depth -1.5pt \hfill \null \\
+            \hspace{1cm}Por favor, leia e responda às seguintes questões. Suas respostas são muito importantes para a melhoria do Curso.
+            Coloque os comentários e sugestões que você achar pertinente em relação às disciplinas:
+        \end{flushleft}
+        {% if encoded or noCoursesName %}
+            {% for i in 'xxxxxxxxxx' %} %Same as for i in range(10)
+                \begin{flushleft}
+                    Nome da disciplina: \line(1,0){185}(turma: \line(1,0){15} ): \\
+                {% for i in numberOfAnswerLines %}
+                    \line(1,0){560} \\
+                {% endfor %}
+                \end{flushleft}
+            {% endfor %}
+        {% else %}
+            {% for course in courses.courses %}
+                \begin{flushleft}
+                    {{course.name}} (turma: \line(1,0){15} ): \\
+                {% for i in numberOfAnswerLines %}
+                    \line(1,0){560} \\
+                {% endfor %}
+                \end{flushleft}
+            {% endfor %}
+        {% endif %}
+        \newpage  
+        %\thispagestyle{empty}
+        {% if not encoded %}
+            {% for course in courses.courses %}
+                \fontsize{ {{courses.font}} }{ {{courses.font}} }\selectfont 
+                \textbf{ {{course.name}} }
+                \\
+                    \begin{tabular}{ {% for offerColumn in course.offers.0 %} |c|c|c| {% endfor  %} } %Define the numbers of columns by the number in the first element
+                            \hline
+                            {% for offerColumns in course.offers %}
+                                {% for offer in offerColumns  %}
+                                    {% if offer %}
+                                        T {{offer.classNumber}} &  {{offer.schedule}} & {{offer.professor}}
+                                        {% if not forloop.last  %} %The last one doesn't need this &
+                                            &
+                                        {% endif %}
+                                    {% else %} %This can only happen in the last column so use only 2'&'
+                                        & &
+                                    {% endif %}
+                                {% endfor %}
+                                \\ \hline
+                            {% endfor %}
+
+                        \end{tabular}
+                        \\
+            {% endfor %}
+        {% else %}
+            \begin{multicols}{2}
+            \fontsize{7}{7}\selectfont
+            {% for course in courses.courses %}
+                \textbf{ {{course.courseName}} }
+                        {% for offer in course.offers %} 
+                            código: {{offer.code}} - T{{offer.classNumber}} - {{offer.schedule}} - {{offer.professor}}
+                            {% if forloop.last  %} %The last one needs a '\\'
+                                \\
+                            {% endif %}
+                        {% endfor %}
+            {% endfor %}
+            \end{multicols}
+        {% endif %}
+    \end{document}
+\endinput
+{% endautoescape %}

@@ -1,0 +1,87 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Ler Jupiter</title>
+</head>
+<body>
+<div id = 'cycles' name = 'cycles' style='position:absolute; left:300px; top:150px; z-index:1000; background-color:#FBEFEF; border:1px solid #666; -moz-box-shadow:0 0 90px 5px #000; -webkit-box-shadow: 0 0 90px #000;'>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+{% autoescape off %}
+    {{ header }}
+{% endautoescape %}
+<script type="text/javascript">
+    $('#cycles').hide()
+    loadCycles()
+    function findCycles(idFaculty){
+        var cycles = $('#cycles')
+        cycles.show()
+        cycles.children('div').eq(0).children('div').each(function(){
+            $(this).children('input').eq(0).attr('checked', false)
+            if ($(this).attr('idFaculty') == idFaculty){
+                $(this).show()
+            } else {
+                $(this).hide()
+            }
+        })
+    }
+
+    function loadCycles(){
+        var div = new $(document.createElement('div'))
+        div.empty()
+        div.attr('style', 'height: 300px; overflow-y: scroll;')
+        var cycles = $('#headerCycle')
+        cycles.children('option').each(function(){
+            if ($(this).val() != 0){
+                partialDiv = new $(document.createElement('div'))
+                var checkbox = new $(document.createElement('input'))
+                checkbox.attr('type','checkbox')
+                checkbox.val($(this).val())
+                partialDiv.attr('idFaculty', $(this).attr('idFaculty'))
+                var span = new $(document.createElement('span'))
+                span.text($(this).text())
+
+                partialDiv.append(checkbox)
+                partialDiv.append(span)
+                partialDiv.append('<br>')
+                div.append(partialDiv)
+            }
+        })
+        $('#cycles').append(div)
+        var button = new $(document.createElement('button'))
+        button.text('Flip all')
+        button.mousedown(function(){
+            var div = $('#cycles')
+            div.find('input').each(function(){
+                if ($(this).attr('checked')){
+                    $(this).attr("checked", false);
+                } else {
+                    $(this).attr("checked", true);
+                }
+            })
+        })
+        $('#cycles').append(button)
+        var button = new $(document.createElement('button'))
+        button.text('Ler')
+        button.mousedown(function(){
+            var div = $('#cycles')
+            idCycles = new Array()
+            div.find('input').each( function(){
+                if ($(this).attr('checked') == 'checked' && $(this).is(':visible')){
+                    idCycles.push($(this).val())
+                }
+            })
+            get = new XMLHttpRequest()
+            get.open( "GET", 'lerJupiter/?' + $.param({idCycles:JSON.stringify(idCycles), idTimePeriod:$('#headerTimePeriod').val()}), false)
+            get.send(null)
+           
+        })
+        $('#cycles').append(button)
+
+    }
+    function flipCourses(){
+    }
+</script>
+</body>
+</html>
+

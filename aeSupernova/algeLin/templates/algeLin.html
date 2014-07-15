@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Algebra Linear</title>
+</head>
+<body>
+<form id='algeLin' method = "post">
+    {% csrf_token %}
+    <span>altura da linha</span>
+    <textarea id = 'alturaLinha' name = 'alturaLinha' style='width: 200px;height: 20px;'>2700</textarea>
+    <br>
+    <span>texto</span>
+    <textarea id = 'text' name = 'text' style='width: 200px;height: 20px;'>1ª Prova de Álgebra Linear I</textarea>
+    <br>
+    <span>margem do texto</span>
+    <textarea id = 'margemTexto' name = 'margemTexto' style='width: 50px;height: 20px;'>200</textarea>
+    <br>
+    <span>altura do texto</span>
+    <textarea id = 'alturaTexto' name = 'alturaTexto' style='width: 200px;height: 20px;'>2400</textarea>
+    <br>
+    <span>dy: </span>
+    <textarea id = 'dy' name = 'dy' style='width: 50px;height: 20px;'>43</textarea>
+    <br>
+    <span>dx: </span>
+    <textarea id = 'dx' name = 'dx' style='width: 50px;height: 20px;'>43</textarea>
+    <br>
+    <span>x0: </span>
+    <textarea id = 'x0' name = 'x0' style='width: 50px;height: 20px;'>1760</textarea>
+    <br>
+    <span>y0: </span>
+    <textarea id = 'y0' name = 'y0' style='width: 50px;height: 20px;'>430</textarea>
+    <br>
+    <span>largura do retangulo</span>
+    <textarea id = 'w' name = 'w' style='width: 50px;height: 20px;'>30</textarea>
+    <br>
+    <span>altura do retangulo</span>
+    <textarea id = 'h' name = 'h' style='width: 50px;height: 20px;'>20</textarea>
+    <br>
+    <span>numero de copias</span>
+    <textarea id = 'copias' name = 'copias' style='width: 50px;height: 20px;'>1</textarea>
+    <br>
+    <br>
+    <button type="button" onmousedown="imprimir()" style = "width: 200px;">Fazer</button>
+        <div style='position:absolute; left:500px; top:-50px'>
+    <img src="imagem" height="1000">
+    </div>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+function imprimir(){  //manda os dados 
+        $.post("imprimir/", $("#algeLin").serialize(),function (retorno){
+            if (retorno == "ok"){
+                window.open('abreFolha/', '_blank');    
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

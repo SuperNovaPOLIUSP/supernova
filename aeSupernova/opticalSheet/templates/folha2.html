@@ -1,0 +1,65 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>OpticalSheet</title>
+</head>
+<body>
+<div id='opticalSheetSpace' >
+</div>
+<div id = 'optionsDiv' name = 'optionsDiv' style='position:absolute; left:500px; top:200px; z-index:1000; background-color:#FBEFEF; border:1px solid #666; -moz-box-shadow:0 0 90px 5px #000; -webkit-box-shadow: 0 0 90px #000;'>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+{% autoescape off %}
+    {{ header }}
+{% endautoescape %}
+<script type="text/javascript">
+    {% include "Course.js" %} 
+    {% include "CoursesList.js" %}
+    {% include "Column.js" %}
+    {% include "Columns.js" %}
+    {% include "Encoded.js" %}
+    {% include "AnswerType.js" %}
+    {% include "Positions.js" %}
+    {% include "Instructions.js" %}
+    {% include "Question.js" %}
+    {% include "QuestionBox.js" %}
+    {% include "QuestionsList.js" %}
+    {% include "Questionnaire.js" %}
+    {% include "OpticalSheet.js" %}
+</script>
+<script type="text/javascript">
+    optionsDiv = $('#optionsDiv')
+    opticalSheetSpace = $('#opticalSheetSpace')
+    var opticalSheet
+    //loadOpticalSheet(31,9,7)
+    function loadOpticalSheet(idTimePeriod, idCycle, term){
+        opticalSheet = new OpticalSheet(optionsDiv, idTimePeriod, idCycle, term)
+        opticalSheet.findOpticalSheetByTimePeriod_Cycle_Term()
+        opticalSheetSpace.children().detach()
+        opticalSheetSpace.append(opticalSheet.div)
+    }
+    if (window.addEventListener) {
+        // create the keys and konami variables
+        var keys = [],
+            konami = "38,38,40,40,37,39,37,39,66,65";
+      
+        // bind the keydown event to the Konami function
+        window.addEventListener("keydown", function(e){
+            // push the keycode to the 'keys' array
+            keys.push(e.keyCode);
+          
+            // and check to see if the user has entered the Konami code
+            if (keys.toString().indexOf(konami) >= 0) {
+                // do something such as:
+              
+                optionsDiv.append('<img src="/aeSupernova/opticalSheet/static/ni.gif" alt="ni!">')
+                optionsDiv.show()
+                // and finally clean up the keys array
+                keys = [];
+            };
+        }, true);
+    };
+</script>
+</body>
+</html>
+

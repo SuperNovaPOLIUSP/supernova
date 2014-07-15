@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI verified="false" xmi.version="1.2" timestamp="2013-08-11T22:43:24" xmlns:UML="http://schema.omg.org/spec/UML/1.3">
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>umbrello uml modeller http://uml.sf.net</XMI.exporter>
+   <XMI.exporterVersion>1.6.1</XMI.exporterVersion>
+   <XMI.exporterEncoding>UnicodeUTF8</XMI.exporterEncoding>
+  </XMI.documentation>
+  <XMI.metamodel xmi.version="1.3" href="UML.xml" xmi.name="UML"/>
+ </XMI.header>
+ <XMI.content>
+  <UML:Model isSpecification="false" isAbstract="false" isLeaf="false" xmi.id="m1" isRoot="false" name="UML Model">
+   <UML:Namespace.ownedElement>
+    <UML:Stereotype visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="folder" name="folder"/>
+    <UML:Stereotype visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="datatype" name="datatype"/>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Logical View" name="Logical View">
+     <UML:Namespace.ownedElement>
+      <UML:Package stereotype="folder" visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Datatypes" name="Datatypes">
+       <UML:Namespace.ownedElement>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="XBBoVeNnYem4" name="int"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="yoRQiqqt1u1q" name="char"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="8p5pnBzKL87q" name="bool"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="mUbI6LM2AnSs" name="float"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="cGlbAlRHaW4N" name="double"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="h1f09krtEQ9I" name="short"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="mWIwHkmr0VS9" name="long"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="EtOoNS95Un3b" name="unsigned int"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="XsVkJe258JzO" name="unsigned short"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="3jF2Ci9RZXDx" name="unsigned long"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="xL0R831fwWND" name="string"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="VOg46x5AkOiM" name="array"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="botZbBnkgOgg" name="tuple"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="rXqX1ED3I98T" name="dict"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="tV9FIYvrLmOu" name="object"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="w9ccWIINq8ur" name="set"/>
+       </UML:Namespace.ownedElement>
+      </UML:Package>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Mj3I23jA6kn0" name="OpticalSheetController">
+       <UML:Classifier.feature>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="3m9xj7xjbkAi" comment="Returns the getOpticalSheetData with the opticalSheet of the given id." name="findOpticalSheetById">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="CVhTYPVTkDl7" type="XBBoVeNnYem4" value="" comment="The database id of the wanted opticalSheet" name="idOpticalSheet"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="6WFFZbobOxW5" comment="Returns the getOpticalSheetData of the opticalSheet belonging to the given idTimePeriod, idCycle and term. If the number of opticalSheets found by those parameters is different than 1 the return is the number of opticalSheets found." name="findOpticalSheetByTimePeriod_Cycle_Term">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="3amRWIWYmGAz" type="xLOULfhPCof8"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="WTRT6Zv29uk1" type="XBBoVeNnYem4" value="" comment="The database id of the timePeriod of the wanted opticalSheet." name="idTimePeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="yc1is9f4c0d3" type="XBBoVeNnYem4" value="" comment="The database id of the cycle of the wanted opticalSheet." name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="CTLbTAUsUs00" type="XBBoVeNnYem4" value="" comment="The term of the wanted opticalSheet." name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="nMOuQlkQBgt3" comment="Returns a dictionary with all the information needed to build and opticalSheet in the opticalSheet's site #PRECISA DESCREVER O DICIONARIO." name="getOpticalSheetData">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="D9zZhsQ03ojQ" type="26VUgj8tfhxI" value="" name="opticalSheet"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="hqIQ8LBMFUlg" comment="Returns a dict with the idOpticalSheet, the term and the timePeriod string of the existing opticalSheets relatade to this cycle." name="getOldOpticalSheets">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="hhix7oIJAXlw" type="XJ8YlAyNrI0s" value="" comment="The cycle related to the wanted opticalSheets" name="cycle"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="R1fgpwUuMniu" comment="Tries to store the opticalSheet and returns a mensage explaning what happend." name="storeOpticalSheet">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="" type="xL0R831fwWND"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="4Q3eOeiXlcAi" type="XBBoVeNnYem4" value="" comment="Id of the opticalSheet to be store, if it is a new one it should be None." name="idOpticalSheet"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="WjfarFLOikpo" type="xL0R831fwWND" value="" comment="A string defining the type of the opticalSheets survey, must be in minitableSurveyType." name="surveyType"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="KirRdbTfzWJO" type="XBBoVeNnYem4" value="" comment="The database id of the cycle to be added in this opticalSheet, it can't be None, it is ok if this cycle is alredy related to this opticalSheet." name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="B1vud3b7kEgb" type="XBBoVeNnYem4" value="" comment="Term to be added in the relation cycle opticalSheet." name="term"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="T1xBjmx3VoT6" type="XBBoVeNnYem4" value="" comment="Database id of the timePeriod in which this opticalSheet exist." name="idTimePeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="doB6beCzYvIy" type="xLOULfhPCof8" value="" comment="If not encoded: A list of dicts, where each dict represent a field and contain the keys: idsOffer, courseIndex, abbreviation, idCourse.&#xa;Else is just the encoding name." name="fields"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="z0W1ayhCzQVG" type="xLOULfhPCof8" value="" comment="A list of dicts where each dict represents a survey with the keys: &#xa;assessmentNumber, &#xa;idQuestionnaire: None or the IdQuestionnaire,&#xa;questions: [{questionWording, questionIndex}&#xa;" name="surveys"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="pQwFJnMubV0C" type="8p5pnBzKL87q" value="" comment="A boolean to define if this opticalSheet is encoded." name="encoded"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="26VUgj8tfhxI" name="OpticalSheet"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="XJ8YlAyNrI0s" name="Cycle"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="3DOHn8eMsb5q" name="ColumnsController">
+       <UML:Classifier.feature>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="rkYt7YyL7mzB" comment="returns a list of dicts containig the keys: courseName, courseAbbreviation, courseCode, idCourse and oneOfTheFirst. &#xa;oneOfTheFirst is true if the course is given in the term and cycle passed." name="findCourses">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Fjbw2z7mTehD" type="xL0R831fwWND" value="" comment="Part of the wanted course's abbreviation." name="searchedAbbreviation"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="mUWumxWTZvzg" type="xL0R831fwWND" value="" comment="Part of the wanted course's courseCode" name="searchedCourseCode"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="f53Inu1Mo8sk" type="xL0R831fwWND" value="" comment="Part of the wanted course's name." name="searchedName"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="q7EjMftCQ5IL" type="XBBoVeNnYem4" value="" comment="The idTimePeriod of the wanted course's timePeriod." name="idTimePeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="2XDb3DmANtqS" type="XBBoVeNnYem4" value="None" comment="Is None by default, if it is set the courses related to the chosen cycle will be the firsts of the returned list." name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="lIIIS0Oavwx2" type="XBBoVeNnYem4" value="None" comment="The term of the relation cycle course." name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="eQTF6slu1lKs" comment="Returns a list of dicts containig the keys: courseName, courseAbbreviation, courseCode. Where each one is a possible subgroup of the given course. It could be only the practical offers, only the offers given by one professor ... " name="expandCourse">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="JhRSLrtZvlKo" type="XBBoVeNnYem4" value="" comment="The database assossiated key to the wanted course" name="idCourse"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="V4hLk5pxUITP" type="XBBoVeNnYem4" value="" comment="The idTimePeriod of the wanted subgroup's timePeriod." name="idTimePeriod"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="YjxdyPN9W0zY" comment="Returns the set of idOffers defined by this courseCode as is defined in this courseCode parameter." name="getOffers">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="EQSWvHr4Jomv" type="xL0R831fwWND" value="" comment="If it is a normal course this is not used, if this is a subgroup of a course, this courseCode is going to define the offers.Ex PTC3011(P)[ProfName] = only practical offers given by ProfName in course PTC3011." name="courseCode"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="A4xkcShHbJ3H" type="XBBoVeNnYem4" value="" comment="The idTimePeriod of the wanted offer's timePeriod." name="idTimePeriod"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="OD9TJ7AAmN6j" comment="Return a list of dicts with the keys: idOpticalSheet and encodingName. Where each one represents a line of the encoding table, that is related with an opticalSheet belonging to the given idTimePeriod." name="getEncodings">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="c4zZX6TiV3Rb" type="xLOULfhPCof8"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="xMjINtn893Ob" type="XBBoVeNnYem4" value="" comment="The database id of the wanted timePeriod." name="idTimePeriod"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="hlYhv1idcEA7" comment="Delete the relation between a term of a cycle and an opticalSheet." name="removeCycleFromOpticalSheet">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="GcRboKQfX4g3" type="XBBoVeNnYem4" value="" name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="ZsMWYhqESOvL" type="mUbI6LM2AnSs" value="" name="term"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Pby2p873jZfV" type="XBBoVeNnYem4" value="" name="idOpticalSheet"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="j0V5uD2Kid0F" name="QuestionController">
+       <UML:Classifier.feature>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="iOF8704G4gr6" comment="Returns the questions in which the questionWording contain the chosen partialQuestionWording. The return is a list of dicts with the keys: questionWording, idQuestion, idAnswerType and answerTypeName." name="findQuestion">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Dq889rzfa6ru" type="xL0R831fwWND" value="" comment="Part of the wanted question wording." name="partialQuestionWording"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="iERTJd22eT1c" comment="Returns all the answerTypes in the database as a list of dict with the keys as it is defined in AnswerType class: idAnswerType, answerTypeName, alternativeMeaning." name="getAnswerTypes"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="KSSjd6KwCPZn" comment="Stores the given question, and returns its new idQuestion." name="storeQuestion">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="" type="XBBoVeNnYem4"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="xo8kYcIGojh8" type="XBBoVeNnYem4" value="" name="idAnswerType"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Kk8wD9ZXZzHC" type="xL0R831fwWND" value="" name="questionWording"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="RsRiwyqfwJir" name="new_class"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="xLOULfhPCof8" name="[]"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="GbbEINZu5xv0" comment="A class to create a assessment PDF, it can be a Qualitative Questionnaire, an OpticalSheet ..." name="Printer">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="9NxKoAVrHCTU"/>
+        <UML:Generalization xmi.idref="2hxXux28X6Gy"/>
+        <UML:Generalization xmi.idref="EqPxjBearlB6"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="AJIKjlpzrfAw" type="xL0R831fwWND" comment="The name of the file that is going to be printed." name="name"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="wIwztZR982NQ" type="xL0R831fwWND" comment="The path where the file is going to be printed" name="path"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="pW5C7ceeOa3c" type="xL0R831fwWND" comment="The text to be placed in the .tex file." name="texText"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="OvJRsEP1VhLC" comment="Initialization method. Here the path is set using django's MEDIA_ROOT. " name="__init__"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="g7co7xDTsWvj" comment="Load the template with the given name with the given parameters to the texText parameter." name="loadTemplate">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="iKkD03QRBaju" type="xL0R831fwWND" value="" comment="The name of the template to be loaded." name="templateName"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="YmyPGr8yBq9B" type="wycW4I1kNbZU" value="" comment="The parameters to be loaded in the template." name="parameters"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="tXc27Mw1IZXM" comment="Create a file in this object path, and this objects name + '.tex' with the texText and tries to create the pdf from it, if it is successful returns True, if not returns False." name="createPDF">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="WuGaCDC8ckq4" type="8p5pnBzKL87q"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="R9YdzhmqFPsK" comment="Get the pdf file created in the createPDF method, and returns it to be downloaded by the user of the site, also delete the .tex and .pdf files." name="getPDF">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="BRcYwwxZevCY" type="wycW4I1kNbZU"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="jmKzJrJ8MOIT" comment="Get the tex file created in the createPDF method, and returns it to be downloaded by the user of the site, also delete the .tex and .pdf files." name="getTex">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="ETkT2ftXZ77j" type="wycW4I1kNbZU"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="0v7MV8yxHWYE" comment="Creates a name for the file from the parameter passed." name="createName">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Vujog8caTLkI" type="L8f29110g8Fh" value="" name="timePeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="tf7F3Pg2ImOo" type="XJ8YlAyNrI0s" value="" name="cycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="a7IBagQvm6wu" type="XBBoVeNnYem4" value="" name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="7xul58SY2CMg" comment="Creates a title to be placed on top of the printed files." name="createTitle">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="IwGjFz1p6Hze" type="L8f29110g8Fh" value="" name="timePeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="yPXiTRcYOXJR" type="XJ8YlAyNrI0s" value="" name="cycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="dkydwKJCFZvS" type="XBBoVeNnYem4" value="" name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="wycW4I1kNbZU" name="{}"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="L8f29110g8Fh" name="timePeriod"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="KIrv2gzB5bh1" comment="A class to create the qualitative questionnaire's PDF from an OpticalSheet." name="QualitativeQuestionnairePrinter">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="VfY9aihoBRFB"/>
+        <UML:Generalization xmi.idref="AeBfiPdUCwqH"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="4xCK7fo5Up7T" type="XJ8YlAyNrI0s" comment="The cycle of this QualitativeQuestionnaire." name="cycle"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="IDGEWyCnYhbY" type="taiSSBnV60nD" comment="The timePeriod of this QualitativeQuestionnaire." name="timePeriod"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="fZI7ONZeaps7" type="XBBoVeNnYem4" comment="The term of this QualitativeQuestionnaire." name="term"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="9pK4v5BAZ9e5" type="26VUgj8tfhxI" comment="This qualitativeQuestionnaire's opticalSheet." name="opticalSheet"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="CKicrgYEneFW" type="xL0R831fwWND" comment="The title on top of this QualitativeQuestionnaire's first page." name="title"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="XJMGRdtbRDdK" type="8p5pnBzKL87q" comment="If it is true the questions must not have the course's name writen." name="noCourseName"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="ImTsu7v6QegF" type="8p5pnBzKL87q" comment="A bool showing if the related opticalSheet is encoded." name="encoded"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="IET3siZN0vcR" type="wycW4I1kNbZU" comment="A dict with the keys: &#xa;font : the font size to be used for the courses in the second page&#xa;courses: a list of course's name and the description of each offer related.&#xa;" name="courses"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="jqxqok1TJKZf" comment="Initialization method." name="__init__">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="f8JEx9JgAB0r" type="XBBoVeNnYem4" value="" comment="The database id of the timePeriod if this QualitativeQuestionnaire." name="idTimPeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="cqUeOU75K4t8" type="XBBoVeNnYem4" value="" comment="The database id of the cycle if this QualitativeQuestionnaire." name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="nva6D9ksH16C" type="XBBoVeNnYem4" value="" comment="The term this QualitativeQuestionnaire." name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="BNsJYqA9ecn2" comment="Set all of this objects paramters and use the function loadTemplate with its __dict__ and the template 'qualitativeQuestionnaireTemplate.tex'" name="printQualitativeQuestionnaire">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="7s8Rv1Yiu8m7" type="XBBoVeNnYem4" value="" comment="The id of the opticalSheet of related to this QualitativeQuestionnaire." name="idOpticalSheet"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="FU0WW4gfSYyy" type="XBBoVeNnYem4" value="" comment="The number of lines in each question of this QualitativeQuestionnaire." name="numberOfLines"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="P873lt4sjAHe" type="XBBoVeNnYem4" value="" comment="The type of the QualitativeQuestionnaire:&#xa;if it is 1: The name of each course should be shown in the questions.&#xa;if it is 2: The questions must have a line for the student to write the course's name." name="qualitativeQuestionnaireType"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="XV0widGzQjrK" comment="Call the createName method of the Printer class, and appends a 'QQ' in the start of the name." name="createName"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="pkODM4SdGtg9" comment="Create the courses parameter if the opticalSheet related to this qualitativeQuestionnaire is encoded." name="createCodes">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="EQXu1YiiXD1U" type="bEUZ961ebzaK" value="" comment="A list of OpticalSheetFields objects, of an opticalSheet." name="fields"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="lyozrU8Rib0q" comment="Create the courses parameter if the opticalSheet related to this qualitativeQuestionnaire is not encoded." name="createCourses">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="d8Wusqy6EWyF" type="bEUZ961ebzaK" value="" comment="A list of OpticalSheetFields objects, of an opticalSheet." name="fields"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" visibility="public" isSpecification="false" namespace="Logical View" child="KIrv2gzB5bh1" xmi.id="VfY9aihoBRFB" parent="GbbEINZu5xv0" name=""/>
+      <UML:Generalization discriminator="" visibility="public" isSpecification="false" namespace="Logical View" child="GbbEINZu5xv0" xmi.id="9NxKoAVrHCTU" parent="KIrv2gzB5bh1" name=""/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="taiSSBnV60nD" name="TimePeriod"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="bEUZ961ebzaK" name="OpticalSheetFields[]"/>
+      <UML:Generalization discriminator="" visibility="public" isSpecification="false" namespace="Logical View" child="GbbEINZu5xv0" xmi.id="2hxXux28X6Gy" parent="KIrv2gzB5bh1" name=""/>
+      <UML:Generalization discriminator="" visibility="public" isSpecification="false" namespace="Logical View" child="KIrv2gzB5bh1" xmi.id="AeBfiPdUCwqH" parent="GbbEINZu5xv0" name=""/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="7nDClOI9pVkT" comment="A class to create the opticalSheet's PDF." name="OpticalSheetPrinter">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="V3zKo8QZEyBG"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="JPJkCnrOsSkt" type="XJ8YlAyNrI0s" comment="The cycle of this QualitativeQuestionnaire." name="cycle"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="uNHdxfh2RuEA" type="taiSSBnV60nD" comment="The timePeriod of this QualitativeQuestionnaire." name="timePeriod"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="HVJ403YHRpzd" type="XBBoVeNnYem4" comment="The term of this QualitativeQuestionnaire." name="term"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="aq1SJjJB6bo1" type="26VUgj8tfhxI" comment="This qualitativeQuestionnaire's opticalSheet." name="opticalSheet"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="EW3fOFpdk8ik" type="xL0R831fwWND" comment="The title on top of this QualitativeQuestionnaire's first page." name="title"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="5hYwzE75dWOt" type="fXVtPJYvWBHJ" comment="The faculty related to this opticalSheet." name="faculty"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="9jxrGCnKtJEs" type="xL0R831fwWND" comment="If there is a picture to be placed set the path to it." name="picture"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="VLv6sJxVoQOE" type="xLOULfhPCof8" comment="A dict with the keys:&#xa;> positions: [float, float]&#xa;> tabular: a string representing the structure of the table in LaTeX&#xa;> lines: a list of dicts where each list is a line in the table and each dict is a cell with the keys: font and text." name="table"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="ju9E4OXB7S2L" type="xLOULfhPCof8" comment="A list of lists of dicts where each list represent a set of 10 or less dicts that represent a course in the opticalSheet and heva the keys: font: int, position: [float, float], abbreviation: string.&#xa;&#xa;Each new inner list represents another page in the opticalSheet." name="coursesList"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="voNCCG9cPFfI" type="xLOULfhPCof8" comment="A ist of dicts, where each dict represents a question in the opticalSheet, with the keys: position:[float, float], font and questionWording." name="questions"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ikEWvIbngrnf" comment="Initialization method." name="__init__">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="f8JEx9JgAB0r" type="XBBoVeNnYem4" value="" comment="The database id of the timePeriod if this QualitativeQuestionnaire." name="idTimPeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="cqUeOU75K4t8" type="XBBoVeNnYem4" value="" comment="The database id of the cycle if this QualitativeQuestionnaire." name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="nva6D9ksH16C" type="XBBoVeNnYem4" value="" comment="The term this QualitativeQuestionnaire." name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="vmrSmiN3Mx37" comment="Set all of this objects paramters and use the function loadTemplate with its __dict__ and the template 'opticalSheetTemplate.tex'" name="printOpticalSheet">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="7s8Rv1Yiu8m7" type="XBBoVeNnYem4" value="" comment="The id of the opticalSheet of related to this QualitativeQuestionnaire." name="idOpticalSheet"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="N7lEPdPzsbL6" type="xLOULfhPCof8" value="" comment="A list of dicts representing the courses in an OpticalSheet.  the dicts have the keys: abbreviation, font, courseIndex." name="fields"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="TcJplLQ04p0Q" type="wycW4I1kNbZU" value="" comment="Survey is a dict with the keys:&#xa;&#xa;> instructions: a list of dicts with idAnswerType and font, that represent the chosen answerTypes to show in the opticalSheet.&#xa;&#xa;> questions: a list of dict with questionWording, font and idAnswerTypes&#xa;" name="survey"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="VDfOoySejXHw" type="wycW4I1kNbZU" value="" comment="A dict with the keys:&#xa;tableX: position X of the table&#xa;tableY: position Y of the table&#xa;ColumnX:position X of the 1ºcolumn&#xa;ColumnY: position Y of the 1º column&#xa;ColumnDX: horizontal distance between the columns&#xa;QuestionX: position X of the 1º question&#xa;QuestionY: position Y of the 1º question&#xa;QuestionDY: vertical distances between the questions." name="positions"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Cm2iSYGAGSe9" comment="Call the createName method of the Printer class, and appends a 'OS' in the start of the name." name="createName"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="true" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="lDwP4j5yTuQF" comment="Create the coursesList parameter if the opticalSheet is encoded, in this case all course's name are 'code' and all fonts are 9." name="createEncodedCodes">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="tHqeAnDBydnR" type="mUbI6LM2AnSs" value="" name="positionX"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="5q94nyjgl6sx" type="mUbI6LM2AnSs" value="" name="positionY"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="NzYkFD38Utlc" type="mUbI6LM2AnSs" value="" name="dX"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="anHuiI2u44bX" comment="Create the coursesList parameter if this opticalSheet not encoded" name="createCourses">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="d8Wusqy6EWyF" type="bEUZ961ebzaK" value="" comment="A list of OpticalSheetFields objects, of an opticalSheet." name="fields"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="S983vgdXntxY" type="mUbI6LM2AnSs" value="" comment="The position X of the 1º column." name="positionX"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="e7HRnAGsaH3S" type="mUbI6LM2AnSs" value="" comment="The position Y of the first column." name="positionY"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="4Q2Bs3XWoA1t" type="mUbI6LM2AnSs" value="" comment="The horizontal distance between 2 columns." name="dX"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="9SquXjquiOev" comment="Create the questions parameter of this object." name="createQuestions">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="fDY8MQGBJMDt" type="xLOULfhPCof8" value="" comment="A list of dicts with the keys: questionWording and font." name="questions"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="2sxP3eYD5O5c" type="mUbI6LM2AnSs" value="" comment="The position X of the 1º question." name="positionX"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="5tUmF6fpmhrK" type="mUbI6LM2AnSs" value="" comment="The position Y of the 1 question." name="positionY"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="SVXBwMUwCPJG" type="mUbI6LM2AnSs" value="" comment="The vertical distance between the questions." name="dY"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Gai9i6GgPrM2" comment="Creates the instructions table based on the instructions chosen by the user, and the question in with they appear." name="organizeInstructions">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="pUB9X1E8TBrA" type="xLOULfhPCof8" value="" comment="A list of dicts with idAnswerType and font, that represent the chosen answerTypes to show in the opticalSheet." name="instructions"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="cRTV3SwjeUp0" type="xLOULfhPCof8" value="" comment="A list of dicts with the keys: questionWording and font." name="questions"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="u69CSK3wTKt9" type="mUbI6LM2AnSs" value="" comment="The position X of the instructions table." name="positionX"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="9SKkdHMFjpjm" type="mUbI6LM2AnSs" value="" comment="The position Y of the instructions table." name="positionY"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="fXVtPJYvWBHJ" name="Faculty"/>
+      <UML:Generalization discriminator="" visibility="public" isSpecification="false" namespace="Logical View" child="GbbEINZu5xv0" xmi.id="EqPxjBearlB6" parent="7nDClOI9pVkT" name=""/>
+      <UML:Generalization discriminator="" visibility="public" isSpecification="false" namespace="Logical View" child="7nDClOI9pVkT" xmi.id="V3zKo8QZEyBG" parent="GbbEINZu5xv0" name=""/>
+     </UML:Namespace.ownedElement>
+     <XMI.extension xmi.extender="umbrello">
+      <diagrams>
+       <diagram showopsig="1" linecolor="#ff0000" snapx="10" showattribassocs="1" snapy="10" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="549" canvaswidth="2456" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#000000" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="XMmuFslbmQrn" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
+        <widgets>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="387" showattsigs="601" showstereotype="1" y="185" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="912" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="Mj3I23jA6kn0" showscope="1" height="91" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="232" showattsigs="601" showstereotype="1" y="320" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="961" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="3DOHn8eMsb5q" showscope="1" height="91" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="295" showattsigs="601" showstereotype="1" y="95" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="411" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="j0V5uD2Kid0F" showscope="1" height="63" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="2057" showattsigs="601" showstereotype="1" y="271" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="395" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="GbbEINZu5xv0" showscope="1" height="154" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="1359" showattsigs="601" showstereotype="1" y="71" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="664" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="KIrv2gzB5bh1" showscope="1" height="196" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="1357" showattsigs="601" showstereotype="1" y="293" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="664" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="7nDClOI9pVkT" showscope="1" height="252" showopsigs="601"/>
+        </widgets>
+        <messages/>
+        <associations>
+         <assocwidget indexa="1" indexb="1" usesdiagramusefillcolor="0" widgetaid="KIrv2gzB5bh1" usesdiagramfillcolor="0" fillcolor="#000000" linecolor="none" totalcounta="2" xmi.id="AeBfiPdUCwqH" widgetbid="GbbEINZu5xv0" totalcountb="3" type="500" textcolor="none" usefillcolor="0" linewidth="none">
+          <linepath>
+           <startpoint startx="2023" starty="267"/>
+           <endpoint endx="2057" endy="271"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget indexa="1" indexb="2" usesdiagramusefillcolor="128" widgetaid="7nDClOI9pVkT" usesdiagramfillcolor="0" fillcolor="#000000" linecolor="none" totalcounta="2" xmi.id="V3zKo8QZEyBG" widgetbid="GbbEINZu5xv0" totalcountb="3" type="500" textcolor="none" usefillcolor="0" linewidth="none">
+          <linepath>
+           <startpoint startx="2021" starty="315"/>
+           <endpoint endx="2057" endy="315"/>
+          </linepath>
+         </assocwidget>
+        </associations>
+       </diagram>
+      </diagrams>
+     </XMI.extension>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Use Case View" name="Use Case View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Component View" name="Component View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Deployment View" name="Deployment View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Entity Relationship Model" name="Entity Relationship Model">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+   </UML:Namespace.ownedElement>
+  </UML:Model>
+ </XMI.content>
+ <XMI.extensions xmi.extender="umbrello">
+  <docsettings viewid="XMmuFslbmQrn" uniqueid="GfTu7Js0N0An" documentation=""/>
+  <listview>
+   <listitem open="1" type="800" id="Views">
+    <listitem open="1" type="821" id="Component View"/>
+    <listitem open="1" type="827" id="Deployment View"/>
+    <listitem open="1" type="836" id="Entity Relationship Model"/>
+    <listitem open="1" type="801" id="Logical View">
+     <listitem open="1" type="813" id="xLOULfhPCof8"/>
+     <listitem open="1" type="813" id="wycW4I1kNbZU"/>
+     <listitem open="0" type="807" id="XMmuFslbmQrn" label="class diagram"/>
+     <listitem open="1" type="813" id="3DOHn8eMsb5q">
+      <listitem open="0" type="815" id="eQTF6slu1lKs"/>
+      <listitem open="0" type="815" id="rkYt7YyL7mzB"/>
+      <listitem open="0" type="815" id="OD9TJ7AAmN6j"/>
+      <listitem open="0" type="815" id="YjxdyPN9W0zY"/>
+      <listitem open="0" type="815" id="hlYhv1idcEA7"/>
+     </listitem>
+     <listitem open="1" type="813" id="XJ8YlAyNrI0s"/>
+     <listitem open="0" type="830" id="Datatypes">
+      <listitem open="1" type="829" id="VOg46x5AkOiM"/>
+      <listitem open="1" type="829" id="8p5pnBzKL87q"/>
+      <listitem open="1" type="829" id="yoRQiqqt1u1q"/>
+      <listitem open="1" type="829" id="rXqX1ED3I98T"/>
+      <listitem open="1" type="829" id="cGlbAlRHaW4N"/>
+      <listitem open="1" type="829" id="mUbI6LM2AnSs"/>
+      <listitem open="1" type="829" id="XBBoVeNnYem4"/>
+      <listitem open="1" type="829" id="mWIwHkmr0VS9"/>
+      <listitem open="1" type="829" id="tV9FIYvrLmOu"/>
+      <listitem open="1" type="829" id="w9ccWIINq8ur"/>
+      <listitem open="1" type="829" id="h1f09krtEQ9I"/>
+      <listitem open="1" type="829" id="xL0R831fwWND"/>
+      <listitem open="1" type="829" id="botZbBnkgOgg"/>
+      <listitem open="1" type="829" id="EtOoNS95Un3b"/>
+      <listitem open="1" type="829" id="3jF2Ci9RZXDx"/>
+      <listitem open="1" type="829" id="XsVkJe258JzO"/>
+     </listitem>
+     <listitem open="1" type="813" id="fXVtPJYvWBHJ"/>
+     <listitem open="1" type="813" id="RsRiwyqfwJir"/>
+     <listitem open="1" type="813" id="26VUgj8tfhxI"/>
+     <listitem open="0" type="813" id="Mj3I23jA6kn0">
+      <listitem open="0" type="815" id="3m9xj7xjbkAi"/>
+      <listitem open="0" type="815" id="6WFFZbobOxW5"/>
+      <listitem open="0" type="815" id="hqIQ8LBMFUlg"/>
+      <listitem open="0" type="815" id="nMOuQlkQBgt3"/>
+      <listitem open="0" type="815" id="R1fgpwUuMniu"/>
+     </listitem>
+     <listitem open="1" type="813" id="bEUZ961ebzaK"/>
+     <listitem open="1" type="813" id="7nDClOI9pVkT">
+      <listitem open="0" type="815" id="ikEWvIbngrnf"/>
+      <listitem open="0" type="814" id="ju9E4OXB7S2L"/>
+      <listitem open="0" type="815" id="anHuiI2u44bX"/>
+      <listitem open="0" type="815" id="lDwP4j5yTuQF"/>
+      <listitem open="0" type="815" id="Cm2iSYGAGSe9"/>
+      <listitem open="0" type="815" id="9SquXjquiOev"/>
+      <listitem open="0" type="814" id="JPJkCnrOsSkt"/>
+      <listitem open="0" type="814" id="5hYwzE75dWOt"/>
+      <listitem open="0" type="814" id="aq1SJjJB6bo1"/>
+      <listitem open="0" type="815" id="Gai9i6GgPrM2"/>
+      <listitem open="0" type="814" id="9jxrGCnKtJEs"/>
+      <listitem open="0" type="815" id="vmrSmiN3Mx37"/>
+      <listitem open="0" type="814" id="voNCCG9cPFfI"/>
+      <listitem open="0" type="814" id="VLv6sJxVoQOE"/>
+      <listitem open="0" type="814" id="HVJ403YHRpzd"/>
+      <listitem open="0" type="814" id="uNHdxfh2RuEA"/>
+      <listitem open="0" type="814" id="EW3fOFpdk8ik"/>
+     </listitem>
+     <listitem open="0" type="813" id="GbbEINZu5xv0">
+      <listitem open="0" type="815" id="OvJRsEP1VhLC"/>
+      <listitem open="0" type="815" id="0v7MV8yxHWYE"/>
+      <listitem open="0" type="815" id="tXc27Mw1IZXM"/>
+      <listitem open="0" type="815" id="7xul58SY2CMg"/>
+      <listitem open="0" type="815" id="R9YdzhmqFPsK"/>
+      <listitem open="0" type="815" id="jmKzJrJ8MOIT"/>
+      <listitem open="0" type="815" id="g7co7xDTsWvj"/>
+      <listitem open="0" type="814" id="AJIKjlpzrfAw"/>
+      <listitem open="0" type="814" id="wIwztZR982NQ"/>
+      <listitem open="0" type="814" id="pW5C7ceeOa3c"/>
+     </listitem>
+     <listitem open="0" type="813" id="KIrv2gzB5bh1">
+      <listitem open="0" type="815" id="jqxqok1TJKZf"/>
+      <listitem open="0" type="814" id="IET3siZN0vcR"/>
+      <listitem open="0" type="815" id="pkODM4SdGtg9"/>
+      <listitem open="0" type="815" id="lyozrU8Rib0q"/>
+      <listitem open="0" type="815" id="XV0widGzQjrK"/>
+      <listitem open="0" type="814" id="4xCK7fo5Up7T"/>
+      <listitem open="0" type="814" id="ImTsu7v6QegF"/>
+      <listitem open="0" type="814" id="XJMGRdtbRDdK"/>
+      <listitem open="0" type="814" id="9pK4v5BAZ9e5"/>
+      <listitem open="0" type="815" id="BNsJYqA9ecn2"/>
+      <listitem open="0" type="814" id="fZI7ONZeaps7"/>
+      <listitem open="0" type="814" id="IDGEWyCnYhbY"/>
+      <listitem open="0" type="814" id="CKicrgYEneFW"/>
+     </listitem>
+     <listitem open="0" type="813" id="j0V5uD2Kid0F">
+      <listitem open="0" type="815" id="iOF8704G4gr6"/>
+      <listitem open="0" type="815" id="iERTJd22eT1c"/>
+      <listitem open="0" type="815" id="KSSjd6KwCPZn"/>
+     </listitem>
+     <listitem open="1" type="813" id="L8f29110g8Fh"/>
+     <listitem open="1" type="813" id="taiSSBnV60nD"/>
+    </listitem>
+    <listitem open="1" type="802" id="Use Case View"/>
+   </listitem>
+  </listview>
+  <codegeneration>
+   <codegenerator language="Python"/>
+  </codegeneration>
+ </XMI.extensions>
+</XMI>

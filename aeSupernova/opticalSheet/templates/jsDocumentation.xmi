@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI verified="false" xmi.version="1.2" timestamp="2013-08-13T17:23:30" xmlns:UML="http://schema.omg.org/spec/UML/1.3">
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>umbrello uml modeller http://uml.sf.net</XMI.exporter>
+   <XMI.exporterVersion>1.6.1</XMI.exporterVersion>
+   <XMI.exporterEncoding>UnicodeUTF8</XMI.exporterEncoding>
+  </XMI.documentation>
+  <XMI.metamodel xmi.version="1.3" href="UML.xml" xmi.name="UML"/>
+ </XMI.header>
+ <XMI.content>
+  <UML:Model isSpecification="false" isAbstract="false" isLeaf="false" xmi.id="m1" isRoot="false" name="UML Model">
+   <UML:Namespace.ownedElement>
+    <UML:Stereotype visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="folder" name="folder"/>
+    <UML:Stereotype visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="datatype" name="datatype"/>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Logical View" name="Logical View">
+     <UML:Namespace.ownedElement>
+      <UML:Package stereotype="folder" visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Datatypes" name="Datatypes">
+       <UML:Namespace.ownedElement>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="cwvJkO3349NO" name="int"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="YcryBVwJX14l" name="char"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="sG7VO3azzVGh" name="bool"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="sHlwQ8KwkBsu" name="float"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="fpDAoGwgU3Aq" name="double"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="4kp4E3j6IU2g" name="short"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="bKdJUVD9IPJ4" name="long"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="fDj9GtzLdnNp" name="unsigned int"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="o6v7ZxnAIQTm" name="unsigned short"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ufvC4CFjQyqe" name="unsigned long"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="rpzScKGPPBWy" name="string"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="BMsjeTUFmTrO" name="boolean"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="PPvE3i0BwkTl" name="byte"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="BW6EzOJAkBtP" name="String"/>
+       </UML:Namespace.ownedElement>
+      </UML:Package>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="9J8PiZ9aE2mG" comment="Represent a course from the database." name="Course">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="private" isSpecification="false" xmi.id="EzxcxnHmdEDD" type="rpzScKGPPBWy" comment="A 7 characters code that represent the course, it can be followed by a complement that represent this specific set of offers" name="courseCode"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="ZTcye6ulQ286" type="rpzScKGPPBWy" comment="The name of this course." name="name"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="ZHgmJQ2WQ08L" type="rpzScKGPPBWy" comment="The abbreviation is the string that will be shown in the opticalSheet." name="abbreviation"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="nN6OcJa9kC5O" type="cwvJkO3349NO" comment="The database id assossiated with this object." name="idCourse"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Jz8hzElYWRKn" type="pLJDJSZ6nfTP" comment="A list of idOffers that form this course, this may be null until this course is placed in a column." name="idOffers"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="y3YgDb2UaABZ" type="sG7VO3azzVGh" comment="A boolean that represents if this course is to be seen as special by the CourseList." name="preferential"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Qv9DYabUd7Ao" comment="Initialization method" name="Course">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="1RcOQD5oVuvl" type="rpzScKGPPBWy" value="" comment="A 7 characters code that represent the course, it can be followed by a complement that represent this specific set of offers." name="courseCode"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="PIr9ICBg7Irg" type="rpzScKGPPBWy" value="" comment="The name of this course." name="name"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="64RCNHqBjydH" type="rpzScKGPPBWy" value="" comment="The abbreviation is the string that will be shown in the opticalSheet, it may contain complement that represent this specific set of offers." name="abbreviation"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="HtYnQ9fPaFmz" type="cwvJkO3349NO" value="" comment="The database id assossiated with this object." name="idCourse"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="4SYdhKcA9N4r" type="cwvJkO3349NO" value="" comment="A list of idOffers that form this course, this may be null until this course is placed in a column." name="idOffers"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="lsFsDJhE4Kzv" type="sG7VO3azzVGh" value="" comment="A boolean that represents if this course is to be seen as special by the CourseList." name="preferential"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="vq9IyTSyAbjn" comment="Using the idTimePeriod and the courseCode of this object, a get is send to 'findOffers/' and the return fill this object idOffers parameter." name="findOffers">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="YbSy4i5nYIdl" type="cwvJkO3349NO" value="" comment="Id of an object timePeriod in the database." name="idTimePeriod"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="bJzddyYXpgpn" comment="Returns a clone of this object." name="clone">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="9FkIpT5L5VJ7" type="9J8PiZ9aE2mG"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="pLJDJSZ6nfTP" name="[]"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="PO3L8U4H08Wx" comment="A single opticalSheet's column." name="Column">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="XwWBn1AbJv8X" type="cwvJkO3349NO" comment="A number from 0 - 19 representing the position of this Column in the Columns." name="number"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="tBSsKwpomv3l" type="9J8PiZ9aE2mG" comment="The Course belonging to this Column, it may be null." name="course"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Wp7FzyccJE15" type="gnHVRhNq5P9B" comment="The Columns object that this Column belongs to." name="father"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="ygl6gHzDDVPz" type="sG7VO3azzVGh" comment="Boolean representing that this Column is ready to be stored." name="ready"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="UXYnSgK93wJ4" type="sG7VO3azzVGh" comment="Boolean representing that this Column has been changed." name="changed"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="oi2Fu4hslSyR" type="jvdvO0usXSgx" comment="A html element textarea that allows the user to set this column font." name="fontTextbox"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="6y68vNCh4Ewy" type="jvdvO0usXSgx" comment="A html element textarea that allows the user to set this column course." name="codeTextbox"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Heo24lRmg4h5" type="jvdvO0usXSgx" comment="A html element textarea that allows the user to set this column course's abbreviation." name="abbreviationTextbox"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="4ZvZzZW3YbBR" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="WIVALADPj7xg" comment="Initialization method." name="Column">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="gRkC2tdzHkxp" type="cwvJkO3349NO" value="" name="number"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="lueQdV97ldH6" type="9J8PiZ9aE2mG" value="" name="course"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="nTUVaR9GstTt" type="gnHVRhNq5P9B" value="" name="father"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="n4q2mlpXfTxG" comment="Is to be called if codeTextbox changes, it compares the codeTextbox content with the course's courseCode. If it is diferent and not empy marks this Column as not ready and show a list of Courses that match this courseCode, if it is empty, set  this course as null." name="codeChanged"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="y5NhidoV6Iye" comment="Shows the Column as red if not ready and as green if changed." name="showState"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="2Zgf2dwyiHgO" comment="Returns a dictionary with this Column data, with the keys: courseCode, abbreviation, font, idCourse, idOffers, courseIndex." name="getData"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uSsykqcRwV0w" comment="Sets the course in this object, along with the codeTextbox and the abbreviationTextbox. If this course is not null it also calls the method findOffers(idTimePeriod) of this course." name="setCourse">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="oPeAfPJfwzJx" type="9J8PiZ9aE2mG" value="" comment="Course object to be added in this Column, it may be null" name="course"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="aDvHUZdP1VNj" type="cwvJkO3349NO" value="" comment="The assossiated id with the timePeriod in the database, it may be null only if the course is too." name="idTimePeriod"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="gnHVRhNq5P9B" comment="The set of columns in the opticalSheet site. " name="Columns">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="W3CWYYFsUQ7v" type="pLJDJSZ6nfTP" comment="An array of 20 Column objects, initialy all are empty." name="columns"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="FOqYLFMsIYOp" type="4bfY1kRY0af0" comment="A html element button that execute the createSwitchColumns method." name="switchButton"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="2yD83WnHudpE" type="wN80a3wrflrj" comment="A html element div that belongs to the body of the html code and is a general area to be used by the objects." name="optionsDiv"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="tB69iSwk1cJ3" type="KibKIFLJBWPE" comment="A CourseList object to be used in this object." name="coursesList"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="2CVuqJ8hSEqA" type="cwvJkO3349NO" comment="Database id of the timePeriod used in this columns." name="idTimePeriod"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="entgNAhhsG09" type="sG7VO3azzVGh" comment="A boolean representing that this Columns is ready to be printed." name="okToPrint"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="VJSeprrr3Klr" type="sG7VO3azzVGh" comment="A boolean representing that this Columns is ready to be stored." name="okToSave"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="duY66NEj87NV" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="H4A8K8HoRjQE" name="Columns">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="YH3ZcpRDhxJl" type="wN80a3wrflrj" value="" name="optionsDiv"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="KWSSdpvtt6zC" type="cwvJkO3349NO" value="" name="idTimePeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="CGyexOsVew2G" type="cwvJkO3349NO" value="" comment="Database id of the opticalSheet's cycle, it is going to be used in the CoursesList." name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="jRTOPl7jHaCs" type="cwvJkO3349NO" value="" comment="The term of the relation between the opticalSheet and the cycle, is going to be used in the CoursesList." name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="N5jFBiROyN0v" comment="Check and set the okToSave and okToPrint bool." name="checkState"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="lqONkPdRq5nF" comment="Renew this columns div element, to keep up with its children changes." name="showColumns"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="qvx5T7xqCf5M" comment="Create the html elements in the optionsDiv to allow the user to change two Column places." name="createSwitchColumns"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="NUiMpgFZWcwH" comment="Changes the two columns in the selected position, if the ints given are greater than 0. " name="switchColumns">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="zagpdU3RPyWq" type="cwvJkO3349NO" value="" comment="Represents the column to be switched, it goes from 0(invalid) to 20." name="column1"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="5ReF6ibUCHo0" type="cwvJkO3349NO" value="" comment="Represents the column to be switched, it goes from 0(invalid) to 20." name="column2"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="x1ZUbVja3POg" comment="Call and show the coursesList search for the given parameters in the optionsDiv." name="showCoursesList">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="tR7GPb4S3jh7" type="rpzScKGPPBWy" value="" comment="CourseCode to be searched in the CoursesList, if it is empty it won't be used. " name="searchedCourseCode"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="RJZbaLbYN80w" type="rpzScKGPPBWy" value="" comment="Abbreviation to be searched in the CoursesList, if it is empty it won't be used. " name="searchedAbbreviation"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="ejXh6vOyKTCh" type="PO3L8U4H08Wx" value="" comment="Column from where the user is requesting the search." name="column"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="3H96yqBN7lwg" comment="Load a course in a column. Using this method the Column's change is not set to true." name="loadColumn">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="6WCReCOItt0x" type="9J8PiZ9aE2mG" value="" comment="Course to be loaded in the column" name="course"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="oMt6n6nqLwuH" type="cwvJkO3349NO" value="" comment="Number from 1 - 20  representing the column in with the given course will be placed." name="index"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="k6espYYt4iLj" comment="Return a list where each element is the getData response of this objects columns." name="getData"/>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="jvdvO0usXSgx" name="html(textarea)"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="wN80a3wrflrj" name="html(div)"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="4bfY1kRY0af0" name="html(button)"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="KibKIFLJBWPE" comment="A object to show the options of courses to put in a column." name="CoursesList">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="RhnEaf0QJaCV" type="mwOIRjUrX8eK" comment="A list of Course objects that will be shown in the list." name="chosenCourses"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Igbiu6zKlkYL" type="cwvJkO3349NO" comment="The assossiated id with the timePeriod in the database." name="idTimePeriod"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="PYjj6tCspb9H" type="cwvJkO3349NO" comment="The assossiated id with the opticalSheet's cycle in the database." name="idCycle"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Ib6njk71OhhI" type="cwvJkO3349NO" comment="The term of the relation between the opticalSheet and the cycle." name="term"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="necWPArogYVn" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="RidFHmUXNaK7" type="mwOIRjUrX8eK" comment="A list with all the courses in the database, this is created in getCurses() method." name="courses"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="YDBZIaWuDbeQ" comment="Initialization method." name="CoursesList">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="mCq8HCcmF8Go" type="cwvJkO3349NO" value="" name="idTimePeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="q0c38rqA2g0P" type="cwvJkO3349NO" value="" name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="6VJjAndPjQpG" type="cwvJkO3349NO" value="" name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="IP6g6mwrQZNp" comment="This method searches in its courses list by a course with parameters like the given ones, and place them in the chosenCourses list." name="search">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="QDcBpUfYTG3D" type="rpzScKGPPBWy" value="" comment="CourseCode to be searched in the CoursesList, if it is empty it won't be used." name="courseCode"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="j1bXlyZGl79A" type="rpzScKGPPBWy" value="" comment="Abbreviation to be searched in the CoursesList, if it is empty it won't be used." name="abbreviation"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="DbTyia7ghuyp" comment="Send a GET to /opticalSheet/getCurses with the parameters idCycle, term and idTimePeriod, and recives all the courses in the database, in for of dicts, the ones that belong to de cycle, term, timePeriod passed will be preferencial. With the dicts create Course object and place them in the courses list." name="getCourses"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="1boLRzTrA63z" comment="This method sends a GET to /opticalSheet/expandCourse with the parameters idTimePeriod and idCourse. The result is a list of courses in the form of dicts, where each one is a possible expansion of the given one. For instance PQI2110 -> PQI2110(T), PQI2110(P), PQI2110[ProfessorX]..." name="expandCourses">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="YiV0wZB9Ae6q" type="9J8PiZ9aE2mG" value="" comment="The Course to be expanded." name="course"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="FDWu5Sj41VPS" type="cwvJkO3349NO" value="" comment="The idTimePeriod of the course to be expanded." name="idTimPeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="SrIcvLZT15Rx" type="PO3L8U4H08Wx" value="" comment="The Column from where this expansion was requested." name="column"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ec7mFDaSO4MT" comment="Puts in the div all the chosenCourses list elements in the form of span and buttons, for the user select which one will be placed in the column or expanded." name="showCoursesList">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="V3YWZvx1mFeh" type="PO3L8U4H08Wx" value="" comment="The Column that requested this method." name="column"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="mwOIRjUrX8eK" name="Course[]"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="rfWSJxL9vvC2" comment="Represent a AnswerType in the database." name="AnswerType">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="m2CngACmdTUn" type="rpzScKGPPBWy" comment="Answer type name, as it is in the database." name="name"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="E7CxV1CMeinx" type="cwvJkO3349NO" comment="Assossiated database id." name="idAnswerType"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="d66Z1HZmJjZy" type="tjiWCCIPIUMn" comment="A dict representing the meaning of the alternatives in the form: {'A':'alternativeA', 'B':'alternativeB'...}" name="alternativeMeaning"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="d9UN2Y1XFziS" comment="Initialization method." name="AnswerType">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="F6TrdN67jjHd" type="rpzScKGPPBWy" value="" name="name"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="YQK1CfuonOBn" type="cwvJkO3349NO" value="" name="idAnswerType"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="xAKA90cM75Ek" type="tjiWCCIPIUMn" value="" name="alternativeMeaning"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="tjiWCCIPIUMn" name="{}"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="UW88Fv6qzAN0" comment="This block of instructions on the top left of the site, it is also responsible  for getting and holding all the answerTypes." name="Instructions">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="RwmjfJhW2P1D" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="cJcsnwfFTlOg" type="gSWfcse2oOlS" comment="A select that selects with instruction will show in the first column." name="select1"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="iSyirxvRGVJ2" type="gSWfcse2oOlS" comment="A select that selects with instruction will show in the second column." name="select2"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="SxHtifZN530i" type="gSWfcse2oOlS" comment="A select that selects with instruction will show in the third column." name="select3"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="vcki1VAhv6Pm" type="4JCKoVMEQc79" comment="A list with all the anwserType objects in the database." name="this.answerTypes"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="QKp726laU5bf" comment="Initialization method" name="Instructions"/>
+        <UML:Operation visibility="private" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="oBpcnCEzuwX7" comment="Internal function to create the font's textboxes for each select." name="createFonts"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="yqX6dajcbdkx" comment="Returns a list contening the information of each select in the form: [{idAnswerType: idAnswerType1, fonts:[font11,font12...]}, {idAnswerType: idAnswerType2, fonts:[font21,font22...]},{idAnswerType: idAnswerType3, fonts:[font31,font32...]}]" name="getData">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="RzoTPQ4DZrpM" type="pLJDJSZ6nfTP"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="44Ky0p3wda0E" comment="Send a GET to /opticalSheet/getAnswerTypes/ the response is a list with all the database's answerTypes in the form of dicts, then they are transforment in AnswerType objects and placed in the answerTypes list." name="getAnswerTypes"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="BjqmKYikXUDw" comment="Searches in the answerTypes list for an AnswerType object with the wanted idAnswerType." name="findAnswerTypeById">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="6IgbnrYe7f6C" type="rfWSJxL9vvC2"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="tF9S7xn9155z" type="cwvJkO3349NO" value="" comment="Assossiated database id of the wanted answerType." name="idAnswerType"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="s8uVjuhscXcw" comment="Checks which are the answerTypes of the questions in the questionnaire and place this answerTypes in the select1,2,3." name="updateInstructions">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Nw3xSguYwY7h" type="crLbwQbmWTFD" value="" comment="List of all the questionnaire's questions." name="questionBoxes"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="gSWfcse2oOlS" name="html(select)"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="4JCKoVMEQc79" name="AnswerType[]"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="crLbwQbmWTFD" name="QuestionBox[]"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="QfLXLQjvH2XC" comment="Represent a Question in the database." name="Question">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Q6ywZEAu8Dsa" type="rpzScKGPPBWy" comment="The question." name="questionWording"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="rk6mIETgrnDC" type="cwvJkO3349NO" comment="Database id of this question." name="idQuestion"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Du6SwdcMhbHE" type="cwvJkO3349NO" comment="The database id of this question's answerType." name="idAnswerType"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="nP8tayUSiaCz" comment="Initialization method." name="Question">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="mdfeQrodju4g" type="rpzScKGPPBWy" value="" name="questionWording"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Vg0CFFQ0eXuF" type="cwvJkO3349NO" value="" name="idQuestion"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="VOfCwr9hUmLt" type="cwvJkO3349NO" value="" name="idAnswerType"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Association visibility="public" isSpecification="false" namespace="Logical View" xmi.id="jVRUucHpkZxt" name="">
+       <UML:Association.connection>
+        <UML:AssociationEnd changeability="changeable" visibility="public" isNavigable="true" isSpecification="false" xmi.id="aZGhdSP1kD9m" type="rfWSJxL9vvC2" name="" aggregation="composite"/>
+        <UML:AssociationEnd changeability="changeable" visibility="public" isNavigable="true" isSpecification="false" xmi.id="HuNmxwPeQq8I" type="UW88Fv6qzAN0" name="" aggregation="none"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association visibility="public" isSpecification="false" namespace="Logical View" xmi.id="QP7Az41ZbFEC" name="">
+       <UML:Association.connection>
+        <UML:AssociationEnd changeability="changeable" visibility="public" isNavigable="true" isSpecification="false" xmi.id="hbESoLC6DZqA" type="UW88Fv6qzAN0" name="" aggregation="composite"/>
+        <UML:AssociationEnd changeability="changeable" visibility="public" isNavigable="true" isSpecification="false" xmi.id="UDpu1vCRLHZI" type="rfWSJxL9vvC2" name="" aggregation="none"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="LYrum37TcJtR" comment="Represent one question area from the opticalSheet." name="QuestionBox">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="e6VpdJx7UkzV" type="cwvJkO3349NO" comment="Number of this question in the opticalSheet goes from 0 to 9." name="number"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="gBu1STJlz8el" type="9jDl26AeAdTo" comment="The questionnaire from which this is questionBox belongs." name="father"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="wOtO9ttp2noV" type="jvdvO0usXSgx" comment="A html element textarea that allows the user to set this question font in the printed opticalSheet." name="fontTextbox"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="E7EEDsxKbA5b" type="jvdvO0usXSgx" comment="A html element textarea that allows the user to select the question of this questionBox." name="questionTextbox"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="HGFPtgBo55CE" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="w41yppR4ugG7" type="QfLXLQjvH2XC" comment="The Question that is represented by this object, it may be null." name="question"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="iZSaDgfjr4rD" type="sG7VO3azzVGh" comment="Boolean representing that this questionBox is ready to be stored." name="ready"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="ZboHYnrBzDqC" type="sG7VO3azzVGh" comment="Boolean representing that this questionBox has been changed." name="changed"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="pajYX3aWvSkN" comment="Initialization method." name="QuestionBox">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="QfNARSXbrsN3" type="cwvJkO3349NO" value="" name="number"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="c4IHtSKi24Ea" type="QfLXLQjvH2XC" value="" comment="The question to be assign to this object, it may be null." name="question"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="7p61FoMfSipt" type="9jDl26AeAdTo" value="" name="father"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="kiNKcSiI1AtC" comment="Shows the QuestionBox as red if not ready and as green if changed." name="showState"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="qYwgdnrAOgPu" comment="Stores the content of this questionTextbox as a new question in the database." name="store">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="RH6OSuaCcvVC" type="cwvJkO3349NO" value="" comment="The database id of the answerType to be related to the new question." name="idAnswerType"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="HkbdO1YnGeBi" comment="Is to be called if questionTextbox changes, it compares the questionTextbox content with the question's questionWording. If it is diferent and not empy marks this QuestionBox as not ready and show a list of question that match this questionWording, if it is empty, set  this course as null." name="questionChanged"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Wjt8eOJ1bmOx" comment="Set the given question as this object question, also changes this questionTextbox and other parameters to fit with the new question. This marks the questioBox as ready and changed." name="setQuestion">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="6wAwP0OgizK4" type="QfLXLQjvH2XC" value="" comment="The question to be placed in this object." name="question"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ysrEU0v0jo6N" comment="Returns a dictionary containig the data of this object with the keys: questionWording, idQuestion, idAnswerType, font and questionIndex." name="getData">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="CPNlBjjHfrC5" type="tjiWCCIPIUMn"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="9jDl26AeAdTo" comment="Represent a questionnaire from the database." name="Questionnaire">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="CsLeaBWkU1kf" type="cwvJkO3349NO" comment="The database id of this questionnaire, if this is a new questionnaire the id is null." name="idQuestionnaire"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="pmTf5WQptrbJ" type="cwvJkO3349NO" comment="This questionnaire assessment number in this opticalSheet, it goes from 1 to ...." name="assessmentNumber"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="VvqyJMeVE0An" type="UW88Fv6qzAN0" comment="The set of instructions to be used for this questionnaire in the printed OpticalSheet." name="instructions"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="DVu5KVOqQEmj" type="wN80a3wrflrj" comment="A html element div that belongs to the body of the html code and is a general area to be used by the objects." name="optionsDiv"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="YRDmRLZaz5Bc" type="KP2M79SKcKNw" comment="This objects questionsList." name="questionsList"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="qlkExVwVw9IL" type="UptTu23DR5ZY" comment="A html element span that showes the assessment Number of this questionnaire to the user." name="span"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="CzroKEi8yRKv" type="crLbwQbmWTFD" comment="A list of this object questionBoxes, the list have 10 objects." name="questionBoxes"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="wGRqNhBpW2GP" type="sG7VO3azzVGh" comment="A boolean representing that this questionnaire is ready to be printed." name="okToPrint"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="4JcTO90Y7pKP" type="sG7VO3azzVGh" comment="A boolean representing that this questionnaire is ready to be stored." name="okToSave"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="33XzUpvO4KER" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="PbKUvDp83pBQ" comment="Initialization method." name="Questionnaire">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="xVc8zXMvwbVZ" type="wN80a3wrflrj" value="" name="optionsDiv"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="NwPBDhhbG25A" type="cwvJkO3349NO" value="" comment="If this is a new questionnaire it may be null." name="idQuestionnaire"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="DsIGgReduGjt" type="cwvJkO3349NO" value="" comment="Aways bigger than 0." name="assessmentNumber"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="zPHTPXqRpSuB" comment="Check and set the okToSave and okToPrint bool." name="checkState"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="aukhj44l5ZiX" comment="Is called by the given questionBox, this shows in the optionsDiv the answerTypes to be selected by the questionBox for its store method." name="createQuestion">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="OdvSv9suW7Mv" type="LYrum37TcJtR" value="" comment="QuestionBox that wants its question to be stored." name="questionBox"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="eCMRdFdD9Lsr" comment="Renew this questionnare div element, to keep up with its children changes." name="showQuestionnaire"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="PwaTVI0tuuKp" comment="Showes the list of questions from the questionsList search in the optionsDiv." name="showQuestionList">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="3CiYJ2RvEmLr" type="rpzScKGPPBWy" value="" comment="Part of the questionWording of the wanted question." name="searchedQuestionWording"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="1y28JuxgoX7J" type="LYrum37TcJtR" value="" comment="The questionBox from where this function was called." name="questionBox"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="q8Bk0TX3dDZu" comment="Creates a new QuestionBox object and place it on top of the old one with the same number. Ps.  index = (questionBox.number + 1)" name="loadQuestion">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="F1nSn8Jm4MuL" type="QfLXLQjvH2XC" value="" comment="Question object to be loaded." name="question"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Es23N7KDDVvD" type="cwvJkO3349NO" value="" comment="Number from 1-10 that defines the position in which this question will be placed." name="index"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="wRFZcoTqnHIY" comment="Returns the data of this questionnaire, it is a dict with the keys: &#xa;questions: [questionBox1.getData(), ...]&#xa;idQuestionnaire&#xa;assessmentNumber&#xa;instructions: instructions.getData()" name="getData"/>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="9eXddHGS2h75" name="Instructios"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="KP2M79SKcKNw" comment="A object to show the options of questions to put in a questionBox." name="QuestionsList">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="1FKl4sMobxBW" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="DqaRKfwtSJ0G" type="JVOgkJ5lWNUa" comment="A List of all the database's questions in form of Question objects." name="questions"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="FqOonYIyMsNg" type="JVOgkJ5lWNUa" comment="A subgroup of questions list, only with the questions to be shown." name="listedQuestions"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="YIXybVEt0cXk" comment="Initialization method." name="QuestionsList"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="tcTPxxyDnMzY" comment="Send a GET to /opticalSheet/getQuestions/ the response is a list with all the database's question in form of dicts, then they are converted in Question objects and placed in the questions list." name="getQuestions"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="sIVEAstgAQek" comment="Searches in the questions list for questions with questionWording like the given, those questions are placed in the listedQuestions list." name="search">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="usduU8dNj4lg" type="rpzScKGPPBWy" value="" comment="Part of the questionWording of the wanted question." name="questionWording"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="2jtn3rKw9p8H" comment="Shows all the answerTypes for the user to chose one for the new question to be created." name="createQuestion">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="f1yoQcWKT7Cx" type="LYrum37TcJtR" value="" comment="The questionBox that requested this method." name="questionBox"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="FpJyu4fulWho" type="4JCKoVMEQc79" value="" comment="A list of all possible answerTypes" name="answerTypes"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="NzkWmroSskEI" comment="Show the listedQuestions for the user, so he can select one of them to be placed in the given questionBox." name="showList">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="Mkcprnl6c25U" type="LYrum37TcJtR" value="" comment="QuestionBox that called this method." name="questionBox"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="UptTu23DR5ZY" name="html(span)"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="JVOgkJ5lWNUa" name="Question[]"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="jX9KZEodwBSB" comment="Is used to let the user select and change the encoding, beenig used if this is to be an encoded opticalSheet." name="Encoded">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="aWHNmWWGTNbW" type="pLJDJSZ6nfTP" comment="A list of all the encodings in the database that belong to the same timePeriod as chosen by the user. Each one is represented as a dict with the keys: encodingName and idOpticalSheet." name="encodings"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="yMWt8mI4Pqae" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="olkxkiHGaP2s" type="3vLActmg3s1B" comment="The opticalSheet object that this encoding belong to." name="opticalSheet"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="6urCn4fMH9op" type="sG7VO3azzVGh" comment="A boolean representing that this encoding is ready to be stored." name="okToSave"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="osGEajXKN7O1" type="sG7VO3azzVGh" comment="A boolean representing that this encoding is ready to be printed." name="okToPrint"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="XRdXLlbFcn1f" type="sG7VO3azzVGh" comment="A boolean representing that this encoding was changed." name="changed"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="NwaClO2zcdg8" type="sG7VO3azzVGh" comment="A boolean representing that this encoding was set." name="set"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ETfYG4VG3EIf" comment="Initialization method." name="Encoded">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="nmh0hR5gOUfO" type="3vLActmg3s1B" value="" name="opticalSheet"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="GXzGjVJXF0Vx" comment="Send a GET to opticalSheet/getEncodings/ with the idTimePeriod, the response is this class encodings list. From this list is created a html element select where each encoding is placed as a option, and this select is placed in this class's div." name="getEncodings">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="9xYZQjzmHqsb" type="cwvJkO3349NO" value="" comment="The database id of the timePeriod selected by the user." name="idTimePeriod"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="6yHrF8jrq7Ja" comment="Check and set the okToSave and okToPrint bool." name="checkState"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="zj9mPO7WMOLa" comment="This is called onChange of the select created in getEncodings(). This loads the opticalSheet to the encoding selectet, and set the changed as true. " name="changeEncoding"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="k8237JtThFS5" comment="This function is used when the opticalSheet already have a defined encoding, in this case the encoding is presented as a span and a button that allows the user to disassociate this encoding to the cycle, term selected." name="setEncoding">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="tEbc7LiANnRG" type="rpzScKGPPBWy" value="" comment="The name of the encoding to be set." name="encodingName"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="8ThBgsNfTxjW" comment="Returns the name on the span created in setEncoding()." name="getData">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="4QBF62dlTYS0" type="rpzScKGPPBWy"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="3vLActmg3s1B" name="OpticalSheet">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="b7gk46EiGjaq" type="cwvJkO3349NO" comment="The databse id of the cycle related to this opticalSheet." name="idCycle"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="FNAwGzOagA6w" type="cwvJkO3349NO" comment="The term of the relatation between the cycle and the opticalSheet." name="term"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="jiPhy9yXEcHI" type="cwvJkO3349NO" comment="The database id of this opticalSheet's timePeriod." name="idTimePeriod"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="hTzvBZlQutM8" type="sjiYtoSaWsHS" comment="A list of questionnaire objects that represent this opticalSheet's questionnaires." name="questionnaires"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="zD0EoFUTjROu" type="cwvJkO3349NO" comment="The questionnaire of the array questionnaires that is visible to the user." initialValue="-1" name="useQuestionnaire"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="07It0d1qMiPD" type="wN80a3wrflrj" comment="A html element div that belongs to the body of the html code and is a general area to be used by the objects." name="optionsDiv"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Wrn1h2RhEPt0" type="wN80a3wrflrj" comment="A div that contains all of the opticalSheet's related buttons." name="buttons"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="fLTMnpEnwWew" type="IkInmgw1mycV" comment="This opticalSheet's positions object." name="positions"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="yr6sMjmTNWxh" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="ebXb3LFVcZDE" type="wN80a3wrflrj" comment="A div with the buttons to the user select id the new opticalSheet is to be encoded or not." name="initialButtons"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="jtWF09YwzdoL" type="gnHVRhNq5P9B" comment="This opticalSheets Columns." name="columns"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="eXldAZwU7h79" type="sG7VO3azzVGh" comment="True if the opticalSheet is encoded." name="encoded"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="OTsfJ9xVgmGk" type="cwvJkO3349NO" comment="The database id of this opticalSheet, if this is a new opticalSheet the idOpticalSheet is null." name="idOpticalSheet"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="kFWbmXQO4B2D" name="OpticalSheet">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="iwfndnx2EnfX" type="wN80a3wrflrj" value="" name="optionsDiv"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="wd1bNHJ8WpjG" type="cwvJkO3349NO" value="" name="idTimePeriod"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="K8eNJeY2bDnE" type="cwvJkO3349NO" value="" name="idCycle"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="ykEDXukSVj1q" type="cwvJkO3349NO" value="" name="term"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="0KyU8giQoNn5" comment="Start a new opticalSheet, setting the questionnaires and columns to null and a buttons to chose if it is encoded or not." name="newOpticalSheet"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="1L5aXtpVb3i7" comment="Sends a get to /opticalSheet/findOpticalSheetById/ with the given idOpticalSheet, the response is a JSON with all the data of the chosen opticalSheet. This data is then passed to the loadOpticalSheet method." name="findOpticalSheetById">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="vRZOAYF9qDbw" type="cwvJkO3349NO" value="" comment="The id of the wanted opticalSheet" name="idOpticalSheet"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="rKNdhAjgUmH1" comment="Sends a get to /opticalSheet/findOpticalSheetById/ with this objects idTimePeriod, idCycle and term, the response is a JSON with all the data of the opticalSheet fiting this parameters, if there is not exactly one the response is the number of founds opticalSheet. This data is then passed to the loadOpticalSheet method." name="findOpticalSheetByTimePeriod_Cycle_Term"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="f4WH7DO1cvPk" comment="If the opticalSheetData is a int alert a mensage showing the number of opticalSheets found. Else the opticalSheets page is loaded with this data." name="loadOpticalSheet">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="RetHqTEhnZJS" type="tjiWCCIPIUMn" value="" comment="The response of the findOpticalSheet methods of the server." name="opticalSheetData"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="j26DoNESPjhV" comment="Send a post to the /opticalSheet/store/ with the return of this.getData() and alert its return." name="store"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="w5WYytIPYAeM" comment="Sends a post to /opticalSheet/printOpticalSheet/ with the needed data, if the post is successful open a new tab with the address /opticalSheet/getPrintedOpticalSheet/ with the needed data to download the opticalSheet to the user." name="printOpticalSheet"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="dq1OPKq7KwK7" comment="Sends a post to /opticalSheet/printQualitativeQuestionnaire/ with the needed data, if the post is successful open a new tab with the address /opticalSheet/getPrintedQualitativeQuestionnaire/ with the needed data to download the qualitativeQuestionnaire to the user." name="printQualitativeQuestionnaire"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="1UzYmZxEbbjo" comment="Gets all the data of the opticalSheet and returns in the form of a dict." name="getData">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="8ENDR24TW1zG" type="tjiWCCIPIUMn"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="N5xeTBKaOinp" comment="Starts a new empty opticalSheet, creating a first assessment questionnaire and a empty columns if it is not encoded or a select with the options of encoding." name="createNewOpticalSheet">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="ipGCoFSN9uTf" type="sG7VO3azzVGh" value="" comment="Booleand showing if this is to be an encoded opticalSheet." name="encoded"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="5OZ7P6okBjNd" comment="Set this opticalSheet's columns parameter to a new Encoded object and run the encoded method setEncoding." name="loadEncoding">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="vhDJNy65nNHZ" type="rpzScKGPPBWy" value="" comment="This opticalSheet's encoding name." name="encodingName"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="chvmbOPfkym9" comment="Set this opticalSheet's columns parameter to a new Columns and load the data in the fieldData to the new Columns." name="loadColumns">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="YjJTkjliH6SB" type="tjiWCCIPIUMn" value="" comment="A list of dicts with the keys: courseCode, courseName, courseAbbreviation, idCourse and courseIndex." name="fieldData"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Q67l2SzENCPj" comment="Change the assessment to be showed in the site to the next assessment, if it is already in the last assessment goes to the first." name="nextAssessment"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="DbAB0kllN3bT" comment="Create e new assessment for this opticalSheet, with the next assessmentNumber avaliable." name="createNewAssessment"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="sjDFtcx6C7IC" comment="Creates a new Questionnaire object with the given assessmentNumber, place in the questionnaires list and showes it in the page." name="createQuestionnaire">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="q1vB5UfVX1ZA" type="cwvJkO3349NO" value="" comment="The assessmentNumber of the new questionnaire." name="assessmentNumber"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uuBrLvqDe3TV" comment="Creates and put in the questionnaires array new Questionnaire objects with the questions and data of the given data." name="loadQuestionnaires">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="eD4W7ZSVhsOq" type="pLJDJSZ6nfTP" value="" comment="A list of dicts with the keys: idQuestionnaires, assessmentNumber, questions." name="surveysData"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="KVfbIqLu4PO9" comment="Copy the questionnaires parameter of the chosen opticalSheet." name="copyQuestionnaire">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="wrcdh0SaNIKw" type="cwvJkO3349NO" value="" comment="The id of the opticalSheet to copy the questionnaires." name="idOpticalSheet"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="4HaYito0MRbe" comment="From the selected cycle in showCopyQuestionnaire function, this sends a GET to /opticalSheet/listOldOpticalSheets/ them display the old opticalSheets for the user to select from with copy the questionnaires" name="showCopyQuestionnairesList"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="HvXJIvQFk2sR" comment="Replace the div parameter content with a span &quot;Working...&quot;." name="showWorking"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="2IzPbILdZtAG" comment="Replace the content of the parameter div with the needed opticalSheet data" name="showOpticalSheet"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="kyG7NqjcjGw1" comment="Sends a get to the /opticalSheet/removeCycleFromOpticalSheet/ with the parameters idCycle, term and idOpticalSheet. Then calls the method this.findOpticalSheetByTimePeriod_Cycle_Term()." name="removeCycleFromOpticalSheet"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="AMGsP7IPPFny" comment="Place in the options div selects for the user to chose from which cycle the questionnaire will be copied" name="showCopyQuestionnaire"/>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="IkInmgw1mycV" comment="This is a group of options for the print functions." name="Positions">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="Af350gNdhAx0" type="wN80a3wrflrj" comment="A html div that holds all HTML elements of this object." name="div"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="E82P3SuZo7kS" type="wN80a3wrflrj" comment="A div to set the horizontal position of the set of questions on the opticalSheet to be printed." name="questionnaireX"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="pQpA1WIyUABF" type="wN80a3wrflrj" comment="A div to set the vertical position of the set of questions on the opticalSheet to be printed." name="questionnaireY"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="m4vQhXenZ1qz" type="wN80a3wrflrj" comment="A div to set the vertical distance between the questions on the opticalSheet to be printed." name="questionnaireDY"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="tQl08D9xdy5f" type="wN80a3wrflrj" comment="A div to set the horizontal position of the set of courses on the opticalSheet to be printed." name="columnsX"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="SObxYnAJp3jV" type="wN80a3wrflrj" comment="A div to set the vertical position of the set of courses on the opticalSheet to be printed." name="columnsY"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="YLG5K74BVqCd" type="wN80a3wrflrj" comment="A div to set the horizontal distance between the courses on the opticalSheet to be printed." name="columnsDX"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="3JahFfKh1vca" type="wN80a3wrflrj" comment="A div to set the horizontal position of the set of instructions on the opticalSheet to be printed." name="tableX"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="tUoaxNtDSBKX" type="wN80a3wrflrj" comment="A div to set the vertical position of the set of instructions on the opticalSheet to be printed." name="tableY"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="MnNWQOpy34cN" type="wN80a3wrflrj" comment="A div to set the number of line for each course in the qualitative questionnaire to be printed.&#xa;" name="numberOfLines"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="dHMBv72PuaMH" type="wN80a3wrflrj" comment="A div to set if the courses on the qualitative questionnaire will be shown by name or not." name="qualitativeQuestionnaireType"/>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="YhcqCzeZT4wJ" type="wN80a3wrflrj" comment="A div to select if the download of the printed opticalSheet or qualitative questionnaire will be of the pdf or the tex (LaTeX) file" name="downloadType"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="I2mJ18uMD9yf" comment="Return all the data from this object as a dict where each key is one of this objects div." name="getData">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="I4tYC8dyRbHS" type="tjiWCCIPIUMn"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="private" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="xaHkuHsmd5vc" comment="Internal method to help create this objects many divs." name="createPosition">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="7flXGFZOjrbh" type="rpzScKGPPBWy" value="" comment="Name of the div to be created." name="name"/>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="QtPI8H4lKyL1" type="rpzScKGPPBWy" value="" comment="Initial value of this div's textarea." name="value"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="sjiYtoSaWsHS" name="Questionnaire[]"/>
+      <UML:Association visibility="public" isSpecification="false" namespace="Logical View" xmi.id="9Us7liNBoQaq" name="">
+       <UML:Association.connection>
+        <UML:AssociationEnd changeability="changeable" visibility="public" isNavigable="true" isSpecification="false" xmi.id="QmUTqCRJ1E8f" type="3vLActmg3s1B" name="" aggregation="composite"/>
+        <UML:AssociationEnd changeability="changeable" visibility="public" isNavigable="true" isSpecification="false" xmi.id="4PfylsgsKYz3" type="jX9KZEodwBSB" name="" aggregation="none"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association visibility="public" isSpecification="false" namespace="Logical View" xmi.id="EME1kmp8YIcP" name="">
+       <UML:Association.connection>
+        <UML:AssociationEnd changeability="changeable" visibility="public" isNavigable="true" isSpecification="false" xmi.id="U1gVFpBKEoGx" type="3vLActmg3s1B" name="" aggregation="composite"/>
+        <UML:AssociationEnd changeability="changeable" visibility="public" isNavigable="true" isSpecification="false" xmi.id="ewpxTm0f6Fgr" type="9jDl26AeAdTo" name="" aggregation="none"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="4YsDIFqBu1SI" name="new_class"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="eQcqVs0JtvVy" name="new_class_1"/>
+     </UML:Namespace.ownedElement>
+     <XMI.extension xmi.extender="umbrello">
+      <diagrams>
+       <diagram showopsig="1" linecolor="#ff0000" snapx="10" showattribassocs="1" snapy="10" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="1295" canvaswidth="3256" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#808080" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="40" xmi.id="A24lGtDNd8w5" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
+        <widgets>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="422" showattsigs="601" showstereotype="1" y="101" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="694" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="9J8PiZ9aE2mG" showscope="1" height="140" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="0" showattsigs="601" showstereotype="1" y="174" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="362" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="PO3L8U4H08Wx" showscope="1" height="210" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="421" showattsigs="601" showstereotype="1" y="299" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="602" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="gnHVRhNq5P9B" showscope="1" height="238" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="164" showattsigs="601" showstereotype="1" y="607" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="435" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="KibKIFLJBWPE" showscope="1" height="168" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="2554" showattsigs="601" showstereotype="1" y="828" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="454" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="rfWSJxL9vvC2" showscope="1" height="70" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="2568" showattsigs="601" showstereotype="1" y="556" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="348" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="UW88Fv6qzAN0" showscope="1" height="168" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="1932" showattsigs="601" showstereotype="1" y="842" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="451" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="QfLXLQjvH2XC" showscope="1" height="70" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="1960" showattsigs="601" showstereotype="1" y="548" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="448" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="LYrum37TcJtR" showscope="1" height="210" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="1935" showattsigs="601" showstereotype="1" y="241" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="532" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="9jDl26AeAdTo" showscope="1" height="252" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="2787" showattsigs="601" showstereotype="1" y="292" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="465" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="KP2M79SKcKNw" showscope="1" height="126" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="none" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="1300" showattsigs="601" showstereotype="1" y="900" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="249" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="jX9KZEodwBSB" showscope="1" height="196" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="none" showoperations="1" textcolor="none" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="1347" showattsigs="601" showstereotype="1" y="0" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="280" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="IkInmgw1mycV" showscope="1" height="210" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="1224" showattsigs="601" showstereotype="1" y="295" showattributes="1" font="Sans Serif,9,-1,5,75,0,0,0,0,0" width="496" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="3vLActmg3s1B" showscope="1" height="504" showopsigs="601"/>
+        </widgets>
+        <messages/>
+        <associations>
+         <assocwidget indexa="1" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="9J8PiZ9aE2mG" linewidth="none" textcolor="none" usesdiagramusefillcolor="0" totalcounta="3" totalcountb="2" widgetaid="PO3L8U4H08Wx" visibilityA="0" visibilityB="0" usefillcolor="1" fillcolor="#000000" changeabilityA="900" xmi.id="tBSsKwpomv3l" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="362" starty="174"/>
+           <endpoint endx="422" endy="174"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="372" showstereotype="1" y="176" text="course" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="58" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="HXYwlVacEpwv" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="2" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="gnHVRhNq5P9B" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" totalcounta="3" totalcountb="2" widgetaid="PO3L8U4H08Wx" visibilityA="0" visibilityB="0" usefillcolor="1" fillcolor="#000000" changeabilityA="900" xmi.id="Wp7FzyccJE15" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="362" starty="376"/>
+           <endpoint endx="421" endy="376"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="365" showstereotype="1" y="378" text="father" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="54" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="1K07L5xKAJr9" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="1" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="KibKIFLJBWPE" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="gnHVRhNq5P9B" visibilityA="0" visibilityB="0" usefillcolor="1" fillcolor="#000000" changeabilityA="900" xmi.id="tB69iSwk1cJ3" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="478" starty="537"/>
+           <endpoint endx="478" endy="607"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="401" showstereotype="1" y="573" text="coursesList" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="85" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="8ptrzb9E8fAs" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="1" indexb="1" usesdiagramusefillcolor="1" widgetaid="UW88Fv6qzAN0" usesdiagramfillcolor="0" fillcolor="#000000" linecolor="none" totalcounta="2" xmi.id="QP7Az41ZbFEC" widgetbid="rfWSJxL9vvC2" totalcountb="2" type="510" textcolor="none" usefillcolor="1" linewidth="none">
+          <linepath>
+           <startpoint startx="2771" starty="724"/>
+           <endpoint endx="2771" endy="828"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget indexa="1" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="QfLXLQjvH2XC" linewidth="none" textcolor="none" usesdiagramusefillcolor="0" totalcounta="2" totalcountb="2" widgetaid="LYrum37TcJtR" visibilityA="0" visibilityB="0" usefillcolor="0" fillcolor="#000000" changeabilityA="900" xmi.id="w41yppR4ugG7" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="2053" starty="758"/>
+           <endpoint endx="2053" endy="842"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="1981" showstereotype="1" y="822" text="question" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="70" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="8jSMYOHXiGe4" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="1" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="9jDl26AeAdTo" linewidth="none" textcolor="none" usesdiagramusefillcolor="0" totalcounta="2" totalcountb="3" widgetaid="LYrum37TcJtR" visibilityA="0" visibilityB="0" usefillcolor="0" fillcolor="#000000" changeabilityA="900" xmi.id="gBu1STJlz8el" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="2053" starty="548"/>
+           <endpoint endx="2053" endy="493"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="1997" showstereotype="1" y="478" text="father" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="54" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="JZMTtEaz3Tr0" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="1" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="KP2M79SKcKNw" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="9jDl26AeAdTo" visibilityA="0" visibilityB="0" usefillcolor="1" fillcolor="#000000" changeabilityA="900" xmi.id="YRDmRLZaz5Bc" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="2467" starty="347"/>
+           <endpoint endx="2787" endy="347"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="2688" showstereotype="1" y="349" text="questionsList" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="97" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="4yEBbN3k6V4e" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="2" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="UW88Fv6qzAN0" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" totalcounta="3" totalcountb="2" widgetaid="9jDl26AeAdTo" visibilityA="0" visibilityB="0" usefillcolor="1" fillcolor="#000000" changeabilityA="900" xmi.id="VvqyJMeVE0An" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="2467" starty="493"/>
+           <endpoint endx="2568" endy="556"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="2477" showstereotype="1" y="545" text="instructions" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="88" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="rKBZanbtNyKE" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="1" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="IkInmgw1mycV" linewidth="none" textcolor="none" usesdiagramusefillcolor="0" totalcounta="2" totalcountb="2" widgetaid="3vLActmg3s1B" visibilityA="0" visibilityB="0" usefillcolor="0" fillcolor="#000000" changeabilityA="900" xmi.id="fLTMnpEnwWew" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="1391" starty="295"/>
+           <endpoint endx="1391" endy="210"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="1327" showstereotype="1" y="212" text="positions" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="72" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="CvDDO2CR0Oca" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="1" linecolor="none" indexb="1" usesdiagramfillcolor="0" widgetbid="gnHVRhNq5P9B" linewidth="none" textcolor="none" usesdiagramusefillcolor="0" totalcounta="2" totalcountb="2" widgetaid="3vLActmg3s1B" visibilityA="0" visibilityB="0" usefillcolor="0" fillcolor="#000000" changeabilityA="900" xmi.id="jtWF09YwzdoL" changeabilityB="900" type="510">
+          <linepath>
+           <startpoint startx="1224" starty="445"/>
+           <endpoint endx="1023" endy="445"/>
+          </linepath>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="1025" showstereotype="1" y="447" text="columns" font="Sans Serif,9,-1,0,50,0,0,0,0,0" pretext="+" role="710" width="68" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="ldKr6MTxgcUG" height="18"/>
+         </assocwidget>
+         <assocwidget indexa="1" indexb="1" usesdiagramusefillcolor="1" widgetaid="3vLActmg3s1B" usesdiagramfillcolor="0" fillcolor="#000000" linecolor="none" totalcounta="2" xmi.id="9Us7liNBoQaq" widgetbid="jX9KZEodwBSB" totalcountb="2" type="510" textcolor="none" usefillcolor="1" linewidth="none">
+          <linepath>
+           <startpoint startx="1450" starty="799"/>
+           <endpoint endx="1450" endy="900"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget indexa="1" indexb="1" usesdiagramusefillcolor="1" widgetaid="3vLActmg3s1B" usesdiagramfillcolor="0" fillcolor="#000000" linecolor="none" totalcounta="2" xmi.id="EME1kmp8YIcP" widgetbid="9jDl26AeAdTo" totalcountb="2" type="510" textcolor="none" usefillcolor="1" linewidth="none">
+          <linepath>
+           <startpoint startx="1720" starty="333"/>
+           <endpoint endx="1935" endy="333"/>
+          </linepath>
+         </assocwidget>
+        </associations>
+       </diagram>
+      </diagrams>
+     </XMI.extension>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Use Case View" name="Use Case View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Component View" name="Component View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Deployment View" name="Deployment View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Entity Relationship Model" name="Entity Relationship Model">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+   </UML:Namespace.ownedElement>
+  </UML:Model>
+ </XMI.content>
+ <XMI.extensions xmi.extender="umbrello">
+  <docsettings viewid="A24lGtDNd8w5" uniqueid="AMGsP7IPPFny" documentation=""/>
+  <listview>
+   <listitem open="1" type="800" id="Views">
+    <listitem open="1" type="821" id="Component View"/>
+    <listitem open="1" type="827" id="Deployment View"/>
+    <listitem open="1" type="836" id="Entity Relationship Model"/>
+    <listitem open="1" type="801" id="Logical View">
+     <listitem open="1" type="813" id="pLJDJSZ6nfTP"/>
+     <listitem open="1" type="813" id="tjiWCCIPIUMn"/>
+     <listitem open="0" type="813" id="rfWSJxL9vvC2">
+      <listitem open="0" type="814" id="d66Z1HZmJjZy"/>
+      <listitem open="0" type="815" id="d9UN2Y1XFziS"/>
+      <listitem open="0" type="814" id="E7CxV1CMeinx"/>
+      <listitem open="0" type="814" id="m2CngACmdTUn"/>
+     </listitem>
+     <listitem open="1" type="813" id="4JCKoVMEQc79"/>
+     <listitem open="0" type="807" id="A24lGtDNd8w5" label="class diagram"/>
+     <listitem open="0" type="813" id="PO3L8U4H08Wx">
+      <listitem open="0" type="814" id="Heo24lRmg4h5"/>
+      <listitem open="0" type="814" id="UXYnSgK93wJ4"/>
+      <listitem open="0" type="815" id="n4q2mlpXfTxG"/>
+      <listitem open="0" type="814" id="6y68vNCh4Ewy"/>
+      <listitem open="0" type="815" id="WIVALADPj7xg"/>
+      <listitem open="0" type="814" id="tBSsKwpomv3l"/>
+      <listitem open="0" type="814" id="4ZvZzZW3YbBR"/>
+      <listitem open="0" type="814" id="Wp7FzyccJE15"/>
+      <listitem open="0" type="814" id="oi2Fu4hslSyR"/>
+      <listitem open="0" type="815" id="2Zgf2dwyiHgO"/>
+      <listitem open="0" type="814" id="XwWBn1AbJv8X"/>
+      <listitem open="0" type="814" id="ygl6gHzDDVPz"/>
+      <listitem open="0" type="815" id="uSsykqcRwV0w"/>
+      <listitem open="0" type="815" id="y5NhidoV6Iye"/>
+     </listitem>
+     <listitem open="0" type="813" id="gnHVRhNq5P9B">
+      <listitem open="0" type="815" id="N5jFBiROyN0v"/>
+      <listitem open="0" type="814" id="W3CWYYFsUQ7v"/>
+      <listitem open="0" type="815" id="H4A8K8HoRjQE"/>
+      <listitem open="0" type="814" id="tB69iSwk1cJ3"/>
+      <listitem open="0" type="815" id="qvx5T7xqCf5M"/>
+      <listitem open="0" type="814" id="duY66NEj87NV"/>
+      <listitem open="0" type="815" id="k6espYYt4iLj"/>
+      <listitem open="0" type="814" id="2CVuqJ8hSEqA"/>
+      <listitem open="0" type="815" id="3H96yqBN7lwg"/>
+      <listitem open="0" type="814" id="entgNAhhsG09"/>
+      <listitem open="0" type="814" id="VJSeprrr3Klr"/>
+      <listitem open="0" type="814" id="2yD83WnHudpE"/>
+      <listitem open="0" type="815" id="lqONkPdRq5nF"/>
+      <listitem open="0" type="815" id="x1ZUbVja3POg"/>
+      <listitem open="0" type="814" id="FOqYLFMsIYOp"/>
+      <listitem open="0" type="815" id="NUiMpgFZWcwH"/>
+     </listitem>
+     <listitem open="0" type="813" id="9J8PiZ9aE2mG">
+      <listitem open="0" type="814" id="ZHgmJQ2WQ08L"/>
+      <listitem open="0" type="815" id="bJzddyYXpgpn"/>
+      <listitem open="0" type="815" id="Qv9DYabUd7Ao"/>
+      <listitem open="0" type="814" id="EzxcxnHmdEDD"/>
+      <listitem open="0" type="815" id="vq9IyTSyAbjn"/>
+      <listitem open="0" type="814" id="nN6OcJa9kC5O"/>
+      <listitem open="0" type="814" id="Jz8hzElYWRKn"/>
+      <listitem open="0" type="814" id="ZTcye6ulQ286"/>
+      <listitem open="0" type="814" id="y3YgDb2UaABZ"/>
+     </listitem>
+     <listitem open="1" type="813" id="mwOIRjUrX8eK"/>
+     <listitem open="0" type="813" id="KibKIFLJBWPE">
+      <listitem open="0" type="814" id="RhnEaf0QJaCV"/>
+      <listitem open="0" type="814" id="RidFHmUXNaK7"/>
+      <listitem open="0" type="815" id="YDBZIaWuDbeQ"/>
+      <listitem open="0" type="814" id="necWPArogYVn"/>
+      <listitem open="0" type="815" id="1boLRzTrA63z"/>
+      <listitem open="0" type="815" id="DbTyia7ghuyp"/>
+      <listitem open="0" type="814" id="PYjj6tCspb9H"/>
+      <listitem open="0" type="814" id="Igbiu6zKlkYL"/>
+      <listitem open="0" type="815" id="IP6g6mwrQZNp"/>
+      <listitem open="0" type="815" id="ec7mFDaSO4MT"/>
+      <listitem open="0" type="814" id="Ib6njk71OhhI"/>
+     </listitem>
+     <listitem open="0" type="830" id="Datatypes">
+      <listitem open="1" type="829" id="sG7VO3azzVGh"/>
+      <listitem open="1" type="829" id="BMsjeTUFmTrO"/>
+      <listitem open="1" type="829" id="PPvE3i0BwkTl"/>
+      <listitem open="1" type="829" id="YcryBVwJX14l"/>
+      <listitem open="1" type="829" id="fpDAoGwgU3Aq"/>
+      <listitem open="1" type="829" id="sHlwQ8KwkBsu"/>
+      <listitem open="1" type="829" id="cwvJkO3349NO"/>
+      <listitem open="1" type="829" id="bKdJUVD9IPJ4"/>
+      <listitem open="1" type="829" id="4kp4E3j6IU2g"/>
+      <listitem open="1" type="829" id="rpzScKGPPBWy"/>
+      <listitem open="1" type="829" id="BW6EzOJAkBtP"/>
+      <listitem open="1" type="829" id="fDj9GtzLdnNp"/>
+      <listitem open="1" type="829" id="ufvC4CFjQyqe"/>
+      <listitem open="1" type="829" id="o6v7ZxnAIQTm"/>
+     </listitem>
+     <listitem open="0" type="813" id="jX9KZEodwBSB">
+      <listitem open="0" type="814" id="XRdXLlbFcn1f"/>
+      <listitem open="0" type="815" id="zj9mPO7WMOLa"/>
+      <listitem open="0" type="815" id="6yHrF8jrq7Ja"/>
+      <listitem open="0" type="814" id="yMWt8mI4Pqae"/>
+      <listitem open="0" type="815" id="ETfYG4VG3EIf"/>
+      <listitem open="0" type="814" id="aWHNmWWGTNbW"/>
+      <listitem open="0" type="815" id="8ThBgsNfTxjW"/>
+      <listitem open="0" type="815" id="GXzGjVJXF0Vx"/>
+      <listitem open="0" type="814" id="osGEajXKN7O1"/>
+      <listitem open="0" type="814" id="6urCn4fMH9op"/>
+      <listitem open="0" type="814" id="olkxkiHGaP2s"/>
+      <listitem open="0" type="814" id="NwaClO2zcdg8"/>
+      <listitem open="0" type="815" id="k8237JtThFS5"/>
+     </listitem>
+     <listitem open="1" type="813" id="4bfY1kRY0af0"/>
+     <listitem open="1" type="813" id="wN80a3wrflrj"/>
+     <listitem open="1" type="813" id="gSWfcse2oOlS"/>
+     <listitem open="1" type="813" id="UptTu23DR5ZY"/>
+     <listitem open="1" type="813" id="jvdvO0usXSgx"/>
+     <listitem open="0" type="813" id="UW88Fv6qzAN0">
+      <listitem open="0" type="815" id="oBpcnCEzuwX7"/>
+      <listitem open="0" type="814" id="RwmjfJhW2P1D"/>
+      <listitem open="0" type="815" id="BjqmKYikXUDw"/>
+      <listitem open="0" type="815" id="44Ky0p3wda0E"/>
+      <listitem open="0" type="815" id="yqX6dajcbdkx"/>
+      <listitem open="0" type="815" id="QKp726laU5bf"/>
+      <listitem open="0" type="814" id="cJcsnwfFTlOg"/>
+      <listitem open="0" type="814" id="iSyirxvRGVJ2"/>
+      <listitem open="0" type="814" id="SxHtifZN530i"/>
+      <listitem open="0" type="814" id="vcki1VAhv6Pm"/>
+      <listitem open="0" type="815" id="s8uVjuhscXcw"/>
+     </listitem>
+     <listitem open="1" type="813" id="9eXddHGS2h75"/>
+     <listitem open="1" type="813" id="4YsDIFqBu1SI"/>
+     <listitem open="1" type="813" id="eQcqVs0JtvVy"/>
+     <listitem open="1" type="813" id="3vLActmg3s1B">
+      <listitem open="0" type="814" id="Wrn1h2RhEPt0"/>
+      <listitem open="0" type="814" id="jtWF09YwzdoL"/>
+      <listitem open="0" type="815" id="KVfbIqLu4PO9"/>
+      <listitem open="0" type="815" id="DbAB0kllN3bT"/>
+      <listitem open="0" type="815" id="N5xeTBKaOinp"/>
+      <listitem open="0" type="815" id="sjDFtcx6C7IC"/>
+      <listitem open="0" type="814" id="yr6sMjmTNWxh"/>
+      <listitem open="0" type="814" id="eXldAZwU7h79"/>
+      <listitem open="0" type="815" id="1L5aXtpVb3i7"/>
+      <listitem open="0" type="815" id="rKNdhAjgUmH1"/>
+      <listitem open="0" type="815" id="1UzYmZxEbbjo"/>
+      <listitem open="0" type="814" id="b7gk46EiGjaq"/>
+      <listitem open="0" type="814" id="OTsfJ9xVgmGk"/>
+      <listitem open="0" type="814" id="jiPhy9yXEcHI"/>
+      <listitem open="0" type="814" id="ebXb3LFVcZDE"/>
+      <listitem open="0" type="815" id="chvmbOPfkym9"/>
+      <listitem open="0" type="815" id="5OZ7P6okBjNd"/>
+      <listitem open="0" type="815" id="f4WH7DO1cvPk"/>
+      <listitem open="0" type="815" id="uuBrLvqDe3TV"/>
+      <listitem open="0" type="815" id="0KyU8giQoNn5"/>
+      <listitem open="0" type="815" id="Q67l2SzENCPj"/>
+      <listitem open="0" type="815" id="kFWbmXQO4B2D"/>
+      <listitem open="0" type="814" id="07It0d1qMiPD"/>
+      <listitem open="0" type="814" id="fLTMnpEnwWew"/>
+      <listitem open="0" type="815" id="w5WYytIPYAeM"/>
+      <listitem open="0" type="815" id="dq1OPKq7KwK7"/>
+      <listitem open="0" type="814" id="hTzvBZlQutM8"/>
+      <listitem open="0" type="815" id="kyG7NqjcjGw1"/>
+      <listitem open="0" type="815" id="AMGsP7IPPFny"/>
+      <listitem open="0" type="815" id="4HaYito0MRbe"/>
+      <listitem open="0" type="815" id="2IzPbILdZtAG"/>
+      <listitem open="0" type="815" id="HvXJIvQFk2sR"/>
+      <listitem open="0" type="815" id="j26DoNESPjhV"/>
+      <listitem open="0" type="814" id="FNAwGzOagA6w"/>
+      <listitem open="0" type="814" id="zD0EoFUTjROu"/>
+     </listitem>
+     <listitem open="1" type="813" id="IkInmgw1mycV">
+      <listitem open="0" type="814" id="YLG5K74BVqCd"/>
+      <listitem open="0" type="814" id="tQl08D9xdy5f"/>
+      <listitem open="0" type="814" id="SObxYnAJp3jV"/>
+      <listitem open="0" type="815" id="xaHkuHsmd5vc"/>
+      <listitem open="0" type="814" id="Af350gNdhAx0"/>
+      <listitem open="0" type="814" id="YhcqCzeZT4wJ"/>
+      <listitem open="0" type="815" id="I2mJ18uMD9yf"/>
+      <listitem open="0" type="814" id="MnNWQOpy34cN"/>
+      <listitem open="0" type="814" id="dHMBv72PuaMH"/>
+      <listitem open="0" type="814" id="m4vQhXenZ1qz"/>
+      <listitem open="0" type="814" id="E82P3SuZo7kS"/>
+      <listitem open="0" type="814" id="pQpA1WIyUABF"/>
+      <listitem open="0" type="814" id="3JahFfKh1vca"/>
+      <listitem open="0" type="814" id="tUoaxNtDSBKX"/>
+     </listitem>
+     <listitem open="0" type="813" id="QfLXLQjvH2XC">
+      <listitem open="0" type="814" id="Du6SwdcMhbHE"/>
+      <listitem open="0" type="814" id="rk6mIETgrnDC"/>
+      <listitem open="0" type="815" id="nP8tayUSiaCz"/>
+      <listitem open="0" type="814" id="Q6ywZEAu8Dsa"/>
+     </listitem>
+     <listitem open="1" type="813" id="JVOgkJ5lWNUa"/>
+     <listitem open="0" type="813" id="LYrum37TcJtR">
+      <listitem open="0" type="814" id="ZboHYnrBzDqC"/>
+      <listitem open="0" type="814" id="HGFPtgBo55CE"/>
+      <listitem open="0" type="814" id="gBu1STJlz8el"/>
+      <listitem open="0" type="814" id="wOtO9ttp2noV"/>
+      <listitem open="0" type="815" id="ysrEU0v0jo6N"/>
+      <listitem open="0" type="814" id="e6VpdJx7UkzV"/>
+      <listitem open="0" type="814" id="w41yppR4ugG7"/>
+      <listitem open="0" type="815" id="pajYX3aWvSkN"/>
+      <listitem open="0" type="815" id="HkbdO1YnGeBi"/>
+      <listitem open="0" type="814" id="E7EEDsxKbA5b"/>
+      <listitem open="0" type="814" id="iZSaDgfjr4rD"/>
+      <listitem open="0" type="815" id="Wjt8eOJ1bmOx"/>
+      <listitem open="0" type="815" id="kiNKcSiI1AtC"/>
+      <listitem open="0" type="815" id="qYwgdnrAOgPu"/>
+     </listitem>
+     <listitem open="1" type="813" id="crLbwQbmWTFD"/>
+     <listitem open="0" type="813" id="9jDl26AeAdTo">
+      <listitem open="0" type="814" id="pmTf5WQptrbJ"/>
+      <listitem open="0" type="815" id="zPHTPXqRpSuB"/>
+      <listitem open="0" type="815" id="aukhj44l5ZiX"/>
+      <listitem open="0" type="814" id="33XzUpvO4KER"/>
+      <listitem open="0" type="815" id="wRFZcoTqnHIY"/>
+      <listitem open="0" type="814" id="CsLeaBWkU1kf"/>
+      <listitem open="0" type="814" id="VvqyJMeVE0An"/>
+      <listitem open="0" type="815" id="q8Bk0TX3dDZu"/>
+      <listitem open="0" type="814" id="wGRqNhBpW2GP"/>
+      <listitem open="0" type="814" id="4JcTO90Y7pKP"/>
+      <listitem open="0" type="814" id="DVu5KVOqQEmj"/>
+      <listitem open="0" type="814" id="CzroKEi8yRKv"/>
+      <listitem open="0" type="815" id="PbKUvDp83pBQ"/>
+      <listitem open="0" type="814" id="YRDmRLZaz5Bc"/>
+      <listitem open="0" type="815" id="PwaTVI0tuuKp"/>
+      <listitem open="0" type="815" id="eCMRdFdD9Lsr"/>
+      <listitem open="0" type="814" id="qlkExVwVw9IL"/>
+     </listitem>
+     <listitem open="1" type="813" id="sjiYtoSaWsHS"/>
+     <listitem open="0" type="813" id="KP2M79SKcKNw">
+      <listitem open="0" type="815" id="2jtn3rKw9p8H"/>
+      <listitem open="0" type="814" id="1FKl4sMobxBW"/>
+      <listitem open="0" type="815" id="tcTPxxyDnMzY"/>
+      <listitem open="0" type="814" id="FqOonYIyMsNg"/>
+      <listitem open="0" type="814" id="DqaRKfwtSJ0G"/>
+      <listitem open="0" type="815" id="YIXybVEt0cXk"/>
+      <listitem open="0" type="815" id="sIVEAstgAQek"/>
+      <listitem open="0" type="815" id="NzkWmroSskEI"/>
+     </listitem>
+    </listitem>
+    <listitem open="1" type="802" id="Use Case View"/>
+   </listitem>
+  </listview>
+  <codegeneration>
+   <codegenerator language="JavaScript"/>
+  </codegeneration>
+ </XMI.extensions>
+</XMI>

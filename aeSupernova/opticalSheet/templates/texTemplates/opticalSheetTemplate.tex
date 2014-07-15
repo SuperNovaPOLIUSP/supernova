@@ -1,0 +1,66 @@
+{% autoescape off %}
+\documentclass{article}
+    \usepackage[utf8]{inputenc} 
+    \usepackage[brazil]{babel}  
+    \usepackage[T1]{fontenc}   
+    \usepackage{textpos}
+    \usepackage{graphicx}
+    \usepackage[hmargin=0cm,vmargin=0cm,landscape,margin=0cm,legalpaper]{geometry}
+    \setlength{\TPHorizModule}{1cm}
+    \setlength{\TPVertModule}{\TPHorizModule}
+    \setlength{\parindent}{0pt}
+    \begin{document}
+        {% for courses in coursesList %}
+            \newpage
+            {% if picture %}
+            \begin{textblock}{7}(1.5,0.5)
+                \includegraphics[scale=0.25]{{picture}}
+            \end{textblock}  
+            {% endif %}
+            \begin{textblock}{15}(2.5,0)
+                \begin{center}
+                    {% for line in title.lines %}
+                        {{line}}
+                    {% endfor %}
+                \end{center}
+            \end{textblock}
+            \begin{textblock}{6}({{table.positions.0}},{{table.positions.1}})
+                \fontsize{7}{10}\selectfont
+                        
+                Considere as classificações abaixo para as questões 1 a 10 \textbf{referentes à turma em que você está assistindo aula*}
+
+                        \begin{tabular}{ {{table.tabular}} }
+                            \hline 
+                            {% for line in table.lines %}
+                                {% for column in line %}
+                                \fontsize{ {{column.font}} }{ {{column.font}} }\selectfont
+                                    {{column.text}}
+                                    {% if not forloop.last  %} %The last one doesn't need this &
+                                        &
+                                    {% endif %}
+                                {% endfor %}
+                                \\ \hline
+                            {% endfor %}
+                        \end{tabular}
+                \\
+                \fontsize{5}{5}\selectfont
+                *caso você não saiba as turmas em que está assistindo aula, consulte a tabela contida na folha de questões abertas.
+            \end{textblock}
+
+            {% for course in courses %}
+                \begin{textblock}{1.5}( {{course.position.0}} , {{course.position.1}} )
+                    \fontsize{ {{course.font}} }{ {{course.font}} }\selectfont
+                    {{course.abbreviation}}
+                \end{textblock}
+            {% endfor %}
+
+            {% for question in questions %}
+                \begin{textblock}{8}( {{question.position.0}} , {{question.position.1}} )
+                    \fontsize{ {{question.font}} }{ {{question.font}} }\selectfont
+                    {{question.questionWording}}
+                \end{textblock}
+            {% endfor %}
+        {% endfor %}
+    \end{document}
+\endinput
+{% endautoescape %}

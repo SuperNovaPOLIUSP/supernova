@@ -1,0 +1,74 @@
+
+<div id="headerTimePeriods" style="position:absolute; top:10px; left:50px;"><span > periodo: </span>
+    <select style="width: 200px" id='headerTimePeriod' name='headerTimePeriod' onChange=
+    {{timePeriodFunction}}
+    >
+        <option value= 0 > </option>
+        {% for timePeriod in timePeriodsList %}
+                <option value= {{timePeriod.idTimePeriod}} > {{ timePeriod.text }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div id="headerFaculties" style="position:absolute; top:10px; left:350px;">
+    <select style="width: 200px" id='headerFaculty' name='headerFaculty' onChange=
+    {{facultyFunction}}
+    >
+        <option value= 0 > </option>
+        {% for faculty in facultiesList %}
+                <option value= {{faculty.idFaculty}}> {{ faculty.name }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div id="headerCycles" style="position:absolute; top:10px; left:650px;">
+    <select style="width: 200px" id='headerCycle' name='headerCycle' onChange=
+    {{cycleFunction}}
+    >
+        <option value= 0 > </option>
+        {% for cycle in cyclesList %}
+                <option value= {{cycle.idCycle}} idFaculty = {{cycle.idFaculty}}> {{ cycle.name }} - {{cycle.dayPeriod}} </option>
+        {% endfor %}
+    </select>
+</div>
+<div id="headerTerms" style="position:absolute; top:10px; left:980px;">
+<select style="width: 200px" id='headerTerm' name='headerTerm' >
+        <option value= 0 > </option>
+                <option value= '' > </option>
+    </select>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $("#headerFaculties").hide();
+    $("#headerCycles").hide();
+    $("#headerTerms").hide();
+    function headerFacultyInit(){
+        $("#headerFaculties").show()
+    }
+    function headerCycleInit(){
+        var idFaculty = document.getElementById("headerFaculty").value
+        $("#headerCycles").find('option').each(function(){
+            $(this).hide()
+        });
+        $("#headerCycles").find('option').each(function(){
+            if ($(this).attr('idFaculty') == idFaculty){
+                $(this).show()
+            }
+        });
+        $("#headerCycles").show();
+    }
+    function headerTermInit(){
+        var idTimePeriod = document.getElementById("headerTimePeriod").value
+        var idCycle = document.getElementById("headerCycle").value
+        $.get("/aeSupernova/header/possibleTerms/", {idCycle : idCycle, idTimePeriod: idTimePeriod},function(retorno){
+            var object = JSON.parse(retorno)
+            var linha="";
+            linha = linha + "<span class='etiquetaFormulario'>semestre/Quadrimestre: </span></td><td><select style='width: 200px;' id='headerTerm' name='headerTerm' onChange = {{ termFunction }}><option value= 0 > </option>";
+            for (var ano in object) {
+                linha = linha + "<option value=" + String(object[ano]) + ">" + String(object[ano]) + "</option>";
+            }
+            linha = linha + "</select>"
+            $("#headerTerms").show()
+            $("#headerTerms").html(linha)
+        });
+    }
+</script>

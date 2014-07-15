@@ -1,11 +1,11 @@
 # coding: utf8
-
+from django.conf import settings
 from File import *
 from Chart import *
 
 # modules for dealing with chart plotting
 import os
-os.environ['MPLCONFIGDIR'] = "/home/www/tempfolder"
+os.environ['MPLCONFIGDIR'] = settings.PASTA_TEMPORARIA
 import matplotlib
 matplotlib.use('Agg')
 import numpy.numarray as na

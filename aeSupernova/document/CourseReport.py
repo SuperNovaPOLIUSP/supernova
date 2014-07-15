@@ -5,6 +5,7 @@ from BarChart import *
 from multiprocessing import Process, JoinableQueue # package for implementing multiprocessing tasks
 
 # pulsarInterface basic layer
+from pulsarInterface.OpticalSheetField import *
 from pulsarInterface.TimePeriod import * # Class from the pulsarInterface package that allows manipulation of time period data
 from pulsarInterface.Answer import * # Class from the pulsarInterface package that allows manipulation of answer data
 from pulsarInterface.Offer import * # Class from the pulsarInterface package that allows manipulation of course offer data

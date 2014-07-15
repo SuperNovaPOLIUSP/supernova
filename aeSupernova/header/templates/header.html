@@ -59,7 +59,7 @@
     function headerTermInit(){
         var idTimePeriod = document.getElementById("headerTimePeriod").value
         var idCycle = document.getElementById("headerCycle").value
-        $.get("/aeSupernova/header/possibleTerms/", {idCycle : idCycle, idTimePeriod: idTimePeriod},function(retorno){
+        $.get("/header/possibleTerms/", {idCycle : idCycle, idTimePeriod: idTimePeriod},function(retorno){
             var object = JSON.parse(retorno)
             var linha="";
             linha = linha + "<span class='etiquetaFormulario'>semestre/Quadrimestre: </span></td><td><select style='width: 200px;' id='headerTerm' name='headerTerm' onChange = {{ termFunction }}><option value= 0 > </option>";

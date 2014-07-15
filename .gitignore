@@ -1,0 +1,4 @@
+aeSupernova/settings.py
+*.pyc
+*~
+settings.db

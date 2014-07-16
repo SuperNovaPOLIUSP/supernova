@@ -1,5 +1,5 @@
 # List of apps that will use the users database
-USERS_DATABASE_APPS = ['auth','login','sessions']
+USERS_DATABASE_APPS = ['auth', 'login', 'sessions', 'contenttypes', 'sites']
 
 class UserRouter(object):
     """
@@ -12,8 +12,6 @@ class UserRouter(object):
         """
         if model._meta.app_label in USERS_DATABASE_APPS:
             return 'users'
-        print model._meta.app_label
-        print "BRISA"
         return None
 
     def db_for_write(self, model, **hints):
@@ -31,6 +29,8 @@ class UserRouter(object):
         if obj1._meta.app_label in USERS_DATABASE_APPS or \
            obj2._meta.app_label in USERS_DATABASE_APPS:
            return True
+        print model._meta.app_label
+        print "BRISA1"
         return None
 
     def allow_syncdb(self, db, model):
@@ -42,4 +42,6 @@ class UserRouter(object):
             return model._meta.app_label in USERS_DATABASE_APPS
         elif model._meta.app_label in USERS_DATABASE_APPS:
             return False
+        print model._meta.app_label
+        print "BRISA"
         return None

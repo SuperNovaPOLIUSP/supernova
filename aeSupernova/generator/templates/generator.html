@@ -8,9 +8,9 @@
 </div>
 <div id = 'options' style='position:absolute; top:75; left:300'>
     <span>Gerar por: </span>
-    <select id = 'offerOrClassNumber'>
-        <option value = 1>offer</option>
+    <select id = 'ClassNumberOrProfessor'>
         <option value = 2>Class number</option>
+        <option value = 1>Professor</option>
     </select>
     <select id = 'useProfessorsName'>
         <option value = 1>with professor's name</option>
@@ -79,7 +79,7 @@
                 }
             }
             get = new XMLHttpRequest()
-            get.open( "GET", 'generateCourses/?' + $.param({idCourses:JSON.stringify(idCourses), useProfessorsName: $('#useProfessorsName').val(), byOffer:$('#offerOrClassNumber').val(), idTimePeriod:idTimePeriod, assessmentNumber: $('#assessments').val(), idFaculty:$('#headerFaculty').val()}), false)
+            get.open( "GET", 'generateCourses/?' + $.param({idCourses:JSON.stringify(idCourses), useProfessorsName: $('#useProfessorsName').val(), byOffer:$('#ClassNumberOrProfessor').val(), idTimePeriod:idTimePeriod, assessmentNumber: $('#assessments').val(), idFaculty:$('#headerFaculty').val()}), false)
             get.send(null)
             var responseText = get.responseText
             if (responseText.length<100)

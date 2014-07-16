@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     url(r'^encoder/', include('aeSupernova.encoder.urls')),
     url(r'^lerJupiter/', include('aeSupernova.lerJupiter.urls')),
     url(r'^algeLin/', include('aeSupernova.algeLin.urls')),
-    url(r'^login/', include('login.urls')),
+    url(r'^login/$', views.user_login, name='login'),
     url(r'^register/$', views.register, name='register'),
+    url(r'^logout/$', views.user_logout, name='logout'),
     )

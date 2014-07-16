@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
+from django.contrib import admin
+from login import views
+import login
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -26,4 +29,6 @@ urlpatterns = patterns('',
     url(r'^encoder/', include('aeSupernova.encoder.urls')),
     url(r'^lerJupiter/', include('aeSupernova.lerJupiter.urls')),
     url(r'^algeLin/', include('aeSupernova.algeLin.urls')),
+    url(r'^login/', include('login.urls')),
+    url(r'^register/$', views.register, name='register'),
     )

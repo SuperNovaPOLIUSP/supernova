@@ -51,6 +51,8 @@ def register(request):
             context)
 
 def user_login(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/index/')
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
 
@@ -74,7 +76,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return render_to_response('index.html')
+                return HttpResponseRedirect('/index/')
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your Supernova account is disabled.")

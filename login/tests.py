@@ -12,12 +12,26 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 import unittest
 
 def open_page(browser, url, live_server_url):
-        browser.get('%s%s' % (live_server_url,url))
+    browser.get('%s%s' % (live_server_url,url))
+
+def steps_to_login(browser,live_server_url,username,password):
+    open_page(browser, '/login/', live_server_url)
+    username_input = browser.find_element_by_name('username')
+    username_input.send_keys(username)
+    password_input = browser.find_element_by_name('password')
+    password_input.send_keys(password)
+    button_register = browser.find_element_by_name('submit')
+    button_register.click()
+
+def create_user(username, email, password):
+    user = User.objects.create_user(username, email, password)
+    user.save()
 
 class LoginTest(LiveServerTestCase):
     
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.browser = WebDriver()
+        self.browser.implicitly_wait(5)
 
     def tearDown(self):
         self.browser.quit()
@@ -25,36 +39,21 @@ class LoginTest(LiveServerTestCase):
     def test_title(self):
         open_page(self.browser, '/login/', self.live_server_url)
         self.assertIn('Login Supernova', self.browser.title)
-    
-    def steps_to_login(self,username,password):
-        open_page(self.browser, '/login/', self.live_server_url)
-        username_input = self.browser.find_element_by_name('username')
-        username_input.send_keys(username)
-        password_input = self.browser.find_element_by_name('password')
-        password_input.send_keys(password)
-        button_register = self.browser.find_element_by_name('submit')
-        button_register.click()
-    
+        
     def test_login_correct(self):
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        user.last_name = 'Lennon'
-        user.save()
-        self.steps_to_login('john','johnpassword')
+        create_user('john','john@john.com','johnpassword')
+        steps_to_login(self.browser,self.live_server_url,'john','johnpassword')
         self.assertIn('Index', self.browser.title)
     
     def test_login_incorrect(self):
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        user.last_name = 'Lennon'
-        user.save()
-        self.steps_to_login('john1','johnpassword1')
+        create_user('john','john@john.com','johnpassword')
+        steps_to_login(self.browser,self.live_server_url,'john1','johnpassword1')
         login_incorrect = self.browser.find_element_by_tag_name('body')
         self.assertIn('Invalid login details supplied.', login_incorrect.text)
         
     def test_login_and_logout(self): 
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        user.last_name = 'Lennon'
-        user.save()
-        self.steps_to_login('john','johnpassword')
+        create_user('john','john@john.com','johnpassword')
+        steps_to_login(self.browser,self.live_server_url,'john','johnpassword')
         login_successful = self.browser.find_element_by_tag_name('strong')
         self.assertIn('Welcome to Supernova', login_successful.text)
         link_logout = self.browser.find_element_by_link_text('Logout')
@@ -63,17 +62,15 @@ class LoginTest(LiveServerTestCase):
         self.assertIn('Login to Supernova',logout_sucessful.text)
     
     def test_login_logout_and_login(self): 
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        user.last_name = 'Lennon'
-        user.save()
-        self.steps_to_login('john','johnpassword')
+        create_user('john','john@john.com','johnpassword')
+        steps_to_login(self.browser,self.live_server_url,'john','johnpassword')
         login_successful = self.browser.find_element_by_tag_name('strong')
         self.assertIn('Welcome to Supernova', login_successful.text)
         link_logout = self.browser.find_element_by_link_text('Logout')
         link_logout.click()
         logout_sucessful = self.browser.find_element_by_tag_name('h1')
         self.assertIn('Login to Supernova',logout_sucessful.text)
-        self.steps_to_login('john','johnpassword')
+        steps_to_login(self.browser,self.live_server_url,'john','johnpassword')
         login_successful = self.browser.find_element_by_tag_name('strong')
         self.assertIn('Welcome to Supernova', login_successful.text)
         
@@ -112,7 +109,29 @@ class RegisterTest(LiveServerTestCase):
         register_repeated_message = self.browser.find_element_by_tag_name('li')
         self.assertIn('User with this Username already exists.', register_repeated_message.text)
     
+class PermissionsTest(LiveServerTestCase):
+    
+    def setUp(self):
+        self.browser = WebDriver()
+        self.browser.implicitly_wait(5)
+
+    def tearDown(self):
+        self.browser.quit()
+    
+    def test_go_to_index_without_login(self):
+        open_page(self.browser, '/index/', self.live_server_url)
+        login_text = self.browser.find_element_by_tag_name('h1')
+        self.assertIn('Login to Supernova',login_text.text)
+        self.assertIn('/login/',self.browser.current_url)
         
+    def test_go_to_index_with_login(self):
+        create_user('john','john@john.com','johnpassword')
+        open_page(self.browser, '/login/', self.live_server_url)
+        steps_to_login(self.browser, self.live_server_url, 'john', 'johnpassword')
+        open_page(self.browser, '/index/', self.live_server_url)
+        login_successful = self.browser.find_element_by_tag_name('strong')
+        self.assertIn('Welcome to Supernova', login_successful.text)
+ 
 if (__name__ == '__main__'):
     unittest.main()
 

@@ -2,9 +2,13 @@ from aeSupernova.header.Header import *
 from pulsarInterface.IdealTermCourse import *
 
 def openSite(request):
-    header = Header()
-    header.setFacultyFunction('findCycles($("#headerFaculty").val())')
-    return render_to_response('lerJupiter.html',{'header':header.getHtml()})
+    
+    if request.user.is_authenticated():
+        header = Header()
+        header.setFacultyFunction('findCycles($("#headerFaculty").val())')
+        return render_to_response('lerJupiter.html',{'header':header.getHtml()})
+    else:
+        return HttpResponseRedirect('/login/')
 
 def lerJupiter(request):
     data = request.GET

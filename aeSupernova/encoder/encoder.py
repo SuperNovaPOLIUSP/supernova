@@ -9,10 +9,13 @@ from django.http import *
 from aeSupernova.header.Header import *
 
 def openSite(request):
-    header = Header()
-    header.setTimePeriodFunction('start()')
-    header.setTermFunction('showPossibleOffers($("#headerCycle").val(),$("#headerTerm").val())')
-    return render_to_response('encoder.html',{'header':header.getHtml()},context_instance=RequestContext(request))
+    if request.user.is_authenticated():
+        header = Header()
+        header.setTimePeriodFunction('start()')
+        header.setTermFunction('showPossibleOffers($("#headerCycle").val(),$("#headerTerm").val())')
+        return render_to_response('encoder.html',{'header':header.getHtml()},context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect('/login/')
 
 def possibleCodifications(request):
     data = request.GET

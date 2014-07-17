@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Supernova</title>
+    </head>
+
+    <body>
+        <h1>Login to Supernova</h1>
+        <p>HOW YOU DOIN?</br>ARE YOU ALLOWED IN HERE?</p><br>
+        <img width="400" height="300" src="http://slonik.com.br/wp-content/uploads/2013/06/nicolas-cage.jpg">
+        <br><br>
+        <form id="login_form" method="post" action="/login/">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+            <br>
+            <input type="submit" value="submit" name="submit" />
+        </form>
+    </body>
+</html>

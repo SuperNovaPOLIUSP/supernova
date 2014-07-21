@@ -23,5 +23,4 @@ urlpatterns = patterns('',
     url(r'^getEncodings/$', 'aeSupernova.opticalSheet.opticalSheet.getEncodings'),
     url(r'^removeCycleFromOpticalSheet/$', 'aeSupernova.opticalSheet.opticalSheet.removeCycleFromOpticalSheet'),
     url(r'^listOldOpticalSheets/$', 'aeSupernova.opticalSheet.opticalSheet.listOldOpticalSheets'),
-    url(r'^getOldOpticalSheet/$', 'aeSupernova.opticalSheet.opticalSheet.getOldOpticalSheet'),
 )

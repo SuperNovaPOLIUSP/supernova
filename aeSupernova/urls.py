@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from django.contrib import admin
 from login import views
+from aeSupernova import views as supernovaviews
 import login
 
 # Uncomment the next two lines to enable the admin:
@@ -19,7 +20,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     #url(r'^$', 'aeSupernova.view.index'),
-    url(r'^index/$', TemplateView.as_view(template_name='index.html')),
+    url(r'^index/$', supernovaviews.index, name='index.html'),
     url(r'^opticalSheet/', include('aeSupernova.opticalSheet.urls')),
     url(r'^datafile/', include('aeSupernova.datafile.urls')),
     url(r'^header/', include('aeSupernova.header.urls')),

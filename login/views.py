@@ -7,6 +7,9 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
 def register(request):
+    # Need an user in database to register a new user.
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
     # Like before, get the request's context.
     context = RequestContext(request)
 
@@ -33,12 +36,6 @@ def register(request):
             # Update our variable to tell the template registration was successful.
             registered = True
 
-        # Invalid form or forms - mistakes or something else?
-        # Print problems to the terminal.
-        # They'll also be shown to the user.
-        else:
-            print user_form.errors
-
     # Not a HTTP POST, so we render our form using two ModelForm instances.
     # These forms will be blank, ready for user input.
     else:
@@ -51,6 +48,8 @@ def register(request):
             context)
 
 def user_login(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/index/')
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
 
@@ -74,13 +73,12 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return render_to_response('index.html')
+                return HttpResponseRedirect('/index/')
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your Supernova account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
-            print "Invalid login details: {0}, {1}".format(username, password)
             return HttpResponse("Invalid login details supplied.")
 
     # The request is not a HTTP POST, so display the login form.

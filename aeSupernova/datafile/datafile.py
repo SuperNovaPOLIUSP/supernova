@@ -9,14 +9,16 @@ def translateAnswerListOfDict(answersList):
     return stringList
 
 def openSite(request):
-    header = Header()
-    header.setTermFunction('$("#file").show()')
-    if request.method == 'POST':
-        data = request.POST
-        answers = NoteReader.readNote(request.FILES['arq'].name, request.FILES['arq'].file.getvalue(),int(data['headerCycle']), int(data['headerTerm']), int(data['headerTimePeriod']), int(data['bSheet']), int(data['assessmentNumber']))
-        
-    return render_to_response('datafile.html',{'divs':header.getHtml()},context_instance=RequestContext(request))
-
+    if request.user.is_authenticated():
+        header = Header()
+        header.setTermFunction('$("#file").show()')
+        if request.method == 'POST':
+            data = request.POST
+            answers = NoteReader.readNote(request.FILES['arq'].name, request.FILES['arq'].file.getvalue(),int(data['headerCycle']), int(data['headerTerm']), int(data['headerTimePeriod']), int(data['bSheet']), int(data['assessmentNumber']))
+        return render_to_response('datafile.html',{'divs':header.getHtml()},context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect('/login/')
+    
 def read(request):
     data = request.GET
     #NoteReader.readNote(datafileFile, idCycle, term, idTimePeriod, bSheet, assessmentNumber)

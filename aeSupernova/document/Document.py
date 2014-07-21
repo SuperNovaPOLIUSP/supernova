@@ -7,6 +7,7 @@ import commands                                # package for the use of command 
 import codecs                                  # package to manipulate unicode files
 import subprocess
 import shlex
+from django.conf import settings
 
 class DocumentError(Exception):
     """
@@ -191,3 +192,4 @@ class Document (object):
         self.finalDocument.workWithFile()
         os.remove(self.generateTitle() + ".aux")
         os.remove(self.generateTitle() + ".log")
+        os.chdir(settings.PASTA_SUPERNOVA)

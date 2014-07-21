@@ -13,10 +13,12 @@ from django import http
 from django.http import *
 
 def openSite(request):
-    header = Header()
-    header.setTermFunction('loadOpticalSheet($("#headerTimePeriod").val(),$("#headerCycle").val(),$("#headerTerm").val())')
-    return render_to_response('folha2.html',{'header':header.getHtml()},context_instance=RequestContext(request))
-    #return render_to_response('folha2.html',{},context_instance=RequestContext(request))
+    if request.user.is_authenticated(): 
+        header = Header()
+        header.setTermFunction('loadOpticalSheet($("#headerTimePeriod").val(),$("#headerCycle").val(),$("#headerTerm").val())')
+        return render_to_response('folha2.html',{'header':header.getHtml()},context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect('/login/')
 
 def findCourses(request):
     data = request.GET

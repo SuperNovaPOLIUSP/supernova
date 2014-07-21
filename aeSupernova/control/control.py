@@ -7,10 +7,14 @@ from django.http import *
 from aeSupernova.header.Header import *
 
 def openSite(request):
-    header = Header()
-    header.setTermFunction('')
-    header.setTimePeriodFunction('headerTermInit()')
-    return render_to_response('control.html',{'header':header.getHtml()},context_instance=RequestContext(request))
+    
+    if request.user.is_authenticated():
+        header = Header()
+        header.setTermFunction('')
+        header.setTimePeriodFunction('headerTermInit()')
+        return render_to_response('control.html',{'header':header.getHtml()},context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect('/login/')
 
 def findData(request):
     data = request.GET

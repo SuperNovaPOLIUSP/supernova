@@ -1,6 +1,6 @@
 [submodule "pulsarInterface"]
 	path = pulsarInterface
-	url = ssh://dev.op:2835/home/op_admin/repositorios/ae_supernova/pulsarInterface.git
+	url = ssh://200.144.254.129:2838/home/git/repositorios/pulsarInterface.git
 [submodule "tools"]
 	path = tools
-	url = ssh://dev.op:2835/home/op_admin/repositorios/ae_supernova/tools.git
+	url = ssh://200.144.254.129:2838/home/git/repositorios/tools.git

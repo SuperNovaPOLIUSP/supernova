@@ -1,3 +1,4 @@
+#encoding: utf8
 """
 This file demonstrates writing tests using the unittest module. These will pass
 when you run "manage.py test".
@@ -7,9 +8,7 @@ Replace this with more appropriate tests for your application.
 
 from django.contrib.auth.models import User
 from django.test.testcases import LiveServerTestCase
-from selenium import webdriver
 from selenium.webdriver.firefox.webdriver import WebDriver
-import unittest
 
 def open_page(browser, url, live_server_url):
     browser.get('%s%s' % (live_server_url,url))
@@ -79,7 +78,9 @@ class RegisterTest(LiveServerTestCase):
     def setUp(self):
         self.browser = WebDriver()
         self.browser.implicitly_wait(5)
-
+        create_user('john','john@john.com','johnpassword')
+        steps_to_login(self.browser,self.live_server_url,'john','johnpassword')
+        
     def tearDown(self):
         self.browser.quit()
            
@@ -117,22 +118,73 @@ class PermissionsTest(LiveServerTestCase):
 
     def tearDown(self):
         self.browser.quit()
-    
+        
+    def go_to_x_without_login_and_check_title(self, page, page_title):
+        open_page(self.browser, page, self.live_server_url)
+        self.assertIn(page_title, self.browser.title)
+        
+    def go_to_x_with_login_and_check_title(self,page, page_title):
+        create_user('john','john@john.com','johnpassword')
+        steps_to_login(self.browser, self.live_server_url, 'john', 'johnpassword')
+        open_page(self.browser, page, self.live_server_url)
+        self.assertIn(page_title, self.browser.title)
+        
     def test_go_to_index_without_login(self):
-        open_page(self.browser, '/index/', self.live_server_url)
-        login_text = self.browser.find_element_by_tag_name('h1')
-        self.assertIn('Login to Supernova',login_text.text)
-        self.assertIn('/login/',self.browser.current_url)
+        self.go_to_x_without_login_and_check_title('/index/', 'Login')
         
     def test_go_to_index_with_login(self):
-        create_user('john','john@john.com','johnpassword')
-        open_page(self.browser, '/login/', self.live_server_url)
-        steps_to_login(self.browser, self.live_server_url, 'john', 'johnpassword')
-        open_page(self.browser, '/index/', self.live_server_url)
-        login_successful = self.browser.find_element_by_tag_name('strong')
-        self.assertIn('Welcome to Supernova', login_successful.text)
- 
-if (__name__ == '__main__'):
-    unittest.main()
+        self.go_to_x_with_login_and_check_title('/index/', 'Index')
+        
+    def test_go_to_opticalSheet_without_login(self):
+        self.go_to_x_without_login_and_check_title('/opticalSheet/', 'Login')
+        
+    def test_go_to_opticalSheet_with_login(self):
+        self.go_to_x_with_login_and_check_title('/opticalSheet/', 'OpticalSheet')
+        
+    def test_go_to_datafile_without_login(self):
+        self.go_to_x_without_login_and_check_title('/datafile/', 'Login')
+    
+    def test_go_to_datafile_with_login(self):
+        self.go_to_x_with_login_and_check_title('/datafile/', 'Datafile')
+    
+    def test_go_to_generator_without_login(self):
+        self.go_to_x_without_login_and_check_title('/generator/', 'Login')
+    
+    def test_go_to_generator_with_login(self):
+        self.go_to_x_with_login_and_check_title('/generator/', u'Gerador de Relatórios')
+        
+    def test_go_to_control_without_login(self):
+        self.go_to_x_without_login_and_check_title('/control/', 'Login')
+    
+    def test_go_to_control_with_login(self):
+        self.go_to_x_with_login_and_check_title('/control/', 'Control')
+    
+    def test_go_to_encoder_without_login(self):
+        self.go_to_x_without_login_and_check_title('/encoder/', 'Login')
+    
+    def test_go_to_encoder_with_login(self):
+        self.go_to_x_with_login_and_check_title('/encoder/', 'Encoder')
+        
+    def test_go_to_presentation_without_login(self):
+        self.go_to_x_without_login_and_check_title('/presentation/', 'Login')
+    
+    def test_go_to_presentation_with_login(self):
+        self.go_to_x_with_login_and_check_title('/presentation/', 'Presentation')
+        
+    def test_go_to_register_without_login(self):
+        self.go_to_x_without_login_and_check_title('/register/', 'Login')
+    
+    def test_go_to_register_with_login(self):
+        self.go_to_x_with_login_and_check_title('/register/', 'Register')
+        
+    def test_go_to_lerJupiter_without_login(self):
+        self.go_to_x_without_login_and_check_title('/lerJupiter/', 'Login')
+    
+    def test_go_to_lerJupiter_with_login(self):
+        self.go_to_x_with_login_and_check_title('/lerJupiter/', 'Ler Jupiter')
+        
+    def test_go_to_algeLin_without_login(self):
+        self.go_to_x_without_login_and_check_title('/algeLin/', 'Algebra Linear')
 
-
+    def test_go_to_login_with_login(self):
+        self.go_to_x_with_login_and_check_title('/login/', 'Index')

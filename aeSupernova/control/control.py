@@ -1,20 +1,20 @@
-from tools.MySQLConnection import *
+from django import http
+from django.contrib.auth.decorators import login_required
+from django.http import *
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import json
-from django import http
-from django.http import *
+from tools.MySQLConnection import *
+
 from aeSupernova.header.Header import *
 
+@login_required
 def openSite(request):
-    
-    if request.user.is_authenticated():
-        header = Header()
-        header.setTermFunction('')
-        header.setTimePeriodFunction('headerTermInit()')
-        return render_to_response('control.html',{'header':header.getHtml()},context_instance=RequestContext(request))
-    else:
-        return HttpResponseRedirect('/login/')
+    header = Header()
+    header.setTermFunction('')
+    header.setTimePeriodFunction('headerTermInit()')
+    return render_to_response('control.html',{'header':header.getHtml()},context_instance=RequestContext(request))
+ 
 
 def findData(request):
     data = request.GET

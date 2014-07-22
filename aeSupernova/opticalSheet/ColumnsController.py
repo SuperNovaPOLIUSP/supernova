@@ -161,7 +161,6 @@ class ColumnsController(object):
         """
         cursor = MySQLConnection()
         cursor.execute('DELETE FROM rel_cycle_opticalSheet WHERE idCycle = ' + str(idCycle) + ' AND term = ' + str(term) + ' AND idOpticalSheet = ' + str(idOpticalSheet))
-        cursor.commit()
         return
 
 

@@ -1,14 +1,13 @@
-from aeSupernova.header.Header import *
+from django.contrib.auth.decorators import login_required
 from pulsarInterface.IdealTermCourse import *
+from aeSupernova.header.Header import *
 
+
+@login_required
 def openSite(request):
-    
-    if request.user.is_authenticated():
-        header = Header()
-        header.setFacultyFunction('findCycles($("#headerFaculty").val())')
-        return render_to_response('lerJupiter.html',{'header':header.getHtml()})
-    else:
-        return HttpResponseRedirect('/login/')
+    header = Header()
+    header.setFacultyFunction('findCycles($("#headerFaculty").val())')
+    return render_to_response('lerJupiter.html',{'header':header.getHtml()})
 
 def lerJupiter(request):
     data = request.GET

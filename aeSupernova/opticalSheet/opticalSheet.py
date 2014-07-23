@@ -1,24 +1,24 @@
 #encoding: utf8
-from aeSupernova.opticalSheet.ColumnsController import *
-from aeSupernova.opticalSheet.QuestionController import *
-from aeSupernova.opticalSheet.OpticalSheetController import *
-from aeSupernova.opticalSheet.OpticalSheetPrinter import *
-from aeSupernova.opticalSheet.QualitativeQuestionnairePrinter import *
-from aeSupernova.header.Header import Header
-
+from django import http
+from django.contrib.auth.decorators import login_required
+from django.http import *
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import json
-from django import http
-from django.http import *
 
+from aeSupernova.header.Header import Header
+from aeSupernova.opticalSheet.ColumnsController import *
+from aeSupernova.opticalSheet.OpticalSheetController import *
+from aeSupernova.opticalSheet.OpticalSheetPrinter import *
+from aeSupernova.opticalSheet.QualitativeQuestionnairePrinter import *
+from aeSupernova.opticalSheet.QuestionController import *
+
+
+@login_required
 def openSite(request):
-    if request.user.is_authenticated(): 
-        header = Header()
-        header.setTermFunction('loadOpticalSheet($("#headerTimePeriod").val(),$("#headerCycle").val(),$("#headerTerm").val())')
-        return render_to_response('folha2.html',{'header':header.getHtml()},context_instance=RequestContext(request))
-    else:
-        return HttpResponseRedirect('/login/')
+    header = Header()
+    header.setTermFunction('loadOpticalSheet($("#headerTimePeriod").val(),$("#headerCycle").val(),$("#headerTerm").val())')
+    return render_to_response('folha2.html',{'header':header.getHtml()},context_instance=RequestContext(request))
 
 def findCourses(request):
     data = request.GET

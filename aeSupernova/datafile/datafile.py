@@ -1,6 +1,9 @@
+from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+
 from NoteReader import *
 from aeSupernova.header.Header import *
-from django.template import RequestContext
+
 
 def translateAnswerListOfDict(answersList):
     stringList = []
@@ -8,16 +11,14 @@ def translateAnswerListOfDict(answersList):
         stringList.append('Answer: code ' +str(answerDict['code']) +', courseIndex ' +str(answerDict['courseIndex']) +', identifier ' +str(answerDict['identifier']))
     return stringList
 
+@login_required
 def openSite(request):
-    if request.user.is_authenticated():
-        header = Header()
-        header.setTermFunction('$("#file").show()')
-        if request.method == 'POST':
-            data = request.POST
-            answers = NoteReader.readNote(request.FILES['arq'].name, request.FILES['arq'].file.getvalue(),int(data['headerCycle']), int(data['headerTerm']), int(data['headerTimePeriod']), int(data['bSheet']), int(data['assessmentNumber']))
-        return render_to_response('datafile.html',{'divs':header.getHtml()},context_instance=RequestContext(request))
-    else:
-        return HttpResponseRedirect('/login/')
+    header = Header()
+    header.setTermFunction('$("#file").show()')
+    if request.method == 'POST':
+        data = request.POST
+        answers = NoteReader.readNote(request.FILES['arq'].name, request.FILES['arq'].file.getvalue(),int(data['headerCycle']), int(data['headerTerm']), int(data['headerTimePeriod']), int(data['bSheet']), int(data['assessmentNumber']))
+    return render_to_response('datafile.html',{'divs':header.getHtml()},context_instance=RequestContext(request))
     
 def read(request):
     data = request.GET

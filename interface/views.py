@@ -1,21 +1,23 @@
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
+from interface.forms import ProfessorForm, OfferForm
 from pulsarInterface.Department import Department
+from pulsarInterface.Offer import Offer
 from pulsarInterface.Professor import Professor
+from pulsarInterface.TimePeriod import TimePeriod
+from pulsarInterface.Course import Course
 
-from interface.forms import ProfessorForm
-
+@login_required
+def index(request):
+    form  = OfferForm()
+    rendered_page = render(request, 'interface_index.html', {'form': form})
+    return rendered_page
 
 @login_required
 def professor(request):
     professors = Professor.find()
     rendered_page = render(request, 'professor.html', {'professors': professors})
-    return rendered_page
-
-@login_required
-def index(request):
-    rendered_page = render(request, 'interface_index.html')
     return rendered_page
 
 @login_required
@@ -95,3 +97,17 @@ def professor_create(request):
         form = ProfessorForm()
     rendered_page = render(request, 'professor_create.html', {'form': form})
     return rendered_page
+
+@login_required
+def offer(request):
+    if request.method  == 'POST':
+        form = OfferForm(request.POST)
+        if form.is_valid():
+            timePeriod = TimePeriod.pickById(form.cleaned_data['dropDownTimePeriod'])
+            course = Course.pickById(int(form.cleaned_data['dropDownCourse']))
+            offers = Offer.find(timePeriod=timePeriod, course=course)
+            rendered_page = render(request, 'offer.html', {'offers': offers})
+            return rendered_page
+    else:
+        raise Exception('ERROR')
+        

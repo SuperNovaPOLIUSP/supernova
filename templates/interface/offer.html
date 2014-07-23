@@ -1,0 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Interface - Offer</title>
+</head>
+<body>
+	<input type="button" value="create" onclick="redirect_to_create_offer();" name="criar"/><br><br>
+	{% for offer in offers %}
+		<a>{{ offer.idOffer }}</a>
+		<br>
+	{% endfor %}
+</body>
+</html>

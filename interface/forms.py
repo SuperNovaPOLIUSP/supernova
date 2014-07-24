@@ -1,6 +1,8 @@
+import autocomplete_light
 from django import forms
-from pulsarInterface.TimePeriod import TimePeriod
 from pulsarInterface.Course import Course
+from pulsarInterface.TimePeriod import TimePeriod
+
 
 def getKey(item):
     return item[1]
@@ -20,7 +22,10 @@ class OfferForm(forms.Form):
     timePeriodNames = [str(timePeriod) for timePeriod in timePeriods]
     timePeriodIds = [t.idTimePeriod for t in timePeriods]
     timePeriodInfo = zip(timePeriodIds, timePeriodNames)
-    dropDownTimePeriod = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = "")
+    dropDownTimePeriod = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = '')
+    inputCourse = forms.CharField(label = 'Codigo do Curso')
+    
+class OfferEditForm(forms.Form):
     courses = Course.find()
     courseCode = [course.courseCode for course in courses]
     courseIds = [course.idCourse for course in courses]

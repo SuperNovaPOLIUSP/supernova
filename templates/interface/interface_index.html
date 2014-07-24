@@ -8,7 +8,7 @@
 <a href="{% url 'interface:professor' %}"> Professor </a>
 <br><br>
 <form method="post" name="offer" action="{% url 'interface:offer' %}"> {% csrf_token %}
-	<a href="javascript: submitform()"> Offer</a> 
+	<a href="javascript: submitform()"> Offer</a>
 	{{ form.as_p }}
 </form>
 <script type="text/javascript">
@@ -19,4 +19,6 @@
 <br><br>
 <br><br><br><br><br><a href="/logout/">Logout</a><br/>
 </body>
+{% include "base_jquery.html" %}
+<script type="text/javascript"> {% include "auto_completes.js" %} </script>
 </html>

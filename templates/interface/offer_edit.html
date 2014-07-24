@@ -1,0 +1,15 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Interface - Offer Edit</title>
+</head>
+<body>
+	<h1>ID: {{ offer.idOffer }}</h1><br>
+	<form action="{% url 'interface:offer_edit' idOffer=offer.idOffer %}" method="post">{% csrf_token %}
+		<input id="courses"/>
+		<input type="submit" value="apply" name="Aplicar"/>
+	</form>
+</body>
+{% include "base_jquery.html" %}
+<script type="text/javascript"> {% include "auto_completes.js" %} </script>
+</html>

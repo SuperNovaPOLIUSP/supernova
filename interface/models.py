@@ -10,7 +10,9 @@
 
 from __future__ import unicode_literals
 
+from django.core import urlresolvers
 from django.db import models
+
 
 class Academicprogram(models.Model):
     idacademicprogram = models.IntegerField(db_column='idAcademicProgram', primary_key=True) # Field name made lowercase.
@@ -98,6 +100,8 @@ class Course(models.Model):
     coursecode = models.CharField(db_column='courseCode', max_length=7) # Field name made lowercase.
     startdate = models.DateField(db_column='startDate') # Field name made lowercase.
     enddate = models.DateField(db_column='endDate') # Field name made lowercase.
+    def get_absolute_url(self):
+        return urlresolvers.reverse('interface:offer_edit', args=(self.pk,))
     class Meta:
         managed = False
         db_table = 'course'

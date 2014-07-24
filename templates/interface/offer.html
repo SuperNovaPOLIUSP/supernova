@@ -4,10 +4,48 @@
 <title>Interface - Offer</title>
 </head>
 <body>
-	<input type="button" value="create" onclick="redirect_to_create_offer();" name="criar"/><br><br>
-	{% for offer in offers %}
-		<a>{{ offer.idOffer }}</a>
-		<br>
-	{% endfor %}
+	{% if courses_size == 0 %}
+		<h1 color="RED">DISCIPLINA NÃO EXISTE</h1> 
+	{% else %}
+		<input type="button" value="create" onclick="redirect_to_create_offer();" name="criar"/><br><br>
+		<table width="1400px" border = 1>
+			<tr>
+			<td align="center"><strong><a> OFFER </a></strong></td>
+			<td align="center"><strong><a> CÓDIGO </a></strong></td>
+			<td align="center"><strong><a> NOME </a></strong></td>
+			<td align="center"><strong><a> PROFESSOR  </a></strong></td>
+			<td align="center"><strong><a> TURMA  </a></strong></td>
+			<td align="center"><strong><a> TEÓRICA/PRÁTICA </a></strong></td>
+			<td align="center"><strong><a> SCHEDULE </a></strong></td>
+			</tr>
+			{% for offer in offers %}
+				<tr>
+				<td align="center"><a href = {% url 'interface:offer_detail' idOffer=offer.idOffer %}>{{ offer.idOffer }}</a></td>
+				<td align="center">{{ offer.course.courseCode }}</td>
+				<td align="center">{{ offer.course.name }} </td>
+				<td align="center">{{ offer.professor.name }}</td>  
+				<td align="center">
+				{% if offer.classNumber < 10 %}
+					T0{{ offer.classNumber }}
+				{% else %}
+					T{{ offer.classNumber }}
+				{% endif %}
+				</td align="center">
+				<td align="center">
+				{% if offer.practical %}
+					PRÁTICA
+				{% else %}
+					TEÓRICA
+				{% endif %}
+				</td>
+				<td align="center">
+				{% for schedule in offer.schedules %}			
+					 {{ schedule }} <br>
+				{% endfor %}
+				</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
 </body>
 </html>

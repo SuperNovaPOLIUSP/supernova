@@ -1,16 +1,17 @@
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from interface.forms import ProfessorForm, OfferForm
+from interface.forms import ProfessorForm, OfferForm, OfferEditForm
+import json
+from pulsarInterface.Course import Course
 from pulsarInterface.Department import Department
 from pulsarInterface.Offer import Offer
 from pulsarInterface.Professor import Professor
 from pulsarInterface.TimePeriod import TimePeriod
-from pulsarInterface.Course import Course
 
 @login_required
 def index(request):
-    form  = OfferForm()
+    form  = OfferForm(auto_id = 'ID_%s')
     rendered_page = render(request, 'interface_index.html', {'form': form})
     return rendered_page
 
@@ -30,7 +31,7 @@ def professor_detail(request, idProfessor):
 def professor_edit(request, idProfessor):
     professor = Professor.pickById(idProfessor)
     if request.method  == 'POST':
-        form = ProfessorForm(request.POST)
+        form = ProfessorForm(request.POST, auto_id = 'ID_%s')
         if form.is_valid():
             name = form.cleaned_data['name']
             memberId = form.cleaned_data['memberId']
@@ -104,10 +105,47 @@ def offer(request):
         form = OfferForm(request.POST)
         if form.is_valid():
             timePeriod = TimePeriod.pickById(form.cleaned_data['dropDownTimePeriod'])
-            course = Course.pickById(int(form.cleaned_data['dropDownCourse']))
-            offers = Offer.find(timePeriod=timePeriod, course=course)
-            rendered_page = render(request, 'offer.html', {'offers': offers})
+            courses = Course.find(courseCode_equal=form.cleaned_data['inputCourse'])
+            offers = [Offer.find(timePeriod=timePeriod, course=course) for course in courses]
+            offerlist = []
+            for offer in offers:
+                offerlist.extend(offer)
+            rendered_page = render(request, 'offer.html', {'offers': offerlist, 'courses_size': len(courses)})
             return rendered_page
     else:
-        raise Exception('ERROR')
-        
+        return HttpResponseRedirect('/interface/')
+    
+@login_required
+def offer_detail(request, idOffer):
+    offer = Offer.pickById(idOffer)
+    rendered_page = render(request, 'offer_detail.html', {'offer': offer})
+    return rendered_page
+
+@login_required        
+def offer_edit(request, idOffer):
+    offer = Offer.pickById(idOffer)
+    if request.method  == 'POST':
+        form = OfferEditForm(request.POST)
+    else:
+        form = OfferEditForm(auto_id = 'ID_%s')
+    rendered_page = render(request, 'offer_edit.html', {'offer': offer, 'form': form})
+    return rendered_page
+
+@login_required
+def search_courses(request):
+    if request.REQUEST['term']:
+        q = request.GET.get('term', '')
+        courses = Course.find(courseCode_like=q)
+        result_courses = []
+        for course in courses:
+            course_json = {}
+            course_json['id'] = course.idCourse
+            course_json['label'] = course.courseCode
+            course_json['value'] = course.courseCode
+            result_courses.append(course_json)
+        data = json.dumps(result_courses)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+

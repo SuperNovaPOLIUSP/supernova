@@ -7,6 +7,7 @@
 <br>
 <a href="{% url 'interface:professor' %}"> Professor </a>
 <br><br>
+<a href="{% url 'interface:crawler' %}"> Crawler </a> <br><br>
 <form method="post" name="offer" action="{% url 'interface:offer' %}"> {% csrf_token %}
 	<a href="javascript: submitform()"> Offer</a>
 	{{ form.as_p }}

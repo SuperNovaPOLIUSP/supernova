@@ -33,20 +33,17 @@ class OfferReader(object):
         self.course = course
 
     def scancourseofferpage(self):
-        "Scans the page of tne course, adding new offers to the bank"
+        "Scans the page of the course, adding new offers to the bank"
         urlstart = 'https://uspdigital.usp.br/jupiterweb/obterTurma'
         fullurl = appendparameters(urlstart, {'sgldis':
                                               self.course.courseCode})
-        print 'Escaneando pagina de disciplina: ' + fullurl
-        print self.cycle.idCycle
         self.crawler.loadpage(fullurl)
+        offers = []
         if re.match('[\S\s]*Hor&aacute;rio[\S\s]*',
                     str(self.crawler.htmlpage)):
-            print 'Encontrada disciplina com oferecimento: '\
-                  + self.course.courseCode
             offersdata = self.getrelevantdata()
-            offers = self.createoffers(offersdata)
-            treatoffers(offers)
+            offers.append(self.createoffers(offersdata))
+        return offers
 
     def checkprofessor(self, professorname):
         """Checks if the professor with the name passed as argument is already
@@ -64,7 +61,6 @@ class OfferReader(object):
                 confirm = raw_input('Adiconar novo professor? (0 ou 1)')
                 if confirm == '1':
                     professor.store()
-                    print 'Stored new professor' + str(professor.__dict__)
         else:
             professor = professor[0]
         return professor
@@ -77,7 +73,6 @@ class OfferReader(object):
             confirm = raw_input('Adiconar novo schedule? (0 ou 1)')
             if confirm == '1':
                 sched.store()
-                print 'stored new schedule' + str(sched.__dict__)
 
     def generateoffer(self, classn_pract, prof_sched_info, professorname):
         """Creates a new Offer object with the informations about the class
@@ -224,12 +219,9 @@ def treatoffers(offers):
         # What can happen here?
         # 1 - Offer as a whole already exists in bank
         if(len(possiblematches) > 1):
-            print 'Oferecimentos repetidos no banco!! Resolver.'
-            aadicionar(offer)
             sys.exit()
         elif (offer.idOffer is not None or offer in possiblematches):
-            print 'O oferecimento já existe no banco!\n'
-            aadicionar(offer)
+            pass
         else:
         # 2 - Offer as a whole is not in bank, maybe the schedules
         # have changed.
@@ -237,8 +229,6 @@ def treatoffers(offers):
                 for duplicate in possiblematches:
                     if not comparelistsofschedules(duplicate.schedules,
                                                    offer.schedules):
-                        print 'Encontrado oferecimento antigo com schedules\
-                              trocados: '
                         updateschedulesoffer(duplicate, offer)
             else:
         # 3 - Offer as a whole is not in the bank, and there is no offer with
@@ -252,7 +242,6 @@ def treatoffers(offers):
                 if possiblematches:
                     # In this case, even if the schedules have also changed,
                     # the store() method will take care of it
-                    print 'Oferecimento parece ter mudado de professor: '
                     for match in possiblematches:
                         aadicionar(match)
                         aadicionar(offer)
@@ -274,12 +263,6 @@ def treatoffers(offers):
 
 def updateschedulesoffer(oldoffer, newoffer):
     aadicionar(oldoffer)
-    print 'Schedules no banco: '
-    for schedule in oldoffer.schedules:
-        print schedule
-    print 'Schedules encontrados no jupiter: '
-    for schedule in newoffer.schedules:
-        print schedule
     atualizar = raw_input('Atualizar os schedules? ( 1 - trocar schedules\
                           / 2 - adicionar mais um schedule')
     if atualizar == '1':
@@ -320,7 +303,6 @@ def storenewoffer(offer):
         aadicionar(offer)
     else:
         pass
-        # sys.exit()
 
 
 def checkforschedule(day, start, end):

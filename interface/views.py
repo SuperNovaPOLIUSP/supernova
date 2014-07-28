@@ -86,11 +86,11 @@ def professor_edit(request, idProfessor):
             professor.store()
             return HttpResponseRedirect('/interface/professor/' + str(idProfessor))
     else:
-        form = ProfessorForm(initial={'name': professor.name, 
-                                      'idDepartment': professor.idDepartment, 
-                                      'memberId': professor.memberId, 
-                                      'office': professor.office, 
-                                      'email': professor.email, 
+        form = ProfessorForm(initial={'name': professor.name,
+                                      'idDepartment': professor.idDepartment,
+                                      'memberId': professor.memberId,
+                                      'office': professor.office,
+                                      'email': professor.email,
                                       'phoneNumber': professor.phoneNumber,
                                       'cellphoneNumber': professor.cellphoneNumber})
     rendered_page = render(request, 'professor_edit.html', {'professor': professor, 'form': form})
@@ -106,7 +106,7 @@ def professor_delete(request, idProfessor):
     professor_delete_log = Log(user=user, action=action, time=time)
     professor_delete_log.save()
     professor.delete()
-    return HttpResponseRedirect('/interface/professor/') 
+    return HttpResponseRedirect('/interface/professor/')
 
 @login_required
 def professor_create(request):
@@ -165,7 +165,7 @@ def offer_detail(request, idOffer):
     rendered_page = render(request, 'offer_detail.html', {'offer': offer})
     return rendered_page
 
-@login_required        
+@login_required
 def offer_edit(request, idOffer):
     offer = Offer.pickById(idOffer)
     if request.method  == 'POST':
@@ -207,8 +207,8 @@ def offer_edit(request, idOffer):
             return HttpResponseRedirect('/interface/offer/' + str(idOffer))
     else:
         form = OfferForm(initial={'dropDownProfessor': offer.professor.idProfessor,
-                                      'classNumber': offer.classNumber, 
-                                      'dropDownTeoricaPratica': offer.practical, 
+                                      'classNumber': offer.classNumber,
+                                      'dropDownTeoricaPratica': offer.practical,
                                       'numberOfRegistrations': offer.numberOfRegistrations})
         form.updateForm()
         form.fields['listSchedules'].initial = [schedule.idSchedule for schedule in offer.schedules]
@@ -339,5 +339,14 @@ def createPDF(timePeriod, cycleId, term):
     response['Content-Type'] = 'application/pdf'
     response['Content-disposition'] = 'attachment; filename=' + name + '.pdf'
     return response
-    
-    
+
+@login_required
+def crawler(request):
+    rendered_page = render(request, 'crawler.html', {})
+    return rendered_page
+
+
+@login_required
+def crawler_run(request):
+    if request.method == 'POST':
+        print 'working'

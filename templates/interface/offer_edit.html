@@ -5,8 +5,10 @@
 </head>
 <body>
 	<h1>ID: {{ offer.idOffer }}</h1><br>
+	<p>Codigo do Curso: {{ offer.course.courseCode }} </p>
+	<p>Periodo: {{ offer.timePeriod }} </p>
 	<form action="{% url 'interface:offer_edit' idOffer=offer.idOffer %}" method="post">{% csrf_token %}
-		<input id="courses"/>
+		{{ form.as_p }}
 		<input type="submit" value="apply" name="Aplicar"/>
 	</form>
 </body>

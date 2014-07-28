@@ -1,7 +1,14 @@
+#coding: utf8
 from django.contrib.auth.models import User
 from django.test.testcases import LiveServerTestCase
-from selenium.webdriver.firefox.webdriver import WebDriver
+from pulsarInterface.Course import Course
 from pulsarInterface.Professor import Professor
+from pulsarInterface.Schedule import Schedule
+from pulsarInterface.TimePeriod import TimePeriod
+from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.support.select import Select
+from tools.MySQLConnection import MySQLConnection
+
 
 def open_page(browser, url, live_server_url):
     browser.get('%s%s' % (live_server_url,url))
@@ -120,3 +127,60 @@ class ProfessorTest(LiveServerTestCase):
         professor_name_after_delete = self.browser.find_elements_by_tag_name('a')
         names = [link.text for link in professor_name_after_delete]
         self.assertNotIn(self.name_professor, names)
+        
+class OfferTest (LiveServerTestCase):
+        
+    def setUp(self):
+        self.browser = WebDriver()
+        self.create_timePeriod_and_course()
+        self.create_professor_and_schedule()
+        self.browser.implicitly_wait(10)
+        create_user_and_login(self.browser, self.live_server_url,'john','johnpassword','john@john.com')
+        self.name_professor = 'teste'
+        
+    def tearDown(self):
+        self.browser.quit()
+        
+    def create_timePeriod_and_course(self):
+        cursor = MySQLConnection()
+        cursor.execute('INSERT INTO minitableLength (idLength, length) values (1, "Semestral")')
+        self.course = Course('tst9999', 'teste9999', '0000-00-00')
+        self.course.store()
+        self.timePeriod = TimePeriod(1, 2014, 1)
+        self.timePeriod.store()
+    
+    def create_professor_and_schedule(self):
+        cursor = MySQLConnection()
+        cursor.execute('INSERT INTO `minitableDayOfTheWeek` VALUES (1,"Domingo"), (2,"Segunda"), (3,"Terça"), (4,"Quarta"), (5,"Quinta"), (6,"Sexta"), (7,"Sabado")')
+        self.schedule = Schedule('Domingo', '12:00:00', 'weekly', '14:00:00')
+        self.schedule.store()
+        self.schedule = Schedule('Segunda', '16:00:00', 'weekly', '19:00:00')
+        self.schedule.store()
+        self.schedule = Schedule('Quarta', '14:00:00', 'weekly', '16:00:00')
+        self.schedule.store()
+        self.professor = Professor('Professor Teste')
+        self.professor.store()
+                
+    def login_to_offer_page(self):
+        open_page(self.browser, '/interface/', self.live_server_url)
+        dropdown_timePeriod = self.browser.find_element_by_id('id_dropDownTimePeriod')
+        dropdown_course = self.browser.find_element_by_id('id_dropDownCourse')
+        select_timePeriod = Select(dropdown_timePeriod)
+        select_timePeriod.select_by_value(str(self.timePeriod.idTimePeriod))
+        select_course = Select(dropdown_course)
+        select_course.select_by_value(str(self.course.idCourse))
+        professor_interface = self.browser.find_element_by_link_text('Offer')
+        professor_interface.click()
+        self.assertIn('Interface - Offer', self.browser.title)
+        
+    def test_create_offer(self):
+        self.login_to_offer_page()
+        button_create_offer = self.browser.find_element_by_name('criar')
+        button_create_offer.click()
+        self.assertIn('Interface - Offer Create', self.browser.title)
+        dropdown_professor = self.browser.find_element_by_id('id_dropDownProfessor')
+        select_professor = Select(dropdown_professor)
+        select_professor.select_by_value(str(self.professor.idProfessor))
+        input_classNumber = self.browser.find_element_by_id('id_classNumber')
+        input_classNumber.send_keys('1')
+        

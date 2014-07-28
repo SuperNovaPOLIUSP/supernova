@@ -1,0 +1,14 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Interface - Offer Create</title>
+</head>
+<body>
+	<p> Código: {{ course.courseCode }}</p>
+	<p> Período: {{ timePeriod }}</p>
+	<form action="{% url 'interface:offer_create' idCourse=course.idCourse idTimePeriod=timePeriod.idTimePeriod %}" method="post">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="store" name="Cadastrar"/>
+	</form>
+</body>
+</html>

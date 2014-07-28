@@ -26,7 +26,7 @@ class Academicprogram(models.Model):
         db_table = 'academicProgram'
 
 class AggrOffer(models.Model):
-    idoffer = models.IntegerField(db_column='idOffer') # Field name made lowercase.
+    idoffer = models.AutoField(db_column='idOffer', primary_key=True) # Field name made lowercase.
     idcourse = models.ForeignKey('Course', db_column='idCourse') # Field name made lowercase.
     idprofessor = models.ForeignKey('Professor', db_column='idProfessor') # Field name made lowercase.
     idtimeperiod = models.ForeignKey('Timeperiod', db_column='idTimePeriod') # Field name made lowercase.
@@ -93,7 +93,7 @@ class Classrepresentative(models.Model):
         db_table = 'classRepresentative'
 
 class Course(models.Model):
-    idcourse = models.IntegerField(db_column='idCourse', primary_key=True) # Field name made lowercase.
+    idcourse = models.AutoField(db_column='idCourse', primary_key=True) # Field name made lowercase.
     name = models.CharField(max_length=255)
     abbreviation = models.CharField(max_length=255)
     syllabus = models.TextField(blank=True)
@@ -335,7 +335,7 @@ class RelQuestionQuestionnaire(models.Model):
         db_table = 'rel_question_questionnaire'
 
 class Schedule(models.Model):
-    idschedule = models.IntegerField(db_column='idSchedule', primary_key=True) # Field name made lowercase.
+    idschedule = models.AutoField(db_column='idSchedule', primary_key=True) # Field name made lowercase.
     iddayoftheweek = models.ForeignKey(Minitabledayoftheweek, db_column='idDayOfTheWeek') # Field name made lowercase.
     start = models.TimeField()
     end = models.TimeField()
@@ -345,7 +345,7 @@ class Schedule(models.Model):
         db_table = 'schedule'
 
 class Timeperiod(models.Model):
-    idtimeperiod = models.IntegerField(db_column='idTimePeriod', primary_key=True) # Field name made lowercase.
+    idtimeperiod = models.AutoField(db_column='idTimePeriod', primary_key=True) # Field name made lowercase.
     length = models.ForeignKey(Minitablelength, db_column='length')
     year = models.IntegerField()
     session = models.IntegerField()

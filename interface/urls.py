@@ -1,10 +1,6 @@
 import autocomplete_light
-from django.conf.urls import patterns, url, include
-from django.views import generic
+from django.conf.urls import patterns, url
 from interface import views
-from interface.forms import OfferEditForm
-from interface.models import Course
-
 
 autocomplete_light.autodiscover()
 
@@ -19,6 +15,6 @@ urlpatterns = patterns('',
     url(r'^offer/(?P<idOffer>\d+)/$', views.offer_detail, name = 'offer_detail'),
     url(r'^offer/(?P<idOffer>\d+)/edit/$', views.offer_edit, name = 'offer_edit'),
     url(r'^search_courses/', views.search_courses, name='search_courses'),
-    #url(r'^offer/(?P<idOffer>\d+)/delete/$', views.professor_delete, name = 'offer_delete'),
-    #url(r'^offer/create/$', views.professor_create, name = 'offer_create'),                  
+    url(r'^offer/(?P<idOffer>\d+)/delete/$', views.offer_delete, name = 'offer_delete'),
+    url(r'^offer/(?P<idTimePeriod>\d+)/(?P<idCourse>\d+)/create/$', views.offer_create, name = 'offer_create'),                  
     )

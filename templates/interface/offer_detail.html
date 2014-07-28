@@ -61,6 +61,12 @@
 	 	function redirect_to_edit_offer() {
 			window.location.href = "{% url 'interface:offer_edit' idOffer=offer.idOffer %}";
 		}
+		function confirm_delete(){
+			var r = confirm("Deseja deletar este oferecimento?");
+			if (r == true) {
+				window.location.href = "{% url 'interface:offer_delete' idOffer=offer.idOffer %}";
+			}
+		}
 	</script>
 </body>
 </html>

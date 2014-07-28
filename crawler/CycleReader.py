@@ -1,17 +1,17 @@
 # coding: utf8
 "Object that will read a page of a cycle"
 import BeautifulSoup
-import MySQLdb
 import re
 import sys
 
-from Crawler.CourseReader import CourseReader
-from Crawler.Crawler import Crawler
-from Crawler.Crawler import appendparameters
-from Crawler.Crawler import getwhatisbetweenthetags
-from Crawler.OfferReader import OfferReader
+from newCrawler.CourseReader import CourseReader
+from newCrawler.Crawler import Crawler
+from newCrawler.Crawler import appendparameters
+from newCrawler.Crawler import getwhatisbetweenthetags
+from newCrawler.OfferReader import OfferReader
 from pulsarInterface.Cycle import Cycle
 from pulsarInterface.TimePeriod import TimePeriod
+from tools.MySQLConnection import MySQLConnection
 
 LASTPERIODDIGIT = -32  # Index of the text where the last digit for the
                        # Period number can be found
@@ -21,7 +21,7 @@ class CycleReader(object):
     """A reader object which will use a crawler to scan through the page
     of a cycle"""
     def __init__(self):
-        self.connection = None
+        self.connection = MySQLConnection()
         self.timeperiod = None
         self.cycle = None
         self.coursereader = None
@@ -29,19 +29,6 @@ class CycleReader(object):
         self.crawler = Crawler()
         self.offerreader = OfferReader(self.connection, self.cycle,
                                        self.timeperiod)
-
-    @staticmethod
-    def initwithconnection(host, user, password, database):
-        """Returns a new CycleReader object with its connection already
-        configured using the host, user, password and database name
-        provided as parameters. Additionally, it configures the charset
-        to be used as unicode"""
-        cyclereader = CycleReader()
-        cyclereader.connection = MySQLdb.connect(host=host, user=user,
-                                                 passwd=password, db=database,
-                                                 use_unicode=True,
-                                                 charset='utf8').cursor()
-        return cyclereader
 
     def settimeperiod(self, idtimeperiod):
         "Sets the timeperiod of this cycle by providing its id"
@@ -65,15 +52,13 @@ class CycleReader(object):
             parameters = {'codcg': str(codcg), 'codcur': str(codcur), 'codhab':
                           codhab, 'tipo': 'N'}
             completeurl = appendparameters(urlstart, parameters)
-            print 'Escaneando página de curso: ' + completeurl
             self.crawler.loadpage(completeurl)
             coursecodedata = self.crawler.htmlpage.findAll('table', {})
             coursecodedata = coursecodedata[1]  # The table with the courses
             codes = getcoursecodes(coursecodedata)
             if codes:
                 break
-        print codes
-        self.startreadingoffers(codes)
+        return self.startreadingoffers(codes)
 
     def findidfaculty(self):
         "returns the id of the faculty that has this cycle"
@@ -86,10 +71,10 @@ class CycleReader(object):
         try:
             idfaculty = self.connection.fetchone()[0]
         except TypeError:
-            print 'Não conseguiu achar idFaculty, '\
-                'checar rel_courseCoordination_cycle e '\
-                'rel_courseCoordination_faculty com idCycle = '\
-                + str(self.cycle.idCycle)
+            raise TypeError('Não conseguiu achar idFaculty,\
+                            checar rel_courseCoordination_cycle e\
+                            rel_courseCoordination_faculty com idCycle = ' +
+                            str(self.cycle.idCycle))
             sys.exit()
         return idfaculty
 
@@ -103,7 +88,6 @@ class CycleReader(object):
         listcodcur = []
         for codcur in codcurall:
             listcodcur.append(codcur[0])
-        print listcodcur
         return listcodcur
 
     def startreadingoffers(self, coursecodes):
@@ -111,6 +95,7 @@ class CycleReader(object):
         requisitiontypetranslationdict = {0: 1, 1: 2, 2: 3}
         # In the bank: 1 - Obrigatória, 2 - Eletiva, 3 - Livre
         index = 0
+        offers = []
         while index < len(coursecodes):
             for period in coursecodes[index]:
                 for code in coursecodes[index][period]:
@@ -120,8 +105,9 @@ class CycleReader(object):
                                           [index])
                     course = reader.scancoursepage()
                     self.offerreader.setcourse(course)
-                    self.offerreader.scancourseofferpage()
+                    offers.extend(self.offerreader.scancourseofferpage())
             index += 1
+        return offers
 
 
 def getcoursecodes(coursecodedata):
@@ -182,4 +168,3 @@ def splittimeperiod(perioddata):
         timeperioddict[timeperiodnumber] = splitdata[index + 1]
         index += 1
     return timeperioddict
-    

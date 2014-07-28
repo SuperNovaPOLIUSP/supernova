@@ -12,6 +12,11 @@ from pulsarInterface.Professor import Professor
 from pulsarInterface.Schedule import Schedule
 from pulsarInterface.TimePeriod import TimePeriod
 
+from pulsarInterface.Cycle import Cycle
+
+from interface.forms import ProfessorForm, CrawlerForm
+from crawler import CycleReader
+from forms import CrawlerResultsForm
 
 @login_required
 def index(request):
@@ -208,11 +213,29 @@ def search_courses(request):
 
 @login_required
 def crawler(request):
-    rendered_page = render(request, 'crawler.html', {})
+    form = CrawlerForm()
+    rendered_page = render(request, 'crawler.html', {'form': form})
     return rendered_page
+
+
+@login_required
+def crawler_results(request):
+    form = CrawlerResultsForm()
+    form.fields['offers'].choices =
 
 
 @login_required
 def crawler_run(request):
     if request.method == 'POST':
-        print 'working'
+        form = CrawlerForm(request.POST)
+        if form.is_valid():
+            id_time_period = form.cleaned_data['timePeriod']
+            ids_cycle = form.cleaned_data['cycle']
+            for id_cycle in ids_cycle:
+                crawler = CycleReader()
+                crawler.settimeperiod(id_time_period)
+                crawler.setcourse(id_cycle)
+                offers = crawler.startreadingcycles()
+            rendered_page = render(request, 'crawler_results.html', {'offers': offers})
+            return rendered_page
+    return HttpResponseRedirect('/interface/crawler/')

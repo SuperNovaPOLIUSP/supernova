@@ -27,7 +27,6 @@ class CourseReader(object):
         urlstart = 'https://uspdigital.usp.br/jupiterweb/obterDisciplina'
         parameters = {'sgldis': str(self.coursecode)}
         completeurl = appendparameters(urlstart, parameters)
-        print completeurl
         self.crawler.loadpage(completeurl)
         name = self.findname()
         startdate = self.findstartdate()
@@ -82,20 +81,3 @@ def convertdate(data):
     formatdate = '%Y-%m-%d'
     data = date.strftime(formatdate)
     return data
-
-
-def aadicionar(var):
-    for i in var.__dict__:
-        print str(i) + ': '
-        try:
-            if isinstance(var.__dict__[i], list):
-                for k in var.__dict__[i]:
-                    print k
-            for j in var.__dict__[i].__dict__:
-                print '        ' + str(j) + ': ' +  \
-                    unicode(var.__dict__[i].__dict__[j])
-        except:
-            try:
-                print '    ' + str(var.__dict__[i])
-            except:
-                print '    ' + unicode(var.__dict__[i])                

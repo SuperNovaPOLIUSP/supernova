@@ -1,15 +1,17 @@
 #coding: utf8
+from django import forms
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from interface.forms import ProfessorForm, IndexForm, OfferForm
+from interface.forms import ProfessorForm, IndexForm, OfferForm, getKey
 import json
 from pulsarInterface.Course import Course
 from pulsarInterface.Department import Department
 from pulsarInterface.Offer import Offer
 from pulsarInterface.Professor import Professor
-from pulsarInterface.TimePeriod import TimePeriod
 from pulsarInterface.Schedule import Schedule
+from pulsarInterface.TimePeriod import TimePeriod
+
 
 @login_required
 def index(request):
@@ -123,30 +125,33 @@ def offer_detail(request, idOffer):
 @login_required        
 def offer_edit(request, idOffer):
     offer = Offer.pickById(idOffer)
+    schedulesIds = [schedule.idSchedule for schedule in offer.schedules]
+    scheduleInfo = zip(schedulesIds, offer.schedules)
     if request.method  == 'POST':
         form = OfferForm(request.POST)
+        form.fields['listSchedules'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
         if form.is_valid():
             idProfessor = form.cleaned_data['dropDownProfessor']
             classNumber = form.cleaned_data['classNumber']
             practical = form.cleaned_data['dropDownTeoricaPratica']
             numberOfRegistrations = form.cleaned_data['numberOfRegistrations']
             schedulesIds = form.cleaned_data['listSchedules']
-            schedules = [Schedule.pickById(schedule) for schedule in schedulesIds]
+            schedules = [Schedule.pickById(int(schedule)) for schedule in schedulesIds]
             offer.setProfessor(Professor.pickById(idProfessor))
             offer.classNumber = classNumber
             offer.practical = practical
             numberOfRegistrations = None if not numberOfRegistrations else numberOfRegistrations
-            offer.numberOfRegistrations = numberOfRegistrations
+            offer.setNumberOfRegistrations(numberOfRegistrations)
             offer.setSchedules(schedules)
             offer.store()
             return HttpResponseRedirect('/interface/offer/' + str(idOffer))
     else:
-        schedulesIds = [schedule.idSchedule for schedule in offer.schedules]
-        form = OfferForm(initial={'dropDownProfessor': offer.professor.idProfessor, 
+        form = OfferForm(initial={'dropDownProfessor': offer.professor.idProfessor,
                                       'classNumber': offer.classNumber, 
                                       'dropDownTeoricaPratica': offer.practical, 
-                                      'numberOfRegistrations': offer.numberOfRegistrations, 
-                                      'listSchedules': schedulesIds})
+                                      'numberOfRegistrations': offer.numberOfRegistrations})
+        form.fields['listSchedules'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
+        form.fields['listSchedules'].initial = schedulesIds
     rendered_page = render(request, 'offer_edit.html', {'offer': offer, 'form': form})
     return rendered_page
 

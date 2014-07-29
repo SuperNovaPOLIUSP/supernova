@@ -8,23 +8,23 @@
 		<h1>ID: {{ offer.idOffer }}</h1><br>
 		<tr>
 			<td>Código:</td>
-			<td>{{ offer.course.courseCode }} </td>
+			<td id="courseCode">{{ offer.course.courseCode }} </td>
 		</tr>
 		<tr>
 			<td>Nome:</td>
-			<td>{{ offer.course.name }} </td>
+			<td id="name">{{ offer.course.name }} </td>
 		</tr>
 		<tr>
 			<td>Professor: </td>
-			<td>{{ offer.professor.name }} </td>
+			<td id="professor_name">{{ offer.professor.name }} </td>
 		</tr>
 		<tr>
 			<td>Período: </td>
-			<td>{{ offer.timePeriod }} </td>
+			<td id="timePeriod">{{ offer.timePeriod }} </td>
 		</tr>
 		<tr>
 			<td>Turma: </td>
-			<td>			
+			<td id="classNumber">			
 				{% if offer.classNumber < 10 %}
 					T0{{ offer.classNumber }}
 				{% else %}
@@ -34,21 +34,21 @@
 		</tr>
 		<tr>
 			<td>Teórica/Prática: </td>
-			<td>
+			<td id="practical">
 				{% if offer.practical %}
-					PRÁTICA
+					PRATICA
 				{% else %}
-					TEÓRICA
+					TEORICA
 				{% endif %} 
 			</td>
 		</tr>
 		<tr>
 			<td>Número de Matrículados: </td>
-			<td>{{ offer.numberOfRegistrations }} </td>
+			<td id="numberOfRegistrations"> {{ offer.numberOfRegistrations }} </td>
 		</tr>
 		<tr>
 			<td>Horários: </td>
-			<td>
+			<td id="schedules">
 				{% for schedule in offer.schedules %}			
 					{{ schedule }} <br> 
 				{% endfor %}

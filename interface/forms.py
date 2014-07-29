@@ -37,13 +37,14 @@ class OfferForm(forms.Form):
     professorIds = [professor.idProfessor for professor in professors]
     professorInfo = zip(professorIds, professorName)
     professorInfo = sorted(professorInfo, key=getKey)
+    schedules = Schedule.find()
+    scheduleName = schedules
+    scheduleIds = [schedule.idSchedule for schedule in schedules]
+    scheduleInfo = zip(scheduleIds, scheduleName)
     dropDownProfessor = forms.ChoiceField(widget=forms.Select, choices=professorInfo, label = "Professor")
     classNumber = forms.IntegerField(required = True, label = 'Número da Turma')
     teoricaPraticaInfo = [[0,'Teórica'],[1,'Prática']]
     dropDownTeoricaPratica = forms.ChoiceField(widget=forms.Select, choices=teoricaPraticaInfo, label = "TEÓRICA/PRÁTICA")
     numberOfRegistrations = forms.IntegerField(required = False, label = 'Número de Matriculados')
-    schedules = Schedule.find()
-    scheduleName = schedules
-    scheduleIds = [schedule.idSchedule for schedule in schedules]
-    scheduleInfo = zip(scheduleIds, scheduleName)
     listSchedules = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
+        

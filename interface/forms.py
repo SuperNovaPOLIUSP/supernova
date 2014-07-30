@@ -18,18 +18,7 @@ class ProfessorForm(forms.Form):
     idDepartment = forms.IntegerField(required = False, label = 'ID Department')
     
 class IndexForm(forms.Form):
-    timePeriods = TimePeriod.find()
-    timePeriods.reverse()
-    timePeriodNames = [str(timePeriod) for timePeriod in timePeriods]
-    timePeriodIds = [t.idTimePeriod for t in timePeriods]
-    timePeriodInfo = zip(timePeriodIds, timePeriodNames)
-    dropDownTimePeriod = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = 'Periodo')
-    courses = Course.find()
-    courseCode = [course.courseCode for course in courses]
-    courseIds = [course.idCourse for course in courses]
-    courseInfo = zip(courseIds, courseCode)
-    courseInfo = sorted(courseInfo, key=getKey)
-    dropDownCourse = forms.ChoiceField(widget=forms.Select, choices=courseInfo, label = 'Codigo do Curso')
+    pass
     
 class OfferForm(forms.Form):
     professors = Professor.find()

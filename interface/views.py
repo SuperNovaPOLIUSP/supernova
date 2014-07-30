@@ -15,7 +15,19 @@ from pulsarInterface.TimePeriod import TimePeriod
 
 @login_required
 def index(request):
-    form  = IndexForm()
+    form = IndexForm()
+    timePeriods = TimePeriod.find()
+    timePeriods.reverse()
+    timePeriodNames = [str(timePeriod) for timePeriod in timePeriods]
+    timePeriodIds = [t.idTimePeriod for t in timePeriods]
+    timePeriodInfo = zip(timePeriodIds, timePeriodNames)
+    form.fields['dropDownTimePeriod'] = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = 'Periodo')
+    courses = Course.find()
+    courseCode = [course.courseCode for course in courses]
+    courseIds = [course.idCourse for course in courses]
+    courseInfo = zip(courseIds, courseCode)
+    courseInfo = sorted(courseInfo, key=getKey)
+    form.fields['dropDownCourse'] = forms.ChoiceField(widget=forms.Select, choices=courseInfo, label = 'Codigo do Curso')
     rendered_page = render(request, 'interface_index.html', {'form': form})
     return rendered_page
 
@@ -105,8 +117,20 @@ def professor_create(request):
 
 @login_required
 def offer(request):
+    timePeriods = TimePeriod.find()
+    timePeriods.reverse()
+    timePeriodNames = [str(timePeriod) for timePeriod in timePeriods]
+    timePeriodIds = [t.idTimePeriod for t in timePeriods]
+    timePeriodInfo = zip(timePeriodIds, timePeriodNames)
+    courses = Course.find()
+    courseCode = [course.courseCode for course in courses]
+    courseIds = [course.idCourse for course in courses]
+    courseInfo = zip(courseIds, courseCode)
+    courseInfo = sorted(courseInfo, key=getKey)
     if request.method  == 'POST':
         form = IndexForm(request.POST)
+        form.fields['dropDownTimePeriod'] = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = 'Periodo')
+        form.fields['dropDownCourse'] = forms.ChoiceField(widget=forms.Select, choices=courseInfo, label = 'Codigo do Curso')
         if form.is_valid():
             timePeriod = TimePeriod.pickById(form.cleaned_data['dropDownTimePeriod'])
             course = Course.pickById(form.cleaned_data['dropDownCourse'])
@@ -127,9 +151,15 @@ def offer_edit(request, idOffer):
     offer = Offer.pickById(idOffer)
     schedulesIds = [schedule.idSchedule for schedule in offer.schedules]
     scheduleInfo = zip(schedulesIds, offer.schedules)
+    professors = Professor.find()
+    professorName = [professor.name for professor in professors]
+    professorIds = [professor.idProfessor for professor in professors]
+    professorInfo = zip(professorIds, professorName)
+    professorInfo = sorted(professorInfo, key=getKey)
     if request.method  == 'POST':
         form = OfferForm(request.POST)
         form.fields['listSchedules'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
+        form.fields['dropDownProfessor'] = forms.ChoiceField(widget=forms.Select, choices=professorInfo, label = "Professor")
         if form.is_valid():
             idProfessor = form.cleaned_data['dropDownProfessor']
             classNumber = form.cleaned_data['classNumber']
@@ -152,6 +182,8 @@ def offer_edit(request, idOffer):
                                       'numberOfRegistrations': offer.numberOfRegistrations})
         form.fields['listSchedules'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
         form.fields['listSchedules'].initial = schedulesIds
+        form.fields['dropDownProfessor'] = forms.ChoiceField(widget=forms.Select, choices=professorInfo, label = "Professor")
+        form.fields['dropDownProfessor'].initial = professorIds
     rendered_page = render(request, 'offer_edit.html', {'offer': offer, 'form': form})
     return rendered_page
 
@@ -159,8 +191,17 @@ def offer_edit(request, idOffer):
 def offer_create(request, idTimePeriod, idCourse):
     timePeriod = TimePeriod.pickById(idTimePeriod)
     course = Course.pickById(idCourse)
+    schedulesIds = [schedule.idSchedule for schedule in Schedule.find()]
+    scheduleInfo = zip(schedulesIds, Schedule.find())
+    professors = Professor.find()
+    professorName = [professor.name for professor in professors]
+    professorIds = [professor.idProfessor for professor in professors]
+    professorInfo = zip(professorIds, professorName)
+    professorInfo = sorted(professorInfo, key=getKey)
     if request.method  == 'POST':
         form = OfferForm(request.POST)
+        form.fields['listSchedules'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
+        form.fields['dropDownProfessor'] = forms.ChoiceField(widget=forms.Select, choices=professorInfo, label = "Professor")
         if form.is_valid():
             idProfessor = form.cleaned_data['dropDownProfessor']
             classNumber = form.cleaned_data['classNumber']
@@ -177,6 +218,8 @@ def offer_create(request, idTimePeriod, idCourse):
             return HttpResponseRedirect('/interface/offer/' + str(offer.idOffer))
     else:
         form = OfferForm()
+        form.fields['listSchedules'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
+        form.fields['dropDownProfessor'] = forms.ChoiceField(widget=forms.Select, choices=professorInfo, label = "Professor")
     rendered_page = render(request, 'offer_create.html', {'form': form, 'timePeriod': timePeriod, 'course': course})
     return rendered_page
 

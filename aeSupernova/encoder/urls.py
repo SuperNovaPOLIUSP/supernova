@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^loadEncoding/$', 'aeSupernova.encoder.encoder.fillOffers'),
     url(r'^showPossibleOffers/$', 'aeSupernova.encoder.encoder.showPossibleOffers'),
     url(r'^store/$', 'aeSupernova.encoder.encoder.setOffers'),
+    url(r'^deleteEncoding/$', 'aeSupernova.encoder.encoder.deleteEncoding'),
     url(r'^showPossibleEncodings/$', 'aeSupernova.encoder.encoder.possibleCodifications'),
 
 )

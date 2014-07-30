@@ -11,6 +11,7 @@
     <button onMouseDown='showPossibleEncodings()'>Editar Codificação</button>
 </div>
 <div id = 'selectEncoding' style='position:absolute; top:50px; left:50px'>
+	<button onMouseDown='deleteEncoding()'>Deletar Codificação</button>
 </div>
 
 <div id = 'newEncoding' style='position:absolute; top:50px; left:50px'>
@@ -32,19 +33,25 @@
     $('#newEncoding').hide()
     var controller = new Controller()
     $('#encoded').append(controller.div)
-    //var teste = [{classNumber:1, idOffer:12, professorName:'pedro'},{classNumber:1, idOffer:12, professorName:'pedroa'}]
-    //var course = new Course('PSI2222', 'Praticas', teste)
-    //encodedDiv = $('#encoded')
-    //encodedDiv.append(course.getHTML())
     function start(){
         $('#initialButtons').show()
     }
-
     function newEncoding(){
         $('#initialButtons').hide()
         $('#newEncoding').show()
     }
-
+	
+	function deleteEncoding(){
+		var select = document.getElementById("selectEncoding")
+		var selectedValue = select.options[select.selectedIndex].value;
+		if (selectedValue == 0){
+			alert("Escolha uma Codificação")
+		}
+		else {
+			get.open( "GET", 'deleteEncoding/?' + $.param({idOpticalSheet: selectedValue}), false)
+		}
+	}
+	
     function showPossibleEncodings(){
         var idTimePeriod = $('#headerTimePeriod').val()
         $('#initialButtons').hide()
@@ -54,6 +61,7 @@
         get.send(null)
         var encodings = JSON.parse(get.responseText)
         var select = new $(document.createElement('select'))
+        select.setAttribute("id", "selectEncoding");
         var option = new $(document.createElement('option'))
         option.val(0)
         select.append(option)

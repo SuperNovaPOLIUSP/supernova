@@ -1,6 +1,9 @@
-from pulsarInterface.Course import *
-from pulsarInterface.Offer import *
-from tools.MySQLConnection import *
+from pulsarInterface.Course import Course
+from pulsarInterface.Offer import Offer
+from pulsarInterface.Professor import Professor
+from pulsarInterface.TimePeriod import TimePeriod
+from tools.MySQLConnection import MySQLConnection
+
 
 class ColumnsControllerError(Exception):
     """
@@ -112,7 +115,7 @@ class ColumnsController(object):
             elif practical == 'T':
                 practical = False
             else:
-               raise ColumnsControllerError("The parameter given between the '()' must be equal to 'P' or 'T'.")
+                raise ColumnsControllerError("The parameter given between the '()' must be equal to 'P' or 'T'.")
             courseCode = courseCode.rsplit('(')[0] + courseCode.rsplit(')')[1]
 
         course = Course.find(courseCode_equal = courseCode, endDate_equal = '0000-00-00')[0]

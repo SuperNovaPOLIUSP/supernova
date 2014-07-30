@@ -1,6 +1,9 @@
-from pulsarInterface.OpticalSheet import *
-from pulsarInterface.Cycle import *
 from pulsarInterface.Answer import Answer
+from pulsarInterface.Cycle import Cycle
+from pulsarInterface.Offer import Offer, OfferError
+from pulsarInterface.OpticalSheet import OpticalSheet, OpticalSheetError
+from pulsarInterface.TimePeriod import TimePeriod
+
 
 class Codification(object):
     

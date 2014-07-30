@@ -1,7 +1,14 @@
 #encoding: utf8
-from pulsarInterface.OpticalSheet import *
-from pulsarInterface.Faculty import *
-from pulsarInterface.TimePeriod import *
+from pulsarInterface.Answer import Answer
+from pulsarInterface.Course import Course
+from pulsarInterface.Cycle import Cycle
+from pulsarInterface.Offer import Offer
+from pulsarInterface.OpticalSheet import OpticalSheet, OpticalSheetError
+from pulsarInterface.Question import Question
+from pulsarInterface.Questionnaire import Questionnaire
+from pulsarInterface.TimePeriod import TimePeriod
+from tools.MySQLConnection import MySQLConnection
+
 
 class OpticalSheetController(object):
 

@@ -1,9 +1,9 @@
-from aeSupernova.opticalSheet.Printer import *
-from pulsarInterface.OpticalSheet import *
-from pulsarInterface.Faculty import *
-
+from aeSupernova.opticalSheet.Printer import Printer
+from pulsarInterface.Cycle import Cycle
+from pulsarInterface.Offer import Offer
+from pulsarInterface.OpticalSheet import OpticalSheet
+from pulsarInterface.TimePeriod import TimePeriod
 #import operator
-
 class QualitativeQuestionnairePrinter(Printer):
 
     """

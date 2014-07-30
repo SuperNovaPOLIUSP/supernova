@@ -1,7 +1,14 @@
 #encoding: utf8
-from aeSupernova.opticalSheet.Printer import *
-from pulsarInterface.OpticalSheet import *
-from pulsarInterface.Faculty import *
+from django.conf import settings
+from pulsarInterface.AnswerType import AnswerType
+from pulsarInterface.CourseCoordination import CourseCoordination
+from pulsarInterface.Cycle import Cycle
+from pulsarInterface.Faculty import Faculty
+from pulsarInterface.OpticalSheet import OpticalSheet
+from pulsarInterface.TimePeriod import TimePeriod
+
+from aeSupernova.opticalSheet.Printer import Printer
+
 
 class OpticalSheetPrinter(Printer):
     """

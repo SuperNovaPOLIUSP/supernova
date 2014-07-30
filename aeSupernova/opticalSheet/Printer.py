@@ -1,11 +1,13 @@
 #encoding: utf8
-from pulsarInterface.Faculty import *
-from django.shortcuts import render_to_response
-from django.template.loader import *
-from django.http import *
-
 import codecs
 import commands
+from django.conf import settings
+from django.http.response import HttpResponse
+from django.template.context import Context
+from django.template.loader import get_template
+from pulsarInterface.CourseCoordination import CourseCoordination
+from pulsarInterface.Faculty import Faculty
+
 
 class Printer(object):
 

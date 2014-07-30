@@ -1,17 +1,19 @@
 #encoding: utf8
-from django import http
+
 from django.contrib.auth.decorators import login_required
-from django.http import *
+from django.http.response import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import json
 
 from aeSupernova.header.Header import Header
-from aeSupernova.opticalSheet.ColumnsController import *
-from aeSupernova.opticalSheet.OpticalSheetController import *
-from aeSupernova.opticalSheet.OpticalSheetPrinter import *
-from aeSupernova.opticalSheet.QualitativeQuestionnairePrinter import *
-from aeSupernova.opticalSheet.QuestionController import *
+from aeSupernova.opticalSheet.ColumnsController import ColumnsController
+from aeSupernova.opticalSheet.OpticalSheetController import \
+    OpticalSheetController
+from aeSupernova.opticalSheet.OpticalSheetPrinter import OpticalSheetPrinter
+from aeSupernova.opticalSheet.QualitativeQuestionnairePrinter import \
+    QualitativeQuestionnairePrinter
+from aeSupernova.opticalSheet.QuestionController import QuestionController
 
 
 @login_required
@@ -45,7 +47,6 @@ def getAnswerTypes(request):
     return HttpResponse(json.dumps(response))
 
 def getQuestions(request):
-    data = request.GET
     response = QuestionController.findQuestion('')
     return HttpResponse(json.dumps(response))
 
@@ -80,12 +81,12 @@ def printOpticalSheet(request):
     return HttpResponse('ok')
 
 def getPrintedOpticalSheet(request):
-   data = request.GET
-   opticalSheetPrinter = OpticalSheetPrinter(int(data['idCycle']), int(data['term']), int(data['idTimePeriod']))
-   if data['downloadType'] == 'pdf':
-       return opticalSheetPrinter.getPDF()
-   elif data['downloadType'] == 'tex':
-       return opticalSheetPrinter.getTex()
+    data = request.GET
+    opticalSheetPrinter = OpticalSheetPrinter(int(data['idCycle']), int(data['term']), int(data['idTimePeriod']))
+    if data['downloadType'] == 'pdf':
+        return opticalSheetPrinter.getPDF()
+    elif data['downloadType'] == 'tex':
+        return opticalSheetPrinter.getTex()
 
 def printQualitativeQuestionnaire(request):
     data = request.POST

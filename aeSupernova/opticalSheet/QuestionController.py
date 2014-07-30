@@ -1,4 +1,5 @@
-from pulsarInterface.Question import *
+from pulsarInterface.AnswerType import AnswerType
+from pulsarInterface.Question import Question
 
 class QuestionController(object):
 

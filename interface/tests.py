@@ -203,7 +203,7 @@ class OfferTest (LiveServerTestCase):
         self.browser.find_element_by_id("id_listSchedules_2").click()
         button_store = self.browser.find_element_by_name('Cadastrar')
         button_store.click()
-        #self.assertIn('Interface - Offer Detail', self.browser.title)
+        self.assertIn('Interface - Offer Detail', self.browser.title)
         id_courseCode = self.browser.find_element_by_id('courseCode')
         self.assertEqual(id_courseCode.text, 'tst9999')
         id_name = self.browser.find_element_by_id('name')

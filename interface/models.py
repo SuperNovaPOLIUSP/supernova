@@ -10,7 +10,9 @@
 
 from __future__ import unicode_literals
 
+from django.core import urlresolvers
 from django.db import models
+
 
 class Academicprogram(models.Model):
     idacademicprogram = models.IntegerField(db_column='idAcademicProgram', primary_key=True) # Field name made lowercase.
@@ -24,7 +26,7 @@ class Academicprogram(models.Model):
         db_table = 'academicProgram'
 
 class AggrOffer(models.Model):
-    idoffer = models.IntegerField(db_column='idOffer') # Field name made lowercase.
+    idoffer = models.AutoField(db_column='idOffer', primary_key=True) # Field name made lowercase.
     idcourse = models.ForeignKey('Course', db_column='idCourse') # Field name made lowercase.
     idprofessor = models.ForeignKey('Professor', db_column='idProfessor') # Field name made lowercase.
     idtimeperiod = models.ForeignKey('Timeperiod', db_column='idTimePeriod') # Field name made lowercase.
@@ -91,13 +93,15 @@ class Classrepresentative(models.Model):
         db_table = 'classRepresentative'
 
 class Course(models.Model):
-    idcourse = models.IntegerField(db_column='idCourse', primary_key=True) # Field name made lowercase.
+    idcourse = models.AutoField(db_column='idCourse', primary_key=True) # Field name made lowercase.
     name = models.CharField(max_length=255)
     abbreviation = models.CharField(max_length=255)
     syllabus = models.TextField(blank=True)
     coursecode = models.CharField(db_column='courseCode', max_length=7) # Field name made lowercase.
     startdate = models.DateField(db_column='startDate') # Field name made lowercase.
     enddate = models.DateField(db_column='endDate') # Field name made lowercase.
+    def get_absolute_url(self):
+        return urlresolvers.reverse('interface:offer_edit', args=(self.pk,))
     class Meta:
         managed = False
         db_table = 'course'
@@ -331,7 +335,7 @@ class RelQuestionQuestionnaire(models.Model):
         db_table = 'rel_question_questionnaire'
 
 class Schedule(models.Model):
-    idschedule = models.IntegerField(db_column='idSchedule', primary_key=True) # Field name made lowercase.
+    idschedule = models.AutoField(db_column='idSchedule', primary_key=True) # Field name made lowercase.
     iddayoftheweek = models.ForeignKey(Minitabledayoftheweek, db_column='idDayOfTheWeek') # Field name made lowercase.
     start = models.TimeField()
     end = models.TimeField()
@@ -341,7 +345,7 @@ class Schedule(models.Model):
         db_table = 'schedule'
 
 class Timeperiod(models.Model):
-    idtimeperiod = models.IntegerField(db_column='idTimePeriod', primary_key=True) # Field name made lowercase.
+    idtimeperiod = models.AutoField(db_column='idTimePeriod', primary_key=True) # Field name made lowercase.
     length = models.ForeignKey(Minitablelength, db_column='length')
     year = models.IntegerField()
     session = models.IntegerField()

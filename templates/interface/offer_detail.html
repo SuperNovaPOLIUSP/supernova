@@ -1,0 +1,72 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Interface - Offer Detail</title>
+</head>
+<body>
+	<table width="1500px">
+		<h1>ID: {{ offer.idOffer }}</h1><br>
+		<tr>
+			<td>Código:</td>
+			<td id="courseCode">{{ offer.course.courseCode }} </td>
+		</tr>
+		<tr>
+			<td>Nome:</td>
+			<td id="name">{{ offer.course.name }} </td>
+		</tr>
+		<tr>
+			<td>Professor: </td>
+			<td id="professor_name">{{ offer.professor.name }} </td>
+		</tr>
+		<tr>
+			<td>Período: </td>
+			<td id="timePeriod">{{ offer.timePeriod }} </td>
+		</tr>
+		<tr>
+			<td>Turma: </td>
+			<td id="classNumber">			
+				{% if offer.classNumber < 10 %}
+					T0{{ offer.classNumber }}
+				{% else %}
+					T{{ offer.classNumber }}
+				{% endif %} 
+			</td>
+		</tr>
+		<tr>
+			<td>Teórica/Prática: </td>
+			<td id="practical">
+				{% if offer.practical %}
+					PRATICA
+				{% else %}
+					TEORICA
+				{% endif %} 
+			</td>
+		</tr>
+		<tr>
+			<td>Número de Matrículados: </td>
+			<td id="numberOfRegistrations"> {{ offer.numberOfRegistrations }} </td>
+		</tr>
+		<tr>
+			<td>Horários: </td>
+			<td id="schedules">
+				{% for schedule in offer.schedules %}			
+					{{ schedule }} <br> 
+				{% endfor %}
+			</td>
+		</tr>
+	<table>
+	<input type="button" value="edit" onclick="redirect_to_edit_offer();" name="editar"/>
+	<input type="button" value="delete" onclick="confirm_delete();" name="deletar"/>
+	<script>
+	 	function redirect_to_edit_offer() {
+			window.location.href = "{% url 'interface:offer_edit' idOffer=offer.idOffer %}";
+		}
+		function confirm_delete(){
+			var r = confirm("Deseja deletar este oferecimento?");
+			if (r == true) {
+				window.location.href = "{% url 'interface:offer_delete' idOffer=offer.idOffer %}";
+			}
+		}
+	</script>
+</body>
+</html>

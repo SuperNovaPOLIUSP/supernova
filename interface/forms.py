@@ -18,22 +18,38 @@ class ProfessorForm(forms.Form):
     idDepartment = forms.IntegerField(required = False, label = 'ID Department')
     
 class IndexForm(forms.Form):
-    pass
+    def updateForm(self):
+        timePeriods = TimePeriod.find()
+        timePeriods.reverse()
+        timePeriodNames = [str(timePeriod) for timePeriod in timePeriods]
+        timePeriodIds = [t.idTimePeriod for t in timePeriods]
+        timePeriodInfo = zip(timePeriodIds, timePeriodNames)
+        courses = Course.find()
+        courseCode = [course.courseCode for course in courses]
+        courseIds = [course.idCourse for course in courses]
+        courseInfo = zip(courseIds, courseCode)
+        courseInfo = sorted(courseInfo, key=getKey)
+        self.fields['dropDownTimePeriod'] = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = 'Periodo')
+        self.fields['dropDownCourse'] = forms.ChoiceField(widget=forms.Select, choices=courseInfo, label = 'Codigo do Curso')
     
 class OfferForm(forms.Form):
-    professors = Professor.find()
-    professorName = [professor.name for professor in professors]
-    professorIds = [professor.idProfessor for professor in professors]
-    professorInfo = zip(professorIds, professorName)
-    professorInfo = sorted(professorInfo, key=getKey)
-    schedules = Schedule.find()
-    scheduleName = schedules
-    scheduleIds = [schedule.idSchedule for schedule in schedules]
-    scheduleInfo = zip(scheduleIds, scheduleName)
-    dropDownProfessor = forms.ChoiceField(widget=forms.Select, choices=professorInfo, label = "Professor")
     classNumber = forms.IntegerField(required = True, label = 'Número da Turma')
     teoricaPraticaInfo = [[0,'Teórica'],[1,'Prática']]
     dropDownTeoricaPratica = forms.ChoiceField(widget=forms.Select, choices=teoricaPraticaInfo, label = "TEÓRICA/PRÁTICA")
     numberOfRegistrations = forms.IntegerField(required = False, label = 'Número de Matriculados')
-    listSchedules = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
+    
+    def updateForm(self):
+        professors = Professor.find()
+        professorName = [professor.name for professor in professors]
+        professorIds = [professor.idProfessor for professor in professors]
+        professorInfo = zip(professorIds, professorName)
+        professorInfo = sorted(professorInfo, key=getKey)
+        schedules = Schedule.find()
+        scheduleName = schedules
+        scheduleIds = [schedule.idSchedule for schedule in schedules]
+        scheduleInfo = zip(scheduleIds, scheduleName)
+        self.fields['dropDownProfessor'] = forms.ChoiceField(widget=forms.Select, choices=professorInfo, label = "Professor")
+        self.fields['listSchedules'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
+
+        
         

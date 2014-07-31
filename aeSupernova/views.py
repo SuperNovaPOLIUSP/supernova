@@ -1,8 +1,5 @@
-from django import http
-from django.http import *
-from django.shortcuts import render_to_response, redirect
-from django.template import RequestContext
-
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import render_to_response
 
 def index(request):
     if request.user.is_authenticated():    

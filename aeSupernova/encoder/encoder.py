@@ -1,16 +1,18 @@
 #encoding: utf8
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import json
 from pulsarInterface.Offer import Offer
 from pulsarInterface.OpticalSheet import OpticalSheet
 from pulsarInterface.TimePeriod import TimePeriod
+
 from aeSupernova.encoder.Codification import Codification
 from aeSupernova.header.Header import Header
 
-MAX_NUMBER_OF_CODES = 99  # Not possible to add more codes after 99 
+
+MAX_NUMBER_OF_CODES = 100  # Not possible to add more codes after 99 
 
 @login_required
 def openSite(request):
@@ -49,6 +51,12 @@ def fillOffers(request):
     codification.fillOffers()
     return HttpResponse(json.dumps(offers_to_dict(codification.offers)))
     
+def deleteEncoding(request):
+    data = request.GET
+    opticalSheet = OpticalSheet.pickById(int(data['idOpticalSheet']))
+    opticalSheet.delete()
+    return HttpResponseRedirect('/encoder/')
+    
 def setOffers(request):
     data = request.GET
     data = json.loads(data['json'])
@@ -58,7 +66,7 @@ def setOffers(request):
     offers = []
     for idOffer in data['idOffers']:
         offers.append(Offer.pickById(int(idOffer)))
-    if len(offers) > MAX_NUMBER_OF_CODES:  
+    if len(offers) > MAX_NUMBER_OF_CODES:
         return HttpResponse(json.dumps("It's over one hundred!"))
     codification.setOffers(offers)
     codification.store()

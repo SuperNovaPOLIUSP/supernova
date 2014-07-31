@@ -36,13 +36,21 @@ Controller.prototype.showPossibleOffers = function(idCycle, term){
 
 Controller.prototype.showEncoding = function(){
     this.div.empty()
-
+	var labelSizeOffers = new $(document.createElement('p'))
+	labelSizeOffers.attr('style','position:absolute; top:500px; left:130px; height: 100px; width:400; color:red;')
     if (this.encodedCourses.length > 0){
         var encodedDiv = new $(document.createElement('div')) 
         encodedDiv.attr('style','position:absolute; top:100px; left:100px; height: 300px; width:400; overflow-y: scroll;')
         for (var i in this.encodedCourses){
             encodedDiv.append(this.encodedCourses[i].getHTML())
         }
+        var totalOffers = new Array()
+        for (var i in this.encodedCourses){
+        	for (var j in this.encodedCourses[i].offers){
+            	totalOffers.push(this.encodedCourses[i].offers[j].idOffer)
+        	}
+    	}
+        labelSizeOffers.text("Número de Offers: " + totalOffers.length.toString())
         var button = new $(document.createElement('button'))
         button.text('flip All')
         button.mousedown(function(){
@@ -58,6 +66,23 @@ Controller.prototype.showEncoding = function(){
         })
         button.attr('style','position:absolute; top:400px; left:150px;')
         this.div.append(button)
+        this.div.append(labelSizeOffers)
+        var buttonRemove = new $(document.createElement('button'))
+        controller = this
+        buttonRemove.mousedown(function(){
+            offersToKeep = new Array()
+            encodedDiv.find('input').each(function(){
+            	if (!($(this).attr('checked'))){
+                	if ($(this).val() != '0'){ 
+                        offersToKeep.push($(this).val())
+                    }
+                }
+            })
+            controller.removeOffers(offersToKeep)
+        })
+        buttonRemove.text('removeSelected')
+        buttonRemove.attr('style','position:absolute; top:400px; left:230px;')
+        this.div.append(buttonRemove)
         this.div.append(encodedDiv)
     }
    
@@ -99,7 +124,6 @@ Controller.prototype.showEncoding = function(){
         })
         button.attr('style','position:absolute; top:400px; left:850px;')
         this.div.append(button)
-
         this.div.append(listedDiv)
     }
 
@@ -118,13 +142,16 @@ Controller.prototype.storeOffers = function(newOffers){
     this.div.empty()
     this.div.html('<span style="position:absolute; left:200px; top:200px" >Trabalhando...</span>')
     get = new XMLHttpRequest()
-    if (finalOffers.length > 99){
-        alert("Não é possível inserir mais de 100 oferecimentos.")
-        this.div.empty()    
-    }
-    else {
-       get.open( "GET", 'store/?json=' + JSON.stringify({idOpticalSheet: this.idOpticalSheet, idTimePeriod:this.idTimePeriod, idOffers: finalOffers}), false)
-       get.send(null)
-    }
+    get.open( "GET", 'store/?json=' + JSON.stringify({idOpticalSheet: this.idOpticalSheet, idTimePeriod:this.idTimePeriod, idOffers: finalOffers}), false)
+    get.send(null)
+    this.loadEncoding()
+}
+
+Controller.prototype.removeOffers = function(offersToKeep){
+    this.div.empty()
+    this.div.html('<span style="position:absolute; left:200px; top:200px" >Trabalhando...</span>')
+    get = new XMLHttpRequest()
+    get.open( "GET", 'store/?json=' + JSON.stringify({idOpticalSheet: this.idOpticalSheet, idTimePeriod:this.idTimePeriod, idOffers: offersToKeep}), false)
+    get.send(null)
     this.loadEncoding()
 }

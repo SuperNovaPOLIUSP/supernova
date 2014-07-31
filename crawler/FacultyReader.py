@@ -1,8 +1,8 @@
 # coding: utf8
 "Object that will read all cycles of a Faculty"
 import MySQLdb
-from Crawler.Crawler import Crawler
-from Crawler.Crawler import appendparameters
+from crawler.Crawler import Crawler
+from crawler.Crawler import appendparameters
 from pulsarInterface.Faculty import Faculty
 
 

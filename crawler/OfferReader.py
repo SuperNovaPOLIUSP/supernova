@@ -4,11 +4,10 @@
 import re
 import sys
 
-from Crawler.CourseReader import aadicionar
-from Crawler.Crawler import Crawler
-from Crawler.Crawler import appendparameters
-from Crawler.Crawler import getwhatisbetweenthetags
-from Crawler.Crawler import removewhitespaces
+from crawler.Crawler import Crawler
+from crawler.Crawler import appendparameters
+from crawler.Crawler import getwhatisbetweenthetags
+from crawler.Crawler import removewhitespaces
 from pulsarInterface.Course import Course
 from pulsarInterface.Offer import Offer
 from pulsarInterface.Professor import Professor
@@ -42,7 +41,7 @@ class OfferReader(object):
         if re.match('[\S\s]*Hor&aacute;rio[\S\s]*',
                     str(self.crawler.htmlpage)):
             offersdata = self.getrelevantdata()
-            offers.append(self.createoffers(offersdata))
+            offers.extend(self.createoffers(offersdata))
         return offers
 
     def checkprofessor(self, professorname):
@@ -57,10 +56,7 @@ class OfferReader(object):
                 # ID: 5870 = SEM PROFESSOR
             else:
                 professor = Professor(professorname)
-                aadicionar(professor)
-                confirm = raw_input('Adiconar novo professor? (0 ou 1)')
-                if confirm == '1':
-                    professor.store()
+                professor.store()
         else:
             professor = professor[0]
         return professor
@@ -69,10 +65,7 @@ class OfferReader(object):
         """Checks if the schedule object passed as sched is already in the
         bank and, if it isn't, stores a new schedule"""
         if not sched.idSchedule:
-            aadicionar(sched)
-            confirm = raw_input('Adiconar novo schedule? (0 ou 1)')
-            if confirm == '1':
-                sched.store()
+            sched.store()
 
     def generateoffer(self, classn_pract, prof_sched_info, professorname):
         """Creates a new Offer object with the informations about the class

@@ -5,7 +5,7 @@
     </head>
     <body>
         <form action="{% url 'interface:crawler_run' %}" method="post">{% csrf_token %}
-            {{ form.as_p }}
+            {{ form.as_table }}
             <input type="submit" value="run" name="rodar">
         </form>
     </body>

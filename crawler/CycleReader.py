@@ -4,11 +4,11 @@ import BeautifulSoup
 import re
 import sys
 
-from newCrawler.CourseReader import CourseReader
-from newCrawler.Crawler import Crawler
-from newCrawler.Crawler import appendparameters
-from newCrawler.Crawler import getwhatisbetweenthetags
-from newCrawler.OfferReader import OfferReader
+from crawler.CourseReader import CourseReader
+from crawler.Crawler import Crawler
+from crawler.Crawler import appendparameters
+from crawler.Crawler import getwhatisbetweenthetags
+from crawler.OfferReader import OfferReader
 from pulsarInterface.Cycle import Cycle
 from pulsarInterface.TimePeriod import TimePeriod
 from tools.MySQLConnection import MySQLConnection
@@ -67,14 +67,14 @@ class CycleReader(object):
         conditions = 'WHERE r1.idCourseCoordination = r2.idCourseCoordination'\
             ' AND r1.idCycle = ' + str(self.cycle.idCycle)
         query = 'SELECT idFaculty FROM ' + relations + conditions
-        self.connection.execute(query)
+        results = self.connection.execute(query)
         try:
-            idfaculty = self.connection.fetchone()[0]
-        except TypeError:
-            raise TypeError('Não conseguiu achar idFaculty,\
-                            checar rel_courseCoordination_cycle e\
-                            rel_courseCoordination_faculty com idCycle = ' +
-                            str(self.cycle.idCycle))
+            idfaculty = results[0][0]
+        except IndexError:
+            raise IndexError('Não conseguiu achar idFaculty,\
+                             checar rel_courseCoordination_cycle e\
+                             rel_courseCoordination_faculty com idCycle = ' +
+                             str(self.cycle.idCycle))
             sys.exit()
         return idfaculty
 
@@ -83,8 +83,7 @@ class CycleReader(object):
         object's cycle"""
         query = 'SELECT idAcademicProgram FROM rel_academicProgram_cycle '\
                 'WHERE idCycle = ' + str(self.cycle.idCycle)
-        self.connection.execute(query)
-        codcurall = self.connection.fetchall()
+        codcurall = self.connection.execute(query)
         listcodcur = []
         for codcur in codcurall:
             listcodcur.append(codcur[0])

@@ -13,10 +13,10 @@ from pulsarInterface.Schedule import Schedule
 from pulsarInterface.TimePeriod import TimePeriod
 
 from pulsarInterface.Cycle import Cycle
+from pulsarInterface.Offer import Offer
 
-from interface.forms import ProfessorForm, CrawlerForm
-from crawler import CycleReader
-from forms import CrawlerResultsForm
+from interface.forms import ProfessorForm, CrawlerForm, CrawlerResultsForm, offer_to_string
+from crawler.CycleReader import CycleReader
 
 @login_required
 def index(request):
@@ -218,10 +218,18 @@ def crawler(request):
     return rendered_page
 
 
-@login_required
-def crawler_results(request):
-    form = CrawlerResultsForm()
-    form.fields['offers'].choices =
+def crawler_results(request, offers):
+    offers_inserted = []
+    for offer in offers:
+        if not Offer.find(course=offer.course, professor=offer.professor,
+                          timePeriod=offer.timePeriod,
+                          classNumber=offer.classNumber,
+                          practical=offer.practical):
+            offer.store()
+            offers_inserted.append(offer_to_string(offer))
+            rendered_page = render(request, 'crawler_results.html',
+                                   {'offers': offers_inserted})
+    return rendered_page
 
 
 @login_required
@@ -230,12 +238,13 @@ def crawler_run(request):
         form = CrawlerForm(request.POST)
         if form.is_valid():
             id_time_period = form.cleaned_data['timePeriod']
-            ids_cycle = form.cleaned_data['cycle']
+            ids_cycle = [int(id_cycle) for id_cycle in form.cleaned_data['cycle']]
+            offers = []
             for id_cycle in ids_cycle:
                 crawler = CycleReader()
                 crawler.settimeperiod(id_time_period)
-                crawler.setcourse(id_cycle)
-                offers = crawler.startreadingcycles()
-            rendered_page = render(request, 'crawler_results.html', {'offers': offers})
-            return rendered_page
+                crawler.setcycle(id_cycle)
+                offers_obtained = crawler.startreadingcycles()
+                offers.extend(offers_obtained)
+            return crawler_results(request, offers)
     return HttpResponseRedirect('/interface/crawler/')

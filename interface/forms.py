@@ -68,5 +68,27 @@ class CrawlerForm(forms.Form):
     timePeriod = forms.ChoiceField(choices=timePeriodTuple, label='Período')
 
 
+def offer_to_string(offer):
+    string = ''
+    string += offer.course.name
+    string += ' - '
+    string += offer.course.courseCode
+    string += '\n'
+    string += offer.professor.name
+    string += '\nTurma: '
+    string += str(offer.classNumber)
+    string += '\n'
+    for schedule in offer.schedules:
+        string += str(schedule).decode('utf-8')
+        string += '\n'
+    return string
+
+
 class CrawlerResultsForm(forms.Form):
     offers = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple)
+
+    def update_offers(self, offers):
+        ids_offer = (offer for offer in offers)
+        text_offer = (offer_to_string(offer) for offer in offers)
+        offer_information = zip(ids_offer, text_offer)
+        self.fields['offers'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=offer_information)

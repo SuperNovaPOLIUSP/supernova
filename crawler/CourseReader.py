@@ -4,7 +4,7 @@
 import datetime
 import re
 
-from Crawler.Crawler import Crawler, removewhitespaces, appendparameters, \
+from crawler.Crawler import Crawler, removewhitespaces, appendparameters, \
     getwhatisbetweenthetags
 from pulsarInterface.Course import Course
 from pulsarInterface.IdealTermCourse import IdealTermCourse

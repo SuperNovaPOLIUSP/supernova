@@ -11,8 +11,11 @@
     <button onMouseDown='showPossibleEncodings()'>Editar Codificação</button>
 </div>
 <div id = 'selectEncoding' style='position:absolute; top:50px; left:50px'>
-	<button onMouseDown='deleteEncoding()'>Deletar Codificação</button>
 </div>
+<div id = 'buttonDelete' style='position:absolute; top:50px; left:200px'>
+	<button onMouseDown='confirm_delete()'>Deletar Codificação</button>
+</div>
+
 
 <div id = 'newEncoding' style='position:absolute; top:50px; left:50px'>
     <textarea id = 'newEncodingName'></textarea>
@@ -31,6 +34,7 @@
 <script type="text/javascript">
     $('#initialButtons').hide()
     $('#newEncoding').hide()
+    $('#buttonDelete').hide()
     var controller = new Controller()
     $('#encoded').append(controller.div)
     function start(){
@@ -40,28 +44,17 @@
         $('#initialButtons').hide()
         $('#newEncoding').show()
     }
-	
-	function deleteEncoding(){
-		var select = document.getElementById("selectEncoding")
-		var selectedValue = select.options[select.selectedIndex].value;
-		if (selectedValue == 0){
-			alert("Escolha uma Codificação")
-		}
-		else {
-			get.open( "GET", 'deleteEncoding/?' + $.param({idOpticalSheet: selectedValue}), false)
-		}
-	}
-	
+		
     function showPossibleEncodings(){
         var idTimePeriod = $('#headerTimePeriod').val()
         $('#initialButtons').hide()
+        $('#buttonDelete').hide()
         $('#selectEncoding').show()
         var get = new XMLHttpRequest()
         get.open( "GET", 'showPossibleEncodings/?' + $.param({idTimePeriod: idTimePeriod}), false)
         get.send(null)
-        var encodings = JSON.parse(get.responseText)
         var select = new $(document.createElement('select'))
-        select.setAttribute("id", "selectEncoding");
+        var encodings = JSON.parse(get.responseText)
         var option = new $(document.createElement('option'))
         option.val(0)
         select.append(option)
@@ -78,6 +71,25 @@
 
     }
 
+	function confirm_delete(){
+		var r = confirm("Deseja deletar esta codificação?");
+		if (r == true) {
+			deleteEncoding();
+		}
+	}
+	
+	function deleteEncoding(){
+		$('#initialButtons').hide()
+        $('#buttonDelete').hide()
+        $('#headerFaculties').hide()
+        $('#newEncoding').hide()
+        $('#encoded').hide()
+        $('#selectEncoding').empty()
+		var get = new XMLHttpRequest()
+        get.open( "GET", 'deleteEncoding/?' + $.param({idOpticalSheet: controller.idOpticalSheet}), false)
+        get.send(null)
+	}
+	
     function loadEncoding(idOpticalSheet){
         $('#selectEncoding').hide()
         controller.idTimePeriod = $('#headerTimePeriod').val()
@@ -85,6 +97,7 @@
         controller.loadEncoding()
         $('#headerFaculties').show()
         controller.showEncoding()
+        $('#buttonDelete').show()
     }
 
     function showPossibleOffers(idCycle, term){
@@ -92,6 +105,7 @@
     }
 
     function createEncoding(){
+    	$('#buttonDelete').hide()
         $('#newEncoding').hide()
         var encodingName = $('#newEncodingName').val()
         var idTimePeriod = $('#headerTimePeriod').val()

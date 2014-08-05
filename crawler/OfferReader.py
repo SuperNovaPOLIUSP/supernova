@@ -13,6 +13,9 @@ from pulsarInterface.Offer import Offer
 from pulsarInterface.Professor import Professor
 from pulsarInterface.Schedule import Schedule
 
+NO_PROFESSOR_STRING = 'SEM PROFESSOR'
+# String to search when there's no professor name in the offer page
+
 
 class OfferReader(object):
     """A reader object which will use a crawler to scan through the page
@@ -52,8 +55,7 @@ class OfferReader(object):
         professor = Professor.find(name_equal=professorname)
         if not professor:
             if not professorname:
-                professor = Professor.pickById(5870)
-                # ID: 5870 = SEM PROFESSOR
+                professor = Professor.find(name_equal=NO_PROFESSOR_STRING)
             else:
                 professor = Professor(professorname)
                 professor.store()

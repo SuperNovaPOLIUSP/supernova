@@ -236,17 +236,7 @@ def treatoffers(offers):
                     # In this case, even if the schedules have also changed,
                     # the store() method will take care of it
                     for match in possiblematches:
-                        aadicionar(match)
-                        aadicionar(offer)
-                        escolha = raw_input('Trocar professor ou adicionar\
-                                             oferecimento novo? (0 e 1)')
-                        if escolha == '0':
-                            updateprofessoroffer(match, offer)
-                        elif escolha == '1':
-                            storenewoffer(offer)
-                            break
-                        else:
-                            pass
+                        updateprofessoroffer(match, offer)
                 else:
         # 4 - No similar offer is in the bank, it must be stored now
                     storenewoffer(offer)
@@ -255,47 +245,16 @@ def treatoffers(offers):
 
 
 def updateschedulesoffer(oldoffer, newoffer):
-    aadicionar(oldoffer)
-    atualizar = raw_input('Atualizar os schedules? ( 1 - trocar schedules\
-                          / 2 - adicionar mais um schedule')
-    if atualizar == '1':
-        oldoffer.setSchedules(newoffer.schedules)
-        oldoffer.store()
-    elif atualizar == '2':
-        newlist = []
-        for schedule in oldoffer.schedules:
-            newlist.append(schedule)
-        for schedule in newoffer.schedules:
-            newlist.append(schedule)
-        oldoffer.setSchedules(newlist)
-        oldoffer.store()
-    else:
-        pass
-
+    oldoffer.setSchedules(newoffer.schedules)
+    oldoffer.store()
 
 def updateprofessoroffer(oldoffer, newoffer):
-    try:
-        atualizar = raw_input('Atualizar o professor de ' +
-                              unicode(oldoffer.professor.name) +
-                              ' para ' +
-                              unicode(newoffer.professor.name) + '?')
-    except UnicodeEncodeError:
-        atualizar = raw_input('Atualizar nome do professor?')
-    if atualizar == '1':
-        oldoffer.professor = newoffer.professor
-        oldoffer.store()
-    else:
-        pass
+    oldoffer.professor = newoffer.professor
+    oldoffer.store()
 
 
 def storenewoffer(offer):
-    aadicionar(offer)
-    atualizar = raw_input('Adicionar o oferecimento?')
-    if atualizar == '1':
-        offer.store()
-        aadicionar(offer)
-    else:
-        pass
+    offer.store()
 
 
 def checkforschedule(day, start, end):

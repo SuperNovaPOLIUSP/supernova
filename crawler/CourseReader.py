@@ -34,11 +34,7 @@ class CourseReader(object):
             course = match[0]
         else:
             course = Course(self.coursecode, name, startdate)
-            aadicionar(course)
-            fim = raw_input('Adicionar disciplina?(0 ou 1)')
-            if fim == '1':
-                course.store()
-                print "Stored new course " + str(course.__dict__)
+            course.store()
         idealtermmatch = IdealTermCourse.find(idCycle=self.cycle.idCycle,
                                               term=self.term,
                                               idCourse=course.idCourse,
@@ -48,11 +44,7 @@ class CourseReader(object):
             idealterm = IdealTermCourse(self.cycle.idCycle, self.term,
                                         startdate, self.requisitiontype,
                                         course)
-            aadicionar(idealterm)
-            #fim = raw_input('Adicionar IdealTerm?(0 ou 1)')
-            #if fim == '1':
             idealterm.store()
-            #    print "Stored new rel_course_cycle " + str(idealterm.__dict__)
         else:
             idealterm = idealtermmatch[0]
         return course

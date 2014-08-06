@@ -16,6 +16,7 @@ from tools.MySQLConnection import MySQLConnection
 LASTPERIODDIGIT = -32  # Index of the text where the last digit for the
                        # Period number can be found
 
+COURSES_TO_IGNORE = ['CBM0120','VPS1030']
 
 class CycleReader(object):
     """A reader object which will use a crawler to scan through the page
@@ -98,6 +99,8 @@ class CycleReader(object):
         while index < len(coursecodes):
             for period in coursecodes[index]:
                 for code in coursecodes[index][period]:
+                    if code in COURSES_TO_IGNORE:
+                        continue
                     reader = CourseReader(code, self.connection, self.cycle,
                                           period,
                                           requisitiontypetranslationdict

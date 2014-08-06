@@ -227,8 +227,8 @@ def crawler_results(request, offers):
                           practical=offer.practical):
             offer.store()
             offers_inserted.append(offer_to_string(offer))
-            rendered_page = render(request, 'crawler_results.html',
-                                   {'offers': offers_inserted})
+    rendered_page = render(request, 'crawler_results.html',
+                           {'offers': offers_inserted})
     return rendered_page
 
 

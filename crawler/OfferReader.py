@@ -91,6 +91,8 @@ class OfferReader(object):
         for offerdata in offersdata:
             classn_pract = getclassnunmberandpractical(offerdata[0])
             prof_sched = getprofessorandschedule(offerdata[1])
+            if not prof_sched:
+                continue
             prof_sched = organize(prof_sched)
             for prof_sched_info in prof_sched:
                 for professorname in prof_sched_info[0]:

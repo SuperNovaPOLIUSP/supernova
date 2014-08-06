@@ -1,0 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Interface - Professor Edit</title>
+</head>
+<body>
+	<h1>ID: {{ professor.idProfessor }}</h1><br>
+	<form action="{% url 'interface:professor_edit' idProfessor=professor.idProfessor %}" method="post">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="apply" name="Aplicar"/>
+	</form>
+</body>
+</html>

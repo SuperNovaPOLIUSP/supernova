@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from pulsarInterface.IdealTermCourse import *
 from aeSupernova.generator.CourseGenerator import *
@@ -5,13 +6,12 @@ from aeSupernova.header.Header import *
 
 
 #from aeSupernova.generator.CourseReportGenerator import *
-def openSite(request):
-    if request.user.is_authenticated():      
-        header = Header()
-        header.setTermFunction('loadCourses($("#headerTimePeriod").val(),$("#headerCycle").val(),$("#headerTerm").val())')
-        return render_to_response('generator.html',{'header':header.getHtml()})
-    else:
-        return HttpResponseRedirect('/login/')
+@login_required
+def openSite(request):      
+    header = Header()
+    header.setTermFunction('loadCourses($("#headerTimePeriod").val(),$("#headerCycle").val(),$("#headerTerm").val())')
+    return render_to_response('generator.html',{'header':header.getHtml()})
+
 
 def loadCourses(request):
     data = request.GET

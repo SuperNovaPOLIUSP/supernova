@@ -2,8 +2,9 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from django.contrib import admin
 from login import views
+from interface import views as interface
 from aeSupernova import views as supernovaviews
-import login
+
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -33,4 +34,5 @@ urlpatterns = patterns('',
     url(r'^login/$', views.user_login, name='login'),
     url(r'^register/$', views.register, name='register'),
     url(r'^logout/$', views.user_logout, name='logout'),
+    url(r'^interface/', include('interface.urls', namespace = 'interface')),
     )

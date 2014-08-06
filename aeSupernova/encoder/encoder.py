@@ -1,21 +1,25 @@
 #encoding: utf8
-from aeSupernova.encoder.Codification import *
-
+from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import json
-from django import http
-from django.http import *
-from aeSupernova.header.Header import *
+from pulsarInterface.Offer import Offer
+from pulsarInterface.OpticalSheet import OpticalSheet
+from pulsarInterface.TimePeriod import TimePeriod
 
+from aeSupernova.encoder.Codification import Codification
+from aeSupernova.header.Header import Header
+
+
+MAX_NUMBER_OF_CODES = 100  # Not possible to add more codes after 99 
+
+@login_required
 def openSite(request):
-    if request.user.is_authenticated():
-        header = Header()
-        header.setTimePeriodFunction('start()')
-        header.setTermFunction('showPossibleOffers($("#headerCycle").val(),$("#headerTerm").val())')
-        return render_to_response('encoder.html',{'header':header.getHtml()},context_instance=RequestContext(request))
-    else:
-        return HttpResponseRedirect('/login/')
+    header = Header()
+    header.setTimePeriodFunction('start()')
+    header.setTermFunction('showPossibleOffers($("#headerCycle").val(),$("#headerTerm").val())')
+    return render_to_response('encoder.html',{'header':header.getHtml()},context_instance=RequestContext(request))
 
 def possibleCodifications(request):
     data = request.GET
@@ -47,6 +51,12 @@ def fillOffers(request):
     codification.fillOffers()
     return HttpResponse(json.dumps(offers_to_dict(codification.offers)))
     
+def deleteEncoding(request):
+    data = request.GET
+    opticalSheet = OpticalSheet.pickById(int(data['idOpticalSheet']))
+    opticalSheet.delete()
+    return HttpResponseRedirect('/encoder/')
+    
 def setOffers(request):
     data = request.GET
     data = json.loads(data['json'])
@@ -56,7 +66,7 @@ def setOffers(request):
     offers = []
     for idOffer in data['idOffers']:
         offers.append(Offer.pickById(int(idOffer)))
-    if len(offers) > 99:
+    if len(offers) > MAX_NUMBER_OF_CODES:
         return HttpResponse(json.dumps("It's over one hundred!"))
     codification.setOffers(offers)
     codification.store()

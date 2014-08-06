@@ -55,7 +55,7 @@ class OfferReader(object):
         professor = Professor.find(name_equal=professorname)
         if not professor:
             if not professorname:
-                professor = Professor.find(name_equal=NO_PROFESSOR_STRING)
+                professor = Professor.find(name_equal=NO_PROFESSOR_STRING)[0]
             else:
                 professor = Professor(professorname)
                 professor.store()

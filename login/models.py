@@ -1,10 +1,20 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
-class UserProfile(models.Model):
-    # This line is required. Links UserProfile to a User model instance.
-    user = models.OneToOneField(User)
-
-    # Override the __unicode__() method to return out something meaningful!
-    def __unicode__(self):
-        return self.user.username
+class Session(models.Model):
+    idsession = models.AutoField(db_column='idSession', primary_key=True)
+    user = models.ForeignKey(User)
+    start = models.DateTimeField(db_column='start')
+    end = models.DateTimeField(db_column='end', null=True)
+    class Meta:
+        managed = True
+        db_table = 'login_session'
+        
+class Log(models.Model):
+    idlog = models.AutoField(db_column='idLog', primary_key=True)
+    user = models.ForeignKey(User)
+    action = models.CharField(max_length=500)
+    time = models.DateTimeField(db_column='time')
+    class Meta:
+        managed = True
+        db_table = 'user_log'

@@ -2,7 +2,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from django.utils import timezone
 from login.forms import UserForm
+from login.models import Session
 
 
 def register(request):
@@ -67,6 +69,10 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
+                start_time = timezone.now()
+                print start_time
+                start = Session.objects.create(start=start_time, user=user)
+                start.save()
                 return HttpResponseRedirect('/index/')
             else:
                 # An inactive account was used - no logging in!
@@ -89,6 +95,8 @@ def user_login(request):
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
+    end_time = timezone.now()
+    print end_time
     # Take the user back to the homepage.
     return HttpResponseRedirect('/login/')
 

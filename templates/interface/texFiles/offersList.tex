@@ -1,0 +1,28 @@
+{% autoescape off %}
+\documentclass{article}
+    \usepackage[utf8]{inputenc} 
+    \usepackage[brazil]{babel}  
+    \usepackage[T1]{fontenc}   
+    \usepackage{textpos}
+    \usepackage{graphicx}
+    \setlength{\TPHorizModule}{1cm}
+    \setlength{\TPVertModule}{\TPHorizModule}
+    \setlength{\parindent}{0pt}
+    \usepackage[hmargin=0.5cm,vmargin=1cm,margin=0.2cm, a4paper]{geometry}
+    \usepackage{multicol}
+    \begin{document}
+        \begin{multicols}{2}
+            \fontsize{7}{7}\selectfont
+            {% for course in courses.courses %}
+                \textbf{ {{course.courseName}} }
+                {% for offer in course.offers %} 
+                    código: {{offer.code}} - T{{offer.classNumber}} - {{offer.schedule}} - {{offer.professor}}
+                    {% if forloop.last  %} %The last one needs a '\\'
+                        \\
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        \end{multicols}
+    \end{document}
+\endinput
+{% endautoescape %}

@@ -11,7 +11,6 @@ urlpatterns = patterns('',
     url(r'^offer/$', views.offer, name = 'offer'),
     url(r'^offer/(?P<idOffer>\d+)/$', views.offer_detail, name = 'offer_detail'),
     url(r'^offer/(?P<idOffer>\d+)/edit/$', views.offer_edit, name = 'offer_edit'),
-    url(r'^search_courses/', views.search_courses, name='search_courses'),
     url(r'^offer/(?P<idOffer>\d+)/delete/$', views.offer_delete, name = 'offer_delete'),
     url(r'^offer/(?P<idTimePeriod>\d+)/(?P<idCourse>\d+)/create/$', views.offer_create, name = 'offer_create'),                  
     )

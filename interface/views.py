@@ -1,10 +1,8 @@
 #coding: utf8
-from django import forms
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponseRedirect, HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
-from interface.forms import ProfessorForm, IndexForm, OfferForm, getKey
-import json
+from interface.forms import ProfessorForm, IndexForm, OfferForm
 from pulsarInterface.Course import Course
 from pulsarInterface.Department import Department
 from pulsarInterface.Offer import Offer
@@ -187,21 +185,3 @@ def offer_delete(request, idOffer):
     offer = Offer.pickById(idOffer)
     offer.delete()
     return HttpResponseRedirect('/interface/offer/') 
-
-@login_required
-def search_courses(request):
-    if request.REQUEST['term']:
-        q = request.GET.get('term', '')
-        courses = Course.find(courseCode_like=q)
-        result_courses = []
-        for course in courses:
-            course_json = {}
-            course_json['id'] = course.idCourse
-            course_json['label'] = course.courseCode
-            course_json['value'] = course.courseCode
-            result_courses.append(course_json)
-        data = json.dumps(result_courses)
-    else:
-        data = 'fail'
-    mimetype = 'application/json'
-    return HttpResponse(data, mimetype)

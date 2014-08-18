@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
@@ -70,8 +71,7 @@ def user_login(request):
                 # We'll send the user back to the homepage.
                 login(request, user)
                 start_time = timezone.now()
-                print start_time
-                start = Session.objects.create(start=start_time, user=user)
+                start = Session(start=start_time, user=user, end=start_time)
                 start.save()
                 return HttpResponseRedirect('/index/')
             else:
@@ -94,9 +94,14 @@ def user_login(request):
 @login_required
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
-    logout(request)
     end_time = timezone.now()
-    print end_time
+    userId = request.user.id
+    # django methods not recognized, but still working
+    listUserId = list(Session.objects.filter(user_id=userId))
+    session = Session.objects.get(idsession=listUserId[-1].idsession)
+    session.end = end_time
+    session.save()
+    logout(request)
     # Take the user back to the homepage.
     return HttpResponseRedirect('/login/')
 

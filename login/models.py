@@ -5,7 +5,7 @@ class Session(models.Model):
     idsession = models.AutoField(db_column='idSession', primary_key=True)
     user = models.ForeignKey(User)
     start = models.DateTimeField(db_column='start')
-    end = models.DateTimeField(db_column='end', null=True)
+    end = models.DateTimeField(db_column='end', blank=True, null=True)
     class Meta:
         managed = True
         db_table = 'login_session'

@@ -1,9 +1,13 @@
 #coding: utf8
 from django import forms
+
 from pulsarInterface.Course import Course
-from pulsarInterface.TimePeriod import TimePeriod
+from pulsarInterface.Cycle import Cycle
+from pulsarInterface.IdealTermCourse import IdealTermCourse
 from pulsarInterface.Professor import Professor
 from pulsarInterface.Schedule import Schedule
+from pulsarInterface.TimePeriod import TimePeriod
+
 
 def getKey(item):
     return item[1]
@@ -51,5 +55,19 @@ class OfferForm(forms.Form):
         self.fields['dropDownProfessor'] = forms.ChoiceField(widget=forms.Select, choices=professorInfo, label = "Professor")
         self.fields['listSchedules'] = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=scheduleInfo, label = 'Horários')
 
-        
+class OfferListForm(forms.Form):
+    def updateForm(self):
+        timePeriods = TimePeriod.find()
+        timePeriods.reverse()
+        timePeriodNames = [str(timePeriod) for timePeriod in timePeriods]
+        timePeriodIds = [t.idTimePeriod for t in timePeriods]
+        timePeriodInfo = zip(timePeriodIds, timePeriodNames)
+        cycles = Cycle.find()
+        cycleName = [cycle.name for cycle in cycles]
+        cycleIds = [cycle.idCycle for cycle in cycles]
+        cycleInfo = zip(cycleIds, cycleName)
+        termInfo = [[1,'1-Semestre'],[2,'2-Semestre'],[3,'3-Semestre'],[4,'4-Semestre'],[5,'5-Semestre'],[6,'6-Semestre'],[7,'7-Semestre'],[8,'8-Semestre'],[9,'9-Semestre'],[10,'10-Semestre']]
+        self.fields['dropDownCycle'] = forms.ChoiceField(widget=forms.Select, choices=cycleInfo, label = 'Curso')
+        self.fields['dropDownTimePeriod'] = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = 'Periodo')
+        self.fields['dropDownTerm'] = forms.ChoiceField(widget=forms.Select, choices=termInfo, label = 'Semestre')
         

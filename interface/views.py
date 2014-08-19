@@ -1,10 +1,19 @@
 #coding: utf8
+import commands
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from interface.forms import ProfessorForm, IndexForm, OfferForm
+from django.template.context import Context
+from django.template.loader import render_to_string
+import io
+
+from interface.forms import ProfessorForm, IndexForm, OfferForm, OfferListForm
 from pulsarInterface.Course import Course
+from pulsarInterface.CourseCoordination import CourseCoordination
+from pulsarInterface.Cycle import Cycle
 from pulsarInterface.Department import Department
+from pulsarInterface.Faculty import Faculty
+from pulsarInterface.IdealTermCourse import IdealTermCourse
 from pulsarInterface.Offer import Offer
 from pulsarInterface.Professor import Professor
 from pulsarInterface.Schedule import Schedule
@@ -184,4 +193,53 @@ def offer_create(request, idTimePeriod, idCourse):
 def offer_delete(request, idOffer):
     offer = Offer.pickById(idOffer)
     offer.delete()
-    return HttpResponseRedirect('/interface/offer/') 
+    return HttpResponseRedirect('/interface/offer/')
+
+@login_required
+def offer_list(request):
+    form = OfferListForm()
+    form.updateForm()
+    rendered_page = render(request, 'offer_list.html', {'form': form, })
+    return rendered_page
+
+@login_required
+def offer_list_generate(request):
+    if request.method  == 'POST':
+        form = OfferListForm(request.POST)
+        form.updateForm()
+        if form.is_valid():
+            timePeriod = TimePeriod.pickById(form.cleaned_data['dropDownTimePeriod'])
+            cycle = form.cleaned_data['dropDownCycle']
+            term = form.cleaned_data['dropDownTerm']
+            idealTermCourses = IdealTermCourse.find(idCycle=int(cycle), term=int(term))
+            courses = [idealTermCourse.course for idealTermCourse in idealTermCourses]
+            #faculty = Faculty.find(courseCoordinations = CourseCoordination.find(cycles = [Cycle.pickById(cycle)]))[0]
+            title = {}
+            title['lines'] = []
+            title['lines'].append('Consulta discente sobre o Ensino(CDE)')
+            title['lines'].append(str(timePeriod) + ' da ' + u' de Sao Paulo')
+            title['lines'].append('Representante de Classe ' + u'º ano - ' + Cycle.pickById(cycle).name)
+            name = "".join(letter for letter in str(timePeriod) if ord(letter)<128).replace(' ','')
+            name += "_"
+            name += "".join(letter for letter in Cycle.pickById(cycle).name if ord(letter)<128).replace(' ','')
+            name += "_"
+            name += str(term) + "_Semestre"
+            nametex = str(name) + ".tex"
+            t = render_to_string('texFiles/offersList.tex', Context({'courses': courses, 'title': title}))
+            l = io.open(nametex, "w", encoding='utf8')
+            l.write(t)
+            l.close()
+            commands.getoutput("pdflatex " + nametex)                              
+            commands.getoutput("rm " + name + '.log')
+            commands.getoutput("rm " + name + '.aux')
+            pdf = file(name + '.pdf').read()
+            commands.getoutput("rm " + name + '.tex')
+            commands.getoutput("rm " + name + '.pdf')
+            response = HttpResponse(pdf)
+            response['Content-Type'] = 'application/pdf'
+            response['Content-disposition'] = 'attachment; filename=' + name + '.pdf'
+            return response 
+    else:
+        return HttpResponseRedirect('/interface/offerList')
+    
+    

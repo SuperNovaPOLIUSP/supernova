@@ -11,16 +11,16 @@
     \usepackage[hmargin=0.5cm,vmargin=1cm,margin=0.2cm, a4paper]{geometry}
     \usepackage{multicol}
     \begin{document}
+        \thispagestyle{empty}
+        \begin{center}
+            {{title.lines.0}} \\
+            {{title.lines.1}} \\
+            {{title.lines.2}}
+        \end{center}
         \begin{multicols}{2}
             \fontsize{7}{7}\selectfont
-            {% for course in courses.courses %}
-                \textbf{ {{course.courseName}} }
-                {% for offer in course.offers %} 
-                    código: {{offer.code}} - T{{offer.classNumber}} - {{offer.schedule}} - {{offer.professor}}
-                    {% if forloop.last  %} %The last one needs a '\\'
-                        \\
-                    {% endif %}
-                {% endfor %}
+            {% for course in courses %}
+				{{ course.courseCode }}
             {% endfor %}
         \end{multicols}
     \end{document}

@@ -240,12 +240,12 @@ def createPDF(timePeriod, cycleId, term):
     name += "".join(letter for letter in Cycle.pickById(cycleId).name if ord(letter)<128).replace(' ','')
     name += "_"
     name += str(term) + "_Semestre"
-    nametex = str(name) + ".tex"
+    name = name.replace('/','_') #Bugfix - Names with '/' do not go well in an Unix environment
     t = render_to_string('texFiles/offersList.tex', Context({'courses': coursesTuple, 'title': title}))
-    l = io.open(nametex, "w", encoding='utf8')
+    l = io.open(name + ".tex", "w", encoding='utf8')
     l.write(t)
     l.close()
-    commands.getoutput("pdflatex " + nametex)                              
+    commands.getoutput("pdflatex " + name + ".tex")                              
     commands.getoutput("rm " + name + '.log')
     commands.getoutput("rm " + name + '.aux')
     pdf = file(name + '.pdf').read()

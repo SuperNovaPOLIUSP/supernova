@@ -217,7 +217,12 @@ def offer_list_generate(request):
 
 
 def createPDF(timePeriod, cycleId, term):
-    idealTermCourses = IdealTermCourse.find(idCycle=cycleId, term=term)
+    if term != 0:
+        idealTermCourses = IdealTermCourse.find(idCycle=cycleId, term=term)
+        year = int(term/2) + int(term)%2
+    else:
+        idealTermCourses = IdealTermCourse.find(idCycle=cycleId)
+        year = "Todos"
     courses = [idealTermCourse.course for idealTermCourse in idealTermCourses]
     allOffers = []
     for course in courses:
@@ -225,7 +230,6 @@ def createPDF(timePeriod, cycleId, term):
         allOffers.append(offers)
     coursesTuple = zip(courses, allOffers)
     faculty = Faculty.find(courseCoordinations = CourseCoordination.find(cycles = [Cycle.pickById(cycleId)]))[0]
-    year = int(term/2) + int(term)%2
     title = {}
     title['lines'] = []
     title['lines'].append('Consulta discente sobre o Ensino(CDE)')

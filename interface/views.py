@@ -208,38 +208,48 @@ def offer_list_generate(request):
         form = OfferListForm(request.POST)
         form.updateForm()
         if form.is_valid():
-            timePeriod = TimePeriod.pickById(form.cleaned_data['dropDownTimePeriod'])
-            cycle = form.cleaned_data['dropDownCycle']
-            term = form.cleaned_data['dropDownTerm']
-            idealTermCourses = IdealTermCourse.find(idCycle=int(cycle), term=int(term))
-            courses = [idealTermCourse.course for idealTermCourse in idealTermCourses]
-            #faculty = Faculty.find(courseCoordinations = CourseCoordination.find(cycles = [Cycle.pickById(cycle)]))[0]
-            title = {}
-            title['lines'] = []
-            title['lines'].append('Consulta discente sobre o Ensino(CDE)')
-            title['lines'].append(str(timePeriod) + ' da ' + u' de Sao Paulo')
-            title['lines'].append('Representante de Classe ' + u'º ano - ' + Cycle.pickById(cycle).name)
-            name = "".join(letter for letter in str(timePeriod) if ord(letter)<128).replace(' ','')
-            name += "_"
-            name += "".join(letter for letter in Cycle.pickById(cycle).name if ord(letter)<128).replace(' ','')
-            name += "_"
-            name += str(term) + "_Semestre"
-            nametex = str(name) + ".tex"
-            t = render_to_string('texFiles/offersList.tex', Context({'courses': courses, 'title': title}))
-            l = io.open(nametex, "w", encoding='utf8')
-            l.write(t)
-            l.close()
-            commands.getoutput("pdflatex " + nametex)                              
-            commands.getoutput("rm " + name + '.log')
-            commands.getoutput("rm " + name + '.aux')
-            pdf = file(name + '.pdf').read()
-            commands.getoutput("rm " + name + '.tex')
-            commands.getoutput("rm " + name + '.pdf')
-            response = HttpResponse(pdf)
-            response['Content-Type'] = 'application/pdf'
-            response['Content-disposition'] = 'attachment; filename=' + name + '.pdf'
-            return response 
+            timePeriod = TimePeriod.pickById(int(form.cleaned_data['dropDownTimePeriod']))
+            cycleId = int(form.cleaned_data['dropDownCycle'])
+            term = int(form.cleaned_data['dropDownTerm'])
+            return createPDF(timePeriod, cycleId, term)
     else:
         return HttpResponseRedirect('/interface/offerList')
+
+
+def createPDF(timePeriod, cycleId, term):
+    idealTermCourses = IdealTermCourse.find(idCycle=cycleId, term=term)
+    courses = [idealTermCourse.course for idealTermCourse in idealTermCourses]
+    allOffers = []
+    for course in courses:
+        offers = Offer.find(course=course, timePeriod=timePeriod)
+        allOffers.append(offers)
+    coursesTuple = zip(courses, allOffers)
+    faculty = Faculty.find(courseCoordinations = CourseCoordination.find(cycles = [Cycle.pickById(cycleId)]))[0]
+    year = int(term/2) + int(term)%2
+    title = {}
+    title['lines'] = []
+    title['lines'].append('Consulta discente sobre o Ensino(CDE)')
+    title['lines'].append(str(timePeriod) + ' da ' + faculty.name + u' de Sao Paulo')
+    title['lines'].append('Representante de Classe ' + str(year) + u'º ano - ' + Cycle.pickById(cycleId).name)
+    name = "".join(letter for letter in str(timePeriod) if ord(letter)<128).replace(' ','')
+    name += "_"
+    name += "".join(letter for letter in Cycle.pickById(cycleId).name if ord(letter)<128).replace(' ','')
+    name += "_"
+    name += str(term) + "_Semestre"
+    nametex = str(name) + ".tex"
+    t = render_to_string('texFiles/offersList.tex', Context({'courses': coursesTuple, 'title': title}))
+    l = io.open(nametex, "w", encoding='utf8')
+    l.write(t)
+    l.close()
+    commands.getoutput("pdflatex " + nametex)                              
+    commands.getoutput("rm " + name + '.log')
+    commands.getoutput("rm " + name + '.aux')
+    pdf = file(name + '.pdf').read()
+    commands.getoutput("rm " + name + '.tex')
+    commands.getoutput("rm " + name + '.pdf')
+    response = HttpResponse(pdf)
+    response['Content-Type'] = 'application/pdf'
+    response['Content-disposition'] = 'attachment; filename=' + name + '.pdf'
+    return response
     
     

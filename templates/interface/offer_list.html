@@ -6,8 +6,8 @@
 <body>
 <br>
 <form method="post" name="offer_list_generate" action="{% url 'interface:offer_list_generate' %}"> {% csrf_token %}
-	<button href="javascript: submitform()"> ImprimirOffers</button>
 	{{ form.as_p }}
+	<button href="javascript: submitform()"> Imprimir Oferecimentos</button>
 </form>
 <script type="text/javascript">
 	function submitform() {

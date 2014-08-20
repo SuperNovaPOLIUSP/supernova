@@ -20,7 +20,11 @@
         \begin{multicols}{2}
             \fontsize{7}{7}\selectfont
             {% for course in courses %}
-				{{ course.courseCode }}
+				\textbf{ {{ course.0.courseCode }} - {{ course.0.name }} }\\
+				{% for offer in course.1 %}
+					T{{ offer.classNumber }} - {{ offer.professor.name }} \\
+					{% for schedule in offer.schedules %} {{ schedule }} {% endfor %}\\
+				{% endfor %}
             {% endfor %}
         \end{multicols}
     \end{document}

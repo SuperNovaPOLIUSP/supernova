@@ -3,7 +3,6 @@ from django import forms
 
 from pulsarInterface.Course import Course
 from pulsarInterface.Cycle import Cycle
-from pulsarInterface.IdealTermCourse import IdealTermCourse
 from pulsarInterface.Professor import Professor
 from pulsarInterface.Schedule import Schedule
 from pulsarInterface.TimePeriod import TimePeriod
@@ -66,7 +65,7 @@ class OfferListForm(forms.Form):
         cycleName = [cycle.name for cycle in cycles]
         cycleIds = [cycle.idCycle for cycle in cycles]
         cycleInfo = zip(cycleIds, cycleName)
-        termInfo = [[1,'1-Semestre'],[2,'2-Semestre'],[3,'3-Semestre'],[4,'4-Semestre'],[5,'5-Semestre'],[6,'6-Semestre'],[7,'7-Semestre'],[8,'8-Semestre'],[9,'9-Semestre'],[10,'10-Semestre']]
+        termInfo = [[1,'1º Semestre'],[2,'2º Semestre'],[3,'3º Semestre'],[4,'4º Semestre'],[5,'5º Semestre'],[6,'6º Semestre'],[7,'7º Semestre'],[8,'8º Semestre'],[9,'9º Semestre'],[10,'10º Semestre']]
         self.fields['dropDownCycle'] = forms.ChoiceField(widget=forms.Select, choices=cycleInfo, label = 'Curso')
         self.fields['dropDownTimePeriod'] = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = 'Periodo')
         self.fields['dropDownTerm'] = forms.ChoiceField(widget=forms.Select, choices=termInfo, label = 'Semestre')

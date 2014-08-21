@@ -30,8 +30,7 @@ def loadCourses(request):
         course['name'] = courseData[1]
         course['idCourse'] = courseData[0]
         courses.append(course)
-    assessments = []
-    assessmentsData = cursor.execute('SELECT aggr_survey.assessmentNumber FROM rel_cycle_opticalSheet JOIN aggr_opticalSheetField on aggr_opticalSheetField.idOpticalSheet = rel_cycle_opticalSheet.idOpticalSheet JOIN aggr_offer ON aggr_offer.idOffer = aggr_opticalSheetField.idOffer JOIN aggr_survey ON aggr_survey.idOpticalSheet = rel_cycle_opticalSheet.idOpticalSheet WHERE idTimePeriod = 31 AND idCycle = 19 AND term = 1 GROUP BY aggr_survey.assessmentNumber')
+    assessmentsData = cursor.execute('SELECT aggr_survey.assessmentNumber FROM rel_cycle_opticalSheet JOIN aggr_opticalSheetField on aggr_opticalSheetField.idOpticalSheet = rel_cycle_opticalSheet.idOpticalSheet JOIN aggr_offer ON aggr_offer.idOffer = aggr_opticalSheetField.idOffer JOIN aggr_survey ON aggr_survey.idOpticalSheet = rel_cycle_opticalSheet.idOpticalSheet WHERE idTimePeriod = ' + str(data['idTimePeriod']) + ' AND idCycle = ' + str(data['idCycle']) + ' AND term = ' + str(data['term']) + ' GROUP BY aggr_survey.assessmentNumber')
     assessments = [int(assessment[0]) for assessment in assessmentsData]
     response = {}
     response['courses'] = courses

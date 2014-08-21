@@ -1,0 +1,32 @@
+{% autoescape off %}
+\documentclass{article}
+    \usepackage[utf8]{inputenc} 
+    \usepackage[brazil]{babel}  
+    \usepackage[T1]{fontenc}   
+    \usepackage{textpos}
+    \usepackage{graphicx}
+    \setlength{\TPHorizModule}{1cm}
+    \setlength{\TPVertModule}{\TPHorizModule}
+    \setlength{\parindent}{0pt}
+    \usepackage[hmargin=0.5cm,vmargin=1cm,margin=0.2cm, a4paper]{geometry}
+    \usepackage{multicol}
+    \begin{document}
+        \thispagestyle{empty}
+        \begin{center}
+            {{title.lines.0}} \\
+            {{title.lines.1}} \\
+            {{title.lines.2}}
+        \end{center}
+        \begin{multicols}{2}
+            \fontsize{7}{7}\selectfont
+            {% for course in courses %}
+				\textbf{ {{ course.0.courseCode }} - {{ course.0.name }} }\\
+				{% for offer in course.1 %}
+					T{{ offer.classNumber }} - {{ offer.professor.name }} \\
+					{% for schedule in offer.schedules %} {{ schedule }} {% endfor %}\\
+				{% endfor %}
+            {% endfor %}
+        \end{multicols}
+    \end{document}
+\endinput
+{% endautoescape %}

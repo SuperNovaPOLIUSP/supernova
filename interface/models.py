@@ -96,7 +96,7 @@ class Course(models.Model):
     idcourse = models.AutoField(db_column='idCourse', primary_key=True) # Field name made lowercase.
     name = models.CharField(max_length=255)
     abbreviation = models.CharField(max_length=255)
-    syllabus = models.TextField(blank=True)
+    syllabus = models.TextField(blank=True, null=True)
     coursecode = models.CharField(db_column='courseCode', max_length=7) # Field name made lowercase.
     startdate = models.DateField(db_column='startDate') # Field name made lowercase.
     enddate = models.DateField(db_column='endDate') # Field name made lowercase.
@@ -179,14 +179,14 @@ class Minitablecycletype(models.Model):
         db_table = 'minitableCycleType'
 
 class Minitabledayoftheweek(models.Model):
-    iddayoftheweek = models.IntegerField(db_column='idDayOfTheWeek', primary_key=True) # Field name made lowercase.
+    iddayoftheweek = models.AutoField(db_column='idDayOfTheWeek', primary_key=True) # Field name made lowercase.
     dayoftheweek = models.CharField(db_column='dayOfTheWeek', max_length=15) # Field name made lowercase.
     class Meta:
         managed = False
         db_table = 'minitableDayOfTheWeek'
 
 class Minitablelength(models.Model):
-    idlength = models.IntegerField(db_column='idLength', primary_key=True) # Field name made lowercase.
+    idlength = models.AutoField(db_column='idLength', primary_key=True) # Field name made lowercase.
     length = models.CharField(max_length=15)
     class Meta:
         managed = False

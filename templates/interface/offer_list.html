@@ -1,0 +1,19 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Interface - OfferList</title>
+</head>
+<body>
+<br>
+<form method="post" name="offer_list_generate" action="{% url 'interface:offer_list_generate' %}"> {% csrf_token %}
+	{{ form.as_p }}
+	<button href="javascript: submitform()"> Imprimir Oferecimentos</button>
+</form>
+<script type="text/javascript">
+	function submitform() {
+	 	document.offer_list_generate.submit()
+	}
+</script>
+</body>
+{% include "base_jquery.html" %}
+</html>

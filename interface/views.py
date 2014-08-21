@@ -1,12 +1,19 @@
 #coding: utf8
-from django import forms
+import commands
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from interface.forms import ProfessorForm, IndexForm, OfferForm, getKey
-import json
+from django.template.context import Context
+from django.template.loader import render_to_string
+import io
+
+from interface.forms import ProfessorForm, IndexForm, OfferForm, OfferListForm
 from pulsarInterface.Course import Course
+from pulsarInterface.CourseCoordination import CourseCoordination
+from pulsarInterface.Cycle import Cycle
 from pulsarInterface.Department import Department
+from pulsarInterface.Faculty import Faculty
+from pulsarInterface.IdealTermCourse import IdealTermCourse
 from pulsarInterface.Offer import Offer
 from pulsarInterface.Professor import Professor
 from pulsarInterface.Schedule import Schedule
@@ -186,22 +193,67 @@ def offer_create(request, idTimePeriod, idCourse):
 def offer_delete(request, idOffer):
     offer = Offer.pickById(idOffer)
     offer.delete()
-    return HttpResponseRedirect('/interface/offer/') 
+    return HttpResponseRedirect('/interface/offer/')
 
 @login_required
-def search_courses(request):
-    if request.REQUEST['term']:
-        q = request.GET.get('term', '')
-        courses = Course.find(courseCode_like=q)
-        result_courses = []
-        for course in courses:
-            course_json = {}
-            course_json['id'] = course.idCourse
-            course_json['label'] = course.courseCode
-            course_json['value'] = course.courseCode
-            result_courses.append(course_json)
-        data = json.dumps(result_courses)
+def offer_list(request):
+    form = OfferListForm()
+    form.updateForm()
+    rendered_page = render(request, 'offer_list.html', {'form': form, })
+    return rendered_page
+
+@login_required
+def offer_list_generate(request):
+    if request.method  == 'POST':
+        form = OfferListForm(request.POST)
+        form.updateForm()
+        if form.is_valid():
+            timePeriod = TimePeriod.pickById(int(form.cleaned_data['dropDownTimePeriod']))
+            cycleId = int(form.cleaned_data['dropDownCycle'])
+            term = int(form.cleaned_data['dropDownTerm'])
+            return createPDF(timePeriod, cycleId, term)
     else:
-        data = 'fail'
-    mimetype = 'application/json'
-    return HttpResponse(data, mimetype)
+        return HttpResponseRedirect('/interface/offerList')
+
+
+def createPDF(timePeriod, cycleId, term):
+    if term != 0:
+        idealTermCourses = IdealTermCourse.find(idCycle=cycleId, term=term)
+        year = int(term/2) + int(term)%2
+    else:
+        idealTermCourses = IdealTermCourse.find(idCycle=cycleId)
+        year = "Todos"
+    courses = [idealTermCourse.course for idealTermCourse in idealTermCourses]
+    allOffers = []
+    for course in courses:
+        offers = Offer.find(course=course, timePeriod=timePeriod)
+        allOffers.append(offers)
+    coursesTuple = zip(courses, allOffers)
+    faculty = Faculty.find(courseCoordinations = CourseCoordination.find(cycles = [Cycle.pickById(cycleId)]))[0]
+    title = {}
+    title['lines'] = []
+    title['lines'].append('Consulta discente sobre o Ensino(CDE)')
+    title['lines'].append(str(timePeriod) + ' da ' + faculty.name + u' de Sao Paulo')
+    title['lines'].append('Representante de Classe ' + str(year) + u'º ano - ' + Cycle.pickById(cycleId).name)
+    name = "".join(letter for letter in str(timePeriod) if ord(letter)<128).replace(' ','')
+    name += "_"
+    name += "".join(letter for letter in Cycle.pickById(cycleId).name if ord(letter)<128).replace(' ','')
+    name += "_"
+    name += str(term) + "_Semestre"
+    name = name.replace('/','_') #Bugfix - Names with '/' do not go well in an Unix environment
+    t = render_to_string('texFiles/offersList.tex', Context({'courses': coursesTuple, 'title': title}))
+    l = io.open(name + ".tex", "w", encoding='utf8')
+    l.write(t)
+    l.close()
+    commands.getoutput("pdflatex " + name + ".tex")                              
+    commands.getoutput("rm " + name + '.log')
+    commands.getoutput("rm " + name + '.aux')
+    pdf = file(name + '.pdf').read()
+    commands.getoutput("rm " + name + '.tex')
+    commands.getoutput("rm " + name + '.pdf')
+    response = HttpResponse(pdf)
+    response['Content-Type'] = 'application/pdf'
+    response['Content-disposition'] = 'attachment; filename=' + name + '.pdf'
+    return response
+    
+    

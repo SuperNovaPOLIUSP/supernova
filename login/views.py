@@ -1,17 +1,16 @@
-from login.forms import UserForm
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
+from django.utils import timezone
+from login.forms import UserForm
+from login.models import Session
+
 
 def register(request):
     # Need an user in database to register a new user.
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login/')
-    # Like before, get the request's context.
-    context = RequestContext(request)
 
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
@@ -42,16 +41,13 @@ def register(request):
         user_form = UserForm()
 
     # Render the template depending on the context.
-    return render_to_response(
+    return render(request, 
             'register.html',
-            {'user_form': user_form, 'registered': registered},
-            context)
+            {'user_form': user_form, 'registered': registered})
 
 def user_login(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/index/')
-    # Like before, obtain the context for the user's request.
-    context = RequestContext(request)
 
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -73,6 +69,9 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
+                start_time = timezone.now()
+                start = Session(start=start_time, user=user, end=start_time)
+                start.save()
                 return HttpResponseRedirect('/index/')
             else:
                 # An inactive account was used - no logging in!
@@ -86,7 +85,7 @@ def user_login(request):
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('login.html', {}, context)
+        return render(request, 'login.html', {})
 
 
 
@@ -94,6 +93,13 @@ def user_login(request):
 @login_required
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
+    end_time = timezone.now()
+    userId = request.user.id
+    # django methods not recognized, but still working
+    listUserId = list(Session.objects.filter(user_id=userId))
+    session = Session.objects.get(idsession=listUserId[-1].idsession)
+    session.end = end_time
+    session.save()
     logout(request)
     # Take the user back to the homepage.
     return HttpResponseRedirect('/login/')

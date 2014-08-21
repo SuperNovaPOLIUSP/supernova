@@ -1,5 +1,6 @@
 #coding: utf8
 import commands
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
@@ -230,6 +231,7 @@ def createPDF(timePeriod, cycleId, term):
         allOffers.append(offers)
     coursesTuple = zip(courses, allOffers)
     faculty = Faculty.find(courseCoordinations = CourseCoordination.find(cycles = [Cycle.pickById(cycleId)]))[0]
+    path = settings.MEDIA_ROOT + 'pdf/'
     title = {}
     title['lines'] = []
     title['lines'].append('Consulta discente sobre o Ensino(CDE)')
@@ -242,15 +244,15 @@ def createPDF(timePeriod, cycleId, term):
     name += str(term) + "_Semestre"
     name = name.replace('/','_') #Bugfix - Names with '/' do not go well in an Unix environment
     t = render_to_string('texFiles/offersList.tex', Context({'courses': coursesTuple, 'title': title}))
-    l = io.open(name + ".tex", "w", encoding='utf8')
+    l = io.open(str(path) + str(name) + ".tex", "w", encoding='utf8')
     l.write(t)
     l.close()
-    commands.getoutput("pdflatex " + name + ".tex")                              
-    commands.getoutput("rm " + name + '.log')
-    commands.getoutput("rm " + name + '.aux')
-    pdf = file(name + '.pdf').read()
-    commands.getoutput("rm " + name + '.tex')
-    commands.getoutput("rm " + name + '.pdf')
+    commands.getoutput("pdflatex -interaction=nonstopmode -output-directory=" + str(path) + " " + str(path) + str(name) + '.tex')                                         
+    commands.getoutput("rm " + str(path) + str(name) + '.log')
+    commands.getoutput("rm " + str(path) + str(name) + '.aux')
+    pdf = file(str(path) + str(name) + '.pdf').read()
+    commands.getoutput("rm " + str(path) + str(name) + '.tex')
+    commands.getoutput("rm " + str(path) + str(name) + '.pdf')
     response = HttpResponse(pdf)
     response['Content-Type'] = 'application/pdf'
     response['Content-disposition'] = 'attachment; filename=' + name + '.pdf'

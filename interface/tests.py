@@ -1,6 +1,7 @@
 #coding: utf8
 from django.contrib.auth.models import User
 from django.test.testcases import LiveServerTestCase
+
 from pulsarInterface.Course import Course
 from pulsarInterface.Offer import Offer
 from pulsarInterface.Professor import Professor
@@ -131,7 +132,7 @@ class ProfessorTest(LiveServerTestCase):
         self.assertNotIn(self.name_professor, names)
         
 class OfferTest (LiveServerTestCase):
-        
+       
     def setUp(self):
         self.name_professor = 'teste'
         self.create_timePeriod_and_course()
@@ -141,25 +142,29 @@ class OfferTest (LiveServerTestCase):
         self.browser.implicitly_wait(40)
         
     def tearDown(self):
-        self.browser.quit()
+        cursor = MySQLConnection()
         [offer.delete() for offer in Offer.find()]
         [schedule.delete() for schedule in Schedule.find()]
-        cursor = MySQLConnection()
-        cursor.execute("DELETE FROM minitableDayOfTheWeek WHERE idDayOfTheWeek in (1,2,3,4,5,6,7)")
-        self.timePeriod.delete()
-        cursor.execute('DELETE FROM minitableLength WHERE idLength = 1')
+        cursor.execute('DELETE FROM minitableDayOfTheWeek')
+        [timePeriod.delete() for timePeriod in TimePeriod.find()]
+        [course.delete() for course in Course.find()]
+        [professor.delete() for professor in Professor.find()]
+        self.browser.quit()
         
     def create_timePeriod_and_course(self):
         cursor = MySQLConnection()
-        cursor.execute('INSERT INTO minitableLength (idLength, length) values (1, "Semestral")')
+        length = cursor.execute('SELECT idLength FROM minitableLength where length="Semestral"')
+        if not length:
+            cursor.execute('INSERT INTO minitableLength (length) values ("Semestral")')
         self.course = Course('tst9999', 'teste9999', '0000-00-00')
         self.course.store()
+        length = cursor.execute('SELECT idLength FROM minitableLength where length="Semestral"')
         self.timePeriod = TimePeriod(1, 2014, 1)
         self.timePeriod.store()
         
     def create_professor_and_schedule(self):
         cursor = MySQLConnection()
-        cursor.execute('INSERT INTO `minitableDayOfTheWeek` VALUES (1,"Domingo"), (2,"Segunda"), (3,"Terça"), (4,"Quarta"), (5,"Quinta"), (6,"Sexta"), (7,"Sabado")')
+        cursor.execute('INSERT INTO `minitableDayOfTheWeek` (dayOfTheWeek) VALUES ("Domingo"), ("Segunda"), ("Terça"), ("Quarta"), ("Quinta"), ("Sexta"), ("Sabado")')
         self.schedule = Schedule('Domingo', '14:00:00', 'weekly', '12:00:00')
         self.schedule.store()
         self.schedule = Schedule('Segunda', '19:00:00', 'weekly', '16:00:00')
@@ -261,11 +266,11 @@ class OfferTest (LiveServerTestCase):
         id_timePeriod = self.browser.find_element_by_id('timePeriod')
         self.assertEqual(id_timePeriod.text, 'Primeiro semestre de 2014')
         id_classNumber = self.browser.find_element_by_id('classNumber')
-        self.assertEqual(id_classNumber.text, 'T110')
+        self.assertEqual(id_classNumber.text, 'T101')
         id_practical = self.browser.find_element_by_id('practical')
         self.assertEqual(id_practical.text, "PRATICA")
         id_numberOfRegistrations = self.browser.find_element_by_id('numberOfRegistrations')
-        self.assertEqual(id_numberOfRegistrations.text, '110')
+        self.assertEqual(id_numberOfRegistrations.text, '101')
         id_schedules = self.browser.find_element_by_id('schedules')
         self.assertIn("Domingo 12:00 - 14:00", id_schedules.text)
         self.assertNotIn("Segunda 16:00 - 19:00", id_schedules.text)

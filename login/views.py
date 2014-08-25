@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from login.forms import UserForm
 from login.models import Session
+from django.utils.timezone import timedelta
 
 
 def register(request):
@@ -70,7 +71,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                start_time = timezone.now()
+                start_time = get_time()
                 start = Session(start=start_time, user=user, end=start_time)
                 start.save()
                 return HttpResponseRedirect('/index/')
@@ -94,7 +95,7 @@ def user_login(request):
 @login_required
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
-    end_time = timezone.now()
+    end_time = get_time()
     userId = request.user.id
     # django methods not recognized, but still working
     listUserId = list(Session.objects.filter(user_id=userId))
@@ -105,4 +106,6 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/login/')
 
+def get_time():
+    return timezone.now() - timedelta(hours=3)
 

@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^offer/(?P<idTimePeriod>\d+)/(?P<idCourse>\d+)/create/$', views.offer_create, name = 'offer_create'),
     url(r'^offerList/$', views.offer_list, name = 'offer_list'),
     url(r'^offerListGenerate/$', views.offer_list_generate, name = 'offer_list_generate'),                    
+    url(r'^offer/(?P<idTimePeriod>\d+)/(?P<idCourse>\d+)/create/$', views.offer_create, name = 'offer_create'),                  
     )

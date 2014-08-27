@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+
+	{% block class %}<body class="right-sidebar">{% endblock %}
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div id="main" class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+							<div id="bar">
+								<h2>Parcerias</h2>
+								<p>Unidades da USP que utilizam o SuperNova</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div id="content" class="8u">
+							<article>
+								<h2>Colaboração entre unidades da USP</h2>
+								<p> O SuperNova é atualmente aplicado também em alguns cursos da Escola de Comunicações e Artes, Faculdade de Direito, Instituto de Física, Instituto de Matemática e Estatística (todos da USP).</p>
+								<p> O interessante é a troca de experiências didáticas entre as unidades. Ao usar o mesmo banco de dados, a identificação de tendências educacionais ficou mais fácil. </p>
+								<h2>Comissões de Graduação e orgãos de avaliação que utilizam o SuperNova</h2>
+								<p>Presidente da Comissão de Graduação da Escola de Comunicações e Artes - USP: Prof. Dr. <a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4731374Y5"> Arlindo Ornelas Figueira Neto</a></p>
+								<p>Presidente da Comissão de Graduação da Faculdade de Direito - USP: Prof. Dr. <a href="https://uspdigital.usp.br/tycho/CurriculoLattesMostrar?codpub=17A535B78231">Heleno Taveira Torres</a></p>
+								<p>Presidente da Subcomissão de Avaliação da Faculdade de Direito - USP: Prof. Dr. <a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4770763A8">Luís Fernando Massonetto</a></p>
+								<p>Presidente da Comissão de Graduação Instituto de Física - USP: Prof. Dr. <a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4785945Y1">Valmir Antonio Chitta</a></p>
+								<p>Presidente da Comissão de Avaliação da Graduação do Instituto de Física: Prof. Dr. <a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4796418Z1">Rafael Sá de Freitas</a></p>
+								<p>Presidente da Comissão de Graduação do Instituto de Matemática e Estatística: Profa. Dra. <a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=T89077">Lucia Pereira Barroso</a></p>
+								
+							</article>
+						</div>
+						<div id="sidebar" class="4u">
+							
+							<section>
+								<h2>Unidades parceiras</h2>
+								<p><a href="http://www3.eca.usp.br/" class="image image-left"><img src="{% static "images/ecausp.png" %}" alt=""></a><p>								
+								<p><a href="http://www.direito.usp.br/" class="image image-left"><img src="{% static "images/fdusp.jpg" %}" alt=""></a><p>
+								<p><a href="http://web.if.usp.br/ifusp/" class="image image-left"><img src="{% static "images/ifusp.png" %}" alt=""></a><p>
+								<p><a href="http://www.ime.usp.br/" class="image image-left"><img src="{% static "images/imeusp.jpg" %}" alt=""></a><p>
+							</section>
+							
+							
+							
+							
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- Main End Wrapper -->
+
+{% endblock %}

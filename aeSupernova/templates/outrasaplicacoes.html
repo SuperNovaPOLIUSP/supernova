@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+
+	{% block class %}<body class="right-sidebar">{% endblock %}
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div id="main" class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+							<div id="bar">
+								<h2>Outras Aplicações</h2>
+								<p>O SuperNova pode ser usado para levantamento e análise de opiniões</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div id="content" class="8u">
+							<article>
+								<h2>Medir qualidade</h2>
+								<p> Atividades onde ocorre troca de serviços e produtos são passíveis de análise de qualidade. A percepção do cliente pode ser um índice na composição de um significado de qualidade. </p>
+								<p> Atualmente, é cada vez mais comum a utilização de ferramentas de levantamento de opiniões de clientes para aprimorar determinado serviço ou produto. </p>
+								<p><a href="#" class="image image-left"><img src="{% static "images/outros.jpg" %}" alt=""></a><p>
+								<p> O SuperNova, por ser software livre, pode ser adaptado para diferentes necessidades. Um aluno pode ser compreendido como um cliente e um professor pode ser um identificado como um prestador de serviço. </p>
+								<p> Os arquivos e documentação estão no site <a href="https://github.com/SuperNovaPOLIUSP/supernova">GITHUB</a></p>.
+							</article>
+						</div>
+						<div id="sidebar" class="4u">
+							<article>
+							<h2>Software Livre</h2>
+								<p> O SuperNova foi desenvolvido em software livre. Com acesso ao código, mudanças no banco de dados e interface podem ser efetuadas. </p>
+							    <p> Para saber mais sobre software livre acesse o <a href="http://ccsl.ime.usp.br/">Centro de Competência em Software Livre</a></p>
+							</article>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- Main End Wrapper -->
+
+{% endblock %}

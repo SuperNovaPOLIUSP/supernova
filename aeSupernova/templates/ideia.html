@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+
+	{% block category %}<body class="right-sidebar">{% endblock %}
+
+		
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div id="main" class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+							<div id="bar">
+								<h2>Ideia</h2>
+								<p>A aplicação do SuperNova no CDE</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div id="content" class="8u">
+							<article>
+								<h2> A Ideia Base do SuperNova </h2>
+								<p> O SuperNova foi elaborado para ajudar o CDE. Aqui, mostramos passo a passo como isso ocorre. </p>
+								<h2> 1º Etapa: Informações do curso</h2>
+								<p> Inicialmente é necessário preencher o banco de dados com as informações do curso como nomes das disciplinas, professores e turmas. Isso pode ser feito manualmente ou através de um bot. </p>
+								<h2> 2º Etapa: O questionário</h2>
+								<p> Após construir colaborativamente o questionário com os Representantes de Classe, as questões são inseridas no SuperNova. Depois, um arquivo é gerado para impressão do questionário. </p>
+								<p><a href="#" class="image image-left"><img src="{% static "images/questotico.jpg" %}" alt=""></a> </p>
+								<h2> 3º Etapa: Inserção das respostas</h2>
+								<p> Os dados obtidos com a aplicação do questionário são inseridos no SuperNova. A versão 1.0 trabalha com um formato de entrada típico de máquinas de leitura ótica.</p>
+								<h2> 4º Etapa: Geração de relatórios</h2>
+								<p> Na interface do SuperNova, os relatórios podem ser gerados e disponibilizados em PDF. </p>
+								<p><a href="#" class="image image-left"><img src="{% static "images/relatorioind.jpg" %}" alt=""></a> </p>
+								<h2> 5º Etapa: Cruzamento de dados</h2>
+								<p> O SuperNova foi construído em MySQL. Com isso é possível utilizar levantamentos com softwares de banco de dados e utilizar softwares estatísticos para análises. </p>
+								<p><a href="#" class="image image-left"><img src="{% static "images/relatoriohist.jpg" %}" alt=""></a> </p>
+								
+								
+							</article>
+						</div>
+						<div id="sidebar" class="4u">
+							<section>
+								<h2>Flexibilidade</h2>
+								<p> No SuperNova é possível que cada ano de um curso ou cada curso de graduação tenha seu conjunto único de perguntas. Com a personalização o CDE se aproxima das demandas locais.</p>
+                                <p> Manter fixo um conjunto de questões pode ajudar na análise histórica de um determinado índice.</p>				
+								<h2>Análise de dados</h2>
+								<p>Com um conjunto de dados bem estruturado a realização de pesquisas fica mais fácil e rápida. Através de softwares específicos pode-se realizar análise de regressão e correlação, testes não paramétricos e outras inferências estatísticas.</p>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- Main End Wrapper -->
+
+{% endblock %}

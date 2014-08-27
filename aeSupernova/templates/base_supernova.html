@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block body_block %}
+	{% block class %}<body>{% endblock %}
+			<div id="main-wrapper">
+				<div id="main" class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+							<div id="bar">
+								
+
+								<!--- Icons Supernova--->
+
+<h2>Servidor Interno do SuperNova</h2>
+
+<p>
+<a href = "/opticalSheet/"> OpticalSheet</a>                     
+																	 <a href = "/datafile/"> Datafile </a>  
+																	 <a href = "/generator/"> Generator </a>  
+																	 <a href = "/control/"> Controle </a>  
+																	 <a href = "/encoder/"> Encoder </a>  
+																	 <a href = "/presentation/"> Presentation </a>  
+																	<a href = "/interface/"> Interface </a>  
+</p>		
+																
+
+
+								<!--- End Icons Supernova--->
+
+						</div>
+					</div>
+
+					<div id="content" class="row">
+						<div class="12u">
+
+							<!---blank box goes here--->
+							{% block content %}{% endblock %}
+							<!---end blank box--->
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+{% endblock %}

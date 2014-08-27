@@ -3,3 +3,4 @@
 settings.db
 htmlcov/*
 .coverage
+/nbproject/private/

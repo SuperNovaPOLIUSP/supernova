@@ -1,18 +1,22 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Interface - Professor</title>
-</head>
-<body>
-	<input type="button" value="create" onclick="redirect_to_create_professor();" name="criar"/><br><br>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+
+
+
+{% block content %}
+	<a id="button-create" href="create" class="oval-button">Inserir professor</a>
+
+	<ul id="links">
 	{% for professor in professors %}
-		<a href = "{% url 'interface:professor_detail' idProfessor=professor.idProfessor %}">{{ professor.name }}</a>
+		<li><a href = "{% url 'interface:professor_detail' idProfessor=professor.idProfessor %}">-{{ professor.name }}</a></li>
 		<br>
 	{% endfor %}
+	</ul>
 	<script type="text/javascript">
 		function redirect_to_create_professor(){
 			window.location.href = "{% url 'interface:professor_create' %}";
 		}
 	</script>
-</body>
-</html>
+{% endblock %}

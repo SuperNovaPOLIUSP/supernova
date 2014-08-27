@@ -5,6 +5,7 @@
 # variables set to empty strings.
 # It can be checked in to version control or made public without fear, since
 # the critical variables are loaded from a different file.
+import os
 
 TEMPLATE_DEBUG = DEBUG = False
 
@@ -15,6 +16,7 @@ DATABASE_PASSWORD = ''
 DATABASE_HOST = ''
 DATABASE_PORT = ''
 SECRET_KEY = ''
+
 
 # Then load those sensitive settings from a local file with tight
 # filesystem permissions.

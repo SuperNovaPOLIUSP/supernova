@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+		<title>SuperNova</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700,300" rel="stylesheet" />
+		<script src= "{% static "js/jquery-1.8.3.min.js" %}"></script>
+		<script src= "{% static "css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none" %}"></script>
+		<script src= "{% static "js/jquery.dropotron-1.2.js" %}"></script>
+		<script src= "{% static "js/init.js" %}"></script>
+		{% block scripts %}{% endblock %}
+		<noscript>
+			<link rel="stylesheet" href="{% static "css/5grid/core.css" %}" />
+			<link rel="stylesheet" href="{% static "css/5grid/core-desktop.css" %}" />
+			<link rel="stylesheet" href="{% static "css/5grid/core-1200px.css" %}" />
+			<link rel="stylesheet" href="{% static "css/5grid/core-noscript.css" %}" />
+			<link rel="stylesheet" href="{% static "css/style.css" %}"  />
+			<link rel="stylesheet" href="{% static "css/style-desktop.css" %}" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
+	</head>
+	{% block class %}<body>{% endblock %}
+	
+
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+						
+							<!-- Header -->
+								<header id="header">
+									
+									<!-- Logo -->
+										<h1><a href='/index/' class="mobileUI-site-name"><span class="text"> SuperNova </a></h1>
+									
+									<!-- Nav -->
+										<nav id="nav" class="mobileUI-site-nav">
+											<ul>
+												<li class="current_page_item"><a href='/initial/'>Home</a></li>
+												<li>
+													<a href="" class="arrow">Projeto</a>
+													<ul>
+														<li><a href='/historico/'>Histórico</a></li>
+														<li><a href='/equipe/'>Equipe</a></li>
+                                                                                                                <li><a href='/ideia/'>Ideia</a></li>
+														<li><a href='/fotos/'>Fotos</a></li>
+														<li><a href='/relatoriosgerais/'>Relatórios Gerais</a></li>
+														<li><a href='/outrasaplicacoes/'>Outras aplicações</a></li>
+													</ul>
+												</li>
+												<li><a href='/publicacoes/'>Publicações</a></li>
+												<li><a href='/parcerias/'>Parcerias</a></li>
+												<li><a href='/embreve/'>Em breve</a></li>
+												<li><a href='/no-sidebar/'>English</a></li>
+											</ul>
+										</nav>
+
+								</header>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+{% block body_block %}{% endblock %}
+
+		<!-- Main End Wrapper -->
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+			
+				<!-- Footer -->
+					<footer id="footer" class="5grid-layout">
+					
+						<!-- Footer Content -->
+							<div class="row">
+							
+								<div class="4u">
+									<section>
+										<h2>SuperNova 1.0</h2>
+										<p>O Projeto SuperNova, iniciado em 2005, foi desenvolvido em software livre e é público e gratuito. Os arquivos e documentação estão no site <a href="https://github.com/SuperNovaPOLIUSP/supernova">GITHUB</a>. O SuperNova é uma ferramenta para auxiliar a avaliação da qualidade de ensino do curso de graduação da POLI e atualmente é utilizado por cinco unidades da USP. </p>
+									</section>
+								</div>
+
+								<div class="4u">
+									<section>
+										<h2>Últimas atividades</h2>
+										<ul class="style5">
+											<li class="first"><span class="date">22.07.13</span><a href="relatoriosgerais.html">Relatórios Gerais do 1º semestre de 2013</a></li>
+											<li><span class="date">17.07.13</span><a href="publicacoes.html">1º Informativo da Subcomissão de Avaliação POLI</a></li>
+											<li><span class="date">15.07.13</span><a href="relatoriosgerais.html">Evolução da participação estudantil no CDE</a></li>
+										</ul>
+									</section>
+								</div>
+
+								<div class="4u">
+									<section>
+										<h2>Parceria com o IMEUSP</h2>
+										<p>Esse projeto teve a colaboração do <a href="http://www.ime.usp.br/~jef/">Prof. Dr João Eduardo Ferreira</a>, do Instituto de Matemática e Estatística da USP.</p>
+										<ul class="style2">
+											<li><a href="mailto:giuliano.olguin@gmail.com" class="social-icon social-icon-01">Icon-01</a></li>
+											<li><a href="https://www.facebook.com/groups/405942832799101/" class="social-icon social-icon-03">Icon-03</a></li>
+											<li><a href="https://www.facebook.com/groups/126956400783556/" class="social-icon social-icon-04">Icon-04</a></li>
+											
+										</ul>
+									</section>
+								</div>
+
+							</div>
+
+
+						<!-- Footer Content Ends Here -->
+						
+						<!-- Copyright -->
+							<div class="row">
+								<div id="copyright" class="12u">
+									<a href="http://www.poli.usp.br/">Escola Politécnica da USP</a>  - Subcomissão de Avaliação/ Comissão de Graduação - 2014
+								</div>
+							</div>
+						<!-- Copyright Ends Here -->
+
+
+					</footer>
+
+			</div>
+		<!-- Footer Wrapper Ends Here -->
+
+</body>
+</html>

@@ -1,8 +1,6 @@
-import autocomplete_light
 from django.conf.urls import patterns, url
 from interface import views
 
-autocomplete_light.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name = 'interface'),

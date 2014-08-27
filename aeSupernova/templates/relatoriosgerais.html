@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+	{% block class %}<body class="left-sidebar">{% endblock %}
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div id="main" class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+							<div id="bar">
+								<h2>Relatórios Gerais</h2>
+								<p>Os dados coletados desde 2007 na POLI</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div id="sidebar" class="4u">
+							<section>
+								<h2>Da planilha para o Banco de Dados</h2>
+								<p>No começo, eram usados programas de planilha e editores de texto para elaboração dos relatórios, que ficavam prontos após seis meses de trabalho. </p> 
+								<p> Em 2005, iniciamos o desenvolvimento de um banco de dados, o Projeto SuperNova. </p>
+								<p> A primeira aplicação piloto do SuperNova ocorreu em 2007, sendo que a geração de relatórios está automatizada e dura alguns segundos. </p>
+								<ul class="style3">
+									
+									<li>
+										<p><a href="#">Desde então inúmeros aprimoramentos foram realizados para chegar na versão SuperNova 1.0</a></p>
+										
+									</li>
+								</ul>
+							</section>
+							<section>
+								<h2>Relatórios POLI USP</h2>
+								<ul class="style1">
+									<li class="first"><a href="{% static "images/cdepoli2013.pdf" %}">Relatório CDE POLI 2013</a></li>
+									<li><a href="{% static "images/cdepoli2012.pdf" %}">Relatório CDE POLI 2012</a></li> 
+									<li><a href="{% static "images/cdepoli2011.pdf" %}">Relatório CDE POLI 2011</a></li>
+									<li><a href="{% static "images/cdepoli2010.pdf" %}">Relatório CDE POLI 2010</a></li>
+									<li><a href="{% static "images/cdepoli2009.pdf" %}">Relatório CDE POLI 2009</a></li>
+									<li><a href="{% static "images/cdepoli2008.pdf" %}">Relatório CDE POLI 2008</a></li>
+									<li><a href="{% static "images/cdepoli2007.pdf" %}">Relatório CDE POLI 2007</a></li>
+								</ul>
+							</section>
+						</div>
+						
+						<div id="content" class="8u mobileUI-main-content">
+							<article>
+								<h2>A legitimidade do CDE e a agilidade do SuperNova</h2>
+								<p>  A consolidação do processo de avaliação só foi possível devido à participação expressiva dos estudantes no preenchimento dos questionários e na rápida distribuição dos resultados, o que ajudou na elaboração de ações para a melhoria do ensino.</p> 
+								<p> O estudante, ao ver que a avaliação gera resultados, acaba por acreditar ainda mais no processo.  </p>
+							    <p><a href="#" class="image image-left"><img src="{% static "images/grafico01.jpg" %}" alt=""></a><p>
+							</article>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		<!-- Main End Wrapper -->
+
+{% endblock %}

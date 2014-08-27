@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.python.project</type>
+    <configuration>
+        <data xmlns="http://nbpython.dev.java.net/ns/php-project/1">
+            <name>NewPythonProject2</name>
+            <sources>
+                <root id="aeSupernova.dir"/>
+                <root id="interface.dir"/>
+                <root id="login.dir"/>
+                <root id="pulsarInterface.dir"/>
+                <root id="templates.dir"/>
+                <root id="tools.dir"/>
+            </sources>
+            <tests/>
+        </data>
+    </configuration>
+</project>

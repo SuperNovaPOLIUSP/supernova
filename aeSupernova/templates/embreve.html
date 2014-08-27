@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+
+	{% block class %}<body class="right-sidebar">{% endblock %}
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div id="main" class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+							<div id="bar">
+								<h2>Em breve</h2>
+								<p>Novas ideias para o SuperNova 2.0</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div id="content" class="8u">
+							<article>
+								<h2>Em desenvolvimento</h2>
+								<p> - Novos formatos de gráficos</p>
+								<p> - Conexão direta com sistema de questionários online</p>
+								<p> - Correlação com bancos de dados de desempenho estudantil na graduação</p>
+								<p> - Análises estatísticas</p>
+								
+								
+							</article>
+						</div>
+						<div id="sidebar" class="4u">
+							<section>
+								<h2>A POLI investe no SuperNova</h2>
+								<p>A Escola Politécnica da USP continua investindo em pessoal e infraestrutura para que o SuperNova enfrente novos desafios.  </p>
+								<p>Existe o interesse em aplicar o SuperNova para levantamento de opiniões de professores e antigos alunos. A próxima versão atenderá essa demanda </p>
+							</section>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- Main End Wrapper -->
+
+{% endblock %}

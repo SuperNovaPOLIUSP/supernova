@@ -1,12 +1,11 @@
-from aeSupernova.document.CourseReport import *
-from pulsarInterface.TimePeriod import *
-from pulsarInterface.Faculty import *
-from pulsarInterface.Course import *
 from django.conf import settings
-import subprocess
 from subprocess import CalledProcessError
-#from aeSupernova.generator.CourseiReportGenerator import *
-#from aeSupernova.generator.CourseReportGenerator import *
+import subprocess
+
+from aeSupernova.document.CourseReport import CourseReport
+from pulsarInterface.Course import Course
+from pulsarInterface.Faculty import Faculty
+from pulsarInterface.TimePeriod import TimePeriod, TimePeriodError
 
 class CourseReportGenerator(object):
     def __init__(self, idTimePeriod,

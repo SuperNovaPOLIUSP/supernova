@@ -1,11 +1,19 @@
+#coding: utf8
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
-from pulsarInterface.IdealTermCourse import *
-from aeSupernova.generator.CourseGenerator import *
-from aeSupernova.header.Header import *
+from django.http.response import HttpResponse
+from django.shortcuts import render_to_response
+import json
+
+from aeSupernova.generator.CourseGenerator import CourseReportGenerator
+from aeSupernova.header.Header import Header
+from login.models import Log
+from login.views import get_time
+from pulsarInterface.Course import Course
+from pulsarInterface.Cycle import Cycle
+from pulsarInterface.TimePeriod import TimePeriod
+from tools.MySQLConnection import MySQLConnection
 
 
-#from aeSupernova.generator.CourseReportGenerator import *
 @login_required
 def openSite(request):      
     header = Header()
@@ -15,22 +23,15 @@ def openSite(request):
 
 def loadCourses(request):
     data = request.GET
-    #idealTermCourses = IdealTermCourse.find(idCycle = int(data['idCycle']), term = int(data['term']), endDate_equal = '0000-00-00')
-    #courses = []
-    #for idealTermCourse in idealTermCourses:
-    #    course = {}
-    #    course['name'] = idealTermCourse.course.name
-    #    course['idCourse'] = idealTermCourse.course.idCourse
-    #    courses.append(course)
     cursor = MySQLConnection()
-    coursesData = cursor.execute('SELECT course.idCourse, course.name FROM rel_cycle_opticalSheet JOIN aggr_opticalSheetField on aggr_opticalSheetField.idOpticalSheet = rel_cycle_opticalSheet.idOpticalSheet JOIN aggr_offer ON aggr_offer.idOffer = aggr_opticalSheetField.idOffer JOIN course ON course.idCourse = aggr_offer.idCourse WHERE idTimePeriod = ' + str(data['idTimePeriod']) + ' AND idCycle = ' + str(data['idCycle']) + ' AND term = ' + str(data['term']) + ' GROUP BY idCourse')
+    coursesData = cursor.execute('SELECT course.idCourse, course.name, course.courseCode FROM rel_cycle_opticalSheet JOIN aggr_opticalSheetField on aggr_opticalSheetField.idOpticalSheet = rel_cycle_opticalSheet.idOpticalSheet JOIN aggr_offer ON aggr_offer.idOffer = aggr_opticalSheetField.idOffer JOIN course ON course.idCourse = aggr_offer.idCourse WHERE idTimePeriod = ' + str(data['idTimePeriod']) + ' AND idCycle = ' + str(data['idCycle']) + ' AND term = ' + str(data['term']) + ' GROUP BY idCourse')
     courses = [] 
     for courseData in coursesData:
         course = {}
+        course['courseCode'] = courseData[2]
         course['name'] = courseData[1]
         course['idCourse'] = courseData[0]
         courses.append(course)
-    assessments = []
     assessmentsData = cursor.execute('SELECT aggr_survey.assessmentNumber FROM rel_cycle_opticalSheet JOIN aggr_opticalSheetField on aggr_opticalSheetField.idOpticalSheet = rel_cycle_opticalSheet.idOpticalSheet JOIN aggr_offer ON aggr_offer.idOffer = aggr_opticalSheetField.idOffer JOIN aggr_survey ON aggr_survey.idOpticalSheet = rel_cycle_opticalSheet.idOpticalSheet WHERE idTimePeriod = 31 AND idCycle = 19 AND term = 1 GROUP BY aggr_survey.assessmentNumber')
     assessments = [int(assessment[0]) for assessment in assessmentsData]
     response = {}
@@ -43,10 +44,9 @@ def generateCourses(request):
     idCourses = json.loads(data['idCourses']) #Do something with this list
     idCourses = [int(idCourse) for idCourse in idCourses]
     if int(data['useProfessorsName']) == 1:
-         useProfessorsName = True
+        useProfessorsName = True
     else:
         useProfessorsName = False
-
     if int(data['byOffer']) == 1:
         byOffer = True
     else:
@@ -54,15 +54,19 @@ def generateCourses(request):
     idTimePeriod = int(data['idTimePeriod'])
     idFaculty = int(data['idFaculty'])
     assessmentNumber = int(data['assessmentNumber'])
-    
-    #return HttpResponse(str(idTimePeriod)+'brisa'+str(idCourses)+ str(useProfessorsName)+ str(byOffer)+ str(idFaculty)+'brisa'+str(assessmentNumber))
+    user= request.user
+    user_name = request.user.username
+    time = get_time()
+    timePeriod = str(TimePeriod.pickById(idTimePeriod))
+    courses = [str(Course.pickById(idCourse).courseCode) for idCourse in idCourses]
+    cycle = Cycle.pickById(int(data['idCycle'])).name
+    action = u"Usuário " + str(user_name) + u" gerou relatório: " \
+    + u"{ Curso: " + cycle \
+    + u"; Semestre: " + data['term'] \
+    + u"; Matérias: " + str(courses) \
+    + u"; Período: " + timePeriod \
+    + u"; Avaliação: " + data['assessmentNumber'] + " }"
+    report_generate_log = Log(user=user, action=action, time=time)
+    report_generate_log.save()
     CourseReportGenerator(idTimePeriod, idCourses, useProfessorsName, byOffer, idFaculty, assessmentNumber)
-
-    print idTimePeriod
-    print idCourses
-    print useProfessorsName
-    print byOffer
-    print idFaculty
-    print assessmentNumber
-
-    return HttpResponse('ok')
+    return HttpResponse('Relatórios Gerados')

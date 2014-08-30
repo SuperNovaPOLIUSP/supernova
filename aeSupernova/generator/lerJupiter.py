@@ -1,5 +1,9 @@
-from aeSupernova.header.Header import *
-from pulsarInterface.IdealTermCourse import *
+from django.http.response import HttpResponse
+from django.shortcuts import render_to_response
+import json
+
+from aeSupernova.header.Header import Header
+
 
 def openSite(request):
     header = Header()
@@ -10,7 +14,4 @@ def lerJupiter(request):
     data = request.GET
     idCycles = json.loads(data['idCycles']) #Do something with this list
     idCycles = [int(idCycle) for idCycle in idCycles]
-    idTimePeriod = int(data['idTimePeriod'])
-    print idCycles
-    print idTimePeriod
     return HttpResponse('ok')

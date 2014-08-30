@@ -14,6 +14,10 @@ from aeSupernova.opticalSheet.OpticalSheetPrinter import OpticalSheetPrinter
 from aeSupernova.opticalSheet.QualitativeQuestionnairePrinter import \
     QualitativeQuestionnairePrinter
 from aeSupernova.opticalSheet.QuestionController import QuestionController
+from login.models import Log
+from login.views import get_time
+from pulsarInterface.Cycle import Cycle
+from pulsarInterface.TimePeriod import TimePeriod
 
 
 @login_required
@@ -69,7 +73,18 @@ def findOpticalSheetById(request):
 def store(request):
     data = request.POST
     data = json.loads(data['json'])
+    user= request.user
+    user_name = request.user.username
+    time = get_time()
+    cycle_name = Cycle.pickById(int(data['idCycle'])).name
+    timePeriod = str(TimePeriod.pickById(int(data['idTimePeriod'])))
     response = OpticalSheetController.storeOpticalSheet(data['idOpticalSheet'], data['surveyType'], data['idCycle'], data['term'], data['idTimePeriod'], data['fields'], data['surveys'], data['encoded'])
+    action = u"Usuário " + str(user_name) + u" salvou idOpticalSheet " + str(data['idOpticalSheet']) \
+    + u" { Periodo: " + timePeriod \
+    + u"; Curso: " + cycle_name \
+    + u"; Semestre: " + str(data['term']) + " }"
+    opticalSheet_store_log = Log(user=user, action=action, time=time)
+    opticalSheet_store_log.save()
     return HttpResponse(json.dumps(response))
 
 def printOpticalSheet(request):

@@ -79,6 +79,7 @@
 	}
 	
 	function deleteEncoding(){
+		var idTimePeriod = $('#headerTimePeriod').val()
 		$('#initialButtons').hide()
         $('#buttonDelete').hide()
         $('#headerFaculties').hide()
@@ -86,7 +87,7 @@
         $('#encoded').hide()
         $('#selectEncoding').empty()
 		var get = new XMLHttpRequest()
-        get.open( "GET", 'deleteEncoding/?' + $.param({idOpticalSheet: controller.idOpticalSheet}), false)
+        get.open( "GET", 'deleteEncoding/?' + $.param({idOpticalSheet: controller.idOpticalSheet, idTimePeriod: idTimePeriod}), false)
         get.send(null)
 	}
 	

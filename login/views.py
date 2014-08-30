@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
@@ -6,8 +7,32 @@ from django.utils import timezone
 from login.forms import UserForm
 from login.models import Session
 from django.utils.timezone import timedelta
+from django.conf import settings
+from django.core.cache import cache, get_cache
+from django.utils.importlib import import_module
 
 
+class UserRestrictMiddleware(object):
+    def process_request(self, request):
+        """
+        Checks if different session exists for user and deletes it.
+        """
+        if request.user.is_authenticated():
+            cache = get_cache('default')
+            cache_timeout = 86400
+            cache_key = "user_pk_%s_restrict" % request.user.pk
+            cache_value = cache.get(cache_key)
+
+            if cache_value is not None:
+                if request.session.session_key != cache_value:
+                    engine = import_module(settings.SESSION_ENGINE)
+                    session = engine.SessionStore(session_key=cache_value)
+                    session.delete()
+                    cache.set(cache_key, request.session.session_key, 
+                              cache_timeout)
+            else:
+                cache.set(cache_key, request.session.session_key, cache_timeout)
+                
 def register(request):
     # Need an user in database to register a new user.
     if not request.user.is_authenticated():
@@ -70,9 +95,17 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
+                userId = request.user.id
+                # django methods not recognized, but still working
+                listUserId = list(Session.objects.filter(user_id=userId))
+                for sessions in listUserId:
+                    if (sessions.start == sessions.end):
+                        sessions.end = get_time()
+                        sessions.save()
                 start_time = get_time()
                 start = Session(start=start_time, user=user, end=start_time)
                 start.save()
+
                 return HttpResponseRedirect('/index/')
             else:
                 # An inactive account was used - no logging in!

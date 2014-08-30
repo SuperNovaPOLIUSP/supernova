@@ -14,6 +14,7 @@ encoding//interface/forms.py=utf8
 encoding//interface/tests.py=utf8
 encoding//interface/views.py=utf8
 encoding//login/tests.py=utf8
+encoding//login/views.py=utf-8
 encoding//pulsarInterface/AcademicProgram.py=utf8
 encoding//pulsarInterface/AnswerType.py=utf8
 encoding//pulsarInterface/Course.py=utf8

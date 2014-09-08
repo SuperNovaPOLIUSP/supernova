@@ -173,7 +173,12 @@ class QualitativeQuestionnairePrinter(Printer):
             course = {}
             course['name'] = offersSet[courseIndex][0].course.name + Offer.offersName([offersSet[courseIndex]])[0] #Get the courses name from any of the offers
             course['offers'] = []
+            classNumber = 0
+            professors = []
+            professors_name = ''
             for offer in offersSet[courseIndex]:
+                professors.append(offer.professor.name)
+                classNumber = offer.classNumber
                 offerDict = {}
                 if not offer.classNumber in [sameOffer['classNumber'] for sameOffer in course['offers']]: #Offers of the same classNumber should be showed together
                     offerDict['classNumber'] = offer.classNumber
@@ -181,8 +186,14 @@ class QualitativeQuestionnairePrinter(Printer):
                     offerDict['professor'] = offer.professor.name
                     course['offers'].append(offerDict)
                 else:
-                    [sameOffer for sameOffer in course['offers'] if sameOffer['classNumber'] == offer.classNumber][0]['professor'] = '' #If offers are showed together no professor's name should appear
-
+                    for professor in professors:
+                        professors_name += str(professor)
+                        professors_name += " / "
+                    professors_name = professors_name[:-2] # remove last bar from string
+                    [sameOffer for sameOffer in course['offers'] if sameOffer['classNumber'] == offer.classNumber][0]['professor'] = professors_name #If offers are showed together no professor's name should appear
+                if classNumber != offer.classNumber:
+                    professors = []
+                    professors_name = ''
             #Now organize the offers in columns 
             if len(course['offers']) > 8: #if there are more than 10 offers to show split them in 2 columns.
                 columns = []

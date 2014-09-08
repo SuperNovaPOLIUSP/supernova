@@ -4,12 +4,14 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import json
-from pulsarInterface.Offer import Offer
-from pulsarInterface.OpticalSheet import OpticalSheet
-from pulsarInterface.TimePeriod import TimePeriod
 
 from aeSupernova.encoder.Codification import Codification
 from aeSupernova.header.Header import Header
+from login.models import Log
+from login.views import get_time
+from pulsarInterface.Offer import Offer
+from pulsarInterface.OpticalSheet import OpticalSheet
+from pulsarInterface.TimePeriod import TimePeriod
 
 
 MAX_NUMBER_OF_CODES = 100  # Not possible to add more codes after 99 
@@ -54,6 +56,14 @@ def fillOffers(request):
 def deleteEncoding(request):
     data = request.GET
     opticalSheet = OpticalSheet.pickById(int(data['idOpticalSheet']))
+    user= request.user
+    user_name = request.user.username
+    time = get_time()
+    timePeriod = str(TimePeriod.pickById(int(data['idTimePeriod'])))
+    action = u"Usuário " + str(user_name) + u" deletou codificação " + opticalSheet.encodingName \
+    + u" { Periodo: " + timePeriod + " }"
+    encoding_delete_log = Log(user=user, action=action, time=time)
+    encoding_delete_log.save()
     opticalSheet.delete()
     return HttpResponseRedirect('/encoder/')
     

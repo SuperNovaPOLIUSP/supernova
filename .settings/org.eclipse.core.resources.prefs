@@ -1,7 +1,9 @@
 eclipse.preferences.version=1
 encoding//aeSupernova/algeLin/algeLin.py=utf8
+encoding//aeSupernova/datafile/datafile.py=utf8
 encoding//aeSupernova/document/BarChart.py=utf8
 encoding//aeSupernova/encoder/encoder.py=utf8
+encoding//aeSupernova/generator/generator.py=utf8
 encoding//aeSupernova/header/Header.py=utf8
 encoding//aeSupernova/opticalSheet/OpticalSheetController.py=utf8
 encoding//aeSupernova/opticalSheet/OpticalSheetPrinter.py=utf8
@@ -12,6 +14,7 @@ encoding//interface/forms.py=utf8
 encoding//interface/tests.py=utf8
 encoding//interface/views.py=utf8
 encoding//login/tests.py=utf8
+encoding//login/views.py=utf-8
 encoding//pulsarInterface/AcademicProgram.py=utf8
 encoding//pulsarInterface/AnswerType.py=utf8
 encoding//pulsarInterface/Course.py=utf8

@@ -13,7 +13,7 @@ class Session(models.Model):
 class Log(models.Model):
     idlog = models.AutoField(db_column='idLog', primary_key=True)
     user = models.ForeignKey(User)
-    action = models.CharField(max_length=500)
+    action = models.TextField()
     time = models.DateTimeField(db_column='time')
     class Meta:
         managed = True

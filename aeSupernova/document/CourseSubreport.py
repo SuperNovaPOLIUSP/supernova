@@ -44,7 +44,7 @@ class CourseSubreport (AssessmentSubreport):
   
     """
 
-    def __init__(self, assessedObject, templateFolder, reportByClass):
+    def __init__(self, assessedObject, templateFolder, reportByClass , assessmentNumber):
         """
          Constructor method.
   
@@ -54,7 +54,7 @@ class CourseSubreport (AssessmentSubreport):
         @author
         """
         super(CourseSubreport, self).__init__(assessedObject, templateFolder)
-        self.assessmentNumber = 1
+        self.assessmentNumber = assessmentNumber
         self.reportByClass = reportByClass
   
     def countAnswers(self):
@@ -171,7 +171,6 @@ class CourseSubreport (AssessmentSubreport):
         # checks validity of reportByClass parameter            
         if not isinstance(reportByClass, bool):
             raise CourseSubreportError("Invalid reportByClass parameter: must be a boolean.")
-
         self.assessmentNumber = assessmentNumber
         self.reportByClass = reportByClass
 

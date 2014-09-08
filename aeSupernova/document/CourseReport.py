@@ -97,6 +97,7 @@ class CourseReport (AssessmentReport):
         answers = {}
         for question in self.questionnaire:
             countedAnswer = Answer.countAnswers(question = question, timePeriod = self.assessmentTimePeriod, course = self.assessedObject, assessmentNumber = self.assessmentNumber)
+            
             if hasAnswers(countedAnswer):
                 answers[question.idQuestion] = countedAnswer
         self.questionnaire = [question for question in self.questionnaire if answers.has_key(question.idQuestion)]
@@ -273,10 +274,16 @@ class CourseReport (AssessmentReport):
         @return string :
         @author
         """
-        if self.assessmentTimePeriod.length == 1:
-            title = "cde" + str(self.assessmentTimePeriod.year) + "s" + str(self.assessmentTimePeriod.session) + self.assessedObject.courseCode.lower()
+        if self.assessmentNumber == 2:
+            if self.assessmentTimePeriod.length == 1:
+                title = "cde_2aval_" + str(self.assessmentTimePeriod.year) + "s" + str(self.assessmentTimePeriod.session) + self.assessedObject.courseCode.lower()
+            else:
+                title = "cde_2aval_" + str(self.assessmentTimePeriod.year) + "q" + str(self.assessmentTimePeriod.session) + self.assessedObject.courseCode.lower()
         else:
-            title = "cde" + str(self.assessmentTimePeriod.year) + "q" + str(self.assessmentTimePeriod.session) + self.assessedObject.courseCode.lower()
+            if self.assessmentTimePeriod.length == 1:
+                title = "cde" + str(self.assessmentTimePeriod.year) + "s" + str(self.assessmentTimePeriod.session) + self.assessedObject.courseCode.lower()
+            else:
+                title = "cde" + str(self.assessmentTimePeriod.year) + "q" + str(self.assessmentTimePeriod.session) + self.assessedObject.courseCode.lower()
 
         return str(title)
   
@@ -293,7 +300,6 @@ class CourseReport (AssessmentReport):
 
         # gets course offers to make subreports from
         assessedOffers = Offer.find(course = self.assessedObject, timePeriod = self.assessmentTimePeriod)
-
         # creates a CourseSubreport for each course offer
         classesAlreadyReported = [] # list of classes that already got a subreport
 
@@ -310,7 +316,7 @@ class CourseReport (AssessmentReport):
                     makeSubreport = False
 
             if makeSubreport:   
-                subreport = CourseSubreport(assessedOffer, self.templateFolder, self.reportByClass)
+                subreport = CourseSubreport(assessedOffer, self.templateFolder, self.reportByClass, self.assessmentNumber)
                 # initializes texSource attribute for the subreport: this is necessary for it to know the reports temporary output directory (i.e. where the tex source is kept) when generating its charts
                 subreport.texSource = File(self.texSource.directoryPath, self.generateTitle() + "_subreport" + str(assessedOffer.classNumber))
                 # adds subreport to the subreports list attribute

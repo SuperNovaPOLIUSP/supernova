@@ -1,29 +1,32 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Interface - Professor Detail</title>
-</head>
-<body>
-	<h1>ID: {{ professor.idProfessor }}</h1><br>
-	<p>Name: {{ professor.name }}</p>
-	<p>Member ID: {{ professor.memberId }}</p>
-	<p>Office: {{ professor.office }}</p>
-	<p>Email: {{ professor.email }}</p>
-	<p>Phone Number: {{ professor.phoneNumber }}</p>
-	<p>CellPhone Number: {{ professor.cellphoneNumber }}</p>
-	<p>Id Department: {{ professor.idDepartment }}</p>
-	<input type="button" value="edit" onclick="redirect_to_edit_professor();" name="editar"/>
-	<input type="button" value="delete" onclick="confirm_delete();" name="deletar"/>
-	<script type="text/javascript">
-		function redirect_to_edit_professor(){
-			window.location.href = "{% url 'interface:professor_edit' idProfessor=professor.idProfessor %}";
-		}
-		function confirm_delete(){
-			var r = confirm("Deseja deletar este professor?");
-			if (r == true) {
-				window.location.href = "{% url 'interface:professor_delete' idProfessor=professor.idProfessor %}";
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+
+
+
+{% block content %}
+	<div id="center-edits-detail">
+		<h1>ID: {{ professor.idProfessor }}</h1><br>
+		<p>Name: {{ professor.name }}</p>
+		<p>Member ID: {{ professor.memberId }}</p>
+		<p>Office: {{ professor.office }}</p>
+		<p>Email: {{ professor.email }}</p>
+		<p>Phone Number: {{ professor.phoneNumber }}</p>
+		<p>CellPhone Number: {{ professor.cellphoneNumber }}</p>
+		<p>Id Department: {{ professor.idDepartment }}</p>
+		<input id="button-interface" class="oval-button" type="button" value="Editar" onclick="redirect_to_edit_professor();" name="editar"/>
+		<input id="button-interface" class="oval-button" type="button" value="Deletar" onclick="confirm_delete();" name="deletar"/>
+		<script type="text/javascript">
+			function redirect_to_edit_professor(){
+				window.location.href = "{% url 'interface:professor_edit' idProfessor=professor.idProfessor %}";
 			}
-		}
-	</script>
-</body>
-</html>
+			function confirm_delete(){
+				var r = confirm("Deseja deletar este professor?");
+				if (r == true) {
+					window.location.href = "{% url 'interface:professor_delete' idProfessor=professor.idProfessor %}";
+				}
+			}
+		</script>
+	</div>
+{% endblock %}

@@ -1,9 +1,6 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Interface - Offer</title>
-</head>
-<body>
+{% extends 'base_supernova.html' %}
+
+{% block content %}
 	<input type="button" value="create" onclick="redirect_to_create_offer();" name="criar"/><br><br>
 	<table width="1400px" border = 1>
 		<tr>
@@ -48,5 +45,4 @@
 			window.location.href = "{% url 'interface:offer_create' idCourse=course.idCourse idTimePeriod=timePeriod.idTimePeriod %}";
 		}
 	</script>
-</body>
-</html>
+{% endblock %}

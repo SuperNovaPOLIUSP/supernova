@@ -1,21 +1,36 @@
 {% extends 'base_supernova.html' %}
 
 {% block content %}
-<h1> <a href="{% url 'interface:professor' %}"> Professor </a></h1>
-<br><br>
-<a href="{% url 'interface:offer_list' %}"> OfferList </a>
-<br><br>
-<form method="post" name="offer" action="{% url 'interface:offer' %}"> {% csrf_token %}
-	<a href="javascript: submitform()"> Offer</a>
-	{{ form.as_p }}
-</form>
+<div id="center-box">
+	<div id="interface-box">
+		<div id="interface-buttons">
+			<a id="button-interface" href="professor" class="oval-button"> Professor </a>
+		</div>
+		<div id="interface-text">
+			<p> Abrir listagem de professores </p>
+		</div>
+	</div>
+
+	<div id="interface-box">
+		<div id="interface-buttons">
+			<a id="button-interface" href="javascript: submitform()" class="oval-button"> Oferecimento </a>
+		</div>
+		<div id="interface-text">
+			<p> Selecione o período e o código do curso antes de clicar </p>
+			<form method="post" name="offer" action="{% url 'interface:offer' %}"> 
+				{% csrf_token %}
+				{{ form.as_p }}
+			</form>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 	function submitform() {
 	 	document.offer.submit()
 	}
 </script>
-<br><br>
-<br><br><br><br><br><a href="/logout/">Logout</a><br/>
+
 
 {% include "base_jquery.html" %}
 

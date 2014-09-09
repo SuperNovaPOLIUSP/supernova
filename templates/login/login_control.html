@@ -1,0 +1,19 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>Interface - Login Control</title>
+</head>
+<body>
+<br>
+<form method="post" name="login_control_generate" action="{% url 'login:login_control_generate' %}"> {% csrf_token %}
+	{{ form.as_p }}
+	<button href="javascript: submitform()"> Imprimir Controle de Login</button>
+</form>
+<script type="text/javascript">
+	function submitform() {
+	 	document.login_control_generate.submit()
+	}
+</script>
+</body>
+{% include "base_jquery.html" %}
+</html>

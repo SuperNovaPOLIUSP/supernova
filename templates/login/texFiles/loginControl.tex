@@ -1,0 +1,22 @@
+{% autoescape off %}
+\documentclass{article}
+    \usepackage[utf8]{inputenc} 
+    \usepackage[brazil]{babel}  
+    \usepackage[T1]{fontenc}   
+    \usepackage{textpos}
+    \usepackage{graphicx}
+    \setlength{\TPHorizModule}{1cm}
+    \setlength{\TPVertModule}{\TPHorizModule}
+    \setlength{\parindent}{0pt}
+    \usepackage[hmargin=0.5cm,vmargin=1cm,margin=0.2cm, a4paper]{geometry}
+    \usepackage{multicol}
+    \begin{document}
+        \begin{multicols}{2}
+            \fontsize{7}{7}\selectfont
+                {% for session in sessions.name %} 
+                    {{ session }} 
+                {% endfor %}
+        \end{multicols}
+    \end{document}
+\endinput
+{% endautoescape %}

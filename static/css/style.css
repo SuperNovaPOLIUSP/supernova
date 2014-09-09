@@ -405,15 +405,89 @@
 	}
 
 
+	
 
 
-
-	#button-create
+	#button-professor
  	{
 		float: right;
 		margin-right: 4.0em;
 	}
 
+
+	#button-interface
+	{
+		float: left;
+		margin-left: 2.5em;
+		margin-top:35px;
+	}
+
+/*********************************************************************************/
+/* Interface                                                                     */
+/*********************************************************************************/
+
+	#center-box
+	{	
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 20px;
+		border:	5px ridge #8d8d8d;
+		border-bottom:0px;
+	}
+	#center-edits
+	{	
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 20px;
+	}
+
+	#center-edits-detail
+	{	
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 20px;
+	}
+
+		#center-edits-detail p
+		{
+			font-size: 16px;
+		}
+
+		#center-edits-detail h1
+		{
+			font-size: 22px;
+
+			font-weight:bold;
+		}
+
+
+	#interface-box
+	{	
+		height:140px;
+		width:100%;
+		border-bottom: 5px ridge #8d8d8d;
+		margin-top: 5px;
+		
+
+	}
+	#interface-buttons
+	{
+		background-color: #FFFFFF;
+		float:left;
+		border-right: 5px ridge #8d8d8d;
+		width: 19%;
+		height: 98%;
+	
+	}
+	#interface-text
+	{
+		margin-left: 250px;
+	}
+
+	#form-professor
+	{
+		width: 200px;
+	}
 
 /*********************************************************************************/
 /* Links - Servidor                                                              */
@@ -485,7 +559,34 @@
 			font-size: 18px;
 		}
 	
+	#logout-bar
+	{
+		height: 40px;
+		position: relative;
+		bottom: 0;
+		overflow: hidden;
+		background: #101010 url(images/bg02.jpg) no-repeat center top;
+		background-size: 100% 100%;
+	}	
+	
 
+		#logout-bar p
+		{
+			color: #727272;
+			text-align: right;
+			vertical-align:center;
+			margin-top: 0.6em;
+			margin-right: 4.0em;
+		}
+			
+		#logout-bar a
+		{
+			font-style: italic;
+			text-decoration: none;
+			color: #727272;
+			font-size: 18px;
+		}
+	
 /*********************************************************************************/
 /* Second Bar                                                                    */
 /*********************************************************************************/

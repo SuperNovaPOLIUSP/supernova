@@ -10,7 +10,6 @@ from django.shortcuts import render
 from django.template.context import Context
 from django.template.loader import render_to_string
 from django.utils import timezone
-from django.utils.datetime_safe import datetime, date
 from django.utils.importlib import import_module
 from django.utils.timezone import timedelta
 import io
@@ -161,7 +160,7 @@ def login_control_generate(request):
         form.updateForm()
         if form.is_valid():
             userId = form.cleaned_data['dropDownUsers']
-            month = form.cleaned_data['dropDownMonth']
+            month = int(form.cleaned_data['dropDownMonth'])
             year = int(form.cleaned_data['dropDownYear'])
             return createPDF(userId,month,year)
     else:
@@ -169,28 +168,20 @@ def login_control_generate(request):
 
 
 def createPDF(userId,month,year):
-    print month
-    print year
-    print userId
-    if int(month) == 0 and userId == "all":
+    if month == 0 and userId == "all":
         sessions = Log.objects.filter(time__year=year)
-        print sessions[0].time__month
     elif int(month) == 0:
         sessions = Log.objects.filter(time__year=year, user_id=userId)
     elif userId == "all":
-        print "lixo"
-        sessions = Log.objects.filter(time__year=year)
+        sessions = Log.objects.filter(time__year=year, time__month=month)
     else:
-        print "lixo2"
-        sessions = Log.objects.filter(user_id=userId)
+        sessions = Log.objects.filter(user_id=userId, time__month=month, time__year=year)
     ids = [int(session.user_id) for session in sessions]
     names = [str(User.objects.get(id=user_id).username) for user_id in ids]
-    action = [session.action for session in sessions]
-    sessions = {}
-    sessions['name'] = names
-    sessions['action'] = action
-    print sessions
-    if len(sessions['action']) != 0:
+    actions = [session.action for session in sessions]
+    times = [session.time for session in sessions]
+    sessions = zip(names, actions, times)
+    if len(names) != 0:
         name = "login_control"
         t = render_to_string('texFiles/loginControl.tex', Context({'sessions': sessions}))
         l = io.open(name + ".tex", "w", encoding='utf8')

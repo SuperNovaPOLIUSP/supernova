@@ -8,15 +8,20 @@
     \setlength{\TPHorizModule}{1cm}
     \setlength{\TPVertModule}{\TPHorizModule}
     \setlength{\parindent}{0pt}
-    \usepackage[hmargin=0.5cm,vmargin=1cm,margin=0.2cm, a4paper]{geometry}
+    \usepackage[hmargin=0.5cm,vmargin=1cm,margin=0.8cm, a4paper]{geometry}
     \usepackage{multicol}
     \begin{document}
-        \begin{multicols}{2}
-            \fontsize{7}{7}\selectfont
-                {% for session in sessions.name %} 
-                    {{ session }} 
-                {% endfor %}
-        \end{multicols}
+    \fontsize{15}{15}\selectfont
+    \begin{center}
+		Controle de Usuário(s) - Supernova \\
+    \end{center}
+    \hrule
+    \fontsize{9}{9}\selectfont
+    \begin{flushleft}
+    	{% for session in sessions %} 
+    		{{ session.0 }} -- {{ session.1 }} -- {{ session.2 }}\\[0.12in]
+    	{% endfor %}
+    \end{flushleft}
     \end{document}
 \endinput
 {% endautoescape %}

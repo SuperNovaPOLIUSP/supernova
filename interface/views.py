@@ -73,14 +73,14 @@ def professor_edit(request, idProfessor):
             user= request.user
             user_name = request.user.username
             time = get_time()
-            action = "Usuário " + str(user_name) + " alterou as informações do professor " + str(professor_name_old) \
-            + " { name: " + str(professor_name_old) + " => " + str(professor.name) \
-            + "; memberId: " + str(professor_memberId_old) + " => " + str(professor.memberId) \
-            + "; office: " + str(professor_office_old) + " => " + str(professor.office) \
-            + "; email: " + str(professor_email_old) + " => " + str(professor.email) \
-            + "; phoneNumber: " + str(professor_phoneNumber_old) + " => " + str(professor.phoneNumber) \
-            + "; cellphoneNumber: " + str(professor_cellphoneNumber_old) + " => " + str(professor.cellphoneNumber) \
-            + "; idDepartment: " + str(professor_idDepartment_old) + " => " + str(professor.idDepartment) + " }"
+            action = u"Usuário " + user_name + u" alterou as informações do professor " + professor_name_old \
+            + u" { name: " + professor_name_old + " => " + professor.name \
+            + u"; memberId: " + str(professor_memberId_old) + " => " + str(professor.memberId) \
+            + u"; office: " + str(professor_office_old) + " => " + str(professor.office) \
+            + u"; email: " + str(professor_email_old) + " => " + str(professor.email) \
+            + u"; phoneNumber: " + str(professor_phoneNumber_old) + " => " + str(professor.phoneNumber) \
+            + u"; cellphoneNumber: " + str(professor_cellphoneNumber_old) + " => " + str(professor.cellphoneNumber) \
+            + u"; idDepartment: " + str(professor_idDepartment_old) + " => " + str(professor.idDepartment) + " }"
             professor_edit_log = Log(user=user, action=action, time=time)
             professor_edit_log.save()
             professor.store()
@@ -102,7 +102,7 @@ def professor_delete(request, idProfessor):
     user= request.user
     user_name = request.user.username
     time = get_time()
-    action = "Usuário " + str(user_name) + " deletou o professor " + str(professor.name)
+    action = u"Usuário " + user_name + u" deletou o professor " + professor.name
     professor_delete_log = Log(user=user, action=action, time=time)
     professor_delete_log.save()
     professor.delete()
@@ -135,7 +135,7 @@ def professor_create(request):
             user= request.user
             user_name = request.user.username
             time = get_time()
-            action = "Usuário " + str(user_name) + " criou o professor " + str(name)
+            action = u"Usuário " + user_name + u" criou o professor " + name
             professor_create_log = Log(user=user, action=action, time=time)
             professor_create_log.save()
             professor.store()
@@ -178,17 +178,23 @@ def offer_edit(request, idOffer):
             numberOfRegistrations = form.cleaned_data['numberOfRegistrations']
             schedulesIds = form.cleaned_data['listSchedules']
             schedules = [Schedule.pickById(int(schedule)) for schedule in schedulesIds]
-            schedules_string_old = [str(schedule) for schedule in offer.schedules]
-            schedules_string = [str(schedule) for schedule in schedules]
+            schedules_string_old = '[ '
+            schedules_string = '[ '
+            for schedule in offer.schedules:
+                schedules_string_old += str(schedule).replace('ç','c') + " "
+            for schedule in schedules:
+                schedules_string += str(schedule).replace('ç','c') + " "
+            schedules_string_old += ']'
+            schedules_string += ']'
             user= request.user
             user_name = request.user.username
             time = get_time()
-            action = "Usuário " + str(user_name) + " editou o oferecimento id: " + str(offer.idOffer) + " {" \
-            + " Código do Curso: " + str(offer.course.courseCode) \
-            + "; Periodo: " + str(offer.timePeriod) \
-            + "; Turma: T" + str(offer.classNumber) + " => T" + str(classNumber) \
-            + "; Professor: " + str(offer.professor.name) + " => " + str(Professor.pickById(idProfessor).name) \
-            + "; Horários: " + str(schedules_string_old) +  " => " + str(schedules_string) + " }"
+            action = u"Usuário " + user_name + u" editou o oferecimento id: " + str(offer.idOffer) + " {" \
+            + u" Código do Curso: " + str(offer.course.courseCode) \
+            + u"; Periodo: " + str(offer.timePeriod) \
+            + u"; Turma: T" + str(offer.classNumber) + " => T" + str(classNumber) \
+            + u"; Professor: " + offer.professor.name + " => " + Professor.pickById(idProfessor).name \
+            + u"; Horários: " + schedules_string_old +  " => " + schedules_string + " }"
             offer_edit_log = Log(user=user, action=action, time=time)
             offer_edit_log.save()
             offer.setProfessor(Professor.pickById(idProfessor))
@@ -232,13 +238,16 @@ def offer_create(request, idTimePeriod, idCourse):
             user= request.user
             user_name = request.user.username
             time = get_time()
-            schedules_string = [str(schedule) for schedule in schedules]
-            action = "Usuário " + str(user_name) + " criou o oferecimento id: " + str(offer.idOffer) + " {" \
-            + " Código do Curso: " + str(course.courseCode) \
-            + "; Turma: T" + str(classNumber) \
-            + "; Professor: " + str(professor.name) \
-            + "; Periodo: " + str(timePeriod) \
-            + "; Horários: " + str(schedules_string) + " }"
+            schedules_string = '[ '
+            for schedule in schedules:
+                schedules_string += str(schedule).replace('ç','c') + " "
+            schedules_string += ']'
+            action = u"Usuário " + user_name + u" criou o oferecimento id: " + str(offer.idOffer) + " {" \
+            + u" Código do Curso: " + str(course.courseCode) \
+            + u"; Turma: T" + str(classNumber) \
+            + u"; Professor: " + professor.name \
+            + u"; Periodo: " + str(timePeriod) \
+            + u"; Horários: " + schedules_string + " }"
             offer_create_log = Log(user=user, action=action, time=time)
             offer_create_log.save()
             return HttpResponseRedirect('/interface/offer/' + str(offer.idOffer))
@@ -254,13 +263,16 @@ def offer_delete(request, idOffer):
     user= request.user
     user_name = request.user.username
     time = get_time()
-    schedules_string = [str(schedule) for schedule in offer.schedules]
-    action = "Usuário " + str(user_name) + " deletou o oferecimento id: " + str(offer.idOffer) + " {" \
-    + " Código do Curso: " + str(offer.course.courseCode) \
-    + "; Turma: T" + str(offer.classNumber) \
-    + "; Professor: " + str(offer.professor.name) \
-    + "; Periodo: " + str(offer.timePeriod) \
-    + "; Horários: " + str(schedules_string) + " }"
+    schedules_string = '[ '
+    for schedule in offer.schedules:
+        schedules_string += str(schedule).replace('ç','c') + " "
+    schedules_string += ']'
+    action = u"Usuário " + user_name + u" deletou o oferecimento id: " + str(offer.idOffer) + " {" \
+    + u" Código do Curso: " + str(offer.course.courseCode) \
+    + u"; Turma: T" + str(offer.classNumber) \
+    + u"; Professor: " + offer.professor.name \
+    + u"; Periodo: " + str(offer.timePeriod) \
+    + u"; Horários: " + schedules_string + " }"
     offer_delete_log = Log(user=user, action=action, time=time)
     offer_delete_log.save()
     offer.delete()

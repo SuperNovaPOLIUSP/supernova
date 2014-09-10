@@ -53,7 +53,14 @@
                             {% for offerColumns in course.offers %}
                                 {% for offer in offerColumns  %}
                                     {% if offer %}
-                                        T {{offer.classNumber}} &  {{offer.schedule}} & {{offer.professor}}
+                                        T {{offer.classNumber}} & {{offer.schedule}} &
+										{% for professor in offer.professor %} 
+											{{ professor }} 
+											{% if not forloop.last  %} %The last one doesn't need this \\
+                                            	&
+                                            	& &
+                                        	{% endif %}
+										{% endfor %}
                                         {% if not forloop.last  %} %The last one doesn't need this &
                                             &
                                         {% endif %}

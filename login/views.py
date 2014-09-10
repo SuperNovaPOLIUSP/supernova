@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*
+import commands
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.cache import cache, get_cache
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from django.template.context import Context
+from django.template.loader import render_to_string
 from django.utils import timezone
-from login.forms import UserForm
-from login.models import Session
-from django.utils.timezone import timedelta
-from django.conf import settings
-from django.core.cache import cache, get_cache
 from django.utils.importlib import import_module
+from django.utils.timezone import timedelta
+import io
+from login.forms import LoginControlForm, UserForm
+from login.models import Session, Log
 
 
 class UserRestrictMiddleware(object):
@@ -129,7 +134,7 @@ def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     end_time = get_time()
     userId = request.user.id
-    # django methods not recognized, but still working
+    # django methods not recognized by eclipse, but still working
     listUserId = list(Session.objects.filter(user_id=userId))
     session = Session.objects.get(idsession=listUserId[-1].idsession)
     session.end = end_time
@@ -141,3 +146,58 @@ def user_logout(request):
 def get_time():
     return timezone.now() - timedelta(hours=3)
 
+@login_required
+def login_control(request):
+    form = LoginControlForm()
+    form.updateForm()
+    rendered_page = render(request, 'login_control.html', {'form': form})
+    return rendered_page
+
+@login_required
+def login_control_generate(request):
+    if request.method  == 'POST':
+        form = LoginControlForm(request.POST)
+        form.updateForm()
+        if form.is_valid():
+            userId = form.cleaned_data['dropDownUsers']
+            month = int(form.cleaned_data['dropDownMonth'])
+            year = int(form.cleaned_data['dropDownYear'])
+            return createPDF(userId,month,year)
+    else:
+        return HttpResponseRedirect('/login_control/')
+
+
+def createPDF(userId,month,year):
+    if month == 0 and userId == "all":
+        sessions = Log.objects.filter(time__year=year)
+    elif int(month) == 0:
+        sessions = Log.objects.filter(time__year=year, user_id=userId)
+    elif userId == "all":
+        sessions = Log.objects.filter(time__year=year, time__month=month)
+    else:
+        sessions = Log.objects.filter(user_id=userId, time__month=month, time__year=year)
+    ids = [int(session.user_id) for session in sessions]
+    names = [str(User.objects.get(id=user_id).username) for user_id in ids]
+    actions = [session.action for session in sessions]
+    times = [session.time for session in sessions]
+    sessions = zip(names, actions, times)
+    if len(names) != 0:
+        name = "login_control"
+        t = render_to_string('texFiles/loginControl.tex', Context({'sessions': sessions}))
+        l = io.open(name + ".tex", "w", encoding='utf8')
+        l.write(t)
+        l.close()
+        commands.getoutput("pdflatex " + name + ".tex")                              
+        commands.getoutput("rm " + name + '.log')
+        commands.getoutput("rm " + name + '.aux')
+        pdf = file(name + '.pdf').read()
+        commands.getoutput("rm " + name + '.tex')
+        commands.getoutput("rm " + name + '.pdf')
+        response = HttpResponse(pdf)
+        response['Content-Type'] = 'application/pdf'
+        response['Content-disposition'] = 'attachment; filename=' + name + '.pdf'
+        return response
+    else:
+        return HttpResponse('Não há Log deste usuário neste mês e neste ano.')
+    
+    

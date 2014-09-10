@@ -182,17 +182,18 @@ def createPDF(userId,month,year):
     times = [session.time for session in sessions]
     sessions = zip(names, actions, times)
     if len(names) != 0:
+        path = settings.MEDIA_ROOT + 'pdf/'
         name = "login_control"
         t = render_to_string('texFiles/loginControl.tex', Context({'sessions': sessions}))
-        l = io.open(name + ".tex", "w", encoding='utf8')
+        l = io.open(str(path) + str(name) + ".tex", "w", encoding='utf8')
         l.write(t)
         l.close()
-        commands.getoutput("pdflatex " + name + ".tex")                              
-        commands.getoutput("rm " + name + '.log')
-        commands.getoutput("rm " + name + '.aux')
-        pdf = file(name + '.pdf').read()
-        commands.getoutput("rm " + name + '.tex')
-        commands.getoutput("rm " + name + '.pdf')
+        commands.getoutput("pdflatex -interaction=nonstopmode -output-directory=" + str(path) + " " + str(path) + str(name) + '.tex')                                         
+        commands.getoutput("rm " + str(path) + str(name) + '.log')
+        commands.getoutput("rm " + str(path) + str(name) + '.aux')
+        pdf = file(str(path) + str(name) + '.pdf').read()
+        commands.getoutput("rm " + str(path) + str(name) + '.tex')
+        commands.getoutput("rm " + str(path) + str(name) + '.pdf')
         response = HttpResponse(pdf)
         response['Content-Type'] = 'application/pdf'
         response['Content-disposition'] = 'attachment; filename=' + name + '.pdf'

@@ -144,7 +144,7 @@ def user_logout(request):
     return HttpResponseRedirect('/login/')
 
 def get_time():
-    return timezone.now() - timedelta(hours=3)
+    return timezone.now() + timedelta(hours=2)
 
 @login_required
 def login_control(request):

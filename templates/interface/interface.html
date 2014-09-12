@@ -1,0 +1,42 @@
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Interface</title>{% endblock %}
+
+{% block content %}
+	<div id="center-box">
+		<div id="interface-box">
+			<div id="interface-buttons">
+				<a id="button-left-margin" href="professor" class="oval-button"> Professores </a>
+			</div>
+			<img id="image-position" src="{% static "css/images/slider-arrow-right.png" %}" alt="">
+			<div id="interface-text">
+				<p> Abre listagem de professores (pode demorar um pouco).</p>
+			</div>
+		</div>
+
+		<div id="interface-box">
+			<div id="interface-buttons">
+				<a id="button-left-margin" href="javascript: submitform()" class="oval-button"> Oferecimento </a>
+			</div>
+			<img id="image-position" src="{% static "css/images/slider-arrow-right.png" %}" alt="">
+			<div id="interface-text">
+				<p> Selecione o período e o código do curso antes de clicar.</p>
+				<form method="post" name="offer" action="{% url 'interface:offer' %}"> 
+					{% csrf_token %}
+					{{ form.as_p }}
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function submitform() {
+		 	document.offer.submit()
+		}
+	</script>
+
+	{% include "base_jquery.html" %}
+	<script type="text/javascript"> {% include "auto_completes.js" %} </script>
+{% endblock %}

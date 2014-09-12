@@ -1,7 +1,9 @@
 {% extends 'base_supernova.html' %}
 
+{% block title %}<title>Supernova - Oferecimentos</title>{% endblock %}
+
 {% block content %}
-	<input type="button" value="create" onclick="redirect_to_create_offer();" name="criar"/><br><br>
+	<br>
 	<table width="1400px" border = 1>
 		<tr>
 		<td align="center"><strong><a> OFFER </a></strong></td>
@@ -10,11 +12,11 @@
 		<td align="center"><strong><a> PROFESSOR  </a></strong></td>
 		<td align="center"><strong><a> TURMA  </a></strong></td>
 		<td align="center"><strong><a> TEÓRICA/PRÁTICA </a></strong></td>
-		<td align="center"><strong><a> SCHEDULE </a></strong></td>
+		<td align="center"><strong><a> SCHEDULE </a></strong><br><br></td>
 		</tr>
 		{% for offer in offers %}
 			<tr>
-			<td align="center"><a href = {% url 'interface:offer_detail' idOffer=offer.idOffer %}>{{ offer.idOffer }}</a></td>
+			<td align="center"><a  id="links-offer" href = {% url 'interface:offer_detail' idOffer=offer.idOffer %}>{{ offer.idOffer }}</a></td>
 			<td align="center">{{ offer.course.courseCode }}</td>
 			<td align="center">{{ offer.course.name }} </td>
 			<td align="center">{{ offer.professor.name }}</td>  
@@ -40,6 +42,7 @@
 			</tr>
 		{% endfor %}
 	</table>
+	<input id="button-right" class="oval-button" type="button" value="Adicionar" onclick="redirect_to_create_offer();" name="criar"/>
 	<script type="text/javascript">
 		function redirect_to_create_offer(){
 			window.location.href = "{% url 'interface:offer_create' idCourse=course.idCourse idTimePeriod=timePeriod.idTimePeriod %}";

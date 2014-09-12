@@ -26,7 +26,7 @@ from pulsarInterface.TimePeriod import TimePeriod
 def index(request):
     form = IndexForm()
     form.updateForm()
-    rendered_page = render(request, 'interface_index.html', {'form': form})
+    rendered_page = render(request, 'interface.html', {'form': form})
     return rendered_page
 
 @login_required

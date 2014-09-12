@@ -2,15 +2,14 @@
 
 {% load static %}
 
-
-
+{% block title %}<title>Supernova - Editar Professor</title>{% endblock %}
 
 {% block content %}
 	<div id="center-edits">
 		<h1>ID: {{ professor.idProfessor }}</h1><br>
 		<form action="{% url 'interface:professor_edit' idProfessor=professor.idProfessor %}" method="post" id="form-professor">{% csrf_token %}
 			{{ form.as_p }}
-			<input id="button-interface" class="oval-button" type="submit" value="Confirmar" name="Aplicar"/>
+			<input id="button-left" class="oval-button" type="submit" value="Confirmar" name="Aplicar"/>
 		</form>
 	</div>
 {% endblock %}

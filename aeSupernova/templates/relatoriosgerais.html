@@ -2,9 +2,32 @@
 
 {% load static %}
 
-{% block body_block %}
-	{% block class %}<body class="left-sidebar">{% endblock %}
+{% block title %}<title>SuperNova - Relatórios Gerais</title>{% endblock %}
 
+{% block class %}<body class="left-sidebar">{% endblock %}
+
+{% block bar %}
+<ul>
+	<li><a href='/home/'>Home</a></li>
+	<li class="current_page_item">
+		<a href="" class="arrow">Projeto</a>
+		<ul>
+			<li><a href='/historico/'>Histórico</a></li>
+			<li><a href='/equipe/'>Equipe</a></li>
+			<li><a href='/ideia/'>Ideia</a></li>
+			<li><a href='/fotos/'>Fotos</a></li>
+			<li><a href='/relatoriosgerais/'>Relatórios Gerais</a></li>
+			<li><a href='/outrasaplicacoes/'>Outras aplicações</a></li>
+		</ul>
+	</li>
+	<li><a href='/publicacoes/'>Publicações</a></li>
+	<li><a href='/parcerias/'>Parcerias</a></li>
+	<li><a href='/embreve/'>Em breve</a></li>
+	<li><a href='/no-sidebar/'>English</a></li>
+</ul>
+{% endblock %}
+
+{% block body_block %}
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
 				<div id="main" class="5grid-layout">

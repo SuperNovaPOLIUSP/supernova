@@ -10,8 +10,8 @@ def index(request):
     else:
         return HttpResponseRedirect('/login/')
 
-def initial(request):
-	return render_to_response('initial.html')
+def home(request):
+	return render_to_response('home.html')
 
 def historico(request):
 	return render_to_response('historico.html')

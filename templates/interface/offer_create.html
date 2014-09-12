@@ -1,14 +1,18 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Interface - Offer Create</title>
-</head>
-<body>
-	<p> Código: {{ course.courseCode }}</p>
-	<p> Período: {{ timePeriod }}</p>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Criar Oferecimentos</title>{% endblock %}
+
+{% block content %}
+	<div id="offer-box">
+	<h1> Código: {{ course.courseCode }}</h1><br>
+	<h1> Período: {{ timePeriod }}</h1><br>
+	</div>
+	<div id="form-offer">
 	<form action="{% url 'interface:offer_create' idCourse=course.idCourse idTimePeriod=timePeriod.idTimePeriod %}" method="post">{% csrf_token %}
 		{{ form.as_p }}
-		<input type="submit" value="store" name="Cadastrar"/>
+		<input id="button-left" class="oval-button" type="submit" value="Cadastrar" name="Cadastrar"/>
 	</form>
-</body>
-</html>
+	</div>
+{% endblock %}

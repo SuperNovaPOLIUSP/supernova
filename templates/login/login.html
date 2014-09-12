@@ -1,22 +1,51 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login Supernova</title>
-    </head>
 
-    <body>
-        <h1>Login to Supernova</h1>
-        <p>HOW YOU DOIN?</br>ARE YOU ALLOWED IN HERE?</p><br>
-        <img width="400" height="300" src="http://slonik.com.br/wp-content/uploads/2013/06/nicolas-cage.jpg">
-        <br><br>
-        <form id="login_form" method="post" action="/login/">
-            {% csrf_token %}
-            Username: <input type="text" name="username" value="" size="50" />
-            <br />
-            Password: <input type="password" name="password" value="" size="50" />
-            <br />
-            <br>
-            <input type="submit" value="submit" name="submit" />
-        </form>
-    </body>
-</html>
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block body_block %}
+	<body>
+			<div id="main-wrapper">
+				<div id="main" class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+							<div id="bar">
+								<h2>Servidor Interno do SuperNova</h2>
+							</div>
+						</div>
+					</div>
+
+					<div id="content" class="row">
+						<div class="12u">
+							<!---blank box goes here--->
+							<div id="offer-box">
+								<h1>Login to Supernova</h1><br>
+								<p>HOW YOU DOIN?</br>ARE YOU ALLOWED IN HERE?</p><br>
+								<img width="400" height="300" src="http://slonik.com.br/wp-content/uploads/2013/06/nicolas-cage.jpg">
+								<br><br>
+							</div>
+								<div id="form-offer">
+									<form id="login_form" method="post" action="/login/">
+									    {% csrf_token %}
+									    Username: <input type="text" name="username" value="" size="50" />
+									    <br><br>
+									    Password: <input type="password" name="password" value="" size="50" />
+									    <br><br>
+									
+								</div>
+								<div id="offer-box">
+									<input class="oval-button"type="submit" value="Entrar" name="submit" />
+								</div>
+									</form>
+								<!---end blank box--->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="logout-bar" class="5grid-layout">
+			</div>
+
+{% endblock %}

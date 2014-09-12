@@ -1,62 +1,62 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Interface - Offer Detail</title>
-</head>
-<body>
-	<table width="1500px">
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Detalhes dos Oferecimentos</title>{% endblock %}
+
+{% block content %}
+		<div id="offer-box">
 		<h1>ID: {{ offer.idOffer }}</h1><br>
-		<tr>
-			<td>Código:</td>
-			<td id="courseCode">{{ offer.course.courseCode }} </td>
-		</tr>
-		<tr>
-			<td>Nome:</td>
-			<td id="name">{{ offer.course.name }} </td>
-		</tr>
-		<tr>
-			<td>Professor: </td>
-			<td id="professor_name">{{ offer.professor.name }} </td>
-		</tr>
-		<tr>
-			<td>Período: </td>
-			<td id="timePeriod">{{ offer.timePeriod }} </td>
-		</tr>
-		<tr>
-			<td>Turma: </td>
-			<td id="classNumber">			
+		
+			<p>Código:
+			{{ offer.course.courseCode }} 
+		
+			<br>
+			Nome:
+			{{ offer.course.name }} 
+		
+			<br>
+			Professor: 
+			{{ offer.professor.name }} 
+		
+			<br>
+			Período: 
+			{{ offer.timePeriod }} 
+		
+			<br>
+			Turma: 
+					
 				{% if offer.classNumber < 10 %}
 					T0{{ offer.classNumber }}
 				{% else %}
 					T{{ offer.classNumber }}
 				{% endif %} 
-			</td>
-		</tr>
-		<tr>
-			<td>Teórica/Prática: </td>
-			<td id="practical">
+			
+		
+			<br>
+			Teórica/Prática: 
+			
 				{% if offer.practical %}
 					PRATICA
 				{% else %}
 					TEORICA
 				{% endif %} 
-			</td>
-		</tr>
-		<tr>
-			<td>Número de Matrículados: </td>
-			<td id="numberOfRegistrations"> {{ offer.numberOfRegistrations }} </td>
-		</tr>
-		<tr>
-			<td>Horários: </td>
-			<td id="schedules">
+			
+		
+			<br>
+			Número de Matrículados: 
+			{{ offer.numberOfRegistrations }} 
+		
+			<br>
+			Horários: 
+				
 				{% for schedule in offer.schedules %}			
-					{{ schedule }} <br> 
+					 {{ schedule }}  
 				{% endfor %}
-			</td>
-		</tr>
-	<table>
-	<input type="button" value="edit" onclick="redirect_to_edit_offer();" name="editar"/>
-	<input type="button" value="delete" onclick="confirm_delete();" name="deletar"/>
+			</p>
+		</div>
+	<input class="oval-button" id="button-left" type="button" value="Editar" onclick="redirect_to_edit_offer();" name="editar"/>
+	<input class="oval-button" id="button-right" type="button" value="Deletar" onclick="confirm_delete();" name="deletar"/>
 	<script>
 	 	function redirect_to_edit_offer() {
 			window.location.href = "{% url 'interface:offer_edit' idOffer=offer.idOffer %}";
@@ -68,5 +68,4 @@
 			}
 		}
 	</script>
-</body>
-</html>
+{% endblock %}

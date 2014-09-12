@@ -1,12 +1,15 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Presentation</title>
-</head>
-<body>
-<button style ='position:absolute; top:150px; left:50px;'  onMouseDown = 'findData()'> VAI!!! </button>
-<div id = 'urls'>
-    <select id = 'urls0' style = 'position:absolute; left:400px; width:100px'>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Presentation</title>{% endblock %}
+
+{% block content %}
+
+<a id="button-left-margin" onMouseDown = 'findData()' class="oval-button"> Pronto! </a>
+
+<div id='box-seletions'>
+    <select id='select-option'>
         <option value = ''></option>
         <option value = 'year' selected> Ano</option>
         <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
@@ -15,7 +18,7 @@
         <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
         <option value = 'course'>Disciplina</option>
     </select>
-    <select id = 'urls1' style = 'position:absolute; left:500px; width:100px'>
+    <select id='select-option'>
         <option value = ''></option>
         <option value = 'year' > Ano</option>
         <option value = 'session' selected>Semestre/Quadrimestre (do Ano)</option>
@@ -24,7 +27,7 @@
         <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
         <option value = 'course'>Disciplina</option>
     </select>
-    <select id = 'urls2' style = 'position:absolute; left:600px; width:100px'>
+    <select id='select-option'>
         <option value = ''></option>
         <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
         <option value = 'faculty' selected>Faculdade</option>
@@ -32,7 +35,7 @@
         <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
         <option value = 'course'>Disciplina</option>
     </select>
-    <select id = 'urls3' style = 'position:absolute; left:700px; width:100px'>
+    <select id='select-option'>
         <option value = ''></option>
         <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
         <option value = 'faculty'>Faculdade</option>
@@ -40,7 +43,7 @@
         <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
         <option value = 'course'>Disciplina</option>
     </select>
-    <select id = 'urls4' style = 'position:absolute; left:800px; width:100px'>
+    <select id='select-option'>
         <option value = ''></option>
         <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
         <option value = 'faculty'>Faculdade</option>
@@ -48,7 +51,7 @@
         <option value = 'term' selected>Semestre/Quadrimestre (do Curso)</option>
         <option value = 'course'>Disciplina</option>
     </select>
-    <select id = 'urls5' style = 'position:absolute; left:900px; width:100px'>
+    <select id='select-option'>
         <option value = ''></option>
         <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
         <option value = 'faculty'>Faculdade</option>
@@ -69,11 +72,11 @@
 <script type="text/javascript">
     headerFacultyInit()
     headerTermInit()
-    $('#headerFaculties').attr('style','position:absolute; top:50px; left:50px')
+    $('#headerFaculties').attr('style','position:absolute; top:50px; left:50px') //Faculdade
     $('#headerFaculties').prepend('<span>Faculdades: </span>')
-    $('#headerCycles').attr('style','position:absolute; top:50px; left:400px')
+    $('#headerCycles').attr('style','position:absolute; top:50px; left:400px') // Curso
     $('#headerCycles').hide()
-    $('#headerTerms').attr('style','position:absolute; top:100px; left:50px')
+    $('#headerTerms').attr('style','position:absolute; top:100px; left:50px') // semestre/quadrimestre
     function findData(){
         url = ''
         $('#urls').children('select').each(function(){
@@ -95,6 +98,6 @@
         $('#nodes').append(node.div)
     }
 </script>
-</body>
-</html>
+<!--Mozila Firefox funciona melhor aqui. -->
+{% endblock %}
 

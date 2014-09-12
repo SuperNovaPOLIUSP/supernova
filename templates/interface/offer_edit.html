@@ -1,17 +1,22 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Interface - Offer Edit</title>
-</head>
-<body>
-	<h1>ID: {{ offer.idOffer }}</h1><br>
-	<p>Codigo do Curso: {{ offer.course.courseCode }} </p>
-	<p>Periodo: {{ offer.timePeriod }} </p>
-	<form action="{% url 'interface:offer_edit' idOffer=offer.idOffer %}" method="post">{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="apply" name="Aplicar"/>
-	</form>
-</body>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Editar Oferecimentos</title>{% endblock %}
+
+{% block content %}
+	<div id="offer-box">
+		<h1>ID: {{ offer.idOffer }}</h1><br><br>
+		<h5 style="font-style:italic; font-weight:bold;">Código do Curso: </h5><br><h5>{{ offer.course.courseCode }} </h5><br><br>
+		<h5 style="font-style:italic; font-weight:bold;">Período: </h5><br><h5>{{ offer.timePeriod }} </h5><br><br>
+	</div>
+	<div id="form-offer">
+		<form action="{% url 'interface:offer_edit' idOffer=offer.idOffer %}" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input class="oval-button"  type="submit" value="Aplicar" name="Aplicar"/>
+		</form>
+	</div>
 {% include "base_jquery.html" %}
 <script type="text/javascript"> {% include "auto_completes.js" %} </script>
-</html>
+{% endblock %}

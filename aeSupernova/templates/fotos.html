@@ -2,15 +2,32 @@
 
 {% load static %}
 
-{% block scripts %}
-		<script src="{% static "js/jquery.rotatorrr-1.0.js" %}"></script>
-		<script src="{% static "js/jquery.poptrox-2.0.js" %}"></script>
+{% block title %}<title>SuperNova - Fotos</title>{% endblock %}
+
+{% block class %}<body class="no-sidebar">{% endblock %}
+
+{% block bar %}
+<ul>
+	<li><a href='/home/'>Home</a></li>
+	<li class="current_page_item">
+		<a href="" class="arrow">Projeto</a>
+		<ul>
+			<li><a href='/historico/'>Histórico</a></li>
+			<li><a href='/equipe/'>Equipe</a></li>
+			<li><a href='/ideia/'>Ideia</a></li>
+			<li><a href='/fotos/'>Fotos</a></li>
+			<li><a href='/relatoriosgerais/'>Relatórios Gerais</a></li>
+			<li><a href='/outrasaplicacoes/'>Outras aplicações</a></li>
+		</ul>
+	</li>
+	<li><a href='/publicacoes/'>Publicações</a></li>
+	<li><a href='/parcerias/'>Parcerias</a></li>
+	<li><a href='/embreve/'>Em breve</a></li>
+	<li><a href='/no-sidebar/'>English</a></li>
+</ul>
 {% endblock %}
 
 {% block body_block %}
-
-	{% block class %}<body class="no-sidebar">{% endblock %}
-
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
 				<div id="main" class="5grid-layout">
@@ -41,24 +58,24 @@
 										<div class="5grid category">
 											<div class="row">
 												<div class="3u">
-													<a href=  "static/images/rcs01.jpg"  class="image image-full"><img src= "{% static "images/rcs01.jpg" %}"  alt="" title="Faculdade de Direito da USP." /></a>
-													<a href=  "static/images/rcs02.jpg"  class="image image-full"><img src= "{% static "images/rcs02.jpg" %}"  alt="" title="POLI - 1º ano." /></a>
-													<a href=  "static/images/rcs03.jpg"  class="image image-full"><img src= "{% static "images/rcs03.jpg" %}" alt="" title="Instituto de Física da USP." /></a>
+													<a href=  "{% static "images/rcs01.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs01.jpg" %}"  alt="" title="Faculdade de Direito da USP." /></a>
+													<a href=  "{% static "images/rcs02.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs02.jpg" %}"  alt="" title="POLI - 1º ano." /></a>
+													<a href=  "{% static "images/rcs03.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs03.jpg" %}" alt="" title="Instituto de Física da USP." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/rcs04.jpg"  class="image image-full"><img src= "{% static "images/rcs04.jpg" %}" alt="" title="POLI - 2º ano." /></a>
-													<a href=  "static/images/rcs05.jpg"  class="image image-full"><img src= "{% static "images/rcs05.jpg" %}" alt="" title="POLI - 2º ano." /></a>
-													<a href=  "static/images/rcs06.jpg"  class="image image-full"><img src= "{% static "images/rcs06.jpg" %}" alt="" title="POLI - 2º ano." /></a>
+													<a href=  "{% static "images/rcs04.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs04.jpg" %}" alt="" title="POLI - 2º ano." /></a>
+													<a href=  "{% static "images/rcs05.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs05.jpg" %}" alt="" title="POLI - 2º ano." /></a>
+													<a href=  "{% static "images/rcs06.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs06.jpg" %}" alt="" title="POLI - 2º ano." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/rcs07.jpg"  class="image image-full"><img src= "{% static "images/rcs07.jpg" %}" alt="" title="POLI - 2º ano." /></a>
-													<a href=  "static/images/rcs08.jpg"  class="image image-full"><img src= "{% static "images/rcs08.jpg" %}" alt="" title="POLI - 2º ano." /></a>
-													<a href=  "static/images/rcs09.jpg"  class="image image-full"><img src= "{% static "images/rcs09.jpg" %}" alt="" title="POLI." /></a>
+													<a href=  "{% static "images/rcs07.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs07.jpg" %}" alt="" title="POLI - 2º ano." /></a>
+													<a href=  "{% static "images/rcs08.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs08.jpg" %}" alt="" title="POLI - 2º ano." /></a>
+													<a href=  "{% static "images/rcs09.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs09.jpg" %}" alt="" title="POLI." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/rcs10.jpg"  class="image image-full"><img src= "{% static "images/rcs10.jpg" %}" alt="" title="POLI." /></a>
-													<a href=  "static/images/rcs11.jpg"  class="image image-full"><img src= "{% static "images/rcs11.jpg" %}" alt="" title="POLI." /></a>
-													<a href=  "static/images/rcs12.jpg"  class="image image-full"><img src= "{% static "images/rcs12.jpg" %}" alt="" title="Instituto de Física da USP." /></a>
+													<a href=  "{% static "images/rcs10.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs10.jpg" %}" alt="" title="POLI." /></a>
+													<a href=  "{% static "images/rcs11.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs11.jpg" %}" alt="" title="POLI." /></a>
+													<a href=  "{% static "images/rcs12.jpg" %}"  class="image image-full"><img src= "{% static "images/rcs12.jpg" %}" alt="" title="Instituto de Física da USP." /></a>
 												</div>
 											</div>
 										</div>
@@ -67,24 +84,24 @@
 										<div class="5grid category">
 											<div class="row">
 												<div class="3u">
-													<a href=  "static/images/reuae05.jpg"  class="image image-full"><img src= "{% static "images/reuae05.jpg" %}" alt="" title="Faculdade de Direito da USP." /></a>
-													<a href=  "static/images/reuae28.jpg"  class="image image-full"><img src= "{% static "images/reuae28.jpg" %}" alt="" title="POLI - 2º ano." /></a>
+													<a href=  "{% static "images/reuae05.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae05.jpg" %}" alt="" title="Faculdade de Direito da USP." /></a>
+													<a href=  "{% static "images/reuae28.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae28.jpg" %}" alt="" title="POLI - 2º ano." /></a>
 													<a href=  "static/images/reuae31.jpg"  class="image image-full"><img src= "{% static "images/reuae31.jpg" %}" alt="" title="Instituto de Física da USP." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/reuae42.jpg"  class="image image-full"><img src= "{% static "images/reuae42.jpg" %}" alt="" title="Instituto de Matemática e Estatística da USP." /></a>
-													<a href=  "static/images/reuae44.jpg"  class="image image-full"><img src= "{% static "images/reuae44.jpg" %}" alt="" title="Instituto de Matemática e Estatística da USP." /></a>
-													<a href=  "static/images/reuae49.jpg"  class="image image-full"><img src= "{% static "images/reuae00.jpg" %}" alt="" title="POLI - Engenharia de Petróleo." /></a>
+													<a href=  "{% static "images/reuae42.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae42.jpg" %}" alt="" title="Instituto de Matemática e Estatística da USP." /></a>
+													<a href=  "{% static "images/reuae44.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae44.jpg" %}" alt="" title="Instituto de Matemática e Estatística da USP." /></a>
+													<a href=  "{% static "images/reuae49.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae00.jpg" %}" alt="" title="POLI - Engenharia de Petróleo." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/reuae56.jpg"  class="image image-full"><img src= "{% static "images/reuae56.jpg" %}" alt="" title="POLI - Engenharia de Sistemas." /></a>
-													<a href=  "static/images/reuae62.jpg"  class="image image-full"><img src= "{% static "images/reuae62.jpg" %}" alt="" title="POLI - Engenharia Mecânica." /></a>
-													<a href=  "static/images/reuae63.jpg"  class="image image-full"><img src= "{% static "images/reuae63.jpg" %}" alt="" title="POLI - 1º ano." /></a>
+													<a href=  "{% static "images/reuae56.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae56.jpg" %}" alt="" title="POLI - Engenharia de Sistemas." /></a>
+													<a href=  "{% static "images/reuae62.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae62.jpg" %}" alt="" title="POLI - Engenharia Mecânica." /></a>
+													<a href=  "{% static "images/reuae63.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae63.jpg" %}" alt="" title="POLI - 1º ano." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/reuae37.jpg"  class="image image-full"><img src= "{% static "images/reuae37.jpg" %}" alt="" title="POLI - Engenharia de Energia e Automação." /></a>
-													<a href=  "static/images/reuae40.jpg"  class="image image-full"><img src= "{% static "images/reuae40.jpg" %}" alt="" title="POLI - Engenharia Mecatrônica" /></a>
-													<a href=  "static/images/reuae22.jpg"  class="image image-full"><img src= "{% static "images/reuae22.jpg" %}" alt="" title="POLI - 1º ano." /></a>
+													<a href=  "{% static "images/reuae37.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae37.jpg" %}" alt="" title="POLI - Engenharia de Energia e Automação." /></a>
+													<a href=  "{% static "images/reuae40.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae40.jpg" %}" alt="" title="POLI - Engenharia Mecatrônica" /></a>
+													<a href=  "{% static "images/reuae22.jpg" %}"  class="image image-full"><img src= "{% static "images/reuae22.jpg" %}" alt="" title="POLI - 1º ano." /></a>
 												</div>
 											</div>
 										</div>
@@ -93,24 +110,24 @@
 										<div class="5grid category">
 											<div class="row">
 												<div class="3u">
-													<a href=  "static/images/op01.jpg"  class="image image-full"><img src= "{% static "images/op01.jpg" %}" alt="" title="Equipe 2009" /></a>
-													<a href=  "static/images/op02.jpg"  class="image image-full"><img src= "{% static "images/op02.jpg" %}" alt="" title="Colaboração da Assitente Acad~emica Angela Buscema" /></a>
-													<a href=  "static/images/op03.jpg"  class="image image-full"><img src= "{% static "images/op03.jpg" %}" alt="" title="Muitos questionários." /></a>
+													<a href=  "{% static "images/op01.jpg" %}"  class="image image-full"><img src= "{% static "images/op01.jpg" %}" alt="" title="Equipe 2009" /></a>
+													<a href=  "{% static "images/op02.jpg" %}"  class="image image-full"><img src= "{% static "images/op02.jpg" %}" alt="" title="Colaboração da Assitente Acad~emica Angela Buscema" /></a>
+													<a href=  "{% static "images/op03.jpg" %}"  class="image image-full"><img src= "{% static "images/op03.jpg" %}" alt="" title="Muitos questionários." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/op04.jpg"  class="image image-full"><img src= "{% static "images/op04.jpg" %}" alt="" title="Plataforma girante e suas utilidades." /></a>
-													<a href=  "static/images/op05.jpg"  class="image image-full"><img src= "{% static "images/op05.jpg" %}" alt="" title="Curso de Robótica." /></a>
-													<a href=  "static/images/op06.jpg"  class="image image-full"><img src= "{% static "images/op06.jpg" %}" alt="" title="Equipe 2010." /></a>
+													<a href=  "{% static "images/op04.jpg" %}"  class="image image-full"><img src= "{% static "images/op04.jpg" %}" alt="" title="Plataforma girante e suas utilidades." /></a>
+													<a href=  "{% static "images/op05.jpg" %}"  class="image image-full"><img src= "{% static "images/op05.jpg" %}" alt="" title="Curso de Robótica." /></a>
+													<a href=  "{% static "images/op06.jpg" %}"  class="image image-full"><img src= "{% static "images/op06.jpg" %}" alt="" title="Equipe 2010." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/op07.jpg"  class="image image-full"><img src= "{% static "images/op07.jpg" %}" alt="" title="Equipe 2013 - Projetos Pedagógicos." /></a>
-													<a href=  "static/images/op08.jpg"  class="image image-full"><img src= "{% static "images/op08.jpg" %}" alt="" title="Equipe 2013 - Programadores." /></a>
-													<a href=  "static/images/op09.jpg"  class="image image-full"><img src= "{% static "images/op09.jpg" %}" alt="" title="Equipe 2013 - Programadores." /></a>
+													<a href=  "{% static "images/op07.jpg" %}"  class="image image-full"><img src= "{% static "images/op07.jpg" %}" alt="" title="Equipe 2013 - Projetos Pedagógicos." /></a>
+													<a href=  "{% static "images/op08.jpg" %}"  class="image image-full"><img src= "{% static "images/op08.jpg" %}" alt="" title="Equipe 2013 - Programadores." /></a>
+													<a href=  "{% static "images/op09.jpg" %}"  class="image image-full"><img src= "{% static "images/op09.jpg" %}" alt="" title="Equipe 2013 - Programadores." /></a>
 												</div>
 												<div class="3u">
-													<a href=  "static/images/op10.jpg"  class="image image-full"><img src= "{% static "images/op10.jpg" %}" alt="" title="Equipe 2013 - Projetos Pedagógicos." /></a>
-													<a href=  "static/images/op11.jpg"  class="image image-full"><img src= "{% static "images/op11.jpg" %}" alt="" title="Equipe 2013 - Projetos Pedagógicos." /></a>
-													<a href=  "static/images/op12.jpg"  class="image image-full"><img src= "{% static "images/op12.jpg" %}" alt="" title="Equipe 2013 - Programadores." /></a>
+													<a href=  "{% static "images/op10.jpg" %}"  class="image image-full"><img src= "{% static "images/op10.jpg" %}" alt="" title="Equipe 2013 - Projetos Pedagógicos." /></a>
+													<a href=  "{% static "images/op11.jpg" %}"  class="image image-full"><img src= "{% static "images/op11.jpg" %}" alt="" title="Equipe 2013 - Projetos Pedagógicos." /></a>
+													<a href=  "{% static "images/op12.jpg" %}"  class="image image-full"><img src= "{% static "images/op12.jpg" %}" alt="" title="Equipe 2013 - Programadores." /></a>
 												</div>
 											</div>
 										</div>

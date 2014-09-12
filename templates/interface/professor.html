@@ -2,11 +2,10 @@
 
 {% load static %}
 
-
-
+{% block title %}<title>Supernova - Professores</title>{% endblock %}
 
 {% block content %}
-	<a id="button-professor" href="create" class="oval-button">Inserir professor</a>
+	<a id="button-right" href="create" class="oval-button">Inserir professor</a>
 
 	<ul id="links">
 	{% for professor in professors %}

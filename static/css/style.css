@@ -11,6 +11,31 @@
 		box-sizing: border-box;
 	}
 
+
+	
+	.button
+	{
+		background: #1b95ec;
+		text-decoration: none;
+		font-style: italic;
+		color: #FFFFFF;
+		-moz-transition: background-color .25s ease-in-out;
+		-webkit-transition: background-color .25s ease-in-out;
+		-o-transition: background-color .25s ease-in-out;
+		-ms-transition: background-color .25s ease-in-out;
+		transition: background-color .25s ease-in-out;
+	}
+	
+		.button:hover
+		{
+			background: #2ba5fc;
+		}
+		
+		.button:active
+		{
+			background: #0b85dc;
+		}
+
 	body
 	{
 		background: #f5f5f5 url(images/bg01.jpg) repeat;
@@ -109,28 +134,6 @@
 			width: auto;
 		}
 
-	.button
-	{
-		background: #1b95ec;
-		text-decoration: none;
-		font-style: italic;
-		color: #FFFFFF;
-		-moz-transition: background-color .25s ease-in-out;
-		-webkit-transition: background-color .25s ease-in-out;
-		-o-transition: background-color .25s ease-in-out;
-		-ms-transition: background-color .25s ease-in-out;
-		transition: background-color .25s ease-in-out;
-	}
-	
-		.button:hover
-		{
-			background: #2ba5fc;
-		}
-		
-		.button:active
-		{
-			background: #0b85dc;
-		}
 	
 	ul.style1
 	{
@@ -238,7 +241,7 @@
 			transition: background-color .25s ease-in-out;
 		}
 		
-		ul.style4 li:hover,
+		ul.style4 li:hover
 		ul.style4 li.active
 		{
 			background: #ededed;
@@ -404,34 +407,89 @@
 		top:1px;
 	}
 
+/*********************************************************************************/
+/* Buttons                                                                       */
+/*********************************************************************************/	
 
-	
 
-
-	#button-professor
+	#button-right
  	{
 		float: right;
 		margin-right: 4.0em;
+
 	}
 
 
-	#button-interface
+	#button-left
 	{
 		float: left;
 		margin-left: 2.5em;
+	}	
+
+	#button-left-margin
+	{
+		float: left;
+		margin-left: 2.0em;
+		margin-top:40px;
+	}
+
+	#image-position
+	{
+		margin-left: 2.0em;
 		margin-top:35px;
 	}
+
+
+/*********************************************************************************/
+/* Presentation                                                                  */
+/*********************************************************************************/
+	#box-seletions
+	{
+		position: relative;
+		left: 380px;
+	}
+
+	#select-option
+	{
+		width:100px;
+	}
+
+
 
 /*********************************************************************************/
 /* Interface                                                                     */
 /*********************************************************************************/
+
+	
+	#offer-box
+	{
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top:20px;
+	}
+
+		#offer-box h1
+		{
+			font-weight:bold;
+			font-size:22px;
+		}
+
+		#offer-box p
+		{
+			font-size: 16px;
+		}
+
+		#offer-box h5
+		{
+			font-size:14px;
+		}
 
 	#center-box
 	{	
 		margin-left: 20px;
 		margin-right: 20px;
 		margin-top: 20px;
-		border:	5px ridge #8d8d8d;
+		
 		border-bottom:0px;
 	}
 	#center-edits
@@ -465,29 +523,39 @@
 	{	
 		height:140px;
 		width:100%;
-		border-bottom: 5px ridge #8d8d8d;
+		
 		margin-top: 5px;
 		
 
 	}
 	#interface-buttons
 	{
-		background-color: #FFFFFF;
+		background: #101010 url(images/bg02.jpg) no-repeat;
 		float:left;
-		border-right: 5px ridge #8d8d8d;
+		border: 5px ridge #d7d3d3;
 		width: 19%;
 		height: 98%;
 	
 	}
 	#interface-text
 	{
-		margin-left: 250px;
+		float:right;
+		width: 850px;
 	}
 
 	#form-professor
 	{
 		width: 200px;
 	}
+
+	#form-offer
+	{
+		margin-left:20px;
+		width: 200px;
+		font-style: italic;
+		font-weight: bold;
+	}
+
 
 /*********************************************************************************/
 /* Links - Servidor                                                              */
@@ -504,6 +572,17 @@
 		font-style: italic;
 	}
 
+	#links-offer
+	{
+		text-decoration: none;
+		color: #8d8d8d;
+		font-weight: bold;
+		
+	}
+		#links-offer a:hover
+		{
+			font-size:200px;		
+		}
 
 
 /*********************************************************************************/
@@ -519,9 +598,8 @@
 	{
 	}
 	
-	#main-wrapper a
+	#main-wrapper 
 	{
-		padding: 1px 5px;
 	}
 	
 	#footer-wrapper
@@ -544,19 +622,21 @@
 		#bar h2
 		{
 			color: #FFFFFF;
+			width: 320px;
 		}
 		
 		#bar p
 		{
 			color: #727272;
+			font-style: italic;
+			font-size: 18px;
 		}
 			
 		#bar a
 		{
-			font-style: italic;
+			
 			text-decoration: none;
 			color: #727272;
-			font-size: 18px;
 		}
 	
 	#logout-bar
@@ -586,11 +666,8 @@
 			color: #727272;
 			font-size: 18px;
 		}
-	
-/*********************************************************************************/
-/* Second Bar                                                                    */
-/*********************************************************************************/
 
+	/*
 	#second_bar
 	{
 		position: relative;
@@ -609,7 +686,9 @@
 		{
 			color: #727272;
 		}
-	
+	*/
+
+
 /*********************************************************************************/
 /* Slider                                                                        */
 /*********************************************************************************/

@@ -5,99 +5,105 @@
 {% block title %}<title>Supernova - Presentation</title>{% endblock %}
 
 {% block content %}
+<div id="center-box">
+	<h2 id="h2-spacing"> Apresentação de Relatórios </h2>
+	
+	<div id='box-seletions'>
+	    <p>Ordenamento de variáveis:</p>
+	    <select id='select-option'>
+		<option value = ''></option>
+		<option value = 'year' selected> Ano</option>
+		<option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
+		<option value = 'faculty'>Faculdade</option>
+		<option value = 'cycle'>Curriculo</option>
+		<option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
+		<option value = 'course'>Disciplina</option>
+	    </select>
+	    <select id='select-option'>
+		<option value = ''></option>
+		<option value = 'year' > Ano</option>
+		<option value = 'session' selected>Semestre/Quadrimestre (do Ano)</option>
+		<option value = 'faculty'>Faculdade</option>
+		<option value = 'cycle'>Curriculo</option>
+		<option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
+		<option value = 'course'>Disciplina</option>
+	    </select>
+	    <select id='select-option'>
+		<option value = ''></option>
+		<option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
+		<option value = 'faculty' selected>Faculdade</option>
+		<option value = 'cycle' >Curriculo</option>
+		<option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
+		<option value = 'course'>Disciplina</option>
+	    </select>
+	    <select id='select-option'>
+		<option value = ''></option>
+		<option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
+		<option value = 'faculty'>Faculdade</option>
+		<option value = 'cycle' selected>Curriculo</option>
+		<option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
+		<option value = 'course'>Disciplina</option>
+	    </select>
+	    <select id='select-option'>
+		<option value = ''></option>
+		<option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
+		<option value = 'faculty'>Faculdade</option>
+		<option value = 'cycle'>Curriculo</option>
+		<option value = 'term' selected>Semestre/Quadrimestre (do Curso)</option>
+		<option value = 'course'>Disciplina</option>
+	    </select>
+	    <select id='select-option'>
+		<option value = ''></option>
+		<option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
+		<option value = 'faculty'>Faculdade</option>
+		<option value = 'cycle'>Curriculo</option>
+		<option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
+		<option value = 'course' selected>Disciplina</option>
+	    </select>
+	</div>
+	<!--<div style = 'position:absolute; top:200px; left:50px; display: block;'></div>-->
+	
 
-<a id="button-left-margin" onMouseDown = 'findData()' class="oval-button"> Pronto! </a>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	    {% include "PresentationNode.js" %} 
+	</script>
+	{% autoescape off %}
+	    {{ header }}
+	{% endautoescape %}
 
-<div id='box-seletions'>
-    <select id='select-option'>
-        <option value = ''></option>
-        <option value = 'year' selected> Ano</option>
-        <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
-        <option value = 'faculty'>Faculdade</option>
-        <option value = 'cycle'>Curriculo</option>
-        <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
-        <option value = 'course'>Disciplina</option>
-    </select>
-    <select id='select-option'>
-        <option value = ''></option>
-        <option value = 'year' > Ano</option>
-        <option value = 'session' selected>Semestre/Quadrimestre (do Ano)</option>
-        <option value = 'faculty'>Faculdade</option>
-        <option value = 'cycle'>Curriculo</option>
-        <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
-        <option value = 'course'>Disciplina</option>
-    </select>
-    <select id='select-option'>
-        <option value = ''></option>
-        <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
-        <option value = 'faculty' selected>Faculdade</option>
-        <option value = 'cycle' >Curriculo</option>
-        <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
-        <option value = 'course'>Disciplina</option>
-    </select>
-    <select id='select-option'>
-        <option value = ''></option>
-        <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
-        <option value = 'faculty'>Faculdade</option>
-        <option value = 'cycle' selected>Curriculo</option>
-        <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
-        <option value = 'course'>Disciplina</option>
-    </select>
-    <select id='select-option'>
-        <option value = ''></option>
-        <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
-        <option value = 'faculty'>Faculdade</option>
-        <option value = 'cycle'>Curriculo</option>
-        <option value = 'term' selected>Semestre/Quadrimestre (do Curso)</option>
-        <option value = 'course'>Disciplina</option>
-    </select>
-    <select id='select-option'>
-        <option value = ''></option>
-        <option value = 'session'>Semestre/Quadrimestre (do Ano)</option>
-        <option value = 'faculty'>Faculdade</option>
-        <option value = 'cycle'>Curriculo</option>
-        <option value = 'term'>Semestre/Quadrimestre (do Curso)</option>
-        <option value = 'course' selected>Disciplina</option>
-    </select>
-</div>
-<div id = 'nodes' style = 'position:absolute; top:200px; left:50px; display: block;'></div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    {% include "PresentationNode.js" %} 
-</script>
-{% autoescape off %}
-    {{ header }}
-{% endautoescape %}
+	<script type="text/javascript">
+	    headerFacultyInit()
+	    headerTermInit()
+	    $('#headerFaculties').prepend('<span>Faculdades: </span>')
+	    $('#headerFaculties').attr() //Faculdade
+	    $('#headerCycles').attr() // Curso
+	    $('#headerCycles').hide()
+	    $('#headerTerms').prepend()
+	    $('#headerTerms').attr() // semestre/quadrimestre
+	    function findData(){
+		url = ''
+		$('#urls').children('select').each(function(){
+		    if ($(this).val() != ''){
+		        url = url + $(this).val() + '/'
+		    }
+		})
+		//url = 'year/session/'
+		idTimePeriod = $('#headerTimePeriod').val()
+		idFaculty = $('#headerFaculty').val()
+		idCycle = $('#headerCycle').val()
+		term = $('#headerTerm').val()
+		get = new XMLHttpRequest()
+		get.open( "GET", 'findReports/?' + $.param({idTimePeriod: idTimePeriod, idFaculty: idFaculty, idCycle:idCycle, term:term}), false)
+		get.send(null)
+		var datas = JSON.parse(get.responseText)
+		node = new PresentationNode(url, datas, 0, 'base')
+		$('#nodes').html('')
+		$('#nodes').append(node.div)
+	    }
+	</script>
 
-<script type="text/javascript">
-    headerFacultyInit()
-    headerTermInit()
-    $('#headerFaculties').attr('style','position:absolute; top:50px; left:50px') //Faculdade
-    $('#headerFaculties').prepend('<span>Faculdades: </span>')
-    $('#headerCycles').attr('style','position:absolute; top:50px; left:400px') // Curso
-    $('#headerCycles').hide()
-    $('#headerTerms').attr('style','position:absolute; top:100px; left:50px') // semestre/quadrimestre
-    function findData(){
-        url = ''
-        $('#urls').children('select').each(function(){
-            if ($(this).val() != ''){
-                url = url + $(this).val() + '/'
-            }
-        })
-        //url = 'year/session/'
-        idTimePeriod = $('#headerTimePeriod').val()
-        idFaculty = $('#headerFaculty').val()
-        idCycle = $('#headerCycle').val()
-        term = $('#headerTerm').val()
-        get = new XMLHttpRequest()
-        get.open( "GET", 'findReports/?' + $.param({idTimePeriod: idTimePeriod, idFaculty: idFaculty, idCycle:idCycle, term:term}), false)
-        get.send(null)
-        var datas = JSON.parse(get.responseText)
-        node = new PresentationNode(url, datas, 0, 'base')
-        $('#nodes').html('')
-        $('#nodes').append(node.div)
-    }
-</script>
-<!--Mozila Firefox funciona melhor aqui. -->
+	<a id="end-button" onMouseDown = 'findData()' class="oval-button"> Pronto! </a>
+    </div>
 {% endblock %}
 

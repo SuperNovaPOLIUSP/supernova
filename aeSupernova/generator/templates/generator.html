@@ -1,9 +1,10 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Gerador de Relatórios</title>
-</head>
-<body>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Generator</title>{% endblock %}
+
+{% block content %}
 <div id = 'show' name = 'show' style='position:absolute; left:300px; top:150px; z-index:1000; background-color:#FBEFEF; border:1px solid #666; -moz-box-shadow:0 0 90px 5px #000; -webkit-box-shadow: 0 0 90px #000;'>
 </div>
 <div id = 'options' style='position:absolute; top:75; left:300'>
@@ -106,6 +107,4 @@
     function flipCourses(){
     }
 </script>
-</body>
-</html>
-
+{% endblock %}

@@ -1,8 +1,10 @@
-<html>
-<head>
-<title>Encoder</title>
-</head>
-<body>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Encoder</title>{% endblock %}
+
+{% block content %}
     {% autoescape off %}
         {{ header }}
     {% endautoescape %}
@@ -23,7 +25,7 @@
 </div>
 
 <div id = 'encoded'></div>
-</body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     {% include "EncoderCourse.js" %} 
@@ -120,4 +122,4 @@
         controller.showEncoding()
     }
 </script>
-</html>
+{% endblock %}

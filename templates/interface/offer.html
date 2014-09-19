@@ -9,18 +9,18 @@
 		<td align="center"><strong><a> OFFER </a></strong></td>
 		<td align="center"><strong><a> CÓDIGO </a></strong></td>
 		<td align="center"><strong><a> NOME </a></strong></td>
-		<td align="center"><strong><a> PROFESSOR  </a></strong></td>
+		<td><strong><a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFESSOR  </a></strong></td>
 		<td align="center"><strong><a> TURMA  </a></strong></td>
 		<td align="center"><strong><a> TEÓRICA/PRÁTICA </a></strong></td>
-		<td align="center"><strong><a> HORÁRIOS </a></strong></td>
-		<td align="center"><strong><a> EDITAR </a></strong><br><br></td>
+		<td><strong><a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HORÁRIOS </a></strong></td>
+		<td><strong><a> &nbsp;&nbsp;&nbsp;EDITAR </a></strong><br><br></td>
 		</tr>
 		{% for offer in offers %}
 			<tr>
 			<td align="center"><a  id="links-offer" href = {% url 'interface:offer_detail' idOffer=offer.idOffer %}>{{ offer.idOffer }}</a></td>
 			<td align="center">{{ offer.course.courseCode }}</td>
 			<td align="center">{{ offer.course.name }} </td>
-			<td align="center">{{ offer.professor.name }}</td>  
+			<td >{{ offer.professor.name }}</td>  
 			<td align="center">
 			{% if offer.classNumber < 10 %}
 				T0{{ offer.classNumber }}
@@ -35,9 +35,9 @@
 				TEÓRICA
 			{% endif %}
 			</td>
-			<td align="center">
+			<td>
 			{% for schedule in offer.schedules %}			
-				{{ schedule }}<br>
+				{{ schedule }}<br><br>
 			{% endfor %}<br>
 			</td>
 			<td>
@@ -48,9 +48,7 @@
 	 		function redirect_to_edit_offer() {
 			window.location.href = "{% url 'interface:offer_edit' idOffer=offer.idOffer %}";
 			}
-
 			</script>
-
 		{% endfor %}
 	</table>
 	<input id="button-right" class="oval-button" type="button" value="Adicionar" onclick="redirect_to_create_offer();" name="criar"/>

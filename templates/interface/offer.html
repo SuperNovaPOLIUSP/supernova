@@ -4,6 +4,8 @@
 
 {% block content %}
 	<br>
+	<h2 id="h2-spacing"> Oferecimentos de {{ course.courseCode }} </h2>
+	<hr color="#efefef" width="1145px" align="right"><br>
 	<table width="100%">
 		<tr>
 		<td align="center"><strong><a> OFFER </a></strong></td>
@@ -12,37 +14,37 @@
 		<td><strong><a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFESSOR  </a></strong></td>
 		<td align="center"><strong><a> TURMA  </a></strong></td>
 		<td align="center"><strong><a> TEÓRICA/PRÁTICA </a></strong></td>
-		<td><strong><a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HORÁRIOS </a></strong></td>
-		<td><strong><a> &nbsp;&nbsp;&nbsp;EDITAR </a></strong><br><br></td>
+		<td><strong><a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HORÁRIOS </a></strong></td>
+		<td><strong><a></a></strong><br><br><br></td>
 		</tr>
 		{% for offer in offers %}
-			<tr>
-			<td align="center"><a  id="links-offer" href = {% url 'interface:offer_detail' idOffer=offer.idOffer %}>{{ offer.idOffer }}</a></td>
-			<td align="center">{{ offer.course.courseCode }}</td>
-			<td align="center">{{ offer.course.name }} </td>
-			<td >{{ offer.professor.name }}</td>  
-			<td align="center">
-			{% if offer.classNumber < 10 %}
-				T0{{ offer.classNumber }}
-			{% else %}
-				T{{ offer.classNumber }}
-			{% endif %}
-			</td>
-			<td align="center">
-			{% if offer.practical %}
-				PRÁTICA
-			{% else %}
-				TEÓRICA
-			{% endif %}
-			</td>
-			<td>
-			{% for schedule in offer.schedules %}			
-				{{ schedule }}<br><br>
-			{% endfor %}<br>
-			</td>
-			<td>
-			<input align="center" type="button" value="Editar" onclick="redirect_to_edit_offer();" name="editar"/>
-			</td>
+			<tr id="{% cycle 'alter-color' 'null-color' %}">
+				<td id="middleterm"><a  id="{% cycle 'links2-offer' 'links-offer' %}" href = {% url 'interface:offer_detail' idOffer=offer.idOffer %}>{{ offer.idOffer }}</a></td>
+				<td id="middleterm">{{ offer.course.courseCode }}</td>
+				<td id="middleterm">{{ offer.course.name }} </td>
+				<td id="middleterm2">{{ offer.professor.name }}</td>  
+				<td id="middleterm">
+					{% if offer.classNumber < 10 %}
+						T0{{ offer.classNumber }}
+					{% else %}
+						T{{ offer.classNumber }}
+					{% endif %}
+				</td>
+				<td id="middleterm" >
+					{% if offer.practical %}
+						PRÁTICA
+					{% else %}
+						TEÓRICA
+					{% endif %}
+				</td>
+				<td id="middleterm2"><br>
+					{% for schedule in offer.schedules %}			
+						{{ schedule }}<br><br>
+					{% endfor %}
+				</td>
+				<td id="middleterm2">
+					<input  type="button" value="Editar" class="oval-minibutton" onclick="redirect_to_edit_offer();" name="editar"/>
+				</td>
 			</tr>
 			<script type="text/javascript">
 	 		function redirect_to_edit_offer() {
@@ -51,7 +53,7 @@
 			</script>
 		{% endfor %}
 	</table>
-	<input id="button-right" class="oval-button" type="button" value="Adicionar" onclick="redirect_to_create_offer();" name="criar"/>
+	<input id="button-left" class="oval-button" type="button" value="Adicionar" onclick="redirect_to_create_offer();" name="criar"/>
 	<script type="text/javascript">
 		function redirect_to_create_offer(){
 			window.location.href = "{% url 'interface:offer_create' idCourse=course.idCourse idTimePeriod=timePeriod.idTimePeriod %}";

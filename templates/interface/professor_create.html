@@ -6,6 +6,7 @@
 
 {% block content %}
 	<div id="center-edits">
+	<h2 id="h2-spacing"> Criar Professor </h2>
 		<form action="{% url 'interface:professor_create' %}" method="post" id="form-professor">{% csrf_token %}
 			{{ form.as_p }}
 			<input id="button-left" class="oval-button" type="submit" value="Cadastrar" name="Cadastrar"/>

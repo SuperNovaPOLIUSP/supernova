@@ -1,9 +1,10 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Control</title>
-</head>
-<body>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Control</title>{% endblock %}
+
+{% block content %}
 <button style ='position:absolute; top:150px; left:50px;'  onMouseDown = 'findData()'> VAI!!! </button>
 <select id = 'urls' style = 'position:absolute; left:400px'>
     <option value = 'year/session/faculty/cycle/term/opticalSheet/datafile/'>year/session/faculty/cycle/term/opticalSheet/datafile/</option>
@@ -40,6 +41,4 @@
         $('#nodes').append(node.div)
     }
 </script>
-</body>
-</html>
-
+{% endblock %}

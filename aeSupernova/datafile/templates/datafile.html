@@ -1,8 +1,10 @@
-<html>
-<head>
-	<title>Datafile</title>
-</head>
-<body>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Datafile</title>{% endblock %}
+
+{% block content %}
 	<form id='teste' name="teste" method="POST" enctype="multipart/form-data" >
     {% autoescape off %}
         {{ divs }}
@@ -85,4 +87,4 @@
         });
     }
 </script>
-</body></html>
+{% endblock %}

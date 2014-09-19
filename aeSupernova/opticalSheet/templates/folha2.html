@@ -1,9 +1,10 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>OpticalSheet</title>
-</head>
-<body>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Optical Sheet</title>{% endblock %}
+
+{% block content %}
 <div id='opticalSheetSpace' >
 </div>
 <div id = 'optionsDiv' name = 'optionsDiv' style='position:absolute; left:500px; top:200px; z-index:1000; background-color:#FBEFEF; border:1px solid #666; -moz-box-shadow:0 0 90px 5px #000; -webkit-box-shadow: 0 0 90px #000;'>
@@ -60,6 +61,4 @@
         }, true);
     };
 </script>
-</body>
-</html>
-
+{% endblock %}

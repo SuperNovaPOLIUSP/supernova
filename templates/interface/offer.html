@@ -4,7 +4,7 @@
 
 {% block content %}
 	<br>
-	<table width="1400px" border = 1>
+	<table width="100%">
 		<tr>
 		<td align="center"><strong><a> OFFER </a></strong></td>
 		<td align="center"><strong><a> CÓDIGO </a></strong></td>
@@ -12,7 +12,8 @@
 		<td align="center"><strong><a> PROFESSOR  </a></strong></td>
 		<td align="center"><strong><a> TURMA  </a></strong></td>
 		<td align="center"><strong><a> TEÓRICA/PRÁTICA </a></strong></td>
-		<td align="center"><strong><a> SCHEDULE </a></strong><br><br></td>
+		<td align="center"><strong><a> HORÁRIOS </a></strong></td>
+		<td align="center"><strong><a> EDITAR </a></strong><br><br></td>
 		</tr>
 		{% for offer in offers %}
 			<tr>
@@ -26,7 +27,7 @@
 			{% else %}
 				T{{ offer.classNumber }}
 			{% endif %}
-			</td align="center">
+			</td>
 			<td align="center">
 			{% if offer.practical %}
 				PRÁTICA
@@ -36,10 +37,20 @@
 			</td>
 			<td align="center">
 			{% for schedule in offer.schedules %}			
-				{{ schedule }} <br>
-			{% endfor %}
+				{{ schedule }}<br>
+			{% endfor %}<br>
+			</td>
+			<td>
+			<input align="center" type="button" value="Editar" onclick="redirect_to_edit_offer();" name="editar"/>
 			</td>
 			</tr>
+			<script type="text/javascript">
+	 		function redirect_to_edit_offer() {
+			window.location.href = "{% url 'interface:offer_edit' idOffer=offer.idOffer %}";
+			}
+
+			</script>
+
 		{% endfor %}
 	</table>
 	<input id="button-right" class="oval-button" type="button" value="Adicionar" onclick="redirect_to_create_offer();" name="criar"/>

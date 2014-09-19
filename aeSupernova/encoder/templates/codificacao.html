@@ -1,8 +1,10 @@
-<html>
-<head>
-<title>folha otica</title>
-</head>
-<body>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Codificação</title>{% endblock %}
+
+{% block content %}
     {% autoescape off %}
         {{ divs.divs }}
     {% endautoescape %}
@@ -31,7 +33,6 @@
         <div id = 'AtualCodificacao' style="position:absolute; top:120px; left:1000px; height:500px;width:500px;overflow:auto; border:0.5px solid #000000;">
         </div>
     </form>
-</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $('#AtualCodificacao').hide()
@@ -142,4 +143,4 @@
         });
     }
 </script>
-</html>
+{% endblock %}

@@ -50,9 +50,9 @@ class CourseReport (AssessmentReport):
      Boolean that marks if the course subreport should be made by class number or by
      professor.
   
-    reportByClass  (public)
+    reportBy  (public)
   
-     Boolean that marks if the report should exhibit the names of the professors
+     Integer that marks if the report should exhibit the names of the professors
      ahead of the course offers assessed.
   
     showProfessorName  (public)
@@ -80,7 +80,7 @@ class CourseReport (AssessmentReport):
         # initializes other attributes with default values
         self.assessmentNumber = 1
         self.faculty = Faculty.find(abbreviation_equal = "EPUSP")[0]
-        self.reportByClass = True
+        self.reportBy= 2
         self.showProfessorName = True
   
     def countAnswers(self):
@@ -155,7 +155,7 @@ class CourseReport (AssessmentReport):
             dataLabels = question.answerType.alternativeMeaning
             directoryPath = self.texSource.directoryPath
             fileName = "chart_q" + str(question.idQuestion) + "_" + str(id(self))
-            chart = BarChart(data, dataLabels, directoryPath, fileName)
+            chart = BarChart(data, dataLabels, directoryPath, fileName) 
             self.charts[question.idQuestion] = chart
 
         """
@@ -204,6 +204,7 @@ class CourseReport (AssessmentReport):
         headerTemplate_fileName = "CourseReport_headerTemplate.tex"
         pageHeaderTemplate_fileName = "CourseReport_pageHeaderTemplate.tex"
         questionTemplate_fileName = "CourseReport_questionTemplate.tex"
+        questionTemplateCourseOption_fileName = "CourseReport_questionTemplateCourseOption.tex"
 
         # sets header template parameters
         headerTemplate_parameters = {
@@ -214,28 +215,26 @@ class CourseReport (AssessmentReport):
 
         # renders document header
         self.renderFromTemplate(headerTemplate_fileName, headerTemplate_parameters)
-        
 
         # writes LaTeX source code for each of the course reports subreports
         for subreport in self.subreports:
-
+    
             subreportChartNumber = 3 # keeps track of subreport pages
             subreportPageNumber = 0 # keeps track of the subreport length
             for question in subreport.questionnaire:
-
+    
                 # renders page header from three to three charts
                 if subreportChartNumber == 3:
                     # sets page header template parameters
                     pageHeaderTemplate_parameters = {
-                        "showProfessorName" : self.showProfessorName,
-                        "classNumber" : unicode(subreport.assessedObject.classNumber),
-                        "professorName" : subreport.assessedObject.professor.name}
-    
+                                                     "showProfessorName" : self.showProfessorName,
+                                                     "classNumber" : unicode(subreport.assessedObject.classNumber),
+                                                     "reportBy" : self.reportBy,
+                                                     "professorName" : subreport.assessedObject.professor.name}
                     # renders page header
                     self.renderFromTemplate(pageHeaderTemplate_fileName, pageHeaderTemplate_parameters)
-
                     subreportChartNumber = 0 # resets chart number after inserting page header
-                
+                    
                 # renders a question and the charts depicting its answers
                 questionTemplate_parameters = {
                     "questionWording" : question.questionWording,
@@ -247,22 +246,21 @@ class CourseReport (AssessmentReport):
                     "classNumber" : unicode(subreport.assessedObject.classNumber),
                     "courseCode" : self.assessedObject.courseCode,
                     "offerChart" : "{" + subreport.charts[question.idQuestion].getAbsolutePath() + "}",
-                    "courseChart" : "{" + self.charts[question.idQuestion].getAbsolutePath() + "}"}
-
-
+                    "courseChart" : "{" + self.charts[question.idQuestion].getAbsolutePath() + "}",
+                    "reportBy" : self.reportBy }
+        
                 self.renderFromTemplate(questionTemplate_fileName, questionTemplate_parameters)
-
                 # inserts new page from three to three charts
                 if subreportChartNumber == 2:
                     self.insertNewPage()
                     subreportPageNumber += 1
-
+    
                 subreportChartNumber += 1
-
+    
             # makes sure that the subreport fits in an even number of pages
             if subreportPageNumber % 2 == 0: # this means odd number of pages
                 self.insertNewPage()
-
+    
             # inserts new page at the end of a subreport (only if it is not the last)
             if subreport != self.subreports[-1]:
                 self.insertNewPage()
@@ -308,28 +306,27 @@ class CourseReport (AssessmentReport):
                 continue
             makeSubreport = True # boolean that indicates if the subreport should be made
 
-            if not self.showProfessorName and self.reportByClass:
+            if not self.showProfessorName and self.reportBy != 1:
                 # if the report should be made by class and should not exhibit the professors name, then we need not to repeat offers with the same class number when making subreports
                 if assessedOffer.classNumber not in classesAlreadyReported:
                     classesAlreadyReported.append(assessedOffer.classNumber) # adds class number to list
                 else:
                     makeSubreport = False
-
-            if makeSubreport:   
-                subreport = CourseSubreport(assessedOffer, self.templateFolder, self.reportByClass, self.assessmentNumber)
+            if makeSubreport:
+                subreport = CourseSubreport(assessedOffer, self.templateFolder, self.reportBy, self.assessmentNumber)
                 # initializes texSource attribute for the subreport: this is necessary for it to know the reports temporary output directory (i.e. where the tex source is kept) when generating its charts
                 subreport.texSource = File(self.texSource.directoryPath, self.generateTitle() + "_subreport" + str(assessedOffer.classNumber))
                 # adds subreport to the subreports list attribute
                 self.subreports.append(subreport)
   
-    def setReportInstructions(self, faculty, assessmentNumber = 1, reportByClass = True, showProfessorName = True):
+    def setReportInstructions(self, faculty, assessmentNumber = 1, reportBy = 2, showProfessorName = True):
         """
          Set report specific instructions such as to count answers by class or by
          professor, or such as which assessment's answers to count.
 
         @param Faculty faculty : The faculty to which the course report is being presented.
         @param int assessmentNumber : Integer that indicates the number of the assessment to which the answers that must be counted were given.
-        @param bool reportByClass : Boolean that marks if the course subreport should be made by class number or by professor.
+        @param int reportBy : int that marks if the course subreport should be made by class number, professor or course.
         @param bool showProfessorName : Boolean that marks if the report should exhibit the names of the professors ahead of the course offers assessed.
         @return  :
         @author
@@ -344,9 +341,9 @@ class CourseReport (AssessmentReport):
         if not isinstance(faculty, Faculty):
             raise CourseReportError("Invalid faculty parameter: must be a Faculty object")
 
-        # checks validity of reportByClass parameter            
-        if not isinstance(reportByClass, bool):
-            raise CourseReportError("Invalid reportByClass parameter: must be a boolean.")
+        # checks validity of reportBy parameter            
+        if not isinstance(reportBy, int):
+            raise CourseReportError("Invalid reportBy parameter: must be a int.")
 
         # checks validity of showProfessorName parameter
         if not isinstance(showProfessorName, bool):
@@ -354,7 +351,7 @@ class CourseReport (AssessmentReport):
 
         self.assessmentNumber = assessmentNumber
         self.faculty = faculty
-        self.reportByClass = reportByClass
+        self.reportBy = reportBy
         self.showProfessorName = showProfessorName
         
 

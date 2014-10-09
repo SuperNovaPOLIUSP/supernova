@@ -24,7 +24,7 @@ class CourseReportGenerator(object):
             course = Course.pickById(idCourse)
             
             courseReport = CourseReport(course, timePeriod, settings.TEMPLATE_RELATORIOS)
-            courseReport.setReportInstructions(faculty, assessmentNumber, not byOffer, useProfessorsName)
+            courseReport.setReportInstructions(faculty, assessmentNumber, byOffer, useProfessorsName)
             courseReport.writeDocument(outputDirectory + "/" + str(idCourse))
             timePeriodStr = str(timePeriod.year)
             if timePeriod.length == 1:

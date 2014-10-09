@@ -51,7 +51,7 @@ class Chart (File):
         self.setData(data, False)
         self.setDataLabels(dataLabels, False)
         self.plot()
-  
+            
     def setData(self, data, plot = True):
         """
          Sets data attribute and plots the chart after doing so.

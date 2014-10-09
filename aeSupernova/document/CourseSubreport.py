@@ -32,10 +32,10 @@ class CourseSubreport (AssessmentSubreport):
 
     """ ATTRIBUTES
   
-     Boolean that marks if the course subreport should be made by class
-     number or by professor.     
+     int that marks if the course subreport should be made by class
+     number, professor or course.     
   
-    reportByClass  (public)
+    reportBy (public)
 
      Integer that indicates the number of the assessment to which the
      answers that must be counted were given.
@@ -44,7 +44,7 @@ class CourseSubreport (AssessmentSubreport):
   
     """
 
-    def __init__(self, assessedObject, templateFolder, reportByClass , assessmentNumber):
+    def __init__(self, assessedObject, templateFolder, reportBy , assessmentNumber):
         """
          Constructor method.
   
@@ -55,7 +55,7 @@ class CourseSubreport (AssessmentSubreport):
         """
         super(CourseSubreport, self).__init__(assessedObject, templateFolder)
         self.assessmentNumber = assessmentNumber
-        self.reportByClass = reportByClass
+        self.reportBy = reportBy
   
     def countAnswers(self):
         """
@@ -70,7 +70,7 @@ class CourseSubreport (AssessmentSubreport):
         answers = {}
         """# Function defined to count answers through multiprocessing:
         def makeAnswerCount(queue, question):
-            if self.reportByClass:
+            if self.reportBy:
                 # counts answers by class number
                 countedAnswer = Answer.countAnswers(question = question, timePeriod = self.assessedObject.timePeriod, course = self.assessedObject.course, classNumber = self.assessedObject.classNumber, assessmentNumber = self.assessmentNumber)
             else:
@@ -84,7 +84,7 @@ class CourseSubreport (AssessmentSubreport):
         questions = Questionnaire.buildQuestionsQuestionnaire(self.assessedObject.idOffer)
         self.questionnaire = questions
         for question in self.questionnaire:
-            if self.reportByClass:
+            if self.reportBy == 2:
                 # counts answers by class number
                 countedAnswer = Answer.countAnswers(question = question, timePeriod = self.assessedObject.timePeriod, course = self.assessedObject.course, classNumber = self.assessedObject.classNumber, assessmentNumber = self.assessmentNumber)
             else:
@@ -153,12 +153,12 @@ class CourseSubreport (AssessmentSubreport):
             queueObject = queue.get()
             self.charts[queueObject[0].idQuestion] = queueObject[1]"""
 
-    def setReportInstructions(self, assessmentNumber = 1, reportByClass = True):
+    def setReportInstructions(self, assessmentNumber = 1, reportBy = 2):
         """
          Constructor method.
   
         @param int assessmentNumber : Integer that indicates the number of the assessment to which the answers that must be counted were given.
-        @param bool reportByClass : Boolean that marks if the course subreport should be made by class number or by professor.
+        @param int reportBy : Integer that marks if the course subreport should be made by class number, professor or course.
         @return  :
         @author
         """
@@ -168,11 +168,11 @@ class CourseSubreport (AssessmentSubreport):
         elif assessmentNumber < 1:
             raise CourseSubreportError("Invalid assessmentNumber parameter: must be an integer greater than 1.")
 
-        # checks validity of reportByClass parameter            
-        if not isinstance(reportByClass, bool):
-            raise CourseSubreportError("Invalid reportByClass parameter: must be a boolean.")
+        # checks validity of reportBy parameter            
+        if not isinstance(reportBy, int):
+            raise CourseSubreportError("Invalid reportBy parameter: must be a int.")
         self.assessmentNumber = assessmentNumber
-        self.reportByClass = reportByClass
+        self.reportBy = reportBy
 
 
 def hasAnswers(answerDict):

@@ -1,0 +1,1179 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{pdflscape}
+\usepackage{multicol}
+\usepackage{textpos}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{adjmulticol}
+\usepackage{fp}
+\usepackage[insidebox,noshuffle,digits,box,completemulti]{automultiplechoice}
+%\AMCidsPosition{pos=none}
+\AMCboxDimensions{size=1.5ex,down=0.0ex,rule=0.01em}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{0cm}
+\setlength{\columnseprule}{0.0pt}
+\geometry{landscape,a4paper,hmargin=2.5cm}
+\begin{document}
+\def\multiSymbole{}
+\def\AMCbeginQuestion#1#2{\vspace*{-0.5cm}\par\noindent{} #2\hspace*{0.0em}}
+\AMCinterIrep=0pt
+\AMCinterBrep=.5ex
+\AMCinterIquest=0pt
+\AMCinterBquest=3.94ex
+
+\element{courses}{
+    \begin{questionmultx}{course1}
+      \fontsize{5}{5}\selectfont
+      \AMCnumericChoices{00}{digits=2,decimals=0,sign=false,vertical=true,hspace=0.3em,vspace=0.5ex,
+                     borderwidth=0pt,backgroundcol=white,approx=0,reverse=false,scoring=true, significant=true, strict=true}
+    \end{questionmultx}
+}
+\element{courses}{
+    \begin{questionmultx}{course2}
+      \fontsize{5}{5}\selectfont
+      \AMCnumericChoices{00}{digits=2,decimals=0,sign=false,vertical=true,hspace=0.3em,vspace=0.5ex,
+                     borderwidth=0pt,backgroundcol=white,approx=0,reverse=false,scoring=false, significant=true, strict=true}
+    \end{questionmultx}
+}
+\element{courses}{
+    \begin{questionmultx}{course3}
+      \fontsize{5}{5}\selectfont
+      \AMCnumericChoices{00}{digits=2,decimals=0,sign=false,vertical=true,hspace=0.3em,vspace=0.5ex,
+                     borderwidth=0pt,backgroundcol=white,approx=0,reverse=false,scoring=false, significant=true, strict=true}
+    \end{questionmultx}
+}
+\element{courses}{
+    \begin{questionmultx}{course4}
+      \fontsize{5}{5}\selectfont
+      \AMCnumericChoices{00}{digits=2,decimals=0,sign=false,vertical=true,hspace=0.3em,vspace=0.5ex,
+                     borderwidth=0pt,backgroundcol=white,approx=0,reverse=false,scoring=false, significant=true, strict=true}
+    \end{questionmultx}
+}
+\element{courses}{
+    \begin{questionmultx}{course5}
+      \fontsize{5}{5}\selectfont
+      \AMCnumericChoices{00}{digits=2,decimals=0,sign=false,vertical=true,hspace=0.3em,vspace=0.5ex,
+                     borderwidth=0pt,backgroundcol=white,approx=0,reverse=false,scoring=false, significant=true, strict=true}
+    \end{questionmultx}
+}
+\element{courses}{
+    \begin{questionmultx}{course6}
+      \fontsize{5}{5}\selectfont
+      \AMCnumericChoices{00}{digits=2,decimals=0,sign=false,vertical=true,hspace=0.3em,vspace=0.5ex,
+                     borderwidth=0pt,backgroundcol=white,approx=0,reverse=false,scoring=false, significant=true, strict=true}
+    \end{questionmultx}
+}
+\element{courses}{
+    \begin{questionmultx}{course7}
+      \fontsize{5}{5}\selectfont
+      \AMCnumericChoices{00}{digits=2,decimals=0,sign=false,vertical=true,hspace=0.3em,vspace=0.5ex,
+                     borderwidth=0pt,backgroundcol=white,approx=0,reverse=false,scoring=false, significant=true, strict=true}
+    \end{questionmultx}
+}
+\element{courses}{
+    \begin{questionmultx}{course8}
+      \fontsize{5}{5}\selectfont
+      \AMCnumericChoices{00}{digits=2,decimals=0,sign=false,vertical=true,hspace=0.3em,vspace=0.5ex,
+                     borderwidth=0pt,backgroundcol=white,approx=0,reverse=false,scoring=false, significant=true, strict=true}
+    \end{questionmultx}
+}
+
+\element{general}{
+  \begin{question}{01}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}  
+  \end{question}
+}
+\element{general}{
+  \begin{question}{02}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}
+  \end{question}
+}
+\element{general}{
+  \begin{question}{03}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}    
+  \end{question}
+}
+\element{general}{
+  \begin{question}{04}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}   
+  \end{question}
+}
+\element{general}{
+  \begin{question}{05}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}    
+  \end{question}
+}
+\element{general}{
+  \begin{question}{06}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{07}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{08}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}    
+  \end{question}
+}
+\element{general}{
+  \begin{question}{09}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}    
+  \end{question}
+}
+\element{general}{
+  \begin{question}{10}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+  \columnbreak
+}
+\element{general}{
+  \begin{question}{11}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{12}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{13}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{14}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{15}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{16}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{17}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{18}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{19}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{20}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+  \columnbreak
+}
+\element{general}{
+  \begin{question}{21}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{22}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{23}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{24}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{25}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{26}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{27}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{28}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{29}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{30}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+  \columnbreak
+}
+\element{general}{
+  \begin{question}{31}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{32}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{33}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{34}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{35}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{36}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{37}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{38}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{39}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{40}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+  \columnbreak
+}
+\element{general}{
+  \begin{question}{41}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{42}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{43}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{44}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{45}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{46}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{47}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{48}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{49}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{50}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+  \columnbreak
+}
+\element{general}{
+  \begin{question}{51}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{52}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{53}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{54}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{55}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{56}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{57}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{58}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{59}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{60}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+  \columnbreak
+}
+\element{general}{
+  \begin{question}{61}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{62}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{63}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{64}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{65}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{66}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{67}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{68}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{69}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{70}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+  \columnbreak
+}
+\element{general}{
+  \begin{question}{71}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{72}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{73}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{74}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{75}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{76}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{77}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{78}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{79}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+\element{general}{
+  \begin{question}{80}\QuestionIndicative
+  \fontsize{5}{5}\selectfont
+     \begin{choicescustom}[o]
+        \wrongchoice[A]{}
+        \wrongchoice[B]{}
+        \wrongchoice[C]{}
+        \wrongchoice[D]{}
+        \wrongchoice[E]{}
+    \end{choicescustom}     
+  \end{question}
+}
+
+%%% copies
+
+\begin{examcopy}[1]
+\begin{textblock}{7.0}(0.2,0.0)
+  \begin{center}
+    \fontsize{7}{7}\selectfont  
+    {% for line in title.lines %}
+      {{line}}
+    {% endfor %}
+  \end{center}
+\end{textblock}
+\begin{textblock}{7.0}(0.2,0.7)
+    \fontsize{6}{6}\selectfont    
+    Considere as classificações abaixo para as questões 1 a 10 \textbf{referentes à turma em que você está assistindo aula*}
+
+    \begin{tabular}{ {{table.tabular}} }
+      \hline 
+        {% for line in table.lines %}
+          {% for column in line %}
+            \fontsize{ {{column.font}} }{ {{column.font}} }\selectfont
+            {{column.text}}
+            {% if not forloop.last  %} %The last one doesn't need this &
+              &
+            {% endif %}
+          {% endfor %}
+          \\ \hline
+        {% endfor %}
+    \end{tabular}
+    \\
+    \fontsize{5}{5}\selectfont
+    *caso você não saiba as turmas em que está assistindo aula, consulte a tabela contida na folha de questões abertas.
+\end{textblock}
+
+{% for course in coursesList.0 %}
+  \begin{textblock}{0.80}( {{course.position.0}} , {{course.position.1}} )
+    \fontsize{ {{course.font}} }{ {{course.font}} }\selectfont
+    {{course.abbreviation}}
+  \end{textblock}
+{% endfor %}
+
+{% for question in questions %}
+  \begin{textblock}{7.4}( {{question.position.0}} , {{question.position.1}} )
+    \fontsize{ {{question.font}} }{ {{question.font}} }\selectfont
+    {{question.questionWording}}
+  \end{textblock}
+{% endfor %}
+
+%%%% MOLDURA %%%%%%    
+\begin{textblock}{12}( 7.65 , 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}
+\begin{textblock}{12}( 9.0 , 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}         
+\begin{textblock}{12}( 10.35, 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}
+\begin{textblock}{12}( 11.7, 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock} 
+\begin{textblock}{12}( 13.05, 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}  
+\begin{textblock}{12}( 14.4 , 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}
+\begin{textblock}{12}( 15.75 , 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}
+\begin{textblock}{12}( 17.1, 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}
+\begin{textblock}{12}( 18.5 , 0.0 )
+    \rule{.1pt}{145mm}
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 7.81 )
+    \hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 0.0 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 2.2 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 2.76 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 3.32 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 3.87 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 4.42 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 4.97 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 5.52 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 6.07 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 6.62 )
+    \noindent\hrulefill
+\end{textblock}
+\begin{textblock}{18.5}( 0.0 , 7.2 )
+    \noindent\hrulefill
+\end{textblock}
+\vspace*{0.6cm}
+\begin{adjmulticols}{8}{300pt}{-0.05in}
+    \setlength{\columnseprule}{0pt}
+    \insertgroup{courses}    
+\end{adjmulticols}
+\vspace*{-1.02cm}
+\begin{adjmulticols}{8}{286.5pt}{0.175in}
+    \setlength{\columnseprule}{0pt}
+    \insertgroup{general}
+\end{adjmulticols}
+\end{examcopy}
+
+
+\end{document}

@@ -7,7 +7,10 @@ from django.shortcuts import render
 from django.template.context import Context
 from django.template.loader import render_to_string
 import io
-from interface.forms import ProfessorForm, IndexForm, OfferForm, OfferListForm
+
+from crawler.CycleReader import CycleReader
+from interface.forms import CrawlerForm, offer_to_string, \
+    ProfessorForm, IndexForm, OfferForm, OfferListForm
 from login.models import Log
 from login.views import get_time
 from pulsarInterface.Course import Course
@@ -21,11 +24,6 @@ from pulsarInterface.Professor import Professor
 from pulsarInterface.Schedule import Schedule
 from pulsarInterface.TimePeriod import TimePeriod
 
-from pulsarInterface.Cycle import Cycle
-from pulsarInterface.Offer import Offer
-
-from interface.forms import ProfessorForm, CrawlerForm, CrawlerResultsForm, offer_to_string
-from crawler.CycleReader import CycleReader
 
 @login_required
 def index(request):

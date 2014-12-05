@@ -44,15 +44,23 @@
 
     % gráfico
     \begin{center}
-        \vspace*{- 0.5 cm}
-        \subfloat[\large Turma {{ classNumber }}] {
-            \includegraphics[scale = 0.13]{{ offerChart }}
-        }
-        \hspace*{3.0 cm}
-        \subfloat[\large {{ courseCode }}] {
-            \includegraphics[scale = 0.13]{{ courseChart }} 
-        }
-        \vspace*{- 0.5 cm}
+    	{% if reportBy == 0 %}
+	        \hspace*{0.0 cm}
+        	\subfloat[\large {{ courseCode }}] {
+        	    \includegraphics[scale = 0.14]{{ offerChart }} 
+        	}
+       		\vspace*{- 0.5 cm}
+	    {% else %}
+	        \vspace*{- 0.5 cm}
+	        \subfloat[\large Turma {{ classNumber }}] {
+	            \includegraphics[scale = 0.13]{{ offerChart }}
+	        }
+	        \hspace*{3.0 cm}
+	        \subfloat[\large {{ courseCode }}] {
+	            \includegraphics[scale = 0.13]{{ courseChart }} 
+	        }
+	        \vspace*{- 0.5 cm}
+       	{% endif %}
     \end{center}
 
 \end{figure}

@@ -48,9 +48,11 @@ def generateCourses(request):
     else:
         useProfessorsName = False
     if int(data['byOffer']) == 1:
-        byOffer = True
-    else:
-        byOffer = False
+        byOffer = 1
+    elif int(data['byOffer']) == 2:
+        byOffer = 2
+    elif int(data['byOffer']) == 0:
+        byOffer = 0
     idTimePeriod = int(data['idTimePeriod'])
     idFaculty = int(data['idFaculty'])
     assessmentNumber = int(data['assessmentNumber'])

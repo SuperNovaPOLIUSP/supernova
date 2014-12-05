@@ -1,5 +1,7 @@
 *.pyc
+*.swp
 *~
+*.ropeproject/*
 settings.db
 htmlcov/*
 .coverage

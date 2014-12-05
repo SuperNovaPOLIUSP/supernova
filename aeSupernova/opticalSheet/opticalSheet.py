@@ -95,7 +95,23 @@ def printOpticalSheet(request):
     opticalSheetPrinter.printOpticalSheet(data['idOpticalSheet'], data['fields'], data['survey'], data['positions'])
     return HttpResponse('ok')
 
+def printAMC(request):
+    data = request.POST
+    jsonString = data['json']
+    data = json.loads(jsonString)
+    opticalSheetPrinter = OpticalSheetPrinter(data['idCycle'], data['term'], data['idTimePeriod'])
+    opticalSheetPrinter.printAMC(data['idOpticalSheet'], data['fields'], data['survey'], data['positions'])
+    return HttpResponse('ok')
+
 def getPrintedOpticalSheet(request):
+    data = request.GET
+    opticalSheetPrinter = OpticalSheetPrinter(int(data['idCycle']), int(data['term']), int(data['idTimePeriod']))
+    if data['downloadType'] == 'pdf':
+        return opticalSheetPrinter.getPDF()
+    elif data['downloadType'] == 'tex':
+        return opticalSheetPrinter.getTex()
+    
+def getPrintedAMC(request):
     data = request.GET
     opticalSheetPrinter = OpticalSheetPrinter(int(data['idCycle']), int(data['term']), int(data['idTimePeriod']))
     if data['downloadType'] == 'pdf':

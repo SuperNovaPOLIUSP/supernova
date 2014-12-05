@@ -122,12 +122,58 @@ class OpticalSheetPrinter(Printer):
         self.title = OpticalSheetPrinter.createTitle(self.timePeriod, self.cycle, self.term) 
         self.table = OpticalSheetPrinter.organizeInstructions(survey['instructions'], survey['questions'], float(positions['tableX']), float(positions['tableY']))
         if self.opticalSheet.encodingName == None:
-            self.coursesList = OpticalSheetPrinter.createCourses(fields, float(positions['columnsX']), float(positions['columnsY']), float(positions['columnsDX']))
+            self.coursesList = OpticalSheetPrinter.createCourses(fields, float(positions['columnsX']), float(positions['columnsY']), float(positions['columnsDX']), False)
         else:
-            self.coursesList = OpticalSheetPrinter.createEncodedCodes(float(positions['columnsX']), float(positions['columnsY']), float(positions['columnsDX']))
-        self.questions = OpticalSheetPrinter.createQuestions(survey['questions'], float(positions['questionnaireX']), float(positions['questionnaireY']), float(positions['questionnaireDY']))
+            self.coursesList = OpticalSheetPrinter.createEncodedCodes(float(positions['columnsX']), float(positions['columnsY']), float(positions['columnsDX']), False)
+        self.questions = OpticalSheetPrinter.createQuestions(survey['questions'], float(positions['questionnaireX']), float(positions['questionnaireY']), float(positions['questionnaireDY']), False)
 
         self.loadTemplate('texTemplates/opticalSheetTemplate.tex', self.__dict__)
+        print self.createPDF()
+        
+    def printAMC(self, idOpticalSheet, fields, survey, positions):
+        """
+         Set all of this objects paramters and use the function loadTemplate with its
+         __dict__ and the template 'opticalSheetTemplate.tex'
+
+        @param int idOpticalSheet : The id of the opticalSheet of related to this QualitativeQuestionnaire.
+        @param [] fields : A list of dicts representing the courses in an OpticalSheet.  the dicts have the keys: abbreviation, font, courseIndex.
+        @param {} survey : Survey is a dict with the keys:
+
+            > instructions: a list of dicts with idAnswerType and font, that represent the chosen answerTypes to show in the opticalSheet.
+
+            > questions: a list of dict with questionWording, font and idAnswerTypes
+
+        @param {} positions : A dict with the keys:
+            tableX: position X of the table
+            tableY: position Y of the table
+            ColumnX:position X of the 1ºcolumn
+            ColumnY: position Y of the 1º column
+            ColumnDX: horizontal distance between the columns
+            QuestionX: position X of the 1º question
+            QuestionY: position Y of the 1º question
+            QuestionDY: vertical distances between the questions.
+        @return  :
+        @author
+        """
+
+        self.opticalSheet = OpticalSheet.pickById(idOpticalSheet)
+        self.faculty = Faculty.find(courseCoordinations = CourseCoordination.find(cycles = [self.cycle]))[0]
+        if self.faculty.name == u'Escola Politécnica':
+            self.picture = '{' + settings.MEDIA_ROOT + 'images/minerva.png}' #The {} have to be here because django's template think they are commands
+        self.title = OpticalSheetPrinter.createTitle(self.timePeriod, self.cycle, self.term) 
+        self.table = OpticalSheetPrinter.organizeInstructions(survey['instructions'], survey['questions'], float(positions['tableX']), float(positions['tableY']))
+        positions['columnsX'] = float(positions['columnsX']) - 1.25
+        positions['columnsY'] = float(positions['columnsY']) - 2.1
+        positions['columnsDX'] = float(positions['columnsDX']) - 1.42
+        positions['questionnaireX'] = float(0.05)
+        positions['questionnaireY'] = float(positions['questionnaireY']) - 5.35
+        positions['questionnaireDY'] = float(positions['questionnaireDY']) - 0.845
+        if self.opticalSheet.encodingName == None:
+            self.coursesList = OpticalSheetPrinter.createCourses(fields, float(positions['columnsX']), float(positions['columnsY']), float(positions['columnsDX']), True)
+        else:
+            self.coursesList = OpticalSheetPrinter.createEncodedCodes(float(positions['columnsX']), float(positions['columnsY']), float(positions['columnsDX']), True)
+        self.questions = OpticalSheetPrinter.createQuestions(survey['questions'], float(positions['questionnaireX']), float(positions['questionnaireY']), float(positions['questionnaireDY']), True)
+        self.loadTemplate('texTemplates/opticalSheetTemplateAMC.tex', self.__dict__)
         print self.createPDF()
 
     def createName(self):
@@ -143,7 +189,7 @@ class OpticalSheetPrinter(Printer):
         self.name = 'OS' + self.name.replace('/', '_')  # Bugfix: Names with '/' do not go well in an Unix environment
 
     @staticmethod
-    def createEncodedCodes(positionX, positionY, dX):
+    def createEncodedCodes(positionX, positionY, dX, AMC):
         """
          Create the coursesList parameter if the opticalSheet is encoded, in this case
          all course's name are 'code' and all fonts are 9.
@@ -156,17 +202,25 @@ class OpticalSheetPrinter(Printer):
         """
 
         courses = []
-        for i in range(10):
+        if AMC:
+            loop = 8
+        else:
+            loop = 10
+        for i in range(loop):
             course = {}
             course['abbreviation'] = u'código' 
             course['font'] = 9
-            course['position'] = [positionX, positionY]
-            positionX += dX
+            if AMC:
+                course['position'] = [float(positionX) + 0.2, positionY]
+                positionX += (float(dX) - 0.02)
+            else:
+                course['position'] = [positionX, positionY]
+                positionX += dX               
             courses.append(course)
         return [courses] #Returns a list to fit with the nonEncoded
 
     @staticmethod
-    def createCourses(fields, positionX, positionY, dX):
+    def createCourses(fields, positionX, positionY, dX, AMC):
         """
          Create the coursesList parameter if this opticalSheet is not encoded
 
@@ -186,7 +240,10 @@ class OpticalSheetPrinter(Printer):
             if field['abbreviation'] != '':
                 course = {}
                 course['abbreviation'] = field['abbreviation']
-                course['font'] = field['font']
+                if AMC:
+                    course['font'] = float(field['font']) - 2.0
+                else:
+                    course['font'] = field['font']
                 course['position'] = [positionX, positionY]
                 positionX += dX
                 if field['courseIndex'] < 10:
@@ -201,7 +258,7 @@ class OpticalSheetPrinter(Printer):
 
 
     @staticmethod
-    def createQuestions(questions, positionX, positionY, dY):
+    def createQuestions(questions, positionX, positionY, dY, AMC):
         """
          Create the questions parameter of this object.
 
@@ -218,7 +275,10 @@ class OpticalSheetPrinter(Printer):
             if isinstance(question['questionWording'],(str, unicode)):
                 questionDict = {}
                 questionDict['questionWording'] = str(1+questions.index(question)) +' - '+ question['questionWording']
-                questionDict['font'] = question['font']
+                if AMC:
+                    questionDict['font'] = float(question['font']) - 2.0
+                else:
+                    questionDict['font'] = question['font']
                 questionDict['position'] = [positionX, positionY]
                 positionY += dY
                 questionsList.append(questionDict)

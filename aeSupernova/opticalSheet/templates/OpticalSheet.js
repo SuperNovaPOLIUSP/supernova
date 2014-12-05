@@ -91,6 +91,11 @@ function OpticalSheet(optionsDiv, idTimePeriod, idCycle, term){
     printOpticalSheetButton.attr('style','position:absolute; top:600px; left:1000px; display:block;')
     printOpticalSheetButton.text('print OpticalSheet')
     printOpticalSheetButton.mousedown(this.printOpticalSheet.bind(this))
+    
+    printAMCButton = $(document.createElement('button'))
+    printAMCButton.attr('style','position:absolute; top:600px; left:1150px; display:block;')
+    printAMCButton.text('print AMC')
+    printAMCButton.mousedown(this.printAMC.bind(this))
 
     printQualitativeQuestionnaireButton = $(document.createElement('button'))
     printQualitativeQuestionnaireButton.attr('style','position:absolute; top:600px; left:870px; display:block;')
@@ -115,6 +120,7 @@ function OpticalSheet(optionsDiv, idTimePeriod, idCycle, term){
     this.buttons.append(nextAssessmentButton)
     this.buttons.append(createNewAssessmentButton)
     this.buttons.append(printOpticalSheetButton)
+    this.buttons.append(printAMCButton)
     this.buttons.append(printQualitativeQuestionnaireButton)
     this.buttons.append(storeButton)
     this.buttons.append(copyQuestionnaireButton)
@@ -256,6 +262,32 @@ OpticalSheet.prototype.printOpticalSheet = function(){
         //window.open('getPrintedOpticalSheet/?' + $.param({idTimePeriod: this.idTimePeriod, idCycle: this.idCycle, term: this.term}),'_blank')
     } else {
         alert('OpticalSheet is not ready to print!'
+)
+    }
+}
+
+/**
+ * Sends a post to /opticalSheet/printAMC/ with the needed data, if the
+ * post is successful open a new tab with the address
+ * /opticalSheet/getPrintedAMC/ with the needed data to download the
+ * opticalSheet to the user.
+ */
+OpticalSheet.prototype.printAMC = function(){
+    this.questionnaires[this.usedQuestionnaire].checkState() 
+    this.columns.checkState()
+    if (this.questionnaires[this.usedQuestionnaire].okToPrint && this.columns.okToPrint){
+        AMCData = this.getData()
+        AMCData['survey'] = this.questionnaires[this.usedQuestionnaire].getData() //for this one only the choseQuestionnaire is important
+        term = this.term //JQuery doesn't know how to work with 'this' inside the retunr function
+        idCycle = this.idCycle
+        idTimePeriod = this.idTimePeriod
+        downloadType = AMCData['positions']['downloadType']
+        $.post('printAMC/', {json: JSON.stringify(AMCData), csrfmiddlewaretoken: '{{ csrf_token }}'}).done(function(data,status){
+            window.open('getPrintedAMC/?' + $.param({idTimePeriod: idTimePeriod, idCycle: idCycle, term: term, downloadType: downloadType}),'_blank')
+        }).fail(function(){alert('deu problema no AMC')})
+        //window.open('getPrintedAMC/?' + $.param({idTimePeriod: this.idTimePeriod, idCycle: this.idCycle, term: this.term}),'_blank')
+    } else {
+        alert('AMC is not ready to print!'
 )
     }
 }

@@ -2,10 +2,10 @@
 from django import forms
 
 from pulsarInterface.Course import Course
-from pulsarInterface.Cycle import Cycle
 from pulsarInterface.Professor import Professor
-from pulsarInterface.Schedule import Schedule
+from pulsarInterface.Cycle import Cycle
 from pulsarInterface.TimePeriod import TimePeriod
+from pulsarInterface.Schedule import Schedule
 import datetime
 
 def getKey(item):

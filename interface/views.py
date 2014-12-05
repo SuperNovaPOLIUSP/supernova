@@ -9,8 +9,8 @@ from django.template.loader import render_to_string
 import io
 
 from crawler.CycleReader import CycleReader
-from interface.forms import CrawlerForm, offer_to_string, \
-    ProfessorForm, IndexForm, OfferForm, OfferListForm
+from interface.forms import IndexForm, ProfessorForm, OfferForm, OfferListForm, \
+    CrawlerForm, offer_to_string
 from login.models import Log
 from login.views import get_time
 from pulsarInterface.Course import Course
@@ -359,8 +359,8 @@ def crawler_results(request, offers):
                           practical=offer.practical):
             offer.store()
             offers_inserted.append(offer_to_string(offer))
-            rendered_page = render(request, 'crawler_results.html',
-                                   {'offers': offers_inserted})
+    rendered_page = render(request, 'crawler_results.html',
+                           {'offers': offers_inserted})
     return rendered_page
 
 

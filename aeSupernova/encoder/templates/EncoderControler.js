@@ -37,10 +37,10 @@ Controller.prototype.showPossibleOffers = function(idCycle, term){
 Controller.prototype.showEncoding = function(){
     this.div.empty()
 	var labelSizeOffers = new $(document.createElement('p'))
-	labelSizeOffers.attr('style','height: 100px; width:400; color:red;')
+	labelSizeOffers.attr('style','height: 50px; width:400; color:#b72d2d;')
     if (this.encodedCourses.length > 0){
         var encodedDiv = new $(document.createElement('div')) 
-        encodedDiv.attr('style','float: left; height: 300px; width:400; overflow-y: scroll;')
+        encodedDiv.attr('style','height: 300px; overflow-y: scroll;') // para adicionar
         for (var i in this.encodedCourses){
             encodedDiv.append(this.encodedCourses[i].getHTML())
         }
@@ -51,9 +51,9 @@ Controller.prototype.showEncoding = function(){
         	}
     	}
         labelSizeOffers.text("Número de Offers: " + totalOffers.length.toString())
-        var button = new $(document.createElement('button'))
-        button.text('flip All')
-        button.mousedown(function(){
+        var button3 = new $(document.createElement('button'))
+        button3.text('Todos')
+        button3.mousedown(function(){
            if (encodedDiv.find('input').eq(0).attr('checked')){
                 encodedDiv.find('input').each(function(){
                     $(this).attr('checked', false);
@@ -64,9 +64,8 @@ Controller.prototype.showEncoding = function(){
                 })
             }
         })
-        button.attr('style','')
-	button.attr('class','oval-minibutton')
-        this.div.append(button)
+        button3.attr('style','')
+		button3.attr('class','oval-minibutton')   //botao 3
         this.div.append(labelSizeOffers)
         var buttonRemove = new $(document.createElement('button'))
         controller = this
@@ -82,20 +81,20 @@ Controller.prototype.showEncoding = function(){
             controller.removeOffers(offersToKeep)
         })
         buttonRemove.text('Remover selecionados')
-        buttonRemove.attr('style','width:180px;')
-	buttonRemove.attr('class','oval-minibutton')
-        this.div.append(buttonRemove)
-        this.div.append(encodedDiv)
+        buttonRemove.attr('style','width:180px;') //remove
+		buttonRemove.attr('class','oval-minibutton')
+        
+        
     }
    
     if (this.listedCourses.length > 0){ 
         var listedDiv = new $(document.createElement('div')) 
-        listedDiv.attr('style','height: 300px; width:400; overflow-y: scroll;')
+        listedDiv.attr('style','float: left; height: 300px; overflow-y: scroll;') //adicionados
         for (var i in this.listedCourses){
             listedDiv.append(this.listedCourses[i].getHTML())
         }
         var button = new $(document.createElement('button'))
-        button.text('flip All')
+        button.text('Todos')
         button.mousedown(function(){
            if (listedDiv.find('input').eq(0).attr('checked')){
                 listedDiv.find('input').each(function(){
@@ -107,15 +106,15 @@ Controller.prototype.showEncoding = function(){
                 })
             }
         })
-        button.attr('style','')
-	button.attr('class','oval-minibutton')
-        this.div.append(button)
+        button.attr('style','float: top') // button 1
+		button.attr('class','oval-minibutton')
+        
 
-        var button = new $(document.createElement('button'))
-        button.text('addSelected')
+        var button2 = new $(document.createElement('button'))
+        button2.text('Adicionar')
 	
         controller = this
-        button.mousedown(function(){
+        button2.mousedown(function(){
             newOffers = new Array()
             listedDiv.find('input').each(function(){
                 if ($(this).attr('checked')){
@@ -126,11 +125,15 @@ Controller.prototype.showEncoding = function(){
             })
             controller.storeOffers(newOffers)
         })
-        button.attr('style','')
-	button.attr('class','oval-minibutton')
-	$('#encoded').attr('style', 'width:50%;')	
-        this.div.append(button)
+        button2.attr('style','') //button 2
+	button2.attr('class','oval-minibutton')
+	$('#encoded').attr('style', 'width:100%;')	
         this.div.append(listedDiv)
+		this.div.append(encodedDiv)
+		this.div.append(button)
+		this.div.append(button2)
+		this.div.append(button3)
+		this.div.append(buttonRemove)
     }
 
 }

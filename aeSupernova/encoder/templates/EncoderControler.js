@@ -37,10 +37,10 @@ Controller.prototype.showPossibleOffers = function(idCycle, term){
 Controller.prototype.showEncoding = function(){
     this.div.empty()
 	var labelSizeOffers = new $(document.createElement('p'))
-	labelSizeOffers.attr('style','position:absolute; top:500px; left:130px; height: 100px; width:400; color:red;')
+	labelSizeOffers.attr('style','height: 100px; width:400; color:red;')
     if (this.encodedCourses.length > 0){
         var encodedDiv = new $(document.createElement('div')) 
-        encodedDiv.attr('style','position:absolute; top:100px; left:100px; height: 300px; width:400; overflow-y: scroll;')
+        encodedDiv.attr('style','float: left; height: 300px; width:400; overflow-y: scroll;')
         for (var i in this.encodedCourses){
             encodedDiv.append(this.encodedCourses[i].getHTML())
         }
@@ -64,7 +64,8 @@ Controller.prototype.showEncoding = function(){
                 })
             }
         })
-        button.attr('style','position:absolute; top:400px; left:150px;')
+        button.attr('style','')
+	button.attr('class','oval-minibutton')
         this.div.append(button)
         this.div.append(labelSizeOffers)
         var buttonRemove = new $(document.createElement('button'))
@@ -80,15 +81,16 @@ Controller.prototype.showEncoding = function(){
             })
             controller.removeOffers(offersToKeep)
         })
-        buttonRemove.text('removeSelected')
-        buttonRemove.attr('style','position:absolute; top:400px; left:230px;')
+        buttonRemove.text('Remover selecionados')
+        buttonRemove.attr('style','width:180px;')
+	buttonRemove.attr('class','oval-minibutton')
         this.div.append(buttonRemove)
         this.div.append(encodedDiv)
     }
    
     if (this.listedCourses.length > 0){ 
         var listedDiv = new $(document.createElement('div')) 
-        listedDiv.attr('style','position:absolute; top:100px; left:700px; height: 300px; width:400; overflow-y: scroll;')
+        listedDiv.attr('style','height: 300px; width:400; overflow-y: scroll;')
         for (var i in this.listedCourses){
             listedDiv.append(this.listedCourses[i].getHTML())
         }
@@ -105,11 +107,13 @@ Controller.prototype.showEncoding = function(){
                 })
             }
         })
-        button.attr('style','position:absolute; top:400px; left:750px;')
+        button.attr('style','')
+	button.attr('class','oval-minibutton')
         this.div.append(button)
 
         var button = new $(document.createElement('button'))
         button.text('addSelected')
+	
         controller = this
         button.mousedown(function(){
             newOffers = new Array()
@@ -122,7 +126,9 @@ Controller.prototype.showEncoding = function(){
             })
             controller.storeOffers(newOffers)
         })
-        button.attr('style','position:absolute; top:400px; left:850px;')
+        button.attr('style','')
+	button.attr('class','oval-minibutton')
+	$('#encoded').attr('style', 'width:50%;')	
         this.div.append(button)
         this.div.append(listedDiv)
     }
@@ -140,7 +146,7 @@ Controller.prototype.storeOffers = function(newOffers){
         }
     }
     this.div.empty()
-    this.div.html('<span style="position:absolute; left:200px; top:200px" >Trabalhando...</span>')
+    this.div.html('<span style="" >Trabalhando...</span>')
     get = new XMLHttpRequest()
     get.open( "GET", 'store/?json=' + JSON.stringify({idOpticalSheet: this.idOpticalSheet, idTimePeriod:this.idTimePeriod, idOffers: finalOffers}), false)
     get.send(null)
@@ -149,7 +155,7 @@ Controller.prototype.storeOffers = function(newOffers){
 
 Controller.prototype.removeOffers = function(offersToKeep){
     this.div.empty()
-    this.div.html('<span style="position:absolute; left:200px; top:200px" >Trabalhando...</span>')
+    this.div.html('<span style="" >Trabalhando...</span>')
     get = new XMLHttpRequest()
     get.open( "GET", 'store/?json=' + JSON.stringify({idOpticalSheet: this.idOpticalSheet, idTimePeriod:this.idTimePeriod, idOffers: offersToKeep}), false)
     get.send(null)

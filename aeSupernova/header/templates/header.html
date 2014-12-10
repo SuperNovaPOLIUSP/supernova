@@ -1,29 +1,29 @@
 
-<div id="headerTimePeriods"><span > Período: </span><!-- Períodos -->
-    	<br><br><br>
-	<select id='headerTimePeriod' name='headerTimePeriod' onChange={{timePeriodFunction}}>
-        	<option value= 0 > </option>
-        	{% for timePeriod in timePeriodsList %}
+<div id="headerTimePeriods"><span > Período: </span>
+    <br><br><br>
+    <select id='headerTimePeriod' name='headerTimePeriod' onChange={{timePeriodFunction}}>
+        <option value= 0 > </option>
+        {% for timePeriod in timePeriodsList %}
                 <option value= {{timePeriod.idTimePeriod}} > {{ timePeriod.text }}</option>
-        	{% endfor %}
-	</select>
+        {% endfor %}
+    </select>
 </div>
-<div id="headerFaculties"><span > Faculdades: </span><!-- Faculdades -->
-	<br><br><br>
-	<select id='headerFaculty' name='headerFaculty' onChange={{facultyFunction}}>
-        	<option value= 0 > </option>
-        	{% for faculty in facultiesList %}
+<div id="headerFaculties">
+    <br><br><br>
+    <select id='headerFaculty' name='headerFaculty' onChange={{facultyFunction}}>
+        <option value= 0 > </option>
+        {% for faculty in facultiesList %}
                 <option value= {{faculty.idFaculty}}> {{ faculty.name }}</option>
-        	{% endfor %}
-	</select>
+        {% endfor %}
+    </select>
 </div>
-<div id="headerCycles"><!-- Ciclos -->
-    	<select id='headerCycle' name='headerCycle' onChange={{cycleFunction}}>
-        	<option value= 0 > </option>
-        	{% for cycle in cyclesList %}
+<div id="headerCycles">
+    <select id='headerCycle' name='headerCycle' onChange={{cycleFunction}}>
+        <option value= 0 > </option>
+        {% for cycle in cyclesList %}
                 <option value= {{cycle.idCycle}} idFaculty = {{cycle.idFaculty}}> {{ cycle.name }} - {{cycle.dayPeriod}} </option>
-		{% endfor %}
-	</select>
+        {% endfor %}
+    </select>
 </div>
 <div id="headerTerms"><!-- Semestre/Quadrimestre -->
 	<!-- <select id='headerTerm' name='headerTerm' >
@@ -33,15 +33,10 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
 <script type="text/javascript">
-	headerFacultyInit()
-	headerTermInit() 
-	$('#headerFaculties').attr() 
-	$('#headerFaculties').prepend('<span>Faculdades: </span>') 
-	$('#headerCycles').attr() 
-	$('#headerCycles').hide()
-	$('#headerTerms').attr()
+    $("#headerFaculties").hide();
+    $("#headerCycles").hide();
+    $("#headerTerms").hide();
     function headerFacultyInit(){
         $("#headerFaculties").show()
     }
@@ -63,7 +58,7 @@
         $.get("/header/possibleTerms/", {idCycle : idCycle, idTimePeriod: idTimePeriod},function(retorno){
             var object = JSON.parse(retorno)
             var linha="";
-            linha = linha + "<span class='etiquetaFormulario'> Semestre/Quadrimestre: </span><br><br><br><select  id='headerTerm' name='headerTerm' onChange = {{ termFunction }}><option value=0 > </option>";
+            linha = linha + "<span class='etiquetaFormulario'>Semestre/Quadrimestre: </span><br><br><br><select id='headerTerm' name='headerTerm' onChange = {{ termFunction }}><option value= 0 > </option>";
             for (var ano in object) {
                 linha = linha + "<option value=" + String(object[ano]) + ">" + String(object[ano]) + "</option>";
             }

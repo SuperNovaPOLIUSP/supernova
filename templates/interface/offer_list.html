@@ -1,19 +1,24 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<html>
-<head>
-<title>Interface - OfferList</title>
-</head>
-<body>
-<br>
-<form method="post" name="offer_list_generate" action="{% url 'interface:offer_list_generate' %}"> {% csrf_token %}
-	{{ form.as_p }}
-	<button href="javascript: submitform()"> Imprimir Oferecimentos</button>
-</form>
-<script type="text/javascript">
-	function submitform() {
-	 	document.offer_list_generate.submit()
-	}
-</script>
-</body>
-{% include "base_jquery.html" %}
-</html>
+{% extends 'base_supernova.html' %}
+
+{% load static %}
+
+{% block title %}<title>Supernova - Lista de Oferecimentos</title>{% endblock %}
+
+{% block content %}
+<div id="center-box">
+	<h2 id="h2-spacing"> Lista de Oferecimentos </h2>
+	<div id='form-box'>
+		<form method="post" name="offer_list_generate" action="{% url 'interface:offer_list_generate' %}"> {% csrf_token %}
+			{{ form.as_p }}<br>
+			<button class="oval-button" href="javascript: submitform()"> Imprimir</button>
+		</form>
+	</div>
+	<script type="text/javascript">
+		function submitform() {
+		 	document.offer_list_generate.submit()
+		}
+	</script>
+</div>
+{% endblock %}
+{% block jquery %}{% include "base_jquery.html" %}{% endblock %}
+

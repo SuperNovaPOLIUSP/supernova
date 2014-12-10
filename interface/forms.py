@@ -66,7 +66,7 @@ class OfferListForm(forms.Form):
         cycleIds = [cycle.idCycle for cycle in cycles]
         cycleInfo = zip(cycleIds, cycleName)
         termInfo = [[0,"Todos"],[1,'1º Semestre'],[2,'2º Semestre'],[3,'3º Semestre'],[4,'4º Semestre'],[5,'5º Semestre'],[6,'6º Semestre'],[7,'7º Semestre'],[8,'8º Semestre'],[9,'9º Semestre'],[10,'10º Semestre']]
-        self.fields['dropDownCycle'] = forms.ChoiceField(widget=forms.Select, choices=cycleInfo, label = 'Curso')
-        self.fields['dropDownTimePeriod'] = forms.ChoiceField(widget=forms.Select, choices=timePeriodInfo, label = 'Periodo')
-        self.fields['dropDownTerm'] = forms.ChoiceField(widget=forms.Select, choices=termInfo, label = 'Semestre')
+        self.fields['dropDownCycle'] = forms.ChoiceField(widget=forms.Select(attrs={'style' : 'width:300px; margin-top:20px'}), choices=cycleInfo, label='Curso')
+        self.fields['dropDownTimePeriod'] = forms.ChoiceField(widget=forms.Select(attrs={'style' : 'width:300px; margin-top:20px'}) , choices=timePeriodInfo, label = 'Periodo')
+        self.fields['dropDownTerm'] = forms.ChoiceField(widget=forms.Select(attrs={'style' : 'width:300px; margin-top:20px'}), choices=termInfo, label = 'Semestre')
         

@@ -9,10 +9,10 @@
         {{ divs.divs }}
     {% endautoescape %}
     <div id= "botaoNovo" style="position:absolute; top:50px; left:0px ">
-        <button type="button" onmousedown="novo()" style = "width: 200px;">Nova Codificacao</button>  
+        <button class="oval-minibutton" type="button" onmousedown="novo()" style = "width: 200px;">Nova Codificacao</button>  
     </div>
     <div id= "botaoEditar" style="position:absolute; top:50px; left:200px">
-        <button type="button" onmousedown="editar()" style = "width: 200px;">Editar Codificacao</button>
+        <button class="oval-minibutton" type="button" onmousedown="editar()" style = "width: 200px;">Editar Codificacao</button>
     </div>
     <div id="botaoAtualCod" style = 'position:absolute; top:70px; left:1000px;'>
     </div>
@@ -60,13 +60,13 @@
         });
     }
     function novo(){ 
-            var linha = "<span class='etiquetaFormulario'>nome: </span><textarea style='width: 100px;height: 50px' id='nome' name='nome' onChange='cod();funcUni()' ></textarea>";
+            var linha = "<span class='etiquetaFormulario'>nome: </span><textarea style='width:100px; height:50px' id='nome' name='nome' onChange='cod();funcUni()'></textarea>";
             $('#botaoNovo').html(linha)
             $('#botaoEditar').hide()
     }
     function cod(){
         var linha =''
-        linha = '<input name = "nomeCod" id= "nomeCod" value = "'+document.getElementById('nome').value+'"type="hidden"  style="position:absolute; left:200px;">'+document.getElementById('nome').value+'</input>'
+        linha = '<input name = "nomeCod" id= "nomeCod" value = "'+document.getElementById('nome').value+'"type="hidden"  style="position:absolute; right:200px;">'+document.getElementById('nome').value+'</input>'
         $('#nomeCodificacao').html(linha)
         linha = '<input name = "nomeCod" id= "nomeCod" value = "'+document.getElementById('nome').value+'"type="hidden"  style="position:absolute; left:200px;"></input>'
         $('#nomeCodificacaoAtual').html(linha)  
@@ -82,7 +82,7 @@
         var ordem = document.getElementById("ordem").value
         $.get("/codificacoes/possiveisOferecimentos/", {habilitacao : idHab,periodo: idPeriodo,ordem:ordem},function(retorno){
             var object = JSON.parse(retorno)
-            var linha = "<button type='button' onmousedown='toggleChecked(\"#NovaCodificacao\")' style = 'width: 200px'>Selecionar Tudo</button> <button type='button' onmousedown='acrescentarOferecimento()' style = 'width: 300px;position:absolute;left:200px;'>Acrescentar Oferecimento</button>"
+            var linha = "<button class='oval-minibutton' type='button' onmousedown='toggleChecked(\"#NovaCodificacao\")' style = 'width: 200px'>Selecionar Tudo</button> <button class='oval-minibutton' type='button' onmousedown='acrescentarOferecimento()' style = 'width: 300px;position:absolute;left:200px;'>Acrescentar Oferecimento</button>"
             $('#botaoNovaCod').html(linha)
             $('#botaoNovaCod').show()
             linha = ''
@@ -110,7 +110,7 @@
         var nome = document.getElementById('nomeCod').value
         $.get("/codificacoes/listarOferecimentos/", {'nome':nome},function (retorno){
             var object = JSON.parse(retorno)
-            var linha = "<button type='button' onmousedown='toggleChecked(\"#AtualCodificacao\")' style = 'width: 200px;'>Selecionar Tudo</button> <button type='button' onmousedown='deletarOferecimento()' style = 'width: 200px;position:absolute;left:200px;'>Deletar Oferecimento</button> "//<button type='button' onmousedown='reordenarOferecimento()' style = 'width: 200px;position:absolute;left:400px;'>Reordenar</button>"
+            var linha = "<button class='oval-minibutton' type='button' onmousedown='toggleChecked(\"#AtualCodificacao\")' style = 'width: 200px;'>Selecionar Tudo</button> <button class='oval-minibutton' type='button' onmousedown='deletarOferecimento()' style = 'width: 200px;position:absolute;left:200px;'>Deletar Oferecimento</button> "//<button type='button' onmousedown='reordenarOferecimento()' style = 'width: 200px;position:absolute;left:400px;'>Reordenar</button>"
             $('#botaoAtualCod').html(linha)
             $('#botaoAtualCod').show()
             linha = ''

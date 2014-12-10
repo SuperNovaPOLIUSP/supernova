@@ -429,6 +429,20 @@
 	}
 
 	
+	#datafilebox
+	{
+		
+		width: 500px;
+		
+		float: left;
+	}
+	
+	#datafilebox2
+	{
+		margin-left:700px;	
+	}
+	
+	
 	#middleterm
 	{
 		display: table-cell;
@@ -447,6 +461,11 @@
 		vertical-align: middle;
 	}
 
+	#selectEncoding
+	{
+		width:300px;
+	}
+
 	#headerTimePeriod
 	{
 		width:300px;
@@ -462,6 +481,7 @@
 	#headerTerm
 	{
 		width:300px;
+		top: -40px;
 	}
 
 	#headerTimePeriods
@@ -478,8 +498,17 @@
 	}
 	#headerTerms
 	{
-		margin-top: 400px;
+		top: -40px;
 	}	
+	#nod
+	{
+		position:absolute;
+		top: -400px;
+	}
+	#form-box
+	{
+		width:100px;
+	}
 
 /*********************************************************************************/
 /* Buttons                                                                       */
@@ -620,7 +649,6 @@
 	{	
 		height:140px;
 		width:100%;
-		
 		margin-top: 5px;
 		
 

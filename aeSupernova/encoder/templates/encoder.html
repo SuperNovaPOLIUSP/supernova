@@ -2,124 +2,139 @@
 
 {% load static %}
 
-{% block title %}<title>Supernova - Encoder</title>{% endblock %}
+{% block title %}<title>Supernova - Codificação </title>{% endblock %}
 
 {% block content %}
+<div id="center-box">
+	<h2 id="h2-spacing"> Codificação </h2>
     {% autoescape off %}
         {{ header }}
     {% endautoescape %}
-<div id = 'initialButtons' style='position:absolute; top:50px; left:50px'>
-    <button onMouseDown='newEncoding()'>Nova Codificação</button>
-    <button onMouseDown='showPossibleEncodings()'>Editar Codificação</button>
-</div>
-<div id = 'selectEncoding' style='position:absolute; top:50px; left:50px'>
-</div>
-<div id = 'buttonDelete' style='position:absolute; top:50px; left:200px'>
-	<button onMouseDown='confirm_delete()'>Deletar Codificação</button>
-</div>
-
-
-<div id = 'newEncoding' style='position:absolute; top:50px; left:50px'>
-    <textarea id = 'newEncodingName'></textarea>
-    <button onMouseDown="createEncoding()">Criar</button>
-</div>
-
-<div id = 'encoded'></div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    {% include "EncoderCourse.js" %} 
-    {% include "EncoderOffer.js" %}
-    {% include "EncoderControler.js" %}
-</script>
-
-<script type="text/javascript">
-    $('#initialButtons').hide()
-    $('#newEncoding').hide()
-    $('#buttonDelete').hide()
-    var controller = new Controller()
-    $('#encoded').append(controller.div)
-    function start(){
-        $('#initialButtons').show()
-    }
-    function newEncoding(){
-        $('#initialButtons').hide()
-        $('#newEncoding').show()
-    }
-		
-    function showPossibleEncodings(){
-        var idTimePeriod = $('#headerTimePeriod').val()
-        $('#initialButtons').hide()
-        $('#buttonDelete').hide()
-        $('#selectEncoding').show()
-        var get = new XMLHttpRequest()
-        get.open( "GET", 'showPossibleEncodings/?' + $.param({idTimePeriod: idTimePeriod}), false)
-        get.send(null)
-        var select = new $(document.createElement('select'))
-        var encodings = JSON.parse(get.responseText)
-        var option = new $(document.createElement('option'))
-        option.val(0)
-        select.append(option)
-        for (var i in encodings){
-            var option = new $(document.createElement('option'))
-            option.val(encodings[i]['idOpticalSheet'])
-            option.text(encodings[i]['encodingName'])
-            select.append(option)
-        }
-        select.change(function(){
-            loadEncoding(select.val())
-        })
-        $('#selectEncoding').append(select)
-
-    }
-
-	function confirm_delete(){
-		var r = confirm("Deseja deletar esta codificação?");
-		if (r == true) {
-			deleteEncoding();
-		}
-	}
+	<br><br><br>
 	
-	function deleteEncoding(){
+	<div id = 'initialButtons'>
+	    <input style="width:125px;" type="button" value="Nova" class="oval-button" onMouseDown='newEncoding()' />
+	    <input style="width:125px; margin-left:50px" type="button" value="Editar" class="oval-button" onMouseDown='showPossibleEncodings()'  />
+	</div>
+
+	<div id = 'selectEncoding'></div>
+
+	<div id = 'buttonDelete'>
+		<input style="width:50px;" type="button" value="Deletar" class="oval-button" onMouseDown='confirm_delete()' />
+	</div>
+	
+	<div id = 'newEncoding' style="width:300px;">
+	    <textarea id='newEncodingName' style="width:300px; font-size:25px;"></textarea>
+	    <br><br>
+	    <input  type="button" value="Criar" class="oval-button" onMouseDown="createEncoding()" />
+	</div>
+	
+	<div id = 'encoded'></div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	    {% include "EncoderCourse.js" %} 
+	    {% include "EncoderOffer.js" %}
+	    {% include "EncoderControler.js" %}
+	</script>
+
+	<script type="text/javascript">
+	    $('#initialButtons').hide()
+	    $('#newEncoding').hide()
+	    $('#buttonDelete').hide()
+	    var controller = new Controller()
+	    $('#encoded').append(controller.div)
+	    $('#encoded').attr('style', 'width:400px;')
+	    function start(){
+		$('#initialButtons').show()
+	    }
+	    function newEncoding(){
+		$('#initialButtons').hide()
+		$('#newEncoding').show()
+	    }
+		
+	    function showPossibleEncodings(){
 		var idTimePeriod = $('#headerTimePeriod').val()
 		$('#initialButtons').hide()
-        $('#buttonDelete').hide()
-        $('#headerFaculties').hide()
-        $('#newEncoding').hide()
-        $('#encoded').hide()
-        $('#selectEncoding').empty()
+		$('#buttonDelete').hide()
+
+		$('#selectEncoding').prepend('<span>Codificações:</span><br><br><br>')
+		
+		$('#selectEncoding').show()
+		
+		
 		var get = new XMLHttpRequest()
-        get.open( "GET", 'deleteEncoding/?' + $.param({idOpticalSheet: controller.idOpticalSheet, idTimePeriod: idTimePeriod}), false)
-        get.send(null)
-	}
+		get.open( "GET", 'showPossibleEncodings/?' + $.param({idTimePeriod: idTimePeriod}), false)
+		get.send(null)
+		var select = new $(document.createElement('select'))
+		var encodings = JSON.parse(get.responseText)
+		var option = new $(document.createElement('option'))
+		option.val(0)
+		select.append(option)
+		for (var i in encodings){
+		    var option = new $(document.createElement('option'))
+		    option.val(encodings[i]['idOpticalSheet'])
+		    option.text(encodings[i]['encodingName'])
+		    select.append(option)
+		}
+		select.change(function(){
+		    loadEncoding(select.val())
+		})
+		$('#selectEncoding').append(select)
+
+	    }
+
+		function confirm_delete(){
+			var r = confirm("Deseja deletar esta codificação?");
+			if (r == true) {
+				deleteEncoding();
+			}
+		}
 	
-    function loadEncoding(idOpticalSheet){
-        $('#selectEncoding').hide()
-        controller.idTimePeriod = $('#headerTimePeriod').val()
-        controller.idOpticalSheet = idOpticalSheet
-        controller.loadEncoding()
-        $('#headerFaculties').show()
-        controller.showEncoding()
-        $('#buttonDelete').show()
-    }
+		function deleteEncoding(){
+			var idTimePeriod = $('#headerTimePeriod').val()
+			$('#initialButtons').hide()
+		$('#buttonDelete').hide()
+		$('#headerFaculties').hide()
+		$('#newEncoding').hide()
+		$('#encoded').hide()
+		$('#selectEncoding').empty()
+			var get = new XMLHttpRequest()
+		get.open( "GET", 'deleteEncoding/?' + $.param({idOpticalSheet: controller.idOpticalSheet, idTimePeriod: idTimePeriod}), false)
+		get.send(null)
+		}
+	
+	    function loadEncoding(idOpticalSheet){
+		$('#selectEncoding').hide()
+		controller.idTimePeriod = $('#headerTimePeriod').val()
+		controller.idOpticalSheet = idOpticalSheet
+		controller.loadEncoding()
+		$('#headerFaculties').show()
+		controller.showEncoding()
+		$('#buttonDelete').show()
+	    }
 
-    function showPossibleOffers(idCycle, term){
-        controller.showPossibleOffers(idCycle, term)
-    }
+	    function showPossibleOffers(idCycle, term){
+		controller.showPossibleOffers(idCycle, term)
+	    }
 
-    function createEncoding(){
-    	$('#buttonDelete').hide()
-        $('#newEncoding').hide()
-        var encodingName = $('#newEncodingName').val()
-        var idTimePeriod = $('#headerTimePeriod').val()
-        var get = new XMLHttpRequest()
-        get.open( "GET", 'createEncoding/?' + $.param({name: encodingName, idTimePeriod: idTimePeriod}), false)
-        get.send(null)
-        var idOpticalSheet = JSON.parse(get.responseText)
-        controller.idOpticalSheet = idOpticalSheet
-        controller.idTimePeriod = idTimePeriod
-        $('#headerFaculties').show()
-        controller.showEncoding()
-    }
-</script>
+	    function createEncoding(){
+	    	$('#buttonDelete').hide()
+		$('#newEncoding').hide()
+
+		var encodingName = $('#newEncodingName').val()
+		var idTimePeriod = $('#headerTimePeriod').val()
+		var get = new XMLHttpRequest()
+		get.open( "GET", 'createEncoding/?' + $.param({name: encodingName, idTimePeriod: idTimePeriod}), false)
+		get.send(null)
+		var idOpticalSheet = JSON.parse(get.responseText)
+		controller.idOpticalSheet = idOpticalSheet
+		controller.idTimePeriod = idTimePeriod
+		$('#headerFaculties').prepend('<span>Faculdades: </span>')
+		$('#headerFaculties').show()
+		
+		controller.showEncoding()
+	    }
+	</script>
+</div>
 {% endblock %}

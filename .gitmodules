@@ -1,6 +1,6 @@
 [submodule "pulsarInterface"]
 	path = pulsarInterface
-	url = ssh://200.144.254.129:2838/home/git/repositorios/pulsarInterface.git
+	url = ssh://mojeda@200.144.254.129:2838/home/git/repositorios/pulsarInterface.git
 [submodule "tools"]
 	path = tools
-	url = ssh://200.144.254.129:2838/home/git/repositorios/tools.git
+	url = ssh://mojeda@200.144.254.129:2838/home/git/repositorios/tools.git

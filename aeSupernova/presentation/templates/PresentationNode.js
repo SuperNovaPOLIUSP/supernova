@@ -6,7 +6,7 @@ function PresentationNode(url, datas, id, name){
     this.nexts = null
 
     var nextsDiv = $(document.createElement('div'))
-    nextsDiv.attr('style', 'position:relative; left:50px;display: block;')
+    nextsDiv.attr('style', 'margin-top:30px;')
     nextsDiv.show()
     if (url != ''){
         this.createNextNodes(url, datas)

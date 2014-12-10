@@ -6,7 +6,7 @@ function ControlNode(url, datas, id, name){
     this.nexts = null
 
     var nextsDiv = $(document.createElement('div'))
-    nextsDiv.attr('style', 'position:relative; left:50px;display: block;')
+    nextsDiv.attr('style', 'position:relative; left:35px; display: block;')
     nextsDiv.show()
 
     this.numberOfAnswers = 0
@@ -34,7 +34,7 @@ function ControlNode(url, datas, id, name){
     }
 
     var span = $(document.createElement('span'))
-    span.text(name + ' -> ' + this.numberOfAnswers)
+    span.text('		' + name + '   - ' + this.numberOfAnswers)
     this.div.append(span)
 
     this.div.append(nextsDiv)

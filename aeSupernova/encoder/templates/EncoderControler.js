@@ -37,10 +37,10 @@ Controller.prototype.showPossibleOffers = function(idCycle, term){
 Controller.prototype.showEncoding = function(){
     this.div.empty()
 	var labelSizeOffers = new $(document.createElement('p'))
-	labelSizeOffers.attr('style','height: 50px; width:400; color:#b72d2d;')
+	labelSizeOffers.attr('style','color:#b72d2d;')
     if (this.encodedCourses.length > 0){
         var encodedDiv = new $(document.createElement('div')) 
-        encodedDiv.attr('style','height: 300px; overflow-y: scroll;') // para adicionar
+        encodedDiv.attr('style','width:400px; height: 300px; overflow-y: scroll;') // adicionados
         for (var i in this.encodedCourses){
             encodedDiv.append(this.encodedCourses[i].getHTML())
         }
@@ -66,7 +66,6 @@ Controller.prototype.showEncoding = function(){
         })
         button3.attr('style','')
 		button3.attr('class','oval-minibutton')   //botao 3
-        this.div.append(labelSizeOffers)
         var buttonRemove = new $(document.createElement('button'))
         controller = this
         buttonRemove.mousedown(function(){
@@ -89,7 +88,7 @@ Controller.prototype.showEncoding = function(){
    
     if (this.listedCourses.length > 0){ 
         var listedDiv = new $(document.createElement('div')) 
-        listedDiv.attr('style','float: left; height: 300px; overflow-y: scroll;') //adicionados
+        listedDiv.attr('style','width:400x; float: left; height: 300px; overflow-y: scroll;') //para adicionar
         for (var i in this.listedCourses){
             listedDiv.append(this.listedCourses[i].getHTML())
         }
@@ -106,7 +105,7 @@ Controller.prototype.showEncoding = function(){
                 })
             }
         })
-        button.attr('style','float: top') // button 1
+        button.attr('style','margin-top:40px;') // button 1
 		button.attr('class','oval-minibutton')
         
 
@@ -127,13 +126,22 @@ Controller.prototype.showEncoding = function(){
         })
         button2.attr('style','') //button 2
 	button2.attr('class','oval-minibutton')
-	$('#encoded').attr('style', 'width:100%;')	
-        this.div.append(listedDiv)
-		this.div.append(encodedDiv)
+	$('#encoded').attr('style', 'width:100%;')
+		this.div.empty()
+		this.div.append(labelSizeOffers)
+		var box = new $(document.createElement('div')) 	
+		var spacing = new $(document.createElement('div')) 
+		spacing.attr('style','width:100px;height: 300px;')
+		box.attr('style','height: 300px;') 
+        box.append(listedDiv)
+		box.append(spacing)
+		box.append(encodedDiv)
+		this.div.append(box)
 		this.div.append(button)
 		this.div.append(button2)
 		this.div.append(button3)
 		this.div.append(buttonRemove)
+		
     }
 
 }

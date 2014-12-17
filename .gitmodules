@@ -1,6 +1,6 @@
 [submodule "pulsarInterface"]
 	path = pulsarInterface
-	url = ssh://200.144.254.129:2838/home/git/repositorios/pulsarInterface.git
+	url = https://github.com/SuperNovaPOLIUSP/pulsarInterface
 [submodule "tools"]
 	path = tools
-	url = ssh://200.144.254.129:2838/home/git/repositorios/tools.git
+	url = https://github.com/SuperNovaPOLIUSP/tools

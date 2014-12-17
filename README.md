@@ -171,6 +171,8 @@ Um exemplo das opções a serem configuradas é exibido abaixo:
         '/home/supernova/aeSupernova/templates/interface',
     )
 
+Observação: A configuração DEBUG = True só deve ser utilizada em servidores no periodo de teste. Após esta etapa, o debug deverá ser setado para False.
+
 9 - Portas a serem liberadas no servidor:
 
     8081 TCP

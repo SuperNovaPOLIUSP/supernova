@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerAdmin meunomeeesse@gmail.com
+    ServerName 111.111.111.111
+    ServerAlias 111.111.111.111
+    DocumentRoot /home/supernova/
+    LogLevel warn
+    WSGIScriptAlias / /home/supernova/aeSupernova/aeSupernova/wsgi.py
+
+    <Directory /home/supernova/>
+        Options Indexes FollowSymLinks MultiViews
+        Order deny,allow
+        Deny from all
+    </Directory>
+</VirtualHost>
+

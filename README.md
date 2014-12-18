@@ -171,8 +171,6 @@ Um exemplo das opções a serem configuradas é exibido abaixo:
         '/home/supernova/aeSupernova/templates/interface',
     )
 
-Observação: A configuração DEBUG = True só deve ser utilizada em servidores no periodo de teste. Após esta etapa, o debug deverá ser setado para False.
-
 9 - Portas a serem liberadas no servidor:
 
     8081 TCP
@@ -194,3 +192,38 @@ Este comando irá iniciar um shell do django. Neste shell digite:
 11 - Após a criação do usuário você poderá se conectar ao sistema digitando na barra de endereços de seu navegador “IP do seu servidor/login”. 
 
     Ex: 111.111.111.111/login 
+
+ ### Colaboradores:
+
+Coordenador (Coordinator):
+
+    Giuliano Salcas Olguin
+
+Programadores (Programmers):
+
+    Alan Ferreirós
+    Bernardo Mascarenhas C. e Silva
+    Caio Cesar di Gesu Janguas
+    Diego Rabatone Oliveira
+    Fabio Henrique Fabbri
+    Felipe "PQI" Cruz Neiva Campos
+    Felipe Barker Linero Esteves
+    Filipe Vaz Loiola
+    Gabriel Souza Victorino Lopes
+    Guilherme Henrique Rojas
+    Heitor Reis Ribeiro
+    Henrique Carvalho Silva
+    Juliano Dawid Barboza
+    Letícia Li Koga
+    Lucas Miller da Fonseca Baldini
+    Lucas Pimenta Pereira Ludewigs
+    Marcel Henrique G. Sobrinho
+    Marcelo Abdala Daher
+    Marcelo Pereira Macedo
+    Mateus Ojeda
+    Sheila Genesine Dada
+    Tiago Milagres Miranda
+    Vitor Gabriel Rente
+    Wellington Felipe Calligaris
+    Yan Richard Oliveira
+    Yuri Gomes de Abreu

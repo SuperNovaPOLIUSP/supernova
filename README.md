@@ -193,7 +193,7 @@ Este comando irá iniciar um shell do django. Neste shell digite:
 
     Ex: 111.111.111.111/login 
 
- ### Colaboradores:
+### Colaboradores:
 
 Coordenador (Coordinator):
 

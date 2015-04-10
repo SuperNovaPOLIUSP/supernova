@@ -33,7 +33,7 @@ Programadores (Programmers):
     Yan Richard Oliveira
     Yuri Gomes de Abreu
 
-Supernova Installation guide
+﻿# Supernova Installation guide
 
 Software compatibility:
 •	Ubuntu 12.04

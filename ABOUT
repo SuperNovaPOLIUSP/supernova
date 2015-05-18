@@ -1,4 +1,17 @@
 ﻿SUPERNOVA
 
+O Projeto Supernova foi desenvolvido pela Subcomissão de Avaliação da POLI-USP entre os anos 2004 e 2014 para o levantamento de opinião dos estudantes da POLI sobre as atividades acadêmicas da graduação.
 
-O Projeto Supernova foi  desenvolvido pela Subcomissão de Avaliação da POLI-USP entre os anos 2004 e 2014 para o levantamento de opinião dos estudantes da POLI sobre as atividades acadêmicas da graduação.
+O projeto contou com diversas fases, sendo elas:
+ * Compilação em Planilhas Eletrônicas
+ * Sistema desenvolvido utilizando ASP e Access
+ * Sistema desenvolvido com PHP e MySQL
+ * Sistema desenvolvido utilizando Django, LaTeX [fase atual observada neste repositório]
+ 
+ The Supernova Project was developed by the Evaluation Subcomission from POLI-USP between 2004 and 2014, as a support tool for pooling students opinions about academic undergraduated activities.
+
+The project had several moments:
+ * Spreadsheets based
+ * ASP and Access system
+ * PHP and MySQL system
+ * Python, Django and LaTeX [current on this repository]

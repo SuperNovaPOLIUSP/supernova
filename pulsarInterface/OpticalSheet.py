@@ -359,7 +359,10 @@ class OpticalSheet (object):
             if self.fields == None:
                 OpticalSheetError("This opticalSheet doesn't have fields")
         #First find the last used id
-        lastId = cursor.execute('SELECT idAnswer FROM answer ORDER BY idAnswer DESC LIMIT 1;')[0][0]
+        try:
+                lastId = cursor.execute('SELECT idAnswer FROM answer ORDER BY idAnswer DESC LIMIT 1;')[0][0]
+        except:
+                lastId = 0
         query1 = 'INSERT INTO answer(idAnswer, questionIndex, idDatafile, alternative, identifier) VALUES'
         query2 = 'INSERT INTO rel_answer_opticalSheetField_survey(idAnswer, idOpticalSheetField, idSurvey) VALUES '
         query1Check = False

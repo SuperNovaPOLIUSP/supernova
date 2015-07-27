@@ -1,6 +1,3 @@
-[submodule "pulsarInterface"]
-	path = pulsarInterface
-	url = https://github.com/SuperNovaPOLIUSP/pulsarInterface
 [submodule "tools"]
 	path = tools
 	url = https://github.com/SuperNovaPOLIUSP/tools
